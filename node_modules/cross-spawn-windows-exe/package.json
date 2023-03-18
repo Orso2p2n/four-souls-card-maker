@@ -1,0 +1,153 @@
+{
+  "name": "cross-spawn-windows-exe",
+  "version": "1.2.0",
+  "description": "Cross-platform support for running Windows executables",
+  "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malept/cross-spawn-windows-exe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/malept/cross-spawn-windows-exe/issues"
+  },
+  "homepage": "https://github.com/malept/cross-spawn-windows-exe#readme",
+  "keywords": [
+    "cross-platform",
+    "spawn",
+    "windows",
+    "exe"
+  ],
+  "author": "Mark Lee",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "ava": "ava",
+    "build": "tsc",
+    "coverage": "nyc --reporter=lcov --reporter=text ava",
+    "docs": "typedoc src/index.ts",
+    "lint": "prettier --check . && eslint --ext .ts .",
+    "prepare": "npm run build && husky install",
+    "test": "yarn lint && yarn ava"
+  },
+  "dependencies": {
+    "@malept/cross-spawn-promise": "^1.1.0",
+    "is-wsl": "^2.2.0",
+    "which": "^2.0.2"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/node": "^16.0.0",
+    "@types/sinon": "^10.0.0",
+    "@types/which": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "ava": "^3.9.0",
+    "eslint": "^7.3.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-ava": "^12.0.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-tsdoc": "^0.2.5",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.5",
+    "sinon": "^11.1.0",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.20.0-beta.24",
+    "typescript": "~4.2.4"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "timeout": "3m"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "2018",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "eslint-plugin-tsdoc"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:ava/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript",
+      "plugin:node/recommended",
+      "plugin:prettier/recommended",
+      "plugin:promise/recommended",
+      "prettier"
+    ],
+    "rules": {
+      "node/no-unsupported-features/es-syntax": [
+        "error",
+        {
+          "ignores": [
+            "modules"
+          ]
+        }
+      ],
+      "strict": "error",
+      "tsdoc/syntax": "warn"
+    },
+    "overrides": [
+      {
+        "files": "test/*.ts",
+        "rules": {
+          "import/no-named-as-default-member": "off"
+        }
+      }
+    ],
+    "settings": {
+      "node": {
+        "tryExtensions": [
+          ".js",
+          ".json",
+          ".node",
+          ".ts"
+        ]
+      }
+    }
+  },
+  "eslintIgnore": [
+    "dist"
+  ],
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://github.com/sponsors/malept"
+    },
+    {
+      "type": "tidelift",
+      "url": "https://tidelift.com/subscription/pkg/npm-cross-spawn-windows-exe?utm_medium=referral&utm_source=npm_fund"
+    }
+  ],
+  "lint-staged": {
+    "*.{json,md,yml}": "prettier --write",
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript"
+  }
+}
