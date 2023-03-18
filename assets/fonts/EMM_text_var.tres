@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://c8uabfwu570ol"]
+
+[ext_resource type="FontFile" uid="uid://dpd3kb5vogiba" path="res://assets/fonts/EMM_text.ttf" id="1_crd5j"]
+
+[resource]
+base_font = ExtResource("1_crd5j")
+spacing_top = -25
+spacing_bottom = -5

@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cnhhllv6x3qh7"]
+
+[ext_resource type="Texture2D" uid="uid://ck6o5gafcl1pc" path="res://assets/bg_tile.png" id="1_hb27l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk3wn"]
+texture = ExtResource("1_hb27l")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_jk3wn")

@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3osstai65t6u"]
+
+[ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/backgrounds/loot.png" id="1_gol5i"]
+[ext_resource type="Theme" path="res://resources/themes/title.tres" id="3_pj812"]
+[ext_resource type="Script" path="res://src/ControlPlus.cs" id="3_rx7xj"]
+[ext_resource type="Texture2D" uid="uid://ddsko6l7jfuv4" path="res://assets/cards/_refs/rwz-cow_on_a_trash_farm.png" id="4_tban7"]
+[ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/text.tres" id="5_3w6du"]
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -481.0
+offset_top = -656.0
+offset_right = 481.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gol5i")
+expand_mode = 1
+script = ExtResource("3_rx7xj")
+
+[node name="TitleContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -367.0
+offset_top = 99.0
+offset_right = 367.0
+offset_bottom = 168.0
+grow_horizontal = 2
+script = ExtResource("3_rx7xj")
+
+[node name="Title" type="RichTextLabel" parent="TitleContainer"]
+layout_mode = 2
+theme = ExtResource("3_pj812")
+bbcode_enabled = true
+text = "[center]2 cents!"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("3_rx7xj")
+
+[node name="Ref" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.34902)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tban7")
+
+[node name="DescriptionContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = -487.0
+offset_right = 373.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("3_rx7xj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DescriptionContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("5_3w6du")
+bbcode_enabled = true
+text = "[center]gain 1¢."
+fit_content = true
