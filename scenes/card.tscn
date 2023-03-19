@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjjh4um0mbc7v"]
+[gd_scene load_steps=7 format=3 uid="uid://7rsibpexw172"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Texture2D" uid="uid://dbd4h4dd6g0qg" path="res://assets/cards/loot/bg_trinket_passive.png" id="1_xclnv"]
 [ext_resource type="Theme" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
 [ext_resource type="Texture2D" uid="uid://2a5agh8y6lha" path="res://assets/cards/loot/bot_loot_tarot.png" id="4_358kv"]
-[ext_resource type="Texture2D" uid="uid://c7drtgg4b1j1u" path="res://assets/cards/_refs/b2-two_cents.png" id="4_sbl1b"]
 [ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="5_j28x4"]
+[ext_resource type="Texture2D" uid="uid://c7drtgg4b1j1u" path="res://assets/cards/__refs/b2-two_cents.png" id="6_ul8ma"]
 
 [node name="Card" type="Control"]
 layout_mode = 3
@@ -166,4 +166,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_sbl1b")
+texture = ExtResource("6_ul8ma")

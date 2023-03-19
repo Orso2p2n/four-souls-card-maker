@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifu8nkub4vde"
-path="res://.godot/imported/loot_base.png-ceff57f09cbcd557579334c997b293bd.ctex"
+uid="uid://duf238bg4wrdf"
+path="res://.godot/imported/treasure.png-5feeac11596d048bd61e03fbd7b3e673.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_icons/loot_base.png"
-dest_files=["res://.godot/imported/loot_base.png-ceff57f09cbcd557579334c997b293bd.ctex"]
+source_file="res://assets/icons/treasure.png"
+dest_files=["res://.godot/imported/treasure.png-5feeac11596d048bd61e03fbd7b3e673.ctex"]
 
 [params]
 

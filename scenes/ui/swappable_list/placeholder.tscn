@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1dokmj7gvk55"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qsh7"]
+bg_color = Color(0.337255, 0.337255, 0.337255, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Placeholder" type="Panel"]
+custom_minimum_size = Vector2(360, 24)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qsh7")

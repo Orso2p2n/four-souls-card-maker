@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxumnnol7gb6d"
-path="res://.godot/imported/loot_trinket_passive.png-d4986117549edec99d0b22cc454fa66d.ctex"
+uid="uid://dixo51cruxi8j"
+path="res://.godot/imported/character.png-dbcfcbbc7eeddcbb0158574c6d98644a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_icons/loot_trinket_passive.png"
-dest_files=["res://.godot/imported/loot_trinket_passive.png-d4986117549edec99d0b22cc454fa66d.ctex"]
+source_file="res://assets/icons/character.png"
+dest_files=["res://.godot/imported/character.png-dbcfcbbc7eeddcbb0158574c6d98644a.ctex"]
 
 [params]
 

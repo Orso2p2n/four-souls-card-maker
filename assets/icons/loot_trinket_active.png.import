@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://45apql2s4x6m"
-path="res://.godot/imported/challenge-blank_canvas.jpg-4cc533dc39f991d99b03c92f86b33142.ctex"
+uid="uid://bdfmrp6ctthgt"
+path="res://.godot/imported/loot_trinket_active.png-bf62b49c112ed267cbb113593eeb5eed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_refs/challenge-blank_canvas.jpg"
-dest_files=["res://.godot/imported/challenge-blank_canvas.jpg-4cc533dc39f991d99b03c92f86b33142.ctex"]
+source_file="res://assets/icons/loot_trinket_active.png"
+dest_files=["res://.godot/imported/loot_trinket_active.png-bf62b49c112ed267cbb113593eeb5eed.ctex"]
 
 [params]
 

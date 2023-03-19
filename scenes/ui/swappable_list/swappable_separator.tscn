@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ri30v7s577v"]
+
+[ext_resource type="PackedScene" uid="uid://cdbcctgdx1gyk" path="res://scenes/ui/swappable_list/swappable_item.tscn" id="1_31v7r"]
+[ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="2_iivrt"]
+[ext_resource type="Texture2D" uid="uid://i8rqsghjtbgl" path="res://assets/icons/line_strong.png" id="3_v52ee"]
+[ext_resource type="Texture2D" uid="uid://bmpsih0uhc2br" path="res://assets/icons/line_light.png" id="4_42rpn"]
+
+[node name="SwappableSeparator" node_paths=PackedStringArray("content") instance=ExtResource("1_31v7r")]
+content = NodePath("Button/LineSelection")
+
+[node name="LineSelection" type="OptionButton" parent="Button" index="0"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 360.0
+offset_bottom = 24.0
+theme = ExtResource("2_iivrt")
+theme_override_colors/font_color = Color(0.447059, 0.447059, 0.447059, 1)
+theme_override_colors/font_pressed_color = Color(0.447059, 0.447059, 0.447059, 1)
+theme_override_colors/font_hover_color = Color(0.447059, 0.447059, 0.447059, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.447059, 0.447059, 0.447059, 1)
+theme_override_colors/font_focus_color = Color(0.447059, 0.447059, 0.447059, 1)
+theme_override_font_sizes/font_size = 12
+alignment = 1
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "strong"
+popup/item_0/icon = ExtResource("3_v52ee")
+popup/item_0/id = 0
+popup/item_1/text = "light"
+popup/item_1/icon = ExtResource("4_42rpn")
+popup/item_1/id = 1

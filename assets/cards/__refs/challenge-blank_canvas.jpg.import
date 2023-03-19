@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c42gty48mg36g"
-path="res://.godot/imported/b2-a_penny_6.png-9e08de30fd45d2b2c43d2395ac53c6d2.ctex"
+uid="uid://45apql2s4x6m"
+path="res://.godot/imported/challenge-blank_canvas.jpg-0a52a311c7efa4f383adc2e55cac30d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_refs/b2-a_penny_6.png"
-dest_files=["res://.godot/imported/b2-a_penny_6.png-9e08de30fd45d2b2c43d2395ac53c6d2.ctex"]
+source_file="res://assets/cards/__refs/challenge-blank_canvas.jpg"
+dest_files=["res://.godot/imported/challenge-blank_canvas.jpg-0a52a311c7efa4f383adc2e55cac30d5.ctex"]
 
 [params]
 

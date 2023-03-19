@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d20b35oc6fbpd"
-path="res://.godot/imported/treasure_passive_haunted.png-613b2d94271b252973032b53e5c3f18d.ctex"
+uid="uid://c1yxo7npv4em4"
+path="res://.godot/imported/list.png-b8f760b0ca6b5273f4e172ba1f32140e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_icons/treasure_passive_haunted.png"
-dest_files=["res://.godot/imported/treasure_passive_haunted.png-613b2d94271b252973032b53e5c3f18d.ctex"]
+source_file="res://assets/icons/list.png"
+dest_files=["res://.godot/imported/list.png-b8f760b0ca6b5273f4e172ba1f32140e.ctex"]
 
 [params]
 

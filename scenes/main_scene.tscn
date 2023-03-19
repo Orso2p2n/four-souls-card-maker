@@ -1,17 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1sejkr8871ov"]
+[gd_scene load_steps=14 format=3 uid="uid://b1sejkr8871ov"]
 
-[ext_resource type="PackedScene" uid="uid://bjjh4um0mbc7v" path="res://scenes/card.tscn" id="2_g0xqc"]
+[ext_resource type="PackedScene" uid="uid://7rsibpexw172" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
 [ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
-[ext_resource type="Resource" uid="uid://ci6b0c1l5rt4e" path="res://resources/cards/types/loot.tres" id="4_rcqhm"]
-[ext_resource type="Resource" uid="uid://rbyaujyry5ry" path="res://resources/cards/types/treasure.tres" id="5_d4422"]
+[ext_resource type="Resource" uid="uid://6rb568lyr6ht" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
+[ext_resource type="Resource" path="res://resources/cards/types/treasure.tres" id="5_qvv25"]
 [ext_resource type="Script" path="res://src/ui/SubTypeMenu.cs" id="6_3ihvr"]
+[ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
+[ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
+[ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
+[ext_resource type="Texture2D" uid="uid://cegs5hyhivj1o" path="res://assets/cards/_icons/icon_dice.png" id="10_icac8"]
+[ext_resource type="Texture2D" uid="uid://cnhi6tipulpn7" path="res://assets/cards/_icons/icon_sword.png" id="11_vrgg2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_v8xh3"]
-viewport_path = NodePath("CardViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_27ixm"]
+viewport_path = NodePath("CardPreview/CardViewport")
 
 [node name="BG" type="Panel"]
 anchors_preset = 15
@@ -19,9 +24,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
 
 [node name="CardPreview" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,13 +42,13 @@ offset_bottom = 262.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(192, 262)
-texture = SubResource("ViewportTexture_v8xh3")
+texture = SubResource("ViewportTexture_27ixm")
 expand_mode = 1
 
-[node name="CardViewport" type="SubViewport" parent="."]
+[node name="CardViewport" type="SubViewport" parent="CardPreview"]
 size = Vector2i(962, 1312)
 
-[node name="Card" parent="CardViewport" instance=ExtResource("2_g0xqc")]
+[node name="Card" parent="CardPreview/CardViewport" instance=ExtResource("2_g0xqc")]
 
 [node name="TopBar" type="Panel" parent="."]
 layout_mode = 1
@@ -73,41 +80,171 @@ item_2/id = 2
 item_3/text = "Save as..."
 item_3/id = 3
 
-[node name="TypeLabel" type="Label" parent="."]
-layout_mode = 0
+[node name="Type" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 16.0
 offset_top = 40.0
-offset_right = 368.0
-offset_bottom = 72.0
+offset_right = 16.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TypeLabel" type="Label" parent="Type"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 32.0
 theme = ExtResource("3_7sxfo")
 text = "Type"
 vertical_alignment = 1
 
-[node name="TypeMenu" type="OptionButton" parent="." node_paths=PackedStringArray("subTypeMenu")]
+[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("subTypeMenu")]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 72.0
+offset_top = 32.0
 offset_right = 176.0
-offset_bottom = 104.0
+offset_bottom = 64.0
 theme = ExtResource("3_7sxfo")
+fit_to_longest_item = false
 script = ExtResource("3_42r0l")
 subTypeMenu = NodePath("../SubTypeMenu")
-cardTypes = Array[Resource]([ExtResource("4_rcqhm"), ExtResource("5_d4422")])
+cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("5_qvv25")])
 
-[node name="SubTypeMenu" type="OptionButton" parent="."]
+[node name="SubTypeMenu" type="OptionButton" parent="Type"]
 offset_left = 184.0
-offset_top = 72.0
-offset_right = 352.0
-offset_bottom = 104.0
+offset_top = 32.0
+offset_right = 360.0
+offset_bottom = 64.0
 theme = ExtResource("3_7sxfo")
+fit_to_longest_item = false
 script = ExtResource("6_3ihvr")
 
-[node name="Control" type="Control" parent="."]
+[node name="Title" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 24.0
-offset_top = 72.0
-offset_right = 48.0
-offset_bottom = 96.0
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 16.0
+offset_bottom = 104.0
+mouse_filter = 2
 
-[connection signal="item_selected" from="TypeMenu" to="TypeMenu" method="OnItemSelected"]
-[connection signal="item_selected" from="SubTypeMenu" to="SubTypeMenu" method="OnItemSelected"]
+[node name="TitleLabel" type="Label" parent="Title"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+text = "Title"
+vertical_alignment = 1
+
+[node name="TitleEdit" type="LineEdit" parent="Title"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 360.0
+offset_bottom = 64.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+placeholder_text = "Enter Title..."
+
+[node name="Desc" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 168.0
+offset_right = 16.0
+offset_bottom = 168.0
+mouse_filter = 2
+
+[node name="DescLabel" type="Label" parent="Desc"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+text = "Description"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Desc"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 360.0
+offset_bottom = 392.0
+theme = ExtResource("3_7sxfo")
+
+[node name="SwappableList" parent="Desc/ScrollContainer" instance=ExtResource("8_t1lh8")]
+layout_mode = 2
+
+[node name="Stats" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 560.0
+offset_right = 16.0
+offset_bottom = 560.0
+mouse_filter = 2
+
+[node name="StatsLabel" type="Label" parent="Stats"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+text = "Stats
+"
+vertical_alignment = 1
+
+[node name="HPTexture" type="TextureRect" parent="Stats"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 36.0
+offset_right = 36.0
+offset_bottom = 68.0
+texture = ExtResource("9_ekawo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HPEdit" type="SpinBox" parent="Stats"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 106.25
+offset_bottom = 72.0
+theme = ExtResource("3_7sxfo")
+max_value = 9.0
+value = 2.0
+alignment = 1
+
+[node name="HPTexture2" type="TextureRect" parent="Stats"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 36.0
+offset_right = 156.0
+offset_bottom = 68.0
+texture = ExtResource("10_icac8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HPEdit2" type="SpinBox" parent="Stats"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 32.0
+offset_right = 226.25
+offset_bottom = 72.0
+theme = ExtResource("3_7sxfo")
+min_value = 1.0
+max_value = 6.0
+value = 4.0
+alignment = 1
+
+[node name="HPTexture3" type="TextureRect" parent="Stats"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 36.0
+offset_right = 276.0
+offset_bottom = 68.0
+texture = ExtResource("11_vrgg2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HPEdit3" type="SpinBox" parent="Stats"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 32.0
+offset_right = 346.25
+offset_bottom = 72.0
+theme = ExtResource("3_7sxfo")
+max_value = 9.0
+value = 1.0
+alignment = 1

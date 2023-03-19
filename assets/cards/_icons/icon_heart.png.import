@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dofd7rliu65s2"
-path="res://.godot/imported/bonus_soul.png-1ea81ff8088dab7e2fe5f46d3a9ee381.ctex"
+uid="uid://ckffpk4nyj7gl"
+path="res://.godot/imported/icon_heart.png-e9c61c21e467a3b3073d764ff36ae115.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_icons/bonus_soul.png"
-dest_files=["res://.godot/imported/bonus_soul.png-1ea81ff8088dab7e2fe5f46d3a9ee381.ctex"]
+source_file="res://assets/cards/_icons/icon_heart.png"
+dest_files=["res://.godot/imported/icon_heart.png-e9c61c21e467a3b3073d764ff36ae115.ctex"]
 
 [params]
 

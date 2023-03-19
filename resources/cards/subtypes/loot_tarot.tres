@@ -1,8 +1,8 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bed6pylgtdw2v"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bh3hxfqy47o3g"]
 
 [ext_resource type="Texture2D" uid="uid://da7gon8wcvwqt" path="res://assets/cards/loot/bg_tarot.png" id="1_lloai"]
 [ext_resource type="Texture2D" uid="uid://2a5agh8y6lha" path="res://assets/cards/loot/bot_loot_tarot.png" id="2_nikol"]
-[ext_resource type="Texture2D" uid="uid://cspjm2phum2et" path="res://assets/cards/_icons/loot_tarot.png" id="3_5ynaq"]
+[ext_resource type="Texture2D" uid="uid://cspjm2phum2et" path="res://assets/icons/loot_tarot.png" id="3_5ynaq"]
 [ext_resource type="Texture2D" uid="uid://bcck12lqvlga" path="res://assets/cards/loot/top_loot_tarot.png" id="4_72k1k"]
 [ext_resource type="Script" path="res://resources/cards/subtypes/CardSubType.cs" id="4_dbdv1"]
 

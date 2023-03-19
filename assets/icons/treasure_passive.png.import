@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddsko6l7jfuv4"
-path="res://.godot/imported/rwz-cow_on_a_trash_farm.png-c3c1fd5cb7d89278ea70849e60807607.ctex"
+uid="uid://lfv1rsaoxti7"
+path="res://.godot/imported/treasure_passive.png-6184f6df0debca2bb911284dffdb5ea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_refs/rwz-cow_on_a_trash_farm.png"
-dest_files=["res://.godot/imported/rwz-cow_on_a_trash_farm.png-c3c1fd5cb7d89278ea70849e60807607.ctex"]
+source_file="res://assets/icons/treasure_passive.png"
+dest_files=["res://.godot/imported/treasure_passive.png-6184f6df0debca2bb911284dffdb5ea6.ctex"]
 
 [params]
 

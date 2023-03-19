@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdbcctgdx1gyk"]
+
+[ext_resource type="Script" path="res://src/ui/swappable_list/SwappableItem.cs" id="1_mvk4m"]
+[ext_resource type="Texture2D" uid="uid://c1yxo7npv4em4" path="res://assets/icons/list.png" id="2_j7yu3"]
+
+[node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "content")]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 24.0
+mouse_filter = 2
+script = ExtResource("1_mvk4m")
+button = NodePath("Button")
+content = NodePath("")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 24.0
+icon = ExtResource("2_j7yu3")
+
+[connection signal="button_down" from="Button" to="." method="OnButtonDown"]

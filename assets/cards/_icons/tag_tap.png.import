@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duf238bg4wrdf"
-path="res://.godot/imported/treasure.png-dba8926e5da31e52c972b5a7af48ab84.ctex"
+uid="uid://cx48jdj8q6611"
+path="res://.godot/imported/tag_tap.png-fb7c0232060d1698616724bf4f599af1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_icons/treasure.png"
-dest_files=["res://.godot/imported/treasure.png-dba8926e5da31e52c972b5a7af48ab84.ctex"]
+source_file="res://assets/cards/_icons/tag_tap.png"
+dest_files=["res://.godot/imported/tag_tap.png-fb7c0232060d1698616724bf4f599af1.ctex"]
 
 [params]
 

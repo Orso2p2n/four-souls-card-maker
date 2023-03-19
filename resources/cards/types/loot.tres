@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=7 format=3 uid="uid://ci6b0c1l5rt4e"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://6rb568lyr6ht"]
 
-[ext_resource type="Texture2D" uid="uid://chxhs07ek3ex1" path="res://assets/cards/_icons/loot.png" id="1_1nqy5"]
-[ext_resource type="Resource" path="res://resources/cards/subtypes/loot_base.tres" id="2_qblrn"]
+[ext_resource type="Texture2D" uid="uid://dcfe6wusla66v" path="res://assets/icons/loot.png" id="1_qvh7u"]
+[ext_resource type="Resource" uid="uid://8y2xy76il4x7" path="res://resources/cards/subtypes/loot_base.tres" id="2_qblrn"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="2_yry3k"]
-[ext_resource type="Resource" path="res://resources/cards/subtypes/loot_tarot.tres" id="3_l5lpk"]
+[ext_resource type="Resource" uid="uid://bh3hxfqy47o3g" path="res://resources/cards/subtypes/loot_tarot.tres" id="3_l5lpk"]
 [ext_resource type="Resource" path="res://resources/cards/subtypes/loot_trinket_active.tres" id="4_ms5nx"]
-[ext_resource type="Resource" path="res://resources/cards/subtypes/loot_trinket_passive.tres" id="5_f8avj"]
+[ext_resource type="Resource" uid="uid://yj2gtw57xug3" path="res://resources/cards/subtypes/loot_trinket_passive.tres" id="5_f8avj"]
 
 [resource]
 script = ExtResource("2_yry3k")
 subTypes = [ExtResource("2_qblrn"), ExtResource("3_l5lpk"), ExtResource("4_ms5nx"), ExtResource("5_f8avj")]
 name = "Loot"
-icon = ExtResource("1_1nqy5")
+icon = ExtResource("1_qvh7u")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://ehxehyyyujny"]
+
+[ext_resource type="PackedScene" uid="uid://cdbcctgdx1gyk" path="res://scenes/ui/swappable_list/swappable_item.tscn" id="1_ir1x0"]
+[ext_resource type="Script" path="res://src/ui/swappable_list/SwappableEffect.cs" id="2_xcp53"]
+[ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_wba1f"]
+
+[node name="SwappableEffect" node_paths=PackedStringArray("content") instance=ExtResource("1_ir1x0")]
+custom_minimum_size = Vector2(0, 48)
+script = ExtResource("2_xcp53")
+content = NodePath("Button/TextEdit")
+
+[node name="Button" parent="." index="0"]
+offset_bottom = 48.0
+
+[node name="TextEdit" type="TextEdit" parent="Button" index="0"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 296.0
+offset_bottom = 48.0
+theme = ExtResource("3_wba1f")
+theme_override_constants/line_spacing = -4
+placeholder_text = "Edit Effect..."
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="PaddingEdit" type="SpinBox" parent="Button" index="1"]
+clip_contents = true
+layout_mode = 0
+offset_left = 296.0
+offset_right = 372.0
+offset_bottom = 28.0
+scale = Vector2(0.85, 0.85)
+theme = ExtResource("3_wba1f")
+min_value = -25.0
+max_value = 25.0
+alignment = 1
+prefix = "p:"
+
+[node name="ScalingEdit" type="SpinBox" parent="Button" index="2"]
+clip_contents = true
+layout_mode = 0
+offset_left = 296.0
+offset_top = 24.0
+offset_right = 372.0
+offset_bottom = 52.0
+scale = Vector2(0.85, 0.85)
+theme = ExtResource("3_wba1f")
+min_value = 0.1
+max_value = 2.0
+step = 0.05
+value = 1.0
+alignment = 1
+prefix = "s:"

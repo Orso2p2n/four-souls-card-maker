@@ -1,15 +1,21 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://du8dk2cpyfqc4"]
 
 [ext_resource type="FontFile" uid="uid://dpd3kb5vogiba" path="res://assets/fonts/EMM_text.ttf" id="1_nd7m3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oom2l"]
 bg_color = Color(0, 0, 0, 0.498039)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swove"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+
 [resource]
 /font_sizes/font = 16
 Button/fonts/font = ExtResource("1_nd7m3")
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_nd7m3")
+LineEdit/fonts/font = ExtResource("1_nd7m3")
 MenuBar/fonts/font = ExtResource("1_nd7m3")
 Panel/styles/panel = SubResource("StyleBoxFlat_oom2l")
 PopupMenu/fonts/font = ExtResource("1_nd7m3")
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_swove")
+TextEdit/fonts/font = ExtResource("1_nd7m3")

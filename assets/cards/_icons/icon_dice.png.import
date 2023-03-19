@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cspjm2phum2et"
-path="res://.godot/imported/loot_tarot.png-4228657539f12932c8ab7907337b465c.ctex"
+uid="uid://cegs5hyhivj1o"
+path="res://.godot/imported/icon_dice.png-7ac78eba3d7cecc6433f26340c051362.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/_icons/loot_tarot.png"
-dest_files=["res://.godot/imported/loot_tarot.png-4228657539f12932c8ab7907337b465c.ctex"]
+source_file="res://assets/cards/_icons/icon_dice.png"
+dest_files=["res://.godot/imported/icon_dice.png-7ac78eba3d7cecc6433f26340c051362.ctex"]
 
 [params]
 
