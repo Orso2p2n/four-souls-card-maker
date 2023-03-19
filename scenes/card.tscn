@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3osstai65t6u"]
+[gd_scene load_steps=7 format=3 uid="uid://bjjh4um0mbc7v"]
 
-[ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/backgrounds/loot.png" id="1_gol5i"]
-[ext_resource type="Theme" path="res://resources/themes/title.tres" id="3_pj812"]
-[ext_resource type="Script" path="res://src/ControlPlus.cs" id="3_rx7xj"]
-[ext_resource type="Texture2D" uid="uid://ddsko6l7jfuv4" path="res://assets/cards/_refs/rwz-cow_on_a_trash_farm.png" id="4_tban7"]
-[ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/text.tres" id="5_3w6du"]
+[ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
+[ext_resource type="Texture2D" uid="uid://dbd4h4dd6g0qg" path="res://assets/cards/loot/bg_trinket_passive.png" id="1_xclnv"]
+[ext_resource type="Theme" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
+[ext_resource type="Texture2D" uid="uid://2a5agh8y6lha" path="res://assets/cards/loot/bot_loot_tarot.png" id="4_358kv"]
+[ext_resource type="Texture2D" uid="uid://c7drtgg4b1j1u" path="res://assets/cards/_refs/b2-two_cents.png" id="4_sbl1b"]
+[ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="5_j28x4"]
 
 [node name="Card" type="Control"]
 layout_mode = 3
@@ -21,19 +22,100 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_63tle")
 
-[node name="BG" type="TextureRect" parent="."]
+[node name="BGLayer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_gol5i")
-expand_mode = 1
-script = ExtResource("3_rx7xj")
 
-[node name="TitleContainer" type="CenterContainer" parent="."]
+[node name="BGTexture" type="TextureRect" parent="BGLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xclnv")
+expand_mode = 1
+
+[node name="BGOptional" type="Control" parent="BGLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGOptBorder" type="TextureRect" parent="BGLayer/BGOptional"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGOptBot" type="TextureRect" parent="BGLayer/BGOptional"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_358kv")
+
+[node name="BGOptTop" type="TextureRect" parent="BGLayer/BGOptional"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ArtLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FGLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FGBorder" type="TextureRect" parent="FGLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FGBot" type="TextureRect" parent="FGLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FGTop" type="TextureRect" parent="FGLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleContainer" type="CenterContainer" parent="FGLayer"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -43,29 +125,16 @@ offset_top = 99.0
 offset_right = 367.0
 offset_bottom = 168.0
 grow_horizontal = 2
-script = ExtResource("3_rx7xj")
 
-[node name="Title" type="RichTextLabel" parent="TitleContainer"]
+[node name="Title" type="RichTextLabel" parent="FGLayer/TitleContainer"]
 layout_mode = 2
-theme = ExtResource("3_pj812")
+theme = ExtResource("4_4ajpn")
 bbcode_enabled = true
 text = "[center]2 cents!"
 fit_content = true
 autowrap_mode = 0
-script = ExtResource("3_rx7xj")
 
-[node name="Ref" type="TextureRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.34902)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_tban7")
-
-[node name="DescriptionContainer" type="VBoxContainer" parent="."]
+[node name="DescriptionContainer" type="VBoxContainer" parent="FGLayer"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -79,12 +148,22 @@ offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
-script = ExtResource("3_rx7xj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DescriptionContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="FGLayer/DescriptionContainer"]
 clip_contents = false
 layout_mode = 2
-theme = ExtResource("5_3w6du")
+theme = ExtResource("5_j28x4")
 bbcode_enabled = true
 text = "[center]gain 1¢."
 fit_content = true
+
+[node name="Ref" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.34902)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_sbl1b")

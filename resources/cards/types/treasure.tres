@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://rbyaujyry5ry"]
+
+[ext_resource type="Texture2D" uid="uid://c47hqwnb0u68u" path="res://assets/cards/_icons/treasure.png" id="1_744g3"]
+[ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="2_smc73"]
+[ext_resource type="Resource" path="res://resources/cards/subtypes/treasure_active.tres" id="3_w4mes"]
+[ext_resource type="Resource" path="res://resources/cards/subtypes/treasure_active_haunted.tres" id="4_o5lar"]
+[ext_resource type="Resource" path="res://resources/cards/subtypes/treasure_passive.tres" id="5_mt5ct"]
+[ext_resource type="Resource" path="res://resources/cards/subtypes/treasure_passive_haunted.tres" id="6_ol757"]
+
+[resource]
+script = ExtResource("2_smc73")
+subTypes = [ExtResource("3_w4mes"), ExtResource("4_o5lar"), ExtResource("5_mt5ct"), ExtResource("6_ol757")]
+name = "Treasure"
+icon = ExtResource("1_744g3")

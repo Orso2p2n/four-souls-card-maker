@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://fm8ficwvtrko"]
+
+[ext_resource type="Texture2D" uid="uid://c0sk2nluhhbq7" path="res://assets/cards/treasure/bg_passive_haunted.png" id="1_10mca"]
+[ext_resource type="Texture2D" uid="uid://436chwl22uqx" path="res://assets/cards/treasure/border_passive_haunted.png" id="2_ernkt"]
+[ext_resource type="Texture2D" uid="uid://e11ymjhvixsa" path="res://assets/cards/treasure/bot_passive_haunted.png" id="3_8bcsu"]
+[ext_resource type="Texture2D" uid="uid://dgugtvk215wcu" path="res://assets/cards/_icons/treasure_passive_haunted.png" id="4_75rsj"]
+[ext_resource type="Script" path="res://resources/cards/subtypes/CardSubType.cs" id="5_dqhmk"]
+[ext_resource type="Texture2D" uid="uid://c22wqaqb50j6p" path="res://assets/cards/treasure/top_passive_haunted.png" id="5_n0fv5"]
+
+[resource]
+script = ExtResource("5_dqhmk")
+bgTexture = ExtResource("1_10mca")
+top = ExtResource("5_n0fv5")
+bot = ExtResource("3_8bcsu")
+border = ExtResource("2_ernkt")
+name = "Passive Haunted"
+icon = ExtResource("4_75rsj")

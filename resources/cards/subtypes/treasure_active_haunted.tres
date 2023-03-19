@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://dmfpqwdb37iqo"]
+
+[ext_resource type="Texture2D" uid="uid://1a0lbx452f18" path="res://assets/cards/treasure/bg_active_haunted.png" id="1_tfsf3"]
+[ext_resource type="Texture2D" uid="uid://dbqf8ycsghulp" path="res://assets/cards/treasure/border_active_haunted.png" id="2_k3iuk"]
+[ext_resource type="Texture2D" uid="uid://bjmkrmv1xfb17" path="res://assets/cards/treasure/bot_active_haunted.png" id="3_u2ion"]
+[ext_resource type="Texture2D" uid="uid://d21tau147kcqw" path="res://assets/cards/_icons/treasure_active_haunted.png" id="4_l734q"]
+[ext_resource type="Texture2D" uid="uid://uvow3v5r03f7" path="res://assets/cards/treasure/top_active_haunted.png" id="5_hod7b"]
+[ext_resource type="Script" path="res://resources/cards/subtypes/CardSubType.cs" id="5_t71e6"]
+
+[resource]
+script = ExtResource("5_t71e6")
+bgTexture = ExtResource("1_tfsf3")
+top = ExtResource("5_hod7b")
+bot = ExtResource("3_u2ion")
+border = ExtResource("2_k3iuk")
+name = "Active Haunted"
+icon = ExtResource("4_l734q")

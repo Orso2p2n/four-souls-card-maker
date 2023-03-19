@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://uspdylbmofud"]
+
+[ext_resource type="Texture2D" uid="uid://dbd4h4dd6g0qg" path="res://assets/cards/loot/bg_trinket_passive.png" id="1_xrqnq"]
+[ext_resource type="Texture2D" uid="uid://bookrify4q7s" path="res://assets/cards/loot/border_trinket_passive.png" id="2_pgmka"]
+[ext_resource type="Texture2D" uid="uid://cp8qyw0rgh52r" path="res://assets/cards/loot/bot_trinket_passive.png" id="3_ikmbg"]
+[ext_resource type="Texture2D" uid="uid://bxumnnol7gb6d" path="res://assets/cards/_icons/loot_trinket_passive.png" id="4_rdodb"]
+[ext_resource type="Texture2D" uid="uid://bmfrpica841g4" path="res://assets/cards/loot/top_trinket_passive.png" id="5_8cwuj"]
+[ext_resource type="Script" path="res://resources/cards/subtypes/CardSubType.cs" id="5_his8k"]
+
+[resource]
+script = ExtResource("5_his8k")
+bgTexture = ExtResource("1_xrqnq")
+top = ExtResource("5_8cwuj")
+bot = ExtResource("3_ikmbg")
+border = ExtResource("2_pgmka")
+name = "Trinket Passive"
+icon = ExtResource("4_rdodb")
