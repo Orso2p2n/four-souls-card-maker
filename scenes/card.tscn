@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://7rsibpexw172"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
-[ext_resource type="Texture2D" uid="uid://dbd4h4dd6g0qg" path="res://assets/cards/loot/bg_trinket_passive.png" id="1_xclnv"]
+[ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/bg_loot.png" id="2_cibep"]
 [ext_resource type="Theme" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
 [ext_resource type="Texture2D" uid="uid://2a5agh8y6lha" path="res://assets/cards/loot/bot_loot_tarot.png" id="4_358kv"]
 [ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="5_j28x4"]
 [ext_resource type="Texture2D" uid="uid://c7drtgg4b1j1u" path="res://assets/cards/__refs/b2-two_cents.png" id="6_ul8ma"]
 
-[node name="Card" type="Control"]
+[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,6 +23,14 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_63tle")
+titleLabel = NodePath("FGLayer/TitleContainer/Title")
+bgTexture = NodePath("BGLayer/BGTexture")
+bgOptBorder = NodePath("BGLayer/BGOptional/BGOptBorder")
+bgOptBot = NodePath("BGLayer/BGOptional/BGOptBot")
+bgOptTop = NodePath("BGLayer/BGOptional/BGOptTop")
+fgBorder = NodePath("FGLayer/FGBorder")
+fgBot = NodePath("FGLayer/FGBot")
+fgTop = NodePath("FGLayer/FGTop")
 
 [node name="BGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -39,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_xclnv")
+texture = ExtResource("2_cibep")
 expand_mode = 1
 
 [node name="BGOptional" type="Control" parent="BGLayer"]
@@ -130,7 +138,6 @@ grow_horizontal = 2
 layout_mode = 2
 theme = ExtResource("4_4ajpn")
 bbcode_enabled = true
-text = "[center]2 cents!"
 fit_content = true
 autowrap_mode = 0
 
@@ -154,7 +161,6 @@ clip_contents = false
 layout_mode = 2
 theme = ExtResource("5_j28x4")
 bbcode_enabled = true
-text = "[center]gain 1¢."
 fit_content = true
 
 [node name="Ref" type="TextureRect" parent="."]
