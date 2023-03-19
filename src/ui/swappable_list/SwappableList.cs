@@ -16,10 +16,6 @@ public partial class SwappableList : VBoxContainer
 
 	public override void _Ready() {
 		base._Ready();
-
-		AddItem("Effect");
-		AddItem("Separator");
-		AddItem("Lore");
 	}
 
 	public Control AddItem(string id, int pos = -1) {

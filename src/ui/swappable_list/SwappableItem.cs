@@ -4,6 +4,7 @@ using System;
 public partial class SwappableItem : Control
 {
     [Export] public Button button;
+    [Export] public Button trashButton;
     [Export] public Control content;
 
     public SwappableList list;
@@ -21,12 +22,13 @@ public partial class SwappableItem : Control
     }
 
     public void ResizeItem() {
-        if (button == null || content == null) {
+        if (button == null || content == null || trashButton == null) {
             return;
         }
 
         if (button.Size.Y != content.Size.Y) {
             button.Size = new Vector2(button.Size.X, content.Size.Y);
+            trashButton.Size = new Vector2(trashButton.Size.X, content.Size.Y);
         }
 
         CustomMinimumSize = content.Size;
@@ -97,5 +99,10 @@ public partial class SwappableItem : Control
         if (content != null) {
             content.MouseFilter = isMovingItem ? MouseFilterEnum.Ignore : MouseFilterEnum.Stop;
         }
+    }
+
+    public void Trash() {
+        GetParent().RemoveChild(this);
+		Dispose();
     }
 }

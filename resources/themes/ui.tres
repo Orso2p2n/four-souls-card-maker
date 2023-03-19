@@ -11,7 +11,7 @@ bg_color = Color(0.188235, 0.188235, 0.188235, 1)
 [resource]
 /font_sizes/font = 16
 Button/fonts/font = ExtResource("1_nd7m3")
-Label/font_sizes/font_size = 20
+Label/font_sizes/font_size = 26
 Label/fonts/font = ExtResource("1_nd7m3")
 LineEdit/fonts/font = ExtResource("1_nd7m3")
 MenuBar/fonts/font = ExtResource("1_nd7m3")

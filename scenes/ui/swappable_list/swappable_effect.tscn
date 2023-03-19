@@ -15,7 +15,7 @@ offset_bottom = 48.0
 [node name="TextEdit" type="TextEdit" parent="Button" index="0"]
 layout_mode = 0
 offset_left = 16.0
-offset_right = 296.0
+offset_right = 384.0
 offset_bottom = 48.0
 theme = ExtResource("3_wba1f")
 theme_override_constants/line_spacing = -4
@@ -26,8 +26,8 @@ scroll_fit_content_height = true
 [node name="PaddingEdit" type="SpinBox" parent="Button" index="1"]
 clip_contents = true
 layout_mode = 0
-offset_left = 296.0
-offset_right = 372.0
+offset_left = 384.0
+offset_right = 460.0
 offset_bottom = 28.0
 scale = Vector2(0.85, 0.85)
 theme = ExtResource("3_wba1f")
@@ -39,9 +39,9 @@ prefix = "p:"
 [node name="ScalingEdit" type="SpinBox" parent="Button" index="2"]
 clip_contents = true
 layout_mode = 0
-offset_left = 296.0
+offset_left = 384.0
 offset_top = 24.0
-offset_right = 372.0
+offset_right = 460.0
 offset_bottom = 52.0
 scale = Vector2(0.85, 0.85)
 theme = ExtResource("3_wba1f")
@@ -51,3 +51,6 @@ step = 0.05
 value = 1.0
 alignment = 1
 prefix = "s:"
+
+[node name="TrashButton" parent="." index="1"]
+offset_bottom = 48.0
