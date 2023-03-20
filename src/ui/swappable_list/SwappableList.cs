@@ -90,10 +90,6 @@ public partial class SwappableList : VBoxContainer
 		OnIsMovingItem();
 	}
 
-	public void OnItemMoved(SwappableItem item) {
-
-	}
-
 	public void OnItemReleased(SwappableItem item) {
 		isMovingItem = false;
 
@@ -102,6 +98,8 @@ public partial class SwappableList : VBoxContainer
 		MoveChild(item, index);
 
 		OnIsMovingItem();
+
+		OnListRearranged();
 	}
 
 	void OnIsMovingItem() {
@@ -110,6 +108,12 @@ public partial class SwappableList : VBoxContainer
 			if (child is SwappableItem swappableEffect) {
 				swappableEffect.OnIsMovingItem(isMovingItem);
 			}
+		}
+	}
+	
+	public void OnListRearranged() {
+		foreach (var child in GetChildren()) {
+			(child as SwappableItem).OnListRearranged();
 		}
 	}
 

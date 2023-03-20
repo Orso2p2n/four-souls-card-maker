@@ -11,6 +11,18 @@ public partial class SwappableItem : Control
 
     public bool buttonDown;
 
+    public Control descCorrespondant;
+
+    public override void _Ready() {
+        base._Ready();
+
+        descCorrespondant = CreateDescCorrespondant();
+    }
+
+    public virtual Control CreateDescCorrespondant() {
+        return null;
+    }
+
     public override void _Process(double delta) {
         base._Process(delta);
 
@@ -37,16 +49,6 @@ public partial class SwappableItem : Control
     public virtual void OnButtonDown() {
         buttonDown = true;
 
-        // MouseFilter = MouseFilterEnum.Ignore;
-        // foreach (var child in this.GetAllChildren()) {
-        //     if (child is Control control) {
-
-        //         GD.Print("set mouse filter of " + control.Name + " to Ignore");
-
-        //         control.MouseFilter = MouseFilterEnum.Ignore;
-        //     }
-        // }
-
         Visible = false;
 
         list.OnItemClicked(this);
@@ -61,16 +63,6 @@ public partial class SwappableItem : Control
 
     public virtual void OnButtonUp() {
         buttonDown = false;
-
-        // MouseFilter = MouseFilterEnum.Stop;
-        // foreach (var child in this.GetAllChildren()) {
-        //     if (child is Control control) {
-
-        //         GD.Print("set mouse filter of " + control.Name + " to Stop");
-
-        //         control.MouseFilter = MouseFilterEnum.Stop;
-        //     }
-        // }
 
         Visible = true;
 
@@ -101,7 +93,16 @@ public partial class SwappableItem : Control
         }
     }
 
+    public virtual void OnListRearranged() {
+        descCorrespondant.GetParent().MoveChild(descCorrespondant, GetIndex());
+    }
+
     public void Trash() {
+        if (descCorrespondant != null) {
+            descCorrespondant.GetParent().RemoveChild(descCorrespondant);
+            descCorrespondant.Dispose();
+        }
+        
         GetParent().RemoveChild(this);
 		Dispose();
     }

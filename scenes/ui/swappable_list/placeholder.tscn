@@ -9,4 +9,6 @@ corner_radius_bottom_left = 2
 
 [node name="Placeholder" type="Panel"]
 custom_minimum_size = Vector2(360, 24)
+offset_right = 472.0
+offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4qsh7")

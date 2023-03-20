@@ -3,11 +3,11 @@
 [ext_resource type="FontVariation" uid="uid://c8uabfwu570ol" path="res://assets/fonts/EMM_text_var.tres" id="1_t7ip7"]
 
 [resource]
-default_font = ExtResource("1_t7ip7")
-default_font_size = 68
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/constants/line_spacing = 10
+Label/constants/line_spacing = 0
 Label/font_sizes/font_size = 68
 Label/fonts/font = ExtResource("1_t7ip7")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/normal_font_size = 92
+RichTextLabel/constants/line_separation = -18
+RichTextLabel/font_sizes/normal_font_size = 58
+RichTextLabel/fonts/normal_font = ExtResource("1_t7ip7")

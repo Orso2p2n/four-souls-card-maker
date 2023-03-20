@@ -23,20 +23,7 @@ placeholder_text = "Edit Effect..."
 wrap_mode = 1
 scroll_fit_content_height = true
 
-[node name="PaddingEdit" type="SpinBox" parent="Button" index="1"]
-clip_contents = true
-layout_mode = 0
-offset_left = 384.0
-offset_right = 460.0
-offset_bottom = 28.0
-scale = Vector2(0.85, 0.85)
-theme = ExtResource("3_wba1f")
-min_value = -25.0
-max_value = 25.0
-alignment = 1
-prefix = "p:"
-
-[node name="ScalingEdit" type="SpinBox" parent="Button" index="2"]
+[node name="ScalingEdit" type="SpinBox" parent="Button" index="1"]
 clip_contents = true
 layout_mode = 0
 offset_left = 384.0
@@ -52,5 +39,10 @@ value = 1.0
 alignment = 1
 prefix = "s:"
 
+[node name="PaddingEdit" parent="Button" index="2"]
+offset_bottom = 28.0
+
 [node name="TrashButton" parent="." index="1"]
 offset_bottom = 48.0
+
+[connection signal="text_changed" from="Button/TextEdit" to="." method="OnTextChanged"]

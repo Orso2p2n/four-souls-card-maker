@@ -21,6 +21,12 @@ public partial class Card : Control
 	[Export] TextureRect fgBot;
 	[Export] TextureRect fgTop;
 
+	[ExportGroup("Description")]
+	[Export] BoxContainer descContainer;
+	[Export] PackedScene effect;
+	[Export] PackedScene lore;
+	[Export] PackedScene line;
+
 	public override void _Ready() {
 		instance = this;
 	}
@@ -34,5 +40,26 @@ public partial class Card : Control
 		bgOptBorder.Texture 	= fgBorder.Texture 		= (Texture2D) cardType.border;
 		bgOptBot.Texture    	= fgBot.Texture     	= (Texture2D) cardType.bot;
 		bgOptTop.Texture    	= fgTop.Texture     	= (Texture2D) cardType.top;
+	}
+
+	public DescEffect AddEffect() {
+		var instance = effect.Instantiate();
+		instance.ChangeOwner(descContainer);
+
+		return (instance as DescEffect);
+	}
+
+	public DescEffect AddLore() {
+		var instance = lore.Instantiate();
+		instance.ChangeOwner(descContainer);
+
+		return (instance as DescEffect);
+	}
+
+	public DescLine AddLine() {
+		var instance = line.Instantiate();
+		instance.ChangeOwner(descContainer);
+
+		return (instance as DescLine);
 	}
 }

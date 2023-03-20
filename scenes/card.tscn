@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://7rsibpexw172"]
+[gd_scene load_steps=9 format=3 uid="uid://7rsibpexw172"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/bg_loot.png" id="2_cibep"]
 [ext_resource type="Theme" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
 [ext_resource type="Texture2D" uid="uid://2a5agh8y6lha" path="res://assets/cards/loot/bot_loot_tarot.png" id="4_358kv"]
-[ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="5_j28x4"]
-[ext_resource type="Texture2D" uid="uid://c7drtgg4b1j1u" path="res://assets/cards/__refs/b2-two_cents.png" id="6_ul8ma"]
+[ext_resource type="PackedScene" uid="uid://du3dtmppeclx1" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
+[ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
+[ext_resource type="Texture2D" uid="uid://y4t4chgfn7j7" path="res://assets/cards/__refs/b2-xix_the_sun.png" id="6_hejnd"]
+[ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 
-[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop")]
+[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,6 +33,10 @@ bgOptTop = NodePath("BGLayer/BGOptional/BGOptTop")
 fgBorder = NodePath("FGLayer/FGBorder")
 fgBot = NodePath("FGLayer/FGBot")
 fgTop = NodePath("FGLayer/FGTop")
+descContainer = NodePath("FGLayer/DescriptionContainer")
+effect = ExtResource("5_cqrq7")
+lore = ExtResource("7_4fche")
+line = ExtResource("6_awvw3")
 
 [node name="BGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -154,14 +160,8 @@ offset_right = 373.0
 offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 0
 alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="FGLayer/DescriptionContainer"]
-clip_contents = false
-layout_mode = 2
-theme = ExtResource("5_j28x4")
-bbcode_enabled = true
-fit_content = true
 
 [node name="Ref" type="TextureRect" parent="."]
 visible = false
@@ -172,4 +172,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_ul8ma")
+texture = ExtResource("6_hejnd")

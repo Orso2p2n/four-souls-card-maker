@@ -4,5 +4,5 @@
 
 [resource]
 base_font = ExtResource("1_crd5j")
-spacing_top = -25
-spacing_bottom = -5
+spacing_top = -8
+spacing_bottom = 8

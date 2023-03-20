@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://du3dtmppeclx1"]
+
+[ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="1_tfnax"]
+[ext_resource type="Script" path="res://src/card/DescEffect.cs" id="2_ndhyt"]
+
+[node name="EffectLabel" type="Control" node_paths=PackedStringArray("richText")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_ndhyt")
+richText = NodePath("RichText")
+
+[node name="RichText" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+offset_top = -8.0
+offset_right = 746.0
+offset_bottom = 108.0
+theme = ExtResource("1_tfnax")
+bbcode_enabled = true
+text = "[center]edit effect...
+"
+fit_content = true

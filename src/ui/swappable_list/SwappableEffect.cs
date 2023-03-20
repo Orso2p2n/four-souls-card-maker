@@ -8,10 +8,17 @@ public partial class SwappableEffect : SwappableItem
     [Export] public SpinBox paddingEdit;
     [Export] public SpinBox scaleEdit;
 
+    public DescEffect descEffect;
+
     public override void _Ready() {
         base._Ready();
 
         textEdit = content as TextEdit;
+    }
+
+    public override Control CreateDescCorrespondant() {
+        descEffect = Card.instance.AddEffect();
+        return descEffect;
     }
 
     public override void OnButtonDown() {
@@ -38,5 +45,9 @@ public partial class SwappableEffect : SwappableItem
         if (scaleEdit != null) {
             scaleEdit.MouseFilter = isMovingItem ? MouseFilterEnum.Ignore : MouseFilterEnum.Stop;
         }
+    }
+
+    void OnTextChanged() {
+        descEffect.SetText(textEdit.Text);
     }
 }
