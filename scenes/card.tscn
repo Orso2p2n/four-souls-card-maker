@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://7rsibpexw172"]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
-[ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/bg_loot.png" id="2_cibep"]
 [ext_resource type="Theme" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
-[ext_resource type="Texture2D" uid="uid://2a5agh8y6lha" path="res://assets/cards/loot/bot_loot_tarot.png" id="4_358kv"]
 [ext_resource type="PackedScene" uid="uid://du3dtmppeclx1" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
+[ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://y4t4chgfn7j7" path="res://assets/cards/__refs/b2-xix_the_sun.png" id="6_hejnd"]
+[ext_resource type="Texture2D" uid="uid://bg0dw8ikaihih" path="res://assets/cards/loot/loot_tarot_bot.png" id="6_obob1"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 
 [node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer")]
@@ -53,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cibep")
+texture = ExtResource("5_vin02")
 expand_mode = 1
 
 [node name="BGOptional" type="Control" parent="BGLayer"]
@@ -79,7 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_358kv")
+texture = ExtResource("6_obob1")
 
 [node name="BGOptTop" type="TextureRect" parent="BGLayer/BGOptional"]
 layout_mode = 1

@@ -35,11 +35,14 @@ public partial class Card : Control
 		titleLabel.Text = "[center]" + text;
 	}
 
-	public void SetCardType(CardSubType cardType) {
-		bgTexture.Texture                      			= (Texture2D) cardType.bgTexture;
-		bgOptBorder.Texture 	= fgBorder.Texture 		= (Texture2D) cardType.border;
-		bgOptBot.Texture    	= fgBot.Texture     	= (Texture2D) cardType.bot;
-		bgOptTop.Texture    	= fgTop.Texture     	= (Texture2D) cardType.top;
+	public void SetCardBackground(CardBackground cardBg) {
+		bgTexture.Texture = (Texture2D) cardBg.bgTexture;
+	}
+
+	public void SetCardForeground(CardForeground cardFg) {
+		bgOptBorder.Texture 	= fgBorder.Texture 		= (Texture2D) cardFg.border;
+		bgOptBot.Texture    	= fgBot.Texture     	= (Texture2D) cardFg.bot;
+		bgOptTop.Texture    	= fgTop.Texture     	= (Texture2D) cardFg.top;
 	}
 
 	public DescEffect AddEffect() {

@@ -1,14 +1,20 @@
-[gd_resource type="Resource" load_steps=7 format=3 uid="uid://6rb568lyr6ht"]
+[gd_resource type="Resource" load_steps=11 format=3 uid="uid://cts86axgjy8b3"]
 
-[ext_resource type="Texture2D" uid="uid://dcfe6wusla66v" path="res://assets/icons/loot.png" id="1_qvh7u"]
-[ext_resource type="Resource" uid="uid://8y2xy76il4x7" path="res://resources/cards/subtypes/loot_base.tres" id="2_qblrn"]
+[ext_resource type="Resource" uid="uid://cun7oq0jhhbsg" path="res://resources/cards/backgrounds/loot_bg_base.tres" id="1_5wx0y"]
+[ext_resource type="Texture2D" uid="uid://dcfe6wusla66v" path="res://assets/icons/cards/loot.png" id="1_qvh7u"]
+[ext_resource type="Resource" uid="uid://cv64cdo5s60xi" path="res://resources/cards/backgrounds/loot_bg_tarot.tres" id="2_44v34"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="2_yry3k"]
-[ext_resource type="Resource" uid="uid://bh3hxfqy47o3g" path="res://resources/cards/subtypes/loot_tarot.tres" id="3_l5lpk"]
-[ext_resource type="Resource" path="res://resources/cards/subtypes/loot_trinket_active.tres" id="4_ms5nx"]
-[ext_resource type="Resource" uid="uid://yj2gtw57xug3" path="res://resources/cards/subtypes/loot_trinket_passive.tres" id="5_f8avj"]
+[ext_resource type="Resource" path="res://resources/cards/backgrounds/loot_bg_trinket_active.tres" id="3_0sqp5"]
+[ext_resource type="Resource" uid="uid://db1hp66veqeb2" path="res://resources/cards/backgrounds/loot_bg_trinket_passive.tres" id="4_vqj8r"]
+[ext_resource type="Resource" uid="uid://be1r2mjxatiq2" path="res://resources/cards/foregrounds/loot_fg_base.tres" id="5_bn4ka"]
+[ext_resource type="Resource" uid="uid://5ulhiwlpy3do" path="res://resources/cards/foregrounds/loot_fg_tarot.tres" id="6_j3oy7"]
+[ext_resource type="Resource" path="res://resources/cards/foregrounds/loot_fg_trinket_active.tres" id="7_2sieb"]
+[ext_resource type="Resource" path="res://resources/cards/foregrounds/loot_fg_trinket_passive.tres" id="8_n5ob5"]
 
 [resource]
 script = ExtResource("2_yry3k")
-subTypes = [ExtResource("2_qblrn"), ExtResource("3_l5lpk"), ExtResource("4_ms5nx"), ExtResource("5_f8avj")]
+stats = "None"
+backgrounds = [ExtResource("1_5wx0y"), ExtResource("2_44v34"), ExtResource("3_0sqp5"), ExtResource("4_vqj8r")]
+foregrounds = [ExtResource("5_bn4ka"), ExtResource("6_j3oy7"), ExtResource("7_2sieb"), ExtResource("8_n5ob5")]
 name = "Loot"
 icon = ExtResource("1_qvh7u")

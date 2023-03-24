@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cv64cdo5s60xi"]
+
+[ext_resource type="Texture2D" uid="uid://da7gon8wcvwqt" path="res://assets/cards/loot/loot_tarot_bg.png" id="1_suhg2"]
+[ext_resource type="Texture2D" uid="uid://cspjm2phum2et" path="res://assets/icons/cards/loot_tarot_bg.png" id="2_go8af"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="4_je1x2"]
+
+[resource]
+script = ExtResource("4_je1x2")
+bgTexture = ExtResource("1_suhg2")
+name = "Tarot"
+icon = ExtResource("2_go8af")

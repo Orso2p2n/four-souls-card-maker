@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://btkfph5sqt3sv"]
+
+[ext_resource type="Texture2D" uid="uid://cic8anu7qgab6" path="res://assets/icons/cards/monster.png" id="1_673n7"]
+[ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="1_be5rr"]
+
+[resource]
+script = ExtResource("1_be5rr")
+stats = "HP DICE ATK"
+backgrounds = []
+foregrounds = []
+name = "Monster"
+icon = ExtResource("1_673n7")

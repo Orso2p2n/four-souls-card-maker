@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b7oxuyhruqv0b" path="res://assets/cards/loot/loot_trinketactive_border.png" id="1_aio1w"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_lmffh"]
+[ext_resource type="Texture2D" uid="uid://0xwurmjl6e42" path="res://assets/cards/loot/loot_trinketactive_bot.png" id="2_ev36i"]
+[ext_resource type="Texture2D" uid="uid://cnccxx40tbwyb" path="res://assets/icons/cards/loot_trinketactive_fg.png" id="3_gmw6f"]
+[ext_resource type="Texture2D" uid="uid://b5tr2jj0bnbyh" path="res://assets/cards/loot/loot_trinketactive_top.png" id="5_nh4wj"]
+
+[resource]
+script = ExtResource("1_lmffh")
+top = ExtResource("5_nh4wj")
+bot = ExtResource("2_ev36i")
+border = ExtResource("1_aio1w")
+name = "Trinket Active"
+icon = ExtResource("3_gmw6f")

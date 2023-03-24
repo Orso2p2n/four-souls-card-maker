@@ -4,5 +4,7 @@ using System;
 
 public partial class CardMainType : CardType
 {
-    [Export] public Array<CardSubType> subTypes = new Array<CardSubType>();
+    [Export(PropertyHint.Enum,"None,HP DICE ATK,HP ATK")] public string stats = "None";
+    [Export] public Array<CardBackground> backgrounds = new Array<CardBackground>();
+    [Export] public Array<CardForeground> foregrounds = new Array<CardForeground>();
 }

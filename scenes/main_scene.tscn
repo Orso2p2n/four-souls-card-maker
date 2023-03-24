@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1sejkr8871ov"]
+[gd_scene load_steps=16 format=3 uid="uid://6ydaylqw8s32"]
 
-[ext_resource type="PackedScene" uid="uid://7rsibpexw172" path="res://scenes/card.tscn" id="2_g0xqc"]
+[ext_resource type="PackedScene" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
 [ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
-[ext_resource type="Resource" uid="uid://6rb568lyr6ht" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
-[ext_resource type="Resource" path="res://resources/cards/types/treasure.tres" id="5_qvv25"]
-[ext_resource type="Script" path="res://src/ui/SubTypeMenu.cs" id="6_3ihvr"]
+[ext_resource type="Resource" uid="uid://cts86axgjy8b3" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
+[ext_resource type="Resource" uid="uid://d2nnn1jx728w0" path="res://resources/cards/types/treasure.tres" id="5_qvv25"]
+[ext_resource type="Resource" uid="uid://btkfph5sqt3sv" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
+[ext_resource type="Script" path="res://src/ui/BackgroundMenu.cs" id="7_3ncn4"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
+[ext_resource type="Script" path="res://src/ui/ForegroundMenu.cs" id="8_l44u4"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
 [ext_resource type="Script" path="res://src/ui/NewDescriptionItemButton.cs" id="9_qk362"]
@@ -80,32 +82,62 @@ mouse_filter = 2
 
 [node name="TypeLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_right = 472.0
+offset_right = 152.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Type"
 vertical_alignment = 1
 
-[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("subTypeMenu")]
+[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu")]
 layout_mode = 0
 offset_top = 40.0
-offset_right = 232.0
+offset_right = 152.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 fit_to_longest_item = false
 script = ExtResource("3_42r0l")
-subTypeMenu = NodePath("../SubTypeMenu")
-cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("5_qvv25")])
+backgroundMenu = NodePath("../BackgroundMenu")
+foregroundMenu = NodePath("../ForegroundMenu")
+cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("5_qvv25"), ExtResource("6_4oahh")])
 
-[node name="SubTypeMenu" type="OptionButton" parent="Type"]
+[node name="BackgroundLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 168.0
+offset_right = 320.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Bg"
+vertical_alignment = 1
+
+[node name="BackgroundMenu" type="OptionButton" parent="Type"]
+layout_mode = 0
+offset_left = 168.0
 offset_top = 40.0
-offset_right = 472.0
+offset_right = 320.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 fit_to_longest_item = false
-script = ExtResource("6_3ihvr")
+script = ExtResource("7_3ncn4")
+
+[node name="ForegroundLabel" type="Label" parent="Type"]
+layout_mode = 0
+offset_left = 336.0
+offset_right = 480.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Fg
+"
+vertical_alignment = 1
+
+[node name="ForegroundMenu" type="OptionButton" parent="Type"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 40.0
+offset_right = 480.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+fit_to_longest_item = false
+script = ExtResource("8_l44u4")
 
 [node name="Title" type="Control" parent="."]
 anchors_preset = 0
@@ -213,7 +245,8 @@ layout_mode = 0
 offset_left = 40.0
 offset_top = 32.0
 offset_right = 112.0
-offset_bottom = 72.0
+offset_bottom = 64.0
+scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
 max_value = 9.0
 value = 2.0
@@ -221,9 +254,9 @@ alignment = 1
 
 [node name="HPTexture2" type="TextureRect" parent="Stats"]
 layout_mode = 0
-offset_left = 132.0
+offset_left = 148.0
 offset_top = 36.0
-offset_right = 164.0
+offset_right = 180.0
 offset_bottom = 68.0
 texture = ExtResource("10_icac8")
 expand_mode = 1
@@ -231,10 +264,11 @@ stretch_mode = 5
 
 [node name="HPEdit2" type="SpinBox" parent="Stats"]
 layout_mode = 0
-offset_left = 168.0
+offset_left = 184.0
 offset_top = 32.0
-offset_right = 240.0
-offset_bottom = 72.0
+offset_right = 256.0
+offset_bottom = 64.0
+scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
 min_value = 1.0
 max_value = 6.0
@@ -243,9 +277,9 @@ alignment = 1
 
 [node name="HPTexture3" type="TextureRect" parent="Stats"]
 layout_mode = 0
-offset_left = 260.0
+offset_left = 292.0
 offset_top = 36.0
-offset_right = 292.0
+offset_right = 324.0
 offset_bottom = 68.0
 texture = ExtResource("11_vrgg2")
 expand_mode = 1
@@ -253,10 +287,11 @@ stretch_mode = 5
 
 [node name="HPEdit3" type="SpinBox" parent="Stats"]
 layout_mode = 0
-offset_left = 296.0
+offset_left = 328.0
 offset_top = 32.0
-offset_right = 368.0
-offset_bottom = 72.0
+offset_right = 400.0
+offset_bottom = 64.0
+scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
 max_value = 9.0
 value = 1.0

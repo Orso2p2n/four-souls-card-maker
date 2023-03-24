@@ -4,24 +4,31 @@ using System;
 
 public partial class MainTypeMenu : TypeMenu
 {
-	[Export] SubTypeMenu subTypeMenu;
+	[Export] BackgroundMenu backgroundMenu;
+	[Export] ForegroundMenu foregroundMenu;
 
-    public override void _Ready() {
-        base._Ready();
+	public override void _Ready() {
+		base._Ready();
 
 		UpdateItems();
-    }
+	}
 
 	public override void OnItemSelected(long index) {
-		subTypeMenu.Clear();
+		backgroundMenu.Clear();
+		foregroundMenu.Clear();
 
 		var selectedCardType = cardTypes[(int) index] as CardMainType;
 
-		var newList = new Array<CardType>();
-		foreach (var subType in selectedCardType.subTypes) {
-			newList.Add(subType);
+		var bgList = new Array<CardType>();
+		foreach (var subType in selectedCardType.backgrounds) {
+			bgList.Add(subType);
 		}
+		backgroundMenu.SetList(bgList);
 
-		subTypeMenu.SetList(newList);
+		var fgList = new Array<CardType>();
+		foreach (var subType in selectedCardType.foregrounds) {
+			fgList.Add(subType);
+		}
+		foregroundMenu.SetList(fgList);
 	}
 }
