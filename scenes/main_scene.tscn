@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://6ydaylqw8s32"]
+[gd_scene load_steps=19 format=3 uid="uid://6ydaylqw8s32"]
 
 [ext_resource type="PackedScene" uid="uid://4igi2epe22x" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
 [ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
 [ext_resource type="Resource" uid="uid://cts86axgjy8b3" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
 [ext_resource type="Resource" uid="uid://d2nnn1jx728w0" path="res://resources/cards/types/treasure.tres" id="5_qvv25"]
-[ext_resource type="Resource" uid="uid://5kx5fmfha00h" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
+[ext_resource type="Resource" uid="uid://dpyqhb2qc4vc6" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
 [ext_resource type="Script" path="res://src/ui/BackgroundMenu.cs" id="7_3ncn4"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
+[ext_resource type="Resource" uid="uid://cv5nf53nyd7ev" path="res://resources/cards/types/event.tres" id="8_hee5o"]
 [ext_resource type="Script" path="res://src/ui/ForegroundMenu.cs" id="8_l44u4"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
@@ -106,7 +107,7 @@ fit_to_longest_item = false
 script = ExtResource("3_42r0l")
 backgroundMenu = NodePath("../BackgroundMenu")
 foregroundMenu = NodePath("../ForegroundMenu")
-cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("5_qvv25"), ExtResource("6_4oahh")])
+cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("5_qvv25"), ExtResource("6_4oahh"), ExtResource("8_hee5o")])
 
 [node name="BackgroundLabel" type="Label" parent="Type"]
 layout_mode = 0

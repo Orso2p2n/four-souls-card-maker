@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://2fisvu50viuu"]
+
+[ext_resource type="Texture2D" uid="uid://dbj205trthhu0" path="res://assets/cards/event/event_orange_bg.png" id="1_fbc1j"]
+[ext_resource type="Texture2D" uid="uid://dvua6nbh247u0" path="res://assets/icons/cards/event_orange_bg.png" id="2_fpxim"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_vjlf6"]
+
+[resource]
+script = ExtResource("3_vjlf6")
+bgTexture = ExtResource("1_fbc1j")
+name = "Orange"
+icon = ExtResource("2_fpxim")

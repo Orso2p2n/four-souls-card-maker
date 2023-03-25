@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=24 format=3 uid="uid://5kx5fmfha00h"]
+[gd_resource type="Resource" load_steps=24 format=3 uid="uid://dpyqhb2qc4vc6"]
 
 [ext_resource type="Texture2D" uid="uid://cic8anu7qgab6" path="res://assets/icons/cards/monster.png" id="1_673n7"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="1_be5rr"]

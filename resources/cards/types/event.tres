@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://cv5nf53nyd7ev"]
+
+[ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="2_yry3k"]
+[ext_resource type="Resource" uid="uid://dex4f6i56tkp8" path="res://resources/cards/foregrounds/event_fg_curse.tres" id="5_47wu7"]
+[ext_resource type="Resource" uid="uid://448oqs6npvy4" path="res://resources/cards/backgrounds/event_bg_blue.tres" id="5_swdok"]
+[ext_resource type="Resource" uid="uid://bbkukkbfeeeeg" path="res://resources/cards/foregrounds/event_fg_event.tres" id="6_0qudf"]
+[ext_resource type="Resource" uid="uid://2fisvu50viuu" path="res://resources/cards/backgrounds/event_bg_orange.tres" id="6_2h45y"]
+[ext_resource type="Texture2D" uid="uid://cic8anu7qgab6" path="res://assets/icons/cards/monster.png" id="7_boycv"]
+[ext_resource type="Resource" uid="uid://cyldggd1336j7" path="res://resources/cards/backgrounds/event_bg_purple.tres" id="7_tp3vp"]
+[ext_resource type="Resource" uid="uid://cc1b27usfv7lh" path="res://resources/cards/backgrounds/event_bg_red.tres" id="8_ye5s7"]
+
+[resource]
+script = ExtResource("2_yry3k")
+stats = "None"
+backgrounds = [ExtResource("5_swdok"), ExtResource("6_2h45y"), ExtResource("7_tp3vp"), ExtResource("8_ye5s7")]
+foregrounds = [ExtResource("6_0qudf"), ExtResource("5_47wu7")]
+name = "Event"
+icon = ExtResource("7_boycv")
