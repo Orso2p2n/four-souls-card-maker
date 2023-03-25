@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dogxa1nwn3to5"
-path="res://.godot/imported/monster_megabosscursed_top.png-e2273b90fd5918fb761afdb560c595a8.ctex"
+uid="uid://b1a402qg8kw2i"
+path="res://.godot/imported/Border_Treasure_Passive_Monster.png-8bd8a5a4ded6aef526feb79eada9a38b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/monster_megabosscursed_top.png"
-dest_files=["res://.godot/imported/monster_megabosscursed_top.png-e2273b90fd5918fb761afdb560c595a8.ctex"]
+source_file="res://assets/icons/cards/Border_Treasure_Passive_Monster.png"
+dest_files=["res://.godot/imported/Border_Treasure_Passive_Monster.png-8bd8a5a4ded6aef526feb79eada9a38b.ctex"]
 
 [params]
 

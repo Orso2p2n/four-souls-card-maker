@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blmhkggllvd8g"
-path="res://.godot/imported/monster_megabossclassic_bot.png-fee1fd87f27ec198f198ae22cee7071a.ctex"
+uid="uid://2nrhv74umn67"
+path="res://.godot/imported/monster_passive_fg.png-b5ba8b6a18563b489e54edad501452c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/monster_megabossclassic_bot.png"
-dest_files=["res://.godot/imported/monster_megabossclassic_bot.png-fee1fd87f27ec198f198ae22cee7071a.ctex"]
+source_file="res://assets/icons/cards/monster_passive_fg.png"
+dest_files=["res://.godot/imported/monster_passive_fg.png-b5ba8b6a18563b489e54edad501452c6.ctex"]
 
 [params]
 

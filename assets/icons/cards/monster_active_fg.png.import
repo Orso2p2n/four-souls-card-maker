@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caiffo2g181c3"
-path="res://.godot/imported/monster_bosscursed_bot.png-ee426731b82b32b67a6ee4686293092a.ctex"
+uid="uid://bbtxa5d02x7gl"
+path="res://.godot/imported/monster_active_fg.png-804558ee92d566294d369fb6a87bd7dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/monster_bosscursed_bot.png"
-dest_files=["res://.godot/imported/monster_bosscursed_bot.png-ee426731b82b32b67a6ee4686293092a.ctex"]
+source_file="res://assets/icons/cards/monster_active_fg.png"
+dest_files=["res://.godot/imported/monster_active_fg.png-804558ee92d566294d369fb6a87bd7dd.ctex"]
 
 [params]
 

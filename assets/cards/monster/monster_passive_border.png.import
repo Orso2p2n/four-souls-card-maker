@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk41mx03soit3"
-path="res://.godot/imported/monster_megabosscharmed_bot.png-29214163479c8ce6a41b5197839bab9b.ctex"
+uid="uid://dijperg3iywun"
+path="res://.godot/imported/monster_passive_border.png-ba4b09668f584945e8d51a1ca8438e45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/monster_megabosscharmed_bot.png"
-dest_files=["res://.godot/imported/monster_megabosscharmed_bot.png-29214163479c8ce6a41b5197839bab9b.ctex"]
+source_file="res://assets/cards/monster/monster_passive_border.png"
+dest_files=["res://.godot/imported/monster_passive_border.png-ba4b09668f584945e8d51a1ca8438e45.ctex"]
 
 [params]
 

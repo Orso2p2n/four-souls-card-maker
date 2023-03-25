@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duyhdac24oqko"
-path="res://.godot/imported/monster_bosscursed_top.png-f6241d9ee7c3c2e071890527a8a2d0a6.ctex"
+uid="uid://leh1l0p5jtas"
+path="res://.godot/imported/monster_active_border.png-0c6410c4c6d98bb325d154f99327f293.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/monster_bosscursed_top.png"
-dest_files=["res://.godot/imported/monster_bosscursed_top.png-f6241d9ee7c3c2e071890527a8a2d0a6.ctex"]
+source_file="res://assets/cards/monster/monster_active_border.png"
+dest_files=["res://.godot/imported/monster_active_border.png-0c6410c4c6d98bb325d154f99327f293.ctex"]
 
 [params]
 

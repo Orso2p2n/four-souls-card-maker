@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=26 format=3 uid="uid://btkfph5sqt3sv"]
+[gd_resource type="Resource" load_steps=24 format=3 uid="uid://5kx5fmfha00h"]
 
 [ext_resource type="Texture2D" uid="uid://cic8anu7qgab6" path="res://assets/icons/cards/monster.png" id="1_673n7"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="1_be5rr"]
@@ -21,15 +21,13 @@
 [ext_resource type="Resource" uid="uid://1ey5bl734f7e" path="res://resources/cards/foregrounds/monster_fg_cursed.tres" id="17_2rm8c"]
 [ext_resource type="Resource" uid="uid://ciu43ncssgxbv" path="res://resources/cards/foregrounds/monster_fg_bossclassic.tres" id="18_r5hqw"]
 [ext_resource type="Resource" uid="uid://dlkk81d4tm5pl" path="res://resources/cards/foregrounds/monster_fg_bosscharmed.tres" id="19_c7bmi"]
-[ext_resource type="Resource" uid="uid://br7f5a0t4wkc1" path="res://resources/cards/foregrounds/monster_fg_bosscursed.tres" id="20_b3x7h"]
-[ext_resource type="Resource" uid="uid://bt0moogosmx33" path="res://resources/cards/foregrounds/monster_fg_megabossclassic.tres" id="21_dilsq"]
-[ext_resource type="Resource" uid="uid://cokvadfwuignu" path="res://resources/cards/foregrounds/monster_fg_megabosscharmed.tres" id="22_amvvx"]
-[ext_resource type="Resource" uid="uid://1025f2g3qr8k" path="res://resources/cards/foregrounds/monster_fg_megabosscursed.tres" id="23_wfd2p"]
+[ext_resource type="Resource" uid="uid://3cn4mpa3t0tm" path="res://resources/cards/foregrounds/monster_fg_active.tres" id="20_jhcfh"]
+[ext_resource type="Resource" uid="uid://dr1h24n56ndei" path="res://resources/cards/foregrounds/monster_fg_passive.tres" id="21_jb2fy"]
 
 [resource]
 script = ExtResource("1_be5rr")
 stats = "Monster"
 backgrounds = [ExtResource("1_i4uaq"), ExtResource("2_757pf"), ExtResource("3_e5yfu"), ExtResource("4_31ghw"), ExtResource("5_qct0a"), ExtResource("6_fhbi2"), ExtResource("7_n2t81"), ExtResource("8_lrdkc"), ExtResource("9_fifx2"), ExtResource("10_ytjcx"), ExtResource("11_r4sy8"), ExtResource("12_dvle5"), ExtResource("13_206oa"), ExtResource("14_ve6wm")]
-foregrounds = [ExtResource("15_ikoxm"), ExtResource("16_17ova"), ExtResource("17_2rm8c"), ExtResource("18_r5hqw"), ExtResource("19_c7bmi"), ExtResource("20_b3x7h"), ExtResource("21_dilsq"), ExtResource("22_amvvx"), ExtResource("23_wfd2p")]
+foregrounds = [ExtResource("15_ikoxm"), ExtResource("16_17ova"), ExtResource("17_2rm8c"), ExtResource("18_r5hqw"), ExtResource("19_c7bmi"), ExtResource("20_jhcfh"), ExtResource("21_jb2fy")]
 name = "Monster"
 icon = ExtResource("1_673n7")
