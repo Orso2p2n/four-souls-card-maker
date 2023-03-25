@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b7i0adti7f5"]
+
+[ext_resource type="Texture2D" uid="uid://bka5gdd2rlhko" path="res://assets/cards/character/character_arcade_bg.png" id="1_yt2ip"]
+[ext_resource type="Texture2D" uid="uid://b0k0furc26og5" path="res://assets/icons/cards/character_arcade_bg.png" id="2_dk46n"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_j6rfq"]
+
+[resource]
+script = ExtResource("3_j6rfq")
+bgTexture = ExtResource("1_yt2ip")
+name = "Tainted"
+icon = ExtResource("2_dk46n")

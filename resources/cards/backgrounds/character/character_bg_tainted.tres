@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bj1ri7xdpc4b8"]
+
+[ext_resource type="Texture2D" uid="uid://sae7yy4wb1n3" path="res://assets/cards/character/character_tainted_bg.png" id="1_yxgd6"]
+[ext_resource type="Texture2D" uid="uid://c2g3x23h5tnfv" path="res://assets/icons/cards/character_tainted_bg.png" id="2_xc0eu"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_cv74c"]
+
+[resource]
+script = ExtResource("3_cv74c")
+bgTexture = ExtResource("1_yxgd6")
+name = "Tainted"
+icon = ExtResource("2_xc0eu")

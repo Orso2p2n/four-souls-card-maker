@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://tys3i2cok4mx"]
+
+[ext_resource type="Texture2D" uid="uid://n73rw6e5cve4" path="res://assets/cards/startingitem/startingitem_active_bg.png" id="1_l3lmp"]
+[ext_resource type="Texture2D" uid="uid://bflfixw3btc7w" path="res://assets/icons/cards/startingitem_active_bg.png" id="2_c3d5u"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_w7kn4"]
+
+[resource]
+script = ExtResource("3_w7kn4")
+bgTexture = ExtResource("1_l3lmp")
+name = "Active"
+icon = ExtResource("2_c3d5u")

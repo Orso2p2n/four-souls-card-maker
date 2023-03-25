@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=8 format=3 uid="uid://cc5wrbxk03olw"]
+
+[ext_resource type="Resource" uid="uid://dd50ifwdlrqsu" path="res://resources/cards/backgrounds/character/character_bg_base.tres" id="1_bu4fq"]
+[ext_resource type="Resource" uid="uid://bj1ri7xdpc4b8" path="res://resources/cards/backgrounds/character/character_bg_tainted.tres" id="2_b0ge8"]
+[ext_resource type="Resource" uid="uid://dpoyle2nbl7dl" path="res://resources/cards/backgrounds/character/character_bg_mines.tres" id="3_ov5r6"]
+[ext_resource type="Resource" uid="uid://b7i0adti7f5" path="res://resources/cards/backgrounds/character/character_bg_arcade.tres" id="4_r3y18"]
+[ext_resource type="Texture2D" uid="uid://dixo51cruxi8j" path="res://assets/icons/cards/character.png" id="5_146fp"]
+[ext_resource type="Resource" uid="uid://c2rvsvc5ody1i" path="res://resources/cards/foregrounds/character/character_fg_base.tres" id="5_otw74"]
+[ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="10_b2eai"]
+
+[resource]
+script = ExtResource("10_b2eai")
+stats = "Character"
+backgrounds = [ExtResource("1_bu4fq"), ExtResource("4_r3y18"), ExtResource("3_ov5r6"), ExtResource("2_b0ge8")]
+foregrounds = [ExtResource("5_otw74")]
+name = "Character"
+icon = ExtResource("5_146fp")

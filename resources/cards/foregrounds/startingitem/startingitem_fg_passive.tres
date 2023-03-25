@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cy0xq3111rori"]
+
+[ext_resource type="Texture2D" uid="uid://b4lhkhp3wh2qe" path="res://assets/cards/startingitem/startingitem_passive_border.png" id="1_am4ri"]
+[ext_resource type="Texture2D" uid="uid://lw1ncdx27mr5" path="res://assets/cards/startingitem/startingitem_passive_bot.png" id="2_5c2hn"]
+[ext_resource type="Texture2D" uid="uid://timw24l706u7" path="res://assets/icons/cards/startingitem_passive_fg.png" id="3_ek53e"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="4_eg6ec"]
+[ext_resource type="Texture2D" uid="uid://cewlb3wlasbfp" path="res://assets/cards/startingitem/startingitem_passive_top.png" id="5_clup4"]
+
+[resource]
+script = ExtResource("4_eg6ec")
+top = ExtResource("5_clup4")
+bot = ExtResource("2_5c2hn")
+border = ExtResource("1_am4ri")
+name = "Passive"
+icon = ExtResource("3_ek53e")

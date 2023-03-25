@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c7j0fnm3j8u5k"]
+
+[ext_resource type="Texture2D" uid="uid://cajal5t4sa8te" path="res://assets/cards/startingitem/startingitem_passive_bg.png" id="1_2dkt1"]
+[ext_resource type="Texture2D" uid="uid://dgs6bo42exeno" path="res://assets/icons/cards/startingitem_passive_bg.png" id="2_res4k"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_h1hex"]
+
+[resource]
+script = ExtResource("3_h1hex")
+bgTexture = ExtResource("1_2dkt1")
+name = "Passive"
+icon = ExtResource("2_res4k")

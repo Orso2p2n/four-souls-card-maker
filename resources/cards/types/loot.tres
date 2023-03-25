@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=11 format=3]
+[gd_resource type="Resource" load_steps=11 format=3 uid="uid://bi2aqnoti2el1"]
 
 [ext_resource type="Resource" uid="uid://cun7oq0jhhbsg" path="res://resources/cards/backgrounds/loot/loot_bg_base.tres" id="1_wah2d"]
 [ext_resource type="Resource" uid="uid://cv64cdo5s60xi" path="res://resources/cards/backgrounds/loot/loot_bg_tarot.tres" id="2_otkxu"]
@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://db1hp66veqeb2" path="res://resources/cards/backgrounds/loot/loot_bg_trinket_passive.tres" id="4_83vk4"]
 [ext_resource type="Resource" uid="uid://be1r2mjxatiq2" path="res://resources/cards/foregrounds/loot/loot_fg_base.tres" id="5_6bviw"]
 [ext_resource type="Resource" uid="uid://5ulhiwlpy3do" path="res://resources/cards/foregrounds/loot/loot_fg_tarot.tres" id="6_me103"]
-[ext_resource type="Resource" path="res://resources/cards/foregrounds/loot/loot_fg_trinket_active.tres" id="7_1fcv4"]
-[ext_resource type="Resource" path="res://resources/cards/foregrounds/loot/loot_fg_trinket_passive.tres" id="8_wfxgp"]
+[ext_resource type="Resource" uid="uid://cfimuwrvgbsw7" path="res://resources/cards/foregrounds/loot/loot_fg_trinket_active.tres" id="7_1fcv4"]
+[ext_resource type="Resource" uid="uid://co75r62rrdp8t" path="res://resources/cards/foregrounds/loot/loot_fg_trinket_passive.tres" id="8_wfxgp"]
 [ext_resource type="Texture2D" uid="uid://dcfe6wusla66v" path="res://assets/icons/cards/loot.png" id="9_w35m1"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="10_b2eai"]
 

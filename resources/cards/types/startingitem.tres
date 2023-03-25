@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://bigoy3lofmbyj"]
+
+[ext_resource type="Resource" uid="uid://tys3i2cok4mx" path="res://resources/cards/backgrounds/startingitem/startingitem_bg_active.tres" id="1_h6xql"]
+[ext_resource type="Resource" uid="uid://c7j0fnm3j8u5k" path="res://resources/cards/backgrounds/startingitem/startingitem_bg_passive.tres" id="2_xhe3f"]
+[ext_resource type="Resource" uid="uid://dbldxbrpcgyxw" path="res://resources/cards/foregrounds/startingitem/startingitem_fg_active.tres" id="3_30cqk"]
+[ext_resource type="Resource" uid="uid://cy0xq3111rori" path="res://resources/cards/foregrounds/startingitem/startingitem_fg_passive.tres" id="4_sj3ag"]
+[ext_resource type="Texture2D" uid="uid://clsu5ielocakn" path="res://assets/icons/cards/starting_item.png" id="9_dwpp7"]
+[ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="10_7lx42"]
+
+[resource]
+script = ExtResource("10_7lx42")
+stats = "None"
+backgrounds = [ExtResource("1_h6xql"), ExtResource("2_xhe3f")]
+foregrounds = [ExtResource("3_30cqk"), ExtResource("4_sj3ag")]
+name = "Starting Item"
+icon = ExtResource("9_dwpp7")

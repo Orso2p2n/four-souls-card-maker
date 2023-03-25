@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dpoyle2nbl7dl"]
+
+[ext_resource type="Texture2D" uid="uid://0hq1i568b0yb" path="res://assets/cards/character/character_mines_bg.png" id="1_7yd8i"]
+[ext_resource type="Texture2D" uid="uid://drkxsqn38qfch" path="res://assets/icons/cards/character_mines_bg.png" id="2_jtw73"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_or73m"]
+
+[resource]
+script = ExtResource("3_or73m")
+bgTexture = ExtResource("1_7yd8i")
+name = "Mines"
+icon = ExtResource("2_jtw73")
