@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://by1s2on4rd2aw"]
+
+[ext_resource type="Texture2D" uid="uid://btyi3kxotpj0" path="res://assets/cards/monster/monster_hell_bg.png" id="1_u62xx"]
+[ext_resource type="Texture2D" uid="uid://clss1cikrwtoh" path="res://assets/icons/cards/monster_hell_bg.png" id="2_pwkfv"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_lmt38"]
+
+[resource]
+script = ExtResource("3_lmt38")
+bgTexture = ExtResource("1_u62xx")
+name = "Hell"
+icon = ExtResource("2_pwkfv")

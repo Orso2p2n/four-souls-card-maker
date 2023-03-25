@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bw5fxx7u3mkg4"]
+
+[ext_resource type="Texture2D" uid="uid://bf2g0fb0xglb3" path="res://assets/cards/monster/monster_classic_bot.png" id="1_jtft8"]
+[ext_resource type="Texture2D" uid="uid://b1un10k8qsxb6" path="res://assets/icons/cards/monster_classic_fg.png" id="2_0gukq"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="2_rvwdu"]
+[ext_resource type="Texture2D" uid="uid://dwq52n8a5menj" path="res://assets/cards/monster/monster_classic_top.png" id="3_w48uk"]
+
+[resource]
+script = ExtResource("2_rvwdu")
+top = ExtResource("3_w48uk")
+bot = ExtResource("1_jtft8")
+name = "Classic"
+icon = ExtResource("2_0gukq")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b4aeqb5gbq8w2"]
+
+[ext_resource type="Texture2D" uid="uid://c6pmpxsamr8cx" path="res://assets/cards/monster/monster_downpour_bg.png" id="1_214iy"]
+[ext_resource type="Texture2D" uid="uid://clav3lv8u42nk" path="res://assets/icons/cards/monster_downpour_bg.png" id="2_fc84y"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_1sqh2"]
+
+[resource]
+script = ExtResource("3_1sqh2")
+bgTexture = ExtResource("1_214iy")
+name = "Downpour"
+icon = ExtResource("2_fc84y")

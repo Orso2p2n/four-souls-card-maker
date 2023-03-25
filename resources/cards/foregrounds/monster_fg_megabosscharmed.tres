@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cokvadfwuignu"]
+
+[ext_resource type="Texture2D" uid="uid://bk41mx03soit3" path="res://assets/cards/monster/monster_megabosscharmed_bot.png" id="1_x6asl"]
+[ext_resource type="Texture2D" uid="uid://vty1rih0db8r" path="res://assets/icons/cards/monster_megabosscharmed_fg.png" id="2_yfq67"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="3_gh4gf"]
+[ext_resource type="Texture2D" uid="uid://d2jphexf2uqxu" path="res://assets/cards/monster/monster_megabosscharmed_top.png" id="4_g623f"]
+
+[resource]
+script = ExtResource("3_gh4gf")
+top = ExtResource("4_g623f")
+bot = ExtResource("1_x6asl")
+name = "Mega-Boss Charmed"
+icon = ExtResource("2_yfq67")

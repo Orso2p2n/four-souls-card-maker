@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bjb1ritrlp0j3"]
+
+[ext_resource type="Texture2D" uid="uid://c4cqom3m7n4uu" path="res://assets/cards/monster/monster_cursed_bg.png" id="1_ju8pr"]
+[ext_resource type="Texture2D" uid="uid://ch2vka75wr03m" path="res://assets/icons/cards/monster_cursed_bg.png" id="2_haq5x"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_ac58j"]
+
+[resource]
+script = ExtResource("3_ac58j")
+bgTexture = ExtResource("1_ju8pr")
+name = "Cursed"
+icon = ExtResource("2_haq5x")

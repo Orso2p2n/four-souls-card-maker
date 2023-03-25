@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://ghbmb131ej24"]
+
+[ext_resource type="Texture2D" uid="uid://b6dydise1vowr" path="res://assets/cards/monster/monster_charmed_bot.png" id="1_d4ltt"]
+[ext_resource type="Texture2D" uid="uid://dr6jjheqt37bj" path="res://assets/cards/monster/monster_charmed_top.png" id="1_hw0ij"]
+[ext_resource type="Texture2D" uid="uid://c5mdevckjgg6g" path="res://assets/icons/cards/monster_charmed_fg.png" id="2_e7asj"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="3_q14b2"]
+
+[resource]
+script = ExtResource("3_q14b2")
+top = ExtResource("1_hw0ij")
+bot = ExtResource("1_d4ltt")
+name = "Charmed"
+icon = ExtResource("2_e7asj")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://ciu43ncssgxbv"]
+
+[ext_resource type="Texture2D" uid="uid://bgkeme4auoxsp" path="res://assets/cards/monster/monster_bossclassic_bot.png" id="1_3k6q1"]
+[ext_resource type="Texture2D" uid="uid://mr02dfnd35dd" path="res://assets/icons/cards/monster_bossclassic_fg.png" id="2_oetbq"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="3_5w1bk"]
+[ext_resource type="Texture2D" uid="uid://ddedyhs3amjw7" path="res://assets/cards/monster/monster_bossclassic_top.png" id="4_kli3e"]
+
+[resource]
+script = ExtResource("3_5w1bk")
+top = ExtResource("4_kli3e")
+bot = ExtResource("1_3k6q1")
+name = "Boss Classic"
+icon = ExtResource("2_oetbq")

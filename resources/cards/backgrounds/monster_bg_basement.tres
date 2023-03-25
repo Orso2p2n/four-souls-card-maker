@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://udy2oa5fdyw8"]
+
+[ext_resource type="Texture2D" uid="uid://e20adfiu881a" path="res://assets/cards/monster/monster_basement_bg.png" id="1_kgnw3"]
+[ext_resource type="Texture2D" uid="uid://dpsojnd26x5h1" path="res://assets/icons/cards/monster_basement_bg.png" id="2_wt40v"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_mnkej"]
+
+[resource]
+script = ExtResource("3_mnkej")
+bgTexture = ExtResource("1_kgnw3")
+name = "Basement"
+icon = ExtResource("2_wt40v")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://l3c2tdmtbo6"]
+
+[ext_resource type="Texture2D" uid="uid://dalpx5hxd3khv" path="res://assets/cards/monster/monster_corpse_bg.png" id="1_qhriq"]
+[ext_resource type="Texture2D" uid="uid://c1s6tn5imink6" path="res://assets/icons/cards/monster_corpse_bg.png" id="2_8tm3a"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_ac58j"]
+
+[resource]
+script = ExtResource("3_ac58j")
+bgTexture = ExtResource("1_qhriq")
+name = "Corpse"
+icon = ExtResource("2_8tm3a")

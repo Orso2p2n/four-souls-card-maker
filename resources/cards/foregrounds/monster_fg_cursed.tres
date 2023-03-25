@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://1ey5bl734f7e"]
+
+[ext_resource type="Texture2D" uid="uid://bngvj307obgym" path="res://assets/cards/monster/monster_cursed_bot.png" id="1_31dic"]
+[ext_resource type="Texture2D" uid="uid://bdcidxmx8la0i" path="res://assets/icons/cards/monster_cursed_fg.png" id="2_j3vs6"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="3_qiy3x"]
+[ext_resource type="Texture2D" uid="uid://chvd4w3q461ys" path="res://assets/cards/monster/monster_cursed_top.png" id="4_6uo4b"]
+
+[resource]
+script = ExtResource("3_qiy3x")
+top = ExtResource("4_6uo4b")
+bot = ExtResource("1_31dic")
+name = "Cursed"
+icon = ExtResource("2_j3vs6")

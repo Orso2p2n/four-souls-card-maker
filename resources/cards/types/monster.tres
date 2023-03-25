@@ -1,12 +1,35 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://btkfph5sqt3sv"]
+[gd_resource type="Resource" load_steps=26 format=3 uid="uid://btkfph5sqt3sv"]
 
 [ext_resource type="Texture2D" uid="uid://cic8anu7qgab6" path="res://assets/icons/cards/monster.png" id="1_673n7"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="1_be5rr"]
+[ext_resource type="Resource" uid="uid://udy2oa5fdyw8" path="res://resources/cards/backgrounds/monster_bg_basement.tres" id="1_i4uaq"]
+[ext_resource type="Resource" uid="uid://dntyu77d1kgn1" path="res://resources/cards/backgrounds/monster_bg_cathedral.tres" id="2_757pf"]
+[ext_resource type="Resource" uid="uid://c4c5oecyha87b" path="res://resources/cards/backgrounds/monster_bg_caves.tres" id="3_e5yfu"]
+[ext_resource type="Resource" uid="uid://c8kxdgopgi3qy" path="res://resources/cards/backgrounds/monster_bg_charmed.tres" id="4_31ghw"]
+[ext_resource type="Resource" uid="uid://l3c2tdmtbo6" path="res://resources/cards/backgrounds/monster_bg_corpse.tres" id="5_qct0a"]
+[ext_resource type="Resource" uid="uid://bjb1ritrlp0j3" path="res://resources/cards/backgrounds/monster_bg_cursed.tres" id="6_fhbi2"]
+[ext_resource type="Resource" uid="uid://b8uhkb5df07yo" path="res://resources/cards/backgrounds/monster_bg_depths.tres" id="7_n2t81"]
+[ext_resource type="Resource" uid="uid://b4aeqb5gbq8w2" path="res://resources/cards/backgrounds/monster_bg_downpour.tres" id="8_lrdkc"]
+[ext_resource type="Resource" uid="uid://xe0iq5mmwcf0" path="res://resources/cards/backgrounds/monster_bg_dross.tres" id="9_fifx2"]
+[ext_resource type="Resource" uid="uid://by1s2on4rd2aw" path="res://resources/cards/backgrounds/monster_bg_hell.tres" id="10_ytjcx"]
+[ext_resource type="Resource" uid="uid://86gbwm26h32d" path="res://resources/cards/backgrounds/monster_bg_holy.tres" id="11_r4sy8"]
+[ext_resource type="Resource" uid="uid://c110mfbidro8f" path="res://resources/cards/backgrounds/monster_bg_mausoleum.tres" id="12_dvle5"]
+[ext_resource type="Resource" uid="uid://cbcs4rdjpr7i2" path="res://resources/cards/backgrounds/monster_bg_mines.tres" id="13_206oa"]
+[ext_resource type="Resource" uid="uid://opl5yiopjbrp" path="res://resources/cards/backgrounds/monster_bg_womb.tres" id="14_ve6wm"]
+[ext_resource type="Resource" uid="uid://bw5fxx7u3mkg4" path="res://resources/cards/foregrounds/monster_fg_classic.tres" id="15_ikoxm"]
+[ext_resource type="Resource" uid="uid://ghbmb131ej24" path="res://resources/cards/foregrounds/monster_fg_charmed.tres" id="16_17ova"]
+[ext_resource type="Resource" uid="uid://1ey5bl734f7e" path="res://resources/cards/foregrounds/monster_fg_cursed.tres" id="17_2rm8c"]
+[ext_resource type="Resource" uid="uid://ciu43ncssgxbv" path="res://resources/cards/foregrounds/monster_fg_bossclassic.tres" id="18_r5hqw"]
+[ext_resource type="Resource" uid="uid://dlkk81d4tm5pl" path="res://resources/cards/foregrounds/monster_fg_bosscharmed.tres" id="19_c7bmi"]
+[ext_resource type="Resource" uid="uid://br7f5a0t4wkc1" path="res://resources/cards/foregrounds/monster_fg_bosscursed.tres" id="20_b3x7h"]
+[ext_resource type="Resource" uid="uid://bt0moogosmx33" path="res://resources/cards/foregrounds/monster_fg_megabossclassic.tres" id="21_dilsq"]
+[ext_resource type="Resource" uid="uid://cokvadfwuignu" path="res://resources/cards/foregrounds/monster_fg_megabosscharmed.tres" id="22_amvvx"]
+[ext_resource type="Resource" uid="uid://1025f2g3qr8k" path="res://resources/cards/foregrounds/monster_fg_megabosscursed.tres" id="23_wfd2p"]
 
 [resource]
 script = ExtResource("1_be5rr")
 stats = "HP DICE ATK"
-backgrounds = []
-foregrounds = []
+backgrounds = [ExtResource("1_i4uaq"), ExtResource("2_757pf"), ExtResource("3_e5yfu"), ExtResource("4_31ghw"), ExtResource("5_qct0a"), ExtResource("6_fhbi2"), ExtResource("7_n2t81"), ExtResource("8_lrdkc"), ExtResource("9_fifx2"), ExtResource("10_ytjcx"), ExtResource("11_r4sy8"), ExtResource("12_dvle5"), ExtResource("13_206oa"), ExtResource("14_ve6wm")]
+foregrounds = [ExtResource("15_ikoxm"), ExtResource("16_17ova"), ExtResource("17_2rm8c"), ExtResource("18_r5hqw"), ExtResource("19_c7bmi"), ExtResource("20_b3x7h"), ExtResource("21_dilsq"), ExtResource("22_amvvx"), ExtResource("23_wfd2p")]
 name = "Monster"
 icon = ExtResource("1_673n7")

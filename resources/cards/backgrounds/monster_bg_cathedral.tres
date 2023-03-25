@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dntyu77d1kgn1"]
+
+[ext_resource type="Texture2D" uid="uid://b4wsrromw5qwu" path="res://assets/cards/monster/monster_cathedral_bg.png" id="1_4jv3f"]
+[ext_resource type="Texture2D" uid="uid://bvyppwdr8drht" path="res://assets/icons/cards/monster_cathedral_bg.png" id="2_onp7g"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_s2exi"]
+
+[resource]
+script = ExtResource("3_s2exi")
+bgTexture = ExtResource("1_4jv3f")
+name = "Cathedral"
+icon = ExtResource("2_onp7g")

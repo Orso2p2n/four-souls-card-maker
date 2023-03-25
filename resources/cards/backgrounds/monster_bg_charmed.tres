@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c8kxdgopgi3qy"]
+
+[ext_resource type="Texture2D" uid="uid://cau7b1m237f2t" path="res://assets/cards/monster/monster_charmed_bg.png" id="1_wbxat"]
+[ext_resource type="Texture2D" uid="uid://68u6xk1gqfpl" path="res://assets/icons/cards/monster_charmed_bg.png" id="2_ry1er"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_ip20g"]
+
+[resource]
+script = ExtResource("3_ip20g")
+bgTexture = ExtResource("1_wbxat")
+name = "Charmed"
+icon = ExtResource("2_ry1er")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2r61k40h2e3i"
-path="res://.godot/imported/list.png-cff4871757bdd5fdbfaa2ee167470889.ctex"
+uid="uid://cppmjw6k4vyio"
+path="res://.godot/imported/monster_megabossclassic_top.png-9ff98e7a0ed4298125f456ad967f858e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/cards/list.png"
-dest_files=["res://.godot/imported/list.png-cff4871757bdd5fdbfaa2ee167470889.ctex"]
+source_file="res://assets/cards/monster/monster_megabossclassic_top.png"
+dest_files=["res://.godot/imported/monster_megabossclassic_top.png-9ff98e7a0ed4298125f456ad967f858e.ctex"]
 
 [params]
 

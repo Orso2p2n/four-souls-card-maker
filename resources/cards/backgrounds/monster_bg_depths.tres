@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b8uhkb5df07yo"]
+
+[ext_resource type="Texture2D" uid="uid://ccnv312cfv2r3" path="res://assets/cards/monster/monster_depths_bg.png" id="1_77lyo"]
+[ext_resource type="Texture2D" uid="uid://db8gqg73dyfen" path="res://assets/icons/cards/monster_depths_bg.png" id="2_lo1w3"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_2tg4g"]
+
+[resource]
+script = ExtResource("3_2tg4g")
+bgTexture = ExtResource("1_77lyo")
+name = "Depths"
+icon = ExtResource("2_lo1w3")

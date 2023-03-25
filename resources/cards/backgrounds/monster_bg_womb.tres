@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://opl5yiopjbrp"]
+
+[ext_resource type="Texture2D" uid="uid://0j80c0w14ue0" path="res://assets/cards/monster/monster_womb_bg.png" id="1_qc225"]
+[ext_resource type="Texture2D" uid="uid://cxi6oaqp73p2h" path="res://assets/icons/cards/monster_womb_bg.png" id="2_0wj2v"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_jutia"]
+
+[resource]
+script = ExtResource("3_jutia")
+bgTexture = ExtResource("1_qc225")
+name = "Womb"
+icon = ExtResource("2_0wj2v")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c110mfbidro8f"]
+
+[ext_resource type="Texture2D" uid="uid://bimmsk23bkcab" path="res://assets/cards/monster/monster_mausoleum_bg.png" id="1_jv3yb"]
+[ext_resource type="Texture2D" uid="uid://buxhylve35mjm" path="res://assets/icons/cards/monster_mausoleum_bg.png" id="2_c8gbf"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_cy6ej"]
+
+[resource]
+script = ExtResource("3_cy6ej")
+bgTexture = ExtResource("1_jv3yb")
+name = "Mausoleum"
+icon = ExtResource("2_c8gbf")

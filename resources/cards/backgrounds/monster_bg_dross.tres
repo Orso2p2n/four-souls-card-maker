@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://xe0iq5mmwcf0"]
+
+[ext_resource type="Texture2D" uid="uid://coisi7meaee8b" path="res://assets/cards/monster/monster_dross_bg.png" id="1_raa2n"]
+[ext_resource type="Texture2D" uid="uid://b0866gofhba8y" path="res://assets/icons/cards/monster_dross_bg.png" id="2_30jmr"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_c0cea"]
+
+[resource]
+script = ExtResource("3_c0cea")
+bgTexture = ExtResource("1_raa2n")
+name = "Dross"
+icon = ExtResource("2_30jmr")
