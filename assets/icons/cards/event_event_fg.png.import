@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2p1i0n8xr6mk"
-path="res://.godot/imported/monster_event_fg.png-8d850d7395dd6a77f047eb731237cf15.ctex"
+path="res://.godot/imported/event_event_fg.png-8a1845d0ce9382f33344c4aebc04fc8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/cards/monster_event_fg.png"
-dest_files=["res://.godot/imported/monster_event_fg.png-8d850d7395dd6a77f047eb731237cf15.ctex"]
+source_file="res://assets/icons/cards/event_event_fg.png"
+dest_files=["res://.godot/imported/event_event_fg.png-8a1845d0ce9382f33344c4aebc04fc8d.ctex"]
 
 [params]
 

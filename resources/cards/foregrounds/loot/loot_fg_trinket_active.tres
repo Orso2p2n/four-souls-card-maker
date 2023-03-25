@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cfimuwrvgbsw7"]
 
 [ext_resource type="Texture2D" uid="uid://b7oxuyhruqv0b" path="res://assets/cards/loot/loot_trinketactive_border.png" id="1_aio1w"]
 [ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_lmffh"]

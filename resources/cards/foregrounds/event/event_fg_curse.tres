@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dex4f6i56tkp8"]
+[gd_resource type="Resource" load_steps=5 format=3]
 
-[ext_resource type="Texture2D" uid="uid://ysqi1c3kui7h" path="res://assets/cards/monster/monster_curse_bot.png" id="1_wxqn5"]
+[ext_resource type="Texture2D" uid="uid://ysqi1c3kui7h" path="res://assets/cards/monster/event_curse_bot.png" id="1_wxqn5"]
 [ext_resource type="Texture2D" uid="uid://bskjk81c50lcl" path="res://assets/icons/cards/monster_curse_fg.png" id="2_wrwg0"]
 [ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="3_rq3eg"]
-[ext_resource type="Texture2D" uid="uid://l6urr2qv5tah" path="res://assets/cards/monster/monster_curse_top.png" id="4_rotui"]
+[ext_resource type="Texture2D" uid="uid://l6urr2qv5tah" path="res://assets/cards/monster/event_curse_top.png" id="4_rotui"]
 
 [resource]
 script = ExtResource("3_rq3eg")
