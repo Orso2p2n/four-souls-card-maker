@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://l6urr2qv5tah"
-path="res://.godot/imported/event_curse_top.png-230c4e77f7184e0508821fd8b866674c.ctex"
+path="res://.godot/imported/event_curse_top.png-072836916b2f15023b8c3c7801baf59b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/event_curse_top.png"
-dest_files=["res://.godot/imported/event_curse_top.png-230c4e77f7184e0508821fd8b866674c.ctex"]
+source_file="res://assets/cards/event/event_curse_top.png"
+dest_files=["res://.godot/imported/event_curse_top.png-072836916b2f15023b8c3c7801baf59b.ctex"]
 
 [params]
 

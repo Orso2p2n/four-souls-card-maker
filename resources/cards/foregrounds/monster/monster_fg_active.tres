@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://3cn4mpa3t0tm"]
 
-[ext_resource type="Texture2D" uid="uid://leh1l0p5jtas" path="res://assets/cards/monster/monster_active_border.png" id="1_tab2a"]
+[ext_resource type="Texture2D" uid="uid://d3spdx14fserj" path="res://assets/cards/_active_border.png" id="1_j3eje"]
 [ext_resource type="Texture2D" uid="uid://bf2g0fb0xglb3" path="res://assets/cards/monster/monster_classic_bot.png" id="1_w20n1"]
 [ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="3_oxf30"]
 [ext_resource type="Texture2D" uid="uid://bbtxa5d02x7gl" path="res://assets/icons/cards/monster_active_fg.png" id="3_smoyj"]
@@ -10,6 +10,6 @@
 script = ExtResource("3_oxf30")
 top = ExtResource("4_jivpf")
 bot = ExtResource("1_w20n1")
-border = ExtResource("1_tab2a")
+border = ExtResource("1_j3eje")
 name = "Active"
 icon = ExtResource("3_smoyj")

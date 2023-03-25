@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwh48yuj2h31q"
-path="res://.godot/imported/event_event_top.png-e39c9a8dfeb2bf536494a87b61465c90.ctex"
+uid="uid://244ff4a0yg84"
+path="res://.godot/imported/event_event_bot.png-9e6d17c5ff9e570efce4c2148020bf6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/event_event_top.png"
-dest_files=["res://.godot/imported/event_event_top.png-e39c9a8dfeb2bf536494a87b61465c90.ctex"]
+source_file="res://assets/cards/event/event_event_bot.png"
+dest_files=["res://.godot/imported/event_event_bot.png-9e6d17c5ff9e570efce4c2148020bf6b.ctex"]
 
 [params]
 

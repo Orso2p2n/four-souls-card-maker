@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://d3drmwjfndxv6"]
 
 [ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_4l6go"]
-[ext_resource type="Texture2D" uid="uid://dm4visqya1ym5" path="res://assets/cards/treasure/treasure_passive_border.png" id="2_wefty"]
+[ext_resource type="Texture2D" uid="uid://do0p40guoejmu" path="res://assets/cards/_passive_border.png" id="1_hdg4s"]
 [ext_resource type="Texture2D" uid="uid://qjearw2ae0j1" path="res://assets/cards/treasure/treasure_passive_bot.png" id="3_kfwlx"]
 [ext_resource type="Texture2D" uid="uid://78rys817ynle" path="res://assets/icons/cards/treasure_passive_fg.png" id="3_up7al"]
 [ext_resource type="Texture2D" uid="uid://bsipieg1ohdkn" path="res://assets/cards/treasure/treasure_passive_top.png" id="5_e0j8o"]
@@ -10,6 +10,6 @@
 script = ExtResource("1_4l6go")
 top = ExtResource("5_e0j8o")
 bot = ExtResource("3_kfwlx")
-border = ExtResource("2_wefty")
+border = ExtResource("1_hdg4s")
 name = "Passive"
 icon = ExtResource("3_up7al")

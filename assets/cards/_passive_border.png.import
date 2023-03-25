@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ysqi1c3kui7h"
-path="res://.godot/imported/event_curse_bot.png-0aaac60e7f0be1629f2cd4aec694da58.ctex"
+uid="uid://do0p40guoejmu"
+path="res://.godot/imported/_passive_border.png-65187fb3aff29968481cc50ea89c6822.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/monster/event_curse_bot.png"
-dest_files=["res://.godot/imported/event_curse_bot.png-0aaac60e7f0be1629f2cd4aec694da58.ctex"]
+source_file="res://assets/cards/_passive_border.png"
+dest_files=["res://.godot/imported/_passive_border.png-65187fb3aff29968481cc50ea89c6822.ctex"]
 
 [params]
 

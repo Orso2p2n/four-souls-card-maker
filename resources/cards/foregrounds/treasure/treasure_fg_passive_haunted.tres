@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=6 format=3 uid="uid://cdiviwr810pv0"]
 
+[ext_resource type="Texture2D" uid="uid://do0p40guoejmu" path="res://assets/cards/_passive_border.png" id="1_5rhfy"]
 [ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_7pyg4"]
-[ext_resource type="Texture2D" uid="uid://436chwl22uqx" path="res://assets/cards/treasure/treasure_passivehaunted_border.png" id="2_ernkt"]
 [ext_resource type="Texture2D" uid="uid://e11ymjhvixsa" path="res://assets/cards/treasure/treasure_passivehaunted_bot.png" id="3_8bcsu"]
 [ext_resource type="Texture2D" uid="uid://bjxqf67b0jum8" path="res://assets/icons/cards/treasure_passivehaunted_fg.png" id="3_bk0lv"]
 [ext_resource type="Texture2D" uid="uid://c22wqaqb50j6p" path="res://assets/cards/treasure/treasure_passivehaunted_top.png" id="5_n0fv5"]
@@ -10,6 +10,6 @@
 script = ExtResource("1_7pyg4")
 top = ExtResource("5_n0fv5")
 bot = ExtResource("3_8bcsu")
-border = ExtResource("2_ernkt")
+border = ExtResource("1_5rhfy")
 name = "Passive Haunted"
 icon = ExtResource("3_bk0lv")
