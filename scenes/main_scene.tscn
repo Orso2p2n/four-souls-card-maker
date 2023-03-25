@@ -8,7 +8,7 @@
 [ext_resource type="Resource" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
 [ext_resource type="Script" path="res://src/ui/BackgroundMenu.cs" id="7_3ncn4"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
-[ext_resource type="Resource" path="res://resources/cards/types/event.tres" id="8_hee5o"]
+[ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
 [ext_resource type="Script" path="res://src/ui/ForegroundMenu.cs" id="8_l44u4"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
