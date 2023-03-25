@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dbho87u4064x7"]
+
+[ext_resource type="Texture2D" uid="uid://dimqy1rd25ltv" path="res://assets/cards/loot/loot_soul_bg.png" id="1_ois6y"]
+[ext_resource type="Texture2D" uid="uid://b87wv6dn5yxmn" path="res://assets/icons/cards/loot_soul_bg.png" id="2_sch31"]
+[ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="3_eroek"]
+
+[resource]
+script = ExtResource("3_eroek")
+bgTexture = ExtResource("1_ois6y")
+name = "Soul"
+icon = ExtResource("2_sch31")

@@ -1,20 +1,22 @@
-[gd_resource type="Resource" load_steps=11 format=3 uid="uid://bi2aqnoti2el1"]
+[gd_resource type="Resource" load_steps=13 format=3 uid="uid://bi2aqnoti2el1"]
 
 [ext_resource type="Resource" uid="uid://cun7oq0jhhbsg" path="res://resources/cards/backgrounds/loot/loot_bg_base.tres" id="1_wah2d"]
 [ext_resource type="Resource" uid="uid://cv64cdo5s60xi" path="res://resources/cards/backgrounds/loot/loot_bg_tarot.tres" id="2_otkxu"]
 [ext_resource type="Resource" path="res://resources/cards/backgrounds/loot/loot_bg_trinket_active.tres" id="3_xv8pl"]
 [ext_resource type="Resource" uid="uid://db1hp66veqeb2" path="res://resources/cards/backgrounds/loot/loot_bg_trinket_passive.tres" id="4_83vk4"]
 [ext_resource type="Resource" uid="uid://be1r2mjxatiq2" path="res://resources/cards/foregrounds/loot/loot_fg_base.tres" id="5_6bviw"]
+[ext_resource type="Resource" uid="uid://dbho87u4064x7" path="res://resources/cards/backgrounds/loot/loot_bg_soul.tres" id="5_yyt74"]
 [ext_resource type="Resource" uid="uid://5ulhiwlpy3do" path="res://resources/cards/foregrounds/loot/loot_fg_tarot.tres" id="6_me103"]
 [ext_resource type="Resource" uid="uid://cfimuwrvgbsw7" path="res://resources/cards/foregrounds/loot/loot_fg_trinket_active.tres" id="7_1fcv4"]
 [ext_resource type="Resource" uid="uid://co75r62rrdp8t" path="res://resources/cards/foregrounds/loot/loot_fg_trinket_passive.tres" id="8_wfxgp"]
 [ext_resource type="Texture2D" uid="uid://dcfe6wusla66v" path="res://assets/icons/cards/loot.png" id="9_w35m1"]
+[ext_resource type="Resource" uid="uid://ce7f4poo30bw2" path="res://resources/cards/foregrounds/loot/loot_fg_soul.tres" id="10_5srkn"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="10_b2eai"]
 
 [resource]
 script = ExtResource("10_b2eai")
 stats = "None"
-backgrounds = [ExtResource("1_wah2d"), ExtResource("2_otkxu"), ExtResource("3_xv8pl"), ExtResource("4_83vk4")]
-foregrounds = [ExtResource("5_6bviw"), ExtResource("6_me103"), ExtResource("7_1fcv4"), ExtResource("8_wfxgp")]
+backgrounds = [ExtResource("1_wah2d"), ExtResource("2_otkxu"), ExtResource("3_xv8pl"), ExtResource("4_83vk4"), ExtResource("5_yyt74")]
+foregrounds = [ExtResource("5_6bviw"), ExtResource("6_me103"), ExtResource("7_1fcv4"), ExtResource("8_wfxgp"), ExtResource("10_5srkn")]
 name = "Loot"
 icon = ExtResource("9_w35m1")
