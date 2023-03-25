@@ -30,5 +30,7 @@ public partial class MainTypeMenu : TypeMenu
 			fgList.Add(subType);
 		}
 		foregroundMenu.SetList(fgList);
+
+		EditManager.instance.SetStats(selectedCardType.stats);
 	}
 }

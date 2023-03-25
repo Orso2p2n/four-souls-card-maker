@@ -1,15 +1,15 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://4igi2epe22x"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
-[ext_resource type="Theme" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
+[ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
 [ext_resource type="PackedScene" uid="uid://du3dtmppeclx1" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
-[ext_resource type="Texture2D" uid="uid://y4t4chgfn7j7" path="res://assets/cards/__refs/b2-xix_the_sun.png" id="6_hejnd"]
 [ext_resource type="Texture2D" uid="uid://bg0dw8ikaihih" path="res://assets/cards/loot/loot_tarot_bot.png" id="6_obob1"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
+[ext_resource type="Texture2D" uid="uid://crq3b8c2pf52q" path="res://assets/cards/__refs/rwz-exposito.png" id="8_bxorv"]
 
-[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer")]
+[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,6 +37,13 @@ descContainer = NodePath("FGLayer/DescriptionContainer")
 effect = ExtResource("5_cqrq7")
 lore = ExtResource("7_4fche")
 line = ExtResource("6_awvw3")
+monsterStatsContainer = NodePath("FGLayer/Stats/Monster")
+monsterHp = NodePath("FGLayer/Stats/Monster/HP")
+monsterDice = NodePath("FGLayer/Stats/Monster/DICE")
+monsterAtk = NodePath("FGLayer/Stats/Monster/ATK")
+characterStatsContainer = NodePath("FGLayer/Stats/Character")
+characterHp = NodePath("FGLayer/Stats/Character/HP")
+characterAtk = NodePath("FGLayer/Stats/Character/ATK")
 
 [node name="BGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -147,23 +154,7 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 
-[node name="DescriptionContainer" type="VBoxContainer" parent="FGLayer"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -373.0
-offset_top = -487.0
-offset_right = 373.0
-offset_bottom = -110.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Ref" type="TextureRect" parent="."]
+[node name="Ref" type="TextureRect" parent="FGLayer"]
 visible = false
 modulate = Color(1, 1, 1, 0.34902)
 layout_mode = 1
@@ -172,4 +163,97 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_hejnd")
+texture = ExtResource("8_bxorv")
+
+[node name="Stats" type="Control" parent="FGLayer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Monster" type="Control" parent="FGLayer/Stats"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HP" type="Label" parent="FGLayer/Stats/Monster"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 778.0
+offset_right = 361.0
+offset_bottom = 857.0
+theme = ExtResource("4_4ajpn")
+theme_override_font_sizes/font_size = 64
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DICE" type="Label" parent="FGLayer/Stats/Monster"]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 776.0
+offset_right = 577.0
+offset_bottom = 855.0
+theme = ExtResource("4_4ajpn")
+theme_override_font_sizes/font_size = 64
+text = "4+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ATK" type="Label" parent="FGLayer/Stats/Monster"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 776.0
+offset_right = 769.0
+offset_bottom = 855.0
+theme = ExtResource("4_4ajpn")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character" type="Control" parent="FGLayer/Stats"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HP" type="Label" parent="FGLayer/Stats/Character"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 777.0
+offset_right = 456.0
+offset_bottom = 856.0
+theme = ExtResource("4_4ajpn")
+theme_override_font_sizes/font_size = 64
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ATK" type="Label" parent="FGLayer/Stats/Character"]
+layout_mode = 0
+offset_left = 579.0
+offset_top = 776.0
+offset_right = 663.0
+offset_bottom = 855.0
+theme = ExtResource("4_4ajpn")
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionContainer" type="VBoxContainer" parent="FGLayer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -374.0
+offset_top = -487.0
+offset_right = 372.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+alignment = 1

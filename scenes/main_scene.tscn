@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://6ydaylqw8s32"]
+[gd_scene load_steps=18 format=3 uid="uid://6ydaylqw8s32"]
 
-[ext_resource type="PackedScene" path="res://scenes/card.tscn" id="2_g0xqc"]
+[ext_resource type="PackedScene" uid="uid://4igi2epe22x" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
 [ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
 [ext_resource type="Resource" uid="uid://cts86axgjy8b3" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://src/ui/NewDescriptionItemButton.cs" id="9_qk362"]
 [ext_resource type="Texture2D" uid="uid://cegs5hyhivj1o" path="res://assets/cards/_icons/icon_dice.png" id="10_icac8"]
 [ext_resource type="Texture2D" uid="uid://cnhi6tipulpn7" path="res://assets/cards/_icons/icon_sword.png" id="11_vrgg2"]
+[ext_resource type="Script" path="res://src/ui/stats/StatPanel.cs" id="12_csu7s"]
+[ext_resource type="Script" path="res://src/EditManager.cs" id="16_66afq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -26,6 +28,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
+
+[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("hpStat", "diceStat", "atkStat")]
+script = ExtResource("16_66afq")
+hpStat = NodePath("../Stats/HP")
+diceStat = NodePath("../Stats/DICE")
+atkStat = NodePath("../Stats/ATK")
 
 [node name="CardPreview" type="SubViewportContainer" parent="."]
 layout_mode = 0
@@ -230,44 +238,62 @@ text = "Stats
 "
 vertical_alignment = 1
 
-[node name="HPTexture" type="TextureRect" parent="Stats"]
+[node name="HP" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox")]
+layout_mode = 1
+anchors_preset = 0
+offset_top = 32.0
+offset_bottom = 32.0
+script = ExtResource("12_csu7s")
+icon = NodePath("HPTexture")
+spinBox = NodePath("HPEdit")
+
+[node name="HPTexture" type="TextureRect" parent="Stats/HP"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 36.0
+offset_top = 4.0
 offset_right = 36.0
-offset_bottom = 68.0
+offset_bottom = 36.0
 texture = ExtResource("9_ekawo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HPEdit" type="SpinBox" parent="Stats"]
+[node name="HPEdit" type="SpinBox" parent="Stats/HP"]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 32.0
 offset_right = 112.0
-offset_bottom = 64.0
+offset_bottom = 32.0
 scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
 max_value = 9.0
 value = 2.0
 alignment = 1
 
-[node name="HPTexture2" type="TextureRect" parent="Stats"]
+[node name="DICE" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox")]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 144.0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 32.0
+script = ExtResource("12_csu7s")
+icon = NodePath("DICETexture")
+spinBox = NodePath("DICEEdit")
+
+[node name="DICETexture" type="TextureRect" parent="Stats/DICE"]
 layout_mode = 0
-offset_left = 148.0
-offset_top = 36.0
-offset_right = 180.0
-offset_bottom = 68.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
 texture = ExtResource("10_icac8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HPEdit2" type="SpinBox" parent="Stats"]
+[node name="DICEEdit" type="SpinBox" parent="Stats/DICE"]
 layout_mode = 0
-offset_left = 184.0
-offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 64.0
+offset_left = 40.0
+offset_right = 112.0
+offset_bottom = 32.0
 scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
 min_value = 1.0
@@ -275,22 +301,32 @@ max_value = 6.0
 value = 4.0
 alignment = 1
 
-[node name="HPTexture3" type="TextureRect" parent="Stats"]
+[node name="ATK" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox")]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 32.0
+script = ExtResource("12_csu7s")
+icon = NodePath("ATKTexture")
+spinBox = NodePath("ATKEdit")
+
+[node name="ATKTexture" type="TextureRect" parent="Stats/ATK"]
 layout_mode = 0
-offset_left = 292.0
-offset_top = 36.0
-offset_right = 324.0
-offset_bottom = 68.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
 texture = ExtResource("11_vrgg2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HPEdit3" type="SpinBox" parent="Stats"]
+[node name="ATKEdit" type="SpinBox" parent="Stats/ATK"]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 32.0
-offset_right = 400.0
-offset_bottom = 64.0
+offset_left = 40.0
+offset_right = 112.0
+offset_bottom = 32.0
 scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
 max_value = 9.0
@@ -298,3 +334,6 @@ value = 1.0
 alignment = 1
 
 [connection signal="text_changed" from="Title/TitleEdit" to="CardPreview/CardViewport/Card" method="SetTitle"]
+[connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
+[connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
+[connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]

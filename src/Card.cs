@@ -27,6 +27,17 @@ public partial class Card : Control
 	[Export] PackedScene lore;
 	[Export] PackedScene line;
 
+	[ExportGroup("Stats")]
+	[ExportSubgroup("Monster")]
+	[Export] Control monsterStatsContainer;
+	[Export] Label monsterHp;
+	[Export] Label monsterDice;
+	[Export] Label monsterAtk;
+	[ExportSubgroup("Character")]
+	[Export] Control characterStatsContainer;
+	[Export] Label characterHp;
+	[Export] Label characterAtk;
+
 	public override void _Ready() {
 		instance = this;
 	}
@@ -45,6 +56,7 @@ public partial class Card : Control
 		bgOptTop.Texture    	= fgTop.Texture     	= (Texture2D) cardFg.top;
 	}
 
+	// -- DESCRIPTION --
 	public DescEffect AddEffect() {
 		var instance = effect.Instantiate();
 		instance.ChangeOwner(descContainer);
@@ -64,5 +76,28 @@ public partial class Card : Control
 		instance.ChangeOwner(descContainer);
 
 		return (instance as DescLine);
+	}
+
+	// -- STATS --
+	public void setStats(string statsString, double hp, double dice, double atk) {
+		monsterStatsContainer.Visible = false;
+		characterStatsContainer.Visible = false;
+
+		switch(statsString) {
+            case "None": break;
+
+            case "Monster": 
+                monsterStatsContainer.Visible = true;
+				monsterHp.Text = hp.ToString();
+				monsterDice.Text = dice.ToString() + ((dice < 6) ? "+" : "");
+				monsterAtk.Text = atk.ToString();
+                break;
+
+            case "Character":
+                characterStatsContainer.Visible = true;
+				characterHp.Text = hp.ToString();
+				characterAtk.Text = atk.ToString();
+                break;
+        }
 	}
 }
