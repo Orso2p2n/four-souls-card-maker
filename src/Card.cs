@@ -50,14 +50,26 @@ public partial class Card : Control
 		bgTexture.Texture = cardBg.bgTexture;
 	}
 
+	public void SetCustomCardBackground(Texture2D texture) {
+		bgTexture.Texture = texture;
+	}
+
 	public void SetCardForeground(CardForeground cardFg) {
-		// bgOptBorder.Texture 	= fgBorder.Texture 		= cardFg.border;
-		bgOptBot.Texture    	= fgBot.Texture     	= cardFg.bot;
-		bgOptTop.Texture    	= fgTop.Texture     	= cardFg.top;
+		bgOptBot.Texture = fgBot.Texture = cardFg.bot;
+		bgOptTop.Texture = fgTop.Texture = cardFg.top;
+	}
+
+	public void SetCustomCardForeground(Texture2D texture) {
+		bgOptBot.Texture = fgBot.Texture = texture;
+		bgOptTop.Texture = fgTop.Texture = null;
 	}
 
 	public void SetCardBorder(CardBorder cardBorder) {
-		bgOptBorder.Texture 	= fgBorder.Texture 		= cardBorder.border;
+		bgOptBorder.Texture = fgBorder.Texture = cardBorder.border;
+	}
+
+	public void SetCustomCardBorder(Texture2D texture) {
+		bgOptBorder.Texture = fgBorder.Texture = texture;
 	}
 
 	// -- DESCRIPTION --

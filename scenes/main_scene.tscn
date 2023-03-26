@@ -36,11 +36,20 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
 
-[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("hpStat", "diceStat", "atkStat")]
+[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat")]
 script = ExtResource("16_66afq")
+fileDialog = NodePath("FileDialog")
 hpStat = NodePath("../Stats/HP")
 diceStat = NodePath("../Stats/DICE")
 atkStat = NodePath("../Stats/ATK")
+
+[node name="FileDialog" type="FileDialog" parent="EditManager"]
+title = "Open a File"
+position = Vector2i(268, 151)
+size = Vector2i(1000, 562)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
 
 [node name="CardPreview" type="SubViewportContainer" parent="."]
 layout_mode = 0
@@ -117,8 +126,8 @@ cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("6_5ii8c"), Ext
 
 [node name="BackgroundLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 432.0
-offset_right = 576.0
+offset_left = 648.0
+offset_right = 792.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Fg
@@ -148,9 +157,9 @@ vertical_alignment = 1
 
 [node name="ForegroundMenu" type="OptionButton" parent="Type"]
 layout_mode = 0
-offset_left = 432.0
+offset_left = 648.0
 offset_top = 40.0
-offset_right = 632.0
+offset_right = 848.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("8_l44u4")
@@ -158,8 +167,8 @@ customIcon = ExtResource("14_2syo5")
 
 [node name="BorderLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 648.0
-offset_right = 792.0
+offset_left = 432.0
+offset_right = 576.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Border"
@@ -167,9 +176,9 @@ vertical_alignment = 1
 
 [node name="BorderMenu" type="OptionButton" parent="Type"]
 layout_mode = 0
-offset_left = 648.0
+offset_left = 432.0
 offset_top = 40.0
-offset_right = 848.0
+offset_right = 632.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("15_3k6vm")
