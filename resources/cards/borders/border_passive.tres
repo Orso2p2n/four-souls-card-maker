@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bcke1l4314472"]
+
+[ext_resource type="Texture2D" uid="uid://do0p40guoejmu" path="res://assets/cards/_passive_border.png" id="1_nvxqx"]
+[ext_resource type="Script" path="res://resources/cards/borders/CardBorder.cs" id="1_yy8aa"]
+[ext_resource type="Texture2D" uid="uid://dv3s2qxck5rbp" path="res://assets/icons/cards/_passive_border.png" id="2_k4d3a"]
+
+[resource]
+script = ExtResource("1_yy8aa")
+border = ExtResource("1_nvxqx")
+name = "Passive"
+icon = ExtResource("2_k4d3a")

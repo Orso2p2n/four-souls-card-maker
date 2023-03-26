@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://v8y6kh21i8rj"]
+
+[ext_resource type="Texture2D" uid="uid://wsgi5cd0nwsc" path="res://assets/icons/cards/_none_border.png" id="1_jnb3n"]
+[ext_resource type="Script" path="res://resources/cards/borders/CardBorder.cs" id="3_eisme"]
+
+[resource]
+script = ExtResource("3_eisme")
+name = "None"
+icon = ExtResource("1_jnb3n")

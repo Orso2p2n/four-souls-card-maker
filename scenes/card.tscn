@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://du3dtmppeclx1" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
-[ext_resource type="Texture2D" uid="uid://bg0dw8ikaihih" path="res://assets/cards/loot/loot_tarot_bot.png" id="6_obob1"]
+[ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 [ext_resource type="Texture2D" uid="uid://crq3b8c2pf52q" path="res://assets/cards/__refs/rwz-exposito.png" id="8_bxorv"]
 
@@ -86,7 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_obob1")
+texture = ExtResource("6_qhdek")
 
 [node name="BGOptTop" type="TextureRect" parent="BGLayer/BGOptional"]
 layout_mode = 1

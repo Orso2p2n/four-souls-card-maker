@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://lbq2p666e6tm"]
+
+[ext_resource type="Texture2D" uid="uid://b4lhkhp3wh2qe" path="res://assets/cards/startingitem/startingitem_passive_border.png" id="1_mbphw"]
+[ext_resource type="Texture2D" uid="uid://c8vvl1iwma53l" path="res://assets/icons/cards/startingitem_passive_border.png" id="2_jk1af"]
+[ext_resource type="Script" path="res://resources/cards/borders/CardBorder.cs" id="3_lpin2"]
+
+[resource]
+script = ExtResource("3_lpin2")
+border = ExtResource("1_mbphw")
+name = "Starting Passive"
+icon = ExtResource("2_jk1af")

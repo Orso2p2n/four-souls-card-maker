@@ -6,11 +6,11 @@ public partial class TypeMenu : OptionButton
 {
 	[Export] public Array<CardType> cardTypes;
 
-    public override void _Ready() {
-        base._Ready();
+	public override void _Ready() {
+		base._Ready();
 
 		ItemSelected += OnItemSelected;
-    }
+	}
 
 	public void UpdateItems() {
 		Clear();

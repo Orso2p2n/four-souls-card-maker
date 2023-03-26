@@ -6,6 +6,7 @@ public partial class MainTypeMenu : TypeMenu
 {
 	[Export] BackgroundMenu backgroundMenu;
 	[Export] ForegroundMenu foregroundMenu;
+	[Export] BorderMenu 	borderMenu;
 
 	public override void _Ready() {
 		base._Ready();
@@ -15,7 +16,8 @@ public partial class MainTypeMenu : TypeMenu
 
 	public override void OnItemSelected(long index) {
 		backgroundMenu.Clear();
-		foregroundMenu.Clear();
+		backgroundMenu.Clear();
+		borderMenu.Clear();
 
 		var selectedCardType = cardTypes[(int) index] as CardMainType;
 
@@ -30,6 +32,12 @@ public partial class MainTypeMenu : TypeMenu
 			fgList.Add(subType);
 		}
 		foregroundMenu.SetList(fgList);
+
+		var borderList = new Array<CardType>();
+		foreach (var subType in selectedCardType.borders) {
+			borderList.Add(subType);
+		}
+		borderMenu.SetList(borderList);
 
 		EditManager.instance.SetStats(selectedCardType.stats);
 	}

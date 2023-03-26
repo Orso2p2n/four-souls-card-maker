@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://be1r2mjxatiq2"]
 
-[ext_resource type="Texture2D" uid="uid://bg0dw8ikaihih" path="res://assets/cards/loot/loot_tarot_bot.png" id="1_s1j5d"]
+[ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="1_ct75o"]
 [ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_yq454"]
 [ext_resource type="Texture2D" uid="uid://cps6cs5wo8mlw" path="res://assets/icons/cards/loot_base_fg.png" id="2_o14d7"]
-[ext_resource type="Texture2D" uid="uid://eqg0rmp4ikmx" path="res://assets/cards/loot/loot_tarot_top.png" id="3_loytd"]
+[ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="4_8srb3"]
 
 [resource]
 script = ExtResource("1_yq454")
-top = ExtResource("3_loytd")
-bot = ExtResource("1_s1j5d")
+top = ExtResource("4_8srb3")
+bot = ExtResource("1_ct75o")
 name = "Base"
 icon = ExtResource("2_o14d7")

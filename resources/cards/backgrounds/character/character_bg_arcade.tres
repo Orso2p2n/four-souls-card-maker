@@ -7,5 +7,5 @@
 [resource]
 script = ExtResource("3_j6rfq")
 bgTexture = ExtResource("1_yt2ip")
-name = "Tainted"
+name = "Arcade"
 icon = ExtResource("2_dk46n")

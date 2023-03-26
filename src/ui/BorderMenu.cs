@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class ForegroundMenu : SubTypeMenu
+public partial class BorderMenu : SubTypeMenu
 {
 	public override void OnItemSelected(long index) {
 		base.OnItemSelected(index);
@@ -11,8 +11,8 @@ public partial class ForegroundMenu : SubTypeMenu
 			return;
 		}
 
-		var selectedCardType = cardTypes[(int) index] as CardForeground;
+		var selectedCardType = cardTypes[(int) index] as CardBorder;
 
-		Card.instance.SetCardForeground(selectedCardType);
+		Card.instance.SetCardBorder(selectedCardType);
 	}
 }

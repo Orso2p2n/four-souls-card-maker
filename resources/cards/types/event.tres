@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=11 format=3 uid="uid://b1p13jrhn2plb"]
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://b1p13jrhn2plb"]
 
 [ext_resource type="Resource" uid="uid://448oqs6npvy4" path="res://resources/cards/backgrounds/event/event_bg_blue.tres" id="1_6glfp"]
 [ext_resource type="Resource" uid="uid://2fisvu50viuu" path="res://resources/cards/backgrounds/event/event_bg_orange.tres" id="2_ngtli"]
@@ -6,15 +6,17 @@
 [ext_resource type="Resource" uid="uid://cyldggd1336j7" path="res://resources/cards/backgrounds/event/event_bg_purple.tres" id="3_ndxox"]
 [ext_resource type="Resource" uid="uid://cc1b27usfv7lh" path="res://resources/cards/backgrounds/event/event_bg_red.tres" id="4_cogea"]
 [ext_resource type="Resource" path="res://resources/cards/foregrounds/event/event_fg_event.tres" id="5_681rr"]
+[ext_resource type="Resource" uid="uid://v8y6kh21i8rj" path="res://resources/cards/borders/border_none.tres" id="5_mg6gw"]
+[ext_resource type="Resource" uid="uid://clu3suu84s41h" path="res://resources/cards/borders/border_active.tres" id="5_vkr3q"]
 [ext_resource type="Resource" path="res://resources/cards/foregrounds/event/event_fg_curse.tres" id="6_3ybii"]
+[ext_resource type="Resource" uid="uid://bcke1l4314472" path="res://resources/cards/borders/border_passive.tres" id="6_18eu8"]
 [ext_resource type="Texture2D" uid="uid://cic8anu7qgab6" path="res://assets/icons/cards/monster.png" id="7_boycv"]
-[ext_resource type="Resource" uid="uid://bdm7tnqj5p7yh" path="res://resources/cards/foregrounds/event/event_fg_active.tres" id="7_w2e0a"]
-[ext_resource type="Resource" uid="uid://dki4j4h36bgcn" path="res://resources/cards/foregrounds/event/event_fg_passive.tres" id="8_antex"]
 
 [resource]
 script = ExtResource("2_yry3k")
 stats = "None"
 backgrounds = [ExtResource("1_6glfp"), ExtResource("2_ngtli"), ExtResource("3_ndxox"), ExtResource("4_cogea")]
-foregrounds = [ExtResource("5_681rr"), ExtResource("6_3ybii"), ExtResource("7_w2e0a"), ExtResource("8_antex")]
+foregrounds = [ExtResource("5_681rr"), ExtResource("6_3ybii")]
+borders = [ExtResource("5_mg6gw"), ExtResource("5_vkr3q"), ExtResource("6_18eu8")]
 name = "Event"
 icon = ExtResource("7_boycv")

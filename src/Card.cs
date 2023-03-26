@@ -47,13 +47,17 @@ public partial class Card : Control
 	}
 
 	public void SetCardBackground(CardBackground cardBg) {
-		bgTexture.Texture = (Texture2D) cardBg.bgTexture;
+		bgTexture.Texture = cardBg.bgTexture;
 	}
 
 	public void SetCardForeground(CardForeground cardFg) {
-		bgOptBorder.Texture 	= fgBorder.Texture 		= (Texture2D) cardFg.border;
-		bgOptBot.Texture    	= fgBot.Texture     	= (Texture2D) cardFg.bot;
-		bgOptTop.Texture    	= fgTop.Texture     	= (Texture2D) cardFg.top;
+		// bgOptBorder.Texture 	= fgBorder.Texture 		= cardFg.border;
+		bgOptBot.Texture    	= fgBot.Texture     	= cardFg.bot;
+		bgOptTop.Texture    	= fgTop.Texture     	= cardFg.top;
+	}
+
+	public void SetCardBorder(CardBorder cardBorder) {
+		bgOptBorder.Texture 	= fgBorder.Texture 		= cardBorder.border;
 	}
 
 	// -- DESCRIPTION --

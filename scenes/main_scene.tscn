@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://6ydaylqw8s32"]
+[gd_scene load_steps=25 format=3 uid="uid://tn2snsyxdqyt"]
 
 [ext_resource type="PackedScene" uid="uid://4igi2epe22x" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
 [ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
-[ext_resource type="Resource" uid="uid://bi2aqnoti2el1" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
+[ext_resource type="Resource" uid="uid://bupr5jq8xljfh" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
 [ext_resource type="Resource" uid="uid://cc5wrbxk03olw" path="res://resources/cards/types/character.tres" id="5_o8y5v"]
-[ext_resource type="Resource" path="res://resources/cards/types/treasure.tres" id="5_qvv25"]
 [ext_resource type="Resource" uid="uid://b4t6f8r0yuna4" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
+[ext_resource type="Resource" uid="uid://copyy6is1xjxn" path="res://resources/cards/types/treasure.tres" id="6_5ii8c"]
 [ext_resource type="Script" path="res://src/ui/BackgroundMenu.cs" id="7_3ncn4"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
 [ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
@@ -14,11 +14,15 @@
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
 [ext_resource type="Script" path="res://src/ui/NewDescriptionItemButton.cs" id="9_qk362"]
-[ext_resource type="Resource" uid="uid://bigoy3lofmbyj" path="res://resources/cards/types/startingitem.tres" id="10_27qjp"]
+[ext_resource type="Resource" uid="uid://cgchb5ifwn2g8" path="res://resources/cards/types/startingitem.tres" id="10_27qjp"]
 [ext_resource type="Texture2D" uid="uid://cegs5hyhivj1o" path="res://assets/cards/_icons/icon_dice.png" id="10_icac8"]
 [ext_resource type="Texture2D" uid="uid://cnhi6tipulpn7" path="res://assets/cards/_icons/icon_sword.png" id="11_vrgg2"]
+[ext_resource type="Texture2D" uid="uid://cpacklyq6dvgp" path="res://assets/icons/cards/_custom_bg.png" id="12_3ngn0"]
 [ext_resource type="Script" path="res://src/ui/stats/StatPanel.cs" id="12_csu7s"]
+[ext_resource type="Texture2D" uid="uid://b3ibblkh045yd" path="res://assets/icons/cards/_custom_fg.png" id="14_2syo5"]
+[ext_resource type="Script" path="res://src/ui/BorderMenu.cs" id="15_3k6vm"]
 [ext_resource type="Script" path="res://src/EditManager.cs" id="16_66afq"]
+[ext_resource type="Texture2D" uid="uid://c80o61ugjywx3" path="res://assets/icons/cards/_custom_border.png" id="16_nbs8c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -99,56 +103,77 @@ theme = ExtResource("3_7sxfo")
 text = "Type"
 vertical_alignment = 1
 
-[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu")]
+[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu")]
 layout_mode = 0
 offset_top = 40.0
-offset_right = 152.0
+offset_right = 200.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
-fit_to_longest_item = false
 script = ExtResource("3_42r0l")
 backgroundMenu = NodePath("../BackgroundMenu")
 foregroundMenu = NodePath("../ForegroundMenu")
-cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("5_qvv25"), ExtResource("6_4oahh"), ExtResource("8_hee5o"), ExtResource("5_o8y5v"), ExtResource("10_27qjp")])
+borderMenu = NodePath("../BorderMenu")
+cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("6_5ii8c"), ExtResource("6_4oahh"), ExtResource("8_hee5o"), ExtResource("5_o8y5v"), ExtResource("10_27qjp")])
 
 [node name="BackgroundLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 168.0
-offset_right = 320.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Bg"
-vertical_alignment = 1
-
-[node name="BackgroundMenu" type="OptionButton" parent="Type"]
-layout_mode = 0
-offset_left = 168.0
-offset_top = 40.0
-offset_right = 320.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-fit_to_longest_item = false
-script = ExtResource("7_3ncn4")
-
-[node name="ForegroundLabel" type="Label" parent="Type"]
-layout_mode = 0
-offset_left = 336.0
-offset_right = 480.0
+offset_left = 432.0
+offset_right = 576.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Fg
 "
 vertical_alignment = 1
 
-[node name="ForegroundMenu" type="OptionButton" parent="Type"]
+[node name="BackgroundMenu" type="OptionButton" parent="Type"]
 layout_mode = 0
-offset_left = 336.0
+offset_left = 216.0
 offset_top = 40.0
-offset_right = 480.0
+offset_right = 416.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
-fit_to_longest_item = false
+script = ExtResource("7_3ncn4")
+customIcon = ExtResource("12_3ngn0")
+
+[node name="ForegroundLabel" type="Label" parent="Type"]
+layout_mode = 0
+offset_left = 216.0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Bg
+
+"
+vertical_alignment = 1
+
+[node name="ForegroundMenu" type="OptionButton" parent="Type"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 40.0
+offset_right = 632.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
 script = ExtResource("8_l44u4")
+customIcon = ExtResource("14_2syo5")
+
+[node name="BorderLabel" type="Label" parent="Type"]
+layout_mode = 0
+offset_left = 648.0
+offset_right = 792.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Border"
+vertical_alignment = 1
+
+[node name="BorderMenu" type="OptionButton" parent="Type"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 40.0
+offset_right = 848.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+script = ExtResource("15_3k6vm")
+customIcon = ExtResource("16_nbs8c")
 
 [node name="Title" type="Control" parent="."]
 anchors_preset = 0

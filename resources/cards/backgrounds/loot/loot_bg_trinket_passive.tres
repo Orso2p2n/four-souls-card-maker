@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://db1hp66veqeb2"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bxsb20pk3fy0t"]
 
-[ext_resource type="Texture2D" uid="uid://dbd4h4dd6g0qg" path="res://assets/cards/loot/loot_trinketpassive_bg.png" id="1_5c1dm"]
+[ext_resource type="Texture2D" uid="uid://dbd4h4dd6g0qg" path="res://assets/cards/loot/loot_trinket_bg.png" id="1_nph54"]
 [ext_resource type="Script" path="res://resources/cards/backgrounds/CardBackground.cs" id="1_unpt6"]
 [ext_resource type="Texture2D" uid="uid://bxumnnol7gb6d" path="res://assets/icons/cards/loot_trinketpassive_bg.png" id="2_ptp0k"]
 
 [resource]
 script = ExtResource("1_unpt6")
-bgTexture = ExtResource("1_5c1dm")
-name = "Trinket Passive"
+bgTexture = ExtResource("1_nph54")
+name = "Trinket"
 icon = ExtResource("2_ptp0k")

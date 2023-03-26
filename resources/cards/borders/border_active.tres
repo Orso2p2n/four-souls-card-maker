@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://clu3suu84s41h"]
+
+[ext_resource type="Texture2D" uid="uid://d3spdx14fserj" path="res://assets/cards/_active_border.png" id="1_2o513"]
+[ext_resource type="Texture2D" uid="uid://duuf6602wvyde" path="res://assets/icons/cards/_active_border.png" id="2_a6mke"]
+[ext_resource type="Script" path="res://resources/cards/borders/CardBorder.cs" id="2_ndqh7"]
+
+[resource]
+script = ExtResource("2_ndqh7")
+border = ExtResource("1_2o513")
+name = "Active"
+icon = ExtResource("2_a6mke")
