@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://tn2snsyxdqyt"]
+[gd_scene load_steps=26 format=3 uid="uid://tn2snsyxdqyt"]
 
 [ext_resource type="PackedScene" uid="uid://4igi2epe22x" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://src/ui/BorderMenu.cs" id="15_3k6vm"]
 [ext_resource type="Script" path="res://src/EditManager.cs" id="16_66afq"]
 [ext_resource type="Texture2D" uid="uid://c80o61ugjywx3" path="res://assets/icons/cards/_custom_border.png" id="16_nbs8c"]
+[ext_resource type="PackedScene" uid="uid://cyd0c1m5jt52p" path="res://scenes/ui/art/art_button.tscn" id="24_l5rnn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -187,25 +188,24 @@ customIcon = ExtResource("16_nbs8c")
 [node name="Title" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 24.0
-offset_top = 256.0
+offset_top = 120.0
 offset_right = 24.0
-offset_bottom = 256.0
+offset_bottom = 120.0
 mouse_filter = 2
 
 [node name="TitleLabel" type="Label" parent="Title"]
 layout_mode = 0
-offset_top = -136.0
 offset_right = 360.0
-offset_bottom = -96.0
+offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Title"
 vertical_alignment = 1
 
 [node name="TitleEdit" type="LineEdit" parent="Title"]
 layout_mode = 0
-offset_top = -96.0
+offset_top = 40.0
 offset_right = 472.0
-offset_bottom = -56.0
+offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Title..."
@@ -213,25 +213,24 @@ placeholder_text = "Enter Title..."
 [node name="Desc" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 24.0
-offset_top = 320.0
+offset_top = 200.0
 offset_right = 24.0
-offset_bottom = 320.0
+offset_bottom = 200.0
 mouse_filter = 2
 
 [node name="DescLabel" type="Label" parent="Desc"]
 layout_mode = 0
-offset_top = -120.0
 offset_right = 360.0
-offset_bottom = -80.0
+offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Description"
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Desc"]
 layout_mode = 0
-offset_top = -80.0
+offset_top = 40.0
 offset_right = 472.0
-offset_bottom = 448.0
+offset_bottom = 568.0
 theme = ExtResource("3_7sxfo")
 
 [node name="SwappableList" parent="Desc/ScrollContainer" instance=ExtResource("8_t1lh8")]
@@ -240,9 +239,9 @@ layout_mode = 2
 [node name="NewDescriptionItemButton" type="MenuButton" parent="Desc" node_paths=PackedStringArray("list")]
 layout_mode = 0
 offset_left = 384.0
-offset_top = -112.0
+offset_top = 8.0
 offset_right = 472.0
-offset_bottom = -80.0
+offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Add new..."
 alignment = 2
@@ -369,6 +368,37 @@ theme = ExtResource("3_7sxfo")
 max_value = 9.0
 value = 1.0
 alignment = 1
+
+[node name="Art" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 120.0
+offset_right = 520.0
+offset_bottom = 120.0
+mouse_filter = 2
+
+[node name="ArtLabel" type="Label" parent="Art"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Art
+"
+vertical_alignment = 1
+
+[node name="ArtButton" parent="Art" instance=ExtResource("24_l5rnn")]
+layout_mode = 0
+offset_top = 40.0
+offset_bottom = 80.0
+
+[node name="TopArtButton" parent="Art" instance=ExtResource("24_l5rnn")]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 40.0
+offset_right = 392.0
+offset_bottom = 80.0
+text = "Load top art..."
+top = true
 
 [connection signal="text_changed" from="Title/TitleEdit" to="CardPreview/CardViewport/Card" method="SetTitle"]
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4igi2epe22x"]
+[gd_scene load_steps=11 format=3 uid="uid://4igi2epe22x"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
+[ext_resource type="Texture2D" uid="uid://bj484pmpykfkv" path="res://assets/cards/__refs/STARROD_01.png" id="7_g7svk"]
+[ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
 [ext_resource type="Texture2D" uid="uid://crq3b8c2pf52q" path="res://assets/cards/__refs/rwz-exposito.png" id="8_bxorv"]
 
-[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk")]
+[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,6 +46,8 @@ monsterAtk = NodePath("FGLayer/Stats/Monster/ATK")
 characterStatsContainer = NodePath("FGLayer/Stats/Character")
 characterHp = NodePath("FGLayer/Stats/Character/HP")
 characterAtk = NodePath("FGLayer/Stats/Character/ATK")
+art = NodePath("Art")
+topArt = NodePath("TopArt")
 
 [node name="BGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -96,13 +100,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ArtLayer" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Art" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 962.0
+offset_bottom = 1312.0
+pivot_offset = Vector2(480, 656)
+mouse_filter = 2
+texture = ExtResource("7_g7svk")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="FGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -127,6 +133,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_qhdek")
 
 [node name="FGTop" type="TextureRect" parent="FGLayer"]
 layout_mode = 1
@@ -135,6 +142,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("8_b7y5n")
 
 [node name="TitleContainer" type="CenterContainer" parent="FGLayer"]
 layout_mode = 1
@@ -257,3 +265,12 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 0
 alignment = 1
+
+[node name="TopArt" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 962.0
+offset_bottom = 1312.0
+pivot_offset = Vector2(480, 656)
+texture = ExtResource("7_g7svk")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyd0c1m5jt52p"]
+
+[ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="1_h8jht"]
+[ext_resource type="Script" path="res://src/ui/art/LoadArtButton.cs" id="2_0owej"]
+[ext_resource type="Texture2D" uid="uid://ctm4jbvuwkq71" path="res://assets/icons/trash18.png" id="3_olyjq"]
+[ext_resource type="Script" path="res://src/ui/art/TrashArtButton.cs" id="4_7y335"]
+[ext_resource type="Texture2D" uid="uid://dp5b6n61vnomq" path="res://assets/icons/eye18_open.png" id="4_fea5v"]
+[ext_resource type="Script" path="res://src/ui/art/ViewArtButton.cs" id="6_evf17"]
+[ext_resource type="Texture2D" uid="uid://co2qmclmpgo5n" path="res://assets/icons/eye18_close.png" id="7_rompx"]
+
+[node name="ArtButton" type="Button" node_paths=PackedStringArray("trashButton", "viewButton")]
+offset_right = 152.0
+offset_bottom = 40.0
+theme = ExtResource("1_h8jht")
+text = "Load art..."
+script = ExtResource("2_0owej")
+trashButton = NodePath("TrashArtButton")
+viewButton = NodePath("ViewArtButton")
+
+[node name="TrashArtButton" type="Button" parent="." node_paths=PackedStringArray("mainButton")]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 192.0
+offset_bottom = 40.0
+theme = ExtResource("1_h8jht")
+disabled = true
+icon = ExtResource("3_olyjq")
+icon_alignment = 1
+script = ExtResource("4_7y335")
+mainButton = NodePath("..")
+
+[node name="ViewArtButton" type="Button" parent="." node_paths=PackedStringArray("mainButton")]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 232.0
+offset_bottom = 40.0
+theme = ExtResource("1_h8jht")
+disabled = true
+icon = ExtResource("4_fea5v")
+icon_alignment = 1
+script = ExtResource("6_evf17")
+mainButton = NodePath("..")
+openIcon = ExtResource("4_fea5v")
+closedIcon = ExtResource("7_rompx")
+
+[connection signal="pressed" from="." to="." method="OnPressed"]
+[connection signal="pressed" from="TrashArtButton" to="TrashArtButton" method="OnPressed"]
+[connection signal="pressed" from="ViewArtButton" to="ViewArtButton" method="OnPressed"]

@@ -38,6 +38,10 @@ public partial class Card : Control
 	[Export] Label characterHp;
 	[Export] Label characterAtk;
 
+	[ExportGroup("Art")]
+	[Export] TextureRect art;
+	[Export] TextureRect topArt;
+
 	public override void _Ready() {
 		instance = this;
 	}
@@ -115,5 +119,33 @@ public partial class Card : Control
 				characterAtk.Text = atk.ToString();
                 break;
         }
+	}
+
+	// -- ART --
+	public void SetArt(Texture2D texture, bool top = false) {
+		if (top) {
+			topArt.Texture = texture;
+		}
+		else {
+			art.Texture = texture;
+		}
+	}
+
+	public void SetArtVisible(bool visible, bool top = false) {
+		if (top) {	
+			topArt.Visible = visible;
+		}
+		else {
+			art.Visible = visible;
+		}
+	}
+
+	public void RemoveArt(bool top = false) {
+		if (top) {
+			topArt.Texture = null;
+		}
+		else {
+			art.Texture = null;
+		}
 	}
 }
