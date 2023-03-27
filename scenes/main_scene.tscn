@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://tn2snsyxdqyt"]
+[gd_scene load_steps=27 format=3 uid="uid://tn2snsyxdqyt"]
 
+[ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
 [ext_resource type="PackedScene" uid="uid://4igi2epe22x" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
 [ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
@@ -52,13 +53,15 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 
-[node name="CardPreview" type="SubViewportContainer" parent="."]
+[node name="CardPreview" type="SubViewportContainer" parent="." node_paths=PackedStringArray("viewport")]
 layout_mode = 0
 offset_left = 1024.0
 offset_top = 112.0
 offset_right = 1024.0
 offset_bottom = 112.0
 scale = Vector2(0.5, 0.5)
+script = ExtResource("2_c7j0e")
+viewport = NodePath("CardViewport")
 
 [node name="CardViewport" type="SubViewport" parent="CardPreview"]
 handle_input_locally = false

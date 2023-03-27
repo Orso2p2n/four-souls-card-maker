@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4igi2epe22x"]
+[gd_scene load_steps=12 format=3 uid="uid://4igi2epe22x"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
-[ext_resource type="Texture2D" uid="uid://bj484pmpykfkv" path="res://assets/cards/__refs/STARROD_01.png" id="7_g7svk"]
+[ext_resource type="Script" path="res://src/card/MoveableArt.cs" id="8_8sfgc"]
 [ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
 [ext_resource type="Texture2D" uid="uid://crq3b8c2pf52q" path="res://assets/cards/__refs/rwz-exposito.png" id="8_bxorv"]
+[ext_resource type="Script" path="res://src/card/MoveableArtChild.cs" id="12_7gavw"]
 
 [node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt")]
 layout_mode = 3
@@ -100,15 +101,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Art" type="TextureRect" parent="."]
+[node name="Art" type="TextureRect" parent="." node_paths=PackedStringArray("childArt")]
 layout_mode = 2
 offset_right = 962.0
-offset_bottom = 1312.0
-pivot_offset = Vector2(480, 656)
+pivot_offset = Vector2(481, 481)
 mouse_filter = 2
-texture = ExtResource("7_g7svk")
-expand_mode = 1
+expand_mode = 4
 stretch_mode = 5
+script = ExtResource("8_8sfgc")
+childArt = NodePath("../TopArt")
 
 [node name="FGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -269,8 +270,7 @@ alignment = 1
 [node name="TopArt" type="TextureRect" parent="."]
 layout_mode = 2
 offset_right = 962.0
-offset_bottom = 1312.0
-pivot_offset = Vector2(480, 656)
-texture = ExtResource("7_g7svk")
-expand_mode = 1
+pivot_offset = Vector2(480, 480)
+expand_mode = 4
 stretch_mode = 5
+script = ExtResource("12_7gavw")
