@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://b26bl0p56pr6d"]
+
+[ext_resource type="Texture2D" uid="uid://dmbymu6vlr1ar" path="res://assets/icons/select_box.png" id="1_lgnxm"]
+[ext_resource type="Script" path="res://src/card/art/ScaleBox.cs" id="2_f2ca6"]
+
+[node name="ScaleBox" type="NinePatchRect" node_paths=PackedStringArray("topLeftCorner", "botLeftCorner", "topRightCorner", "botRightCorner")]
+visible = false
+top_level = true
+offset_right = 58.0
+offset_bottom = 58.0
+texture = ExtResource("1_lgnxm")
+draw_center = false
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource("2_f2ca6")
+topLeftCorner = NodePath("TopLeftCorner")
+botLeftCorner = NodePath("BotLeftCorner")
+topRightCorner = NodePath("TopRightCorner")
+botRightCorner = NodePath("BotRightCorner")
+
+[node name="TopLeftCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 14.0
+offset_bottom = 14.0
+
+[node name="BotLeftCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 8.0
+grow_vertical = 0
+
+[node name="TopRightCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -14.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 14.0
+grow_horizontal = 0
+
+[node name="BotRightCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 0

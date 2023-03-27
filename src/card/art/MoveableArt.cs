@@ -4,6 +4,7 @@ using System;
 public partial class MoveableArt : TextureRect
 {
 	[Export] MoveableArtChild childArt;
+	[Export] ScaleBox scaleBox;
 
 	bool selected;
 	bool mouseIsDown;
@@ -14,12 +15,26 @@ public partial class MoveableArt : TextureRect
 		if (childArt != null) {
 			childArt.parentArt = this;
 		}
+
+		if (scaleBox != null) {
+			scaleBox.parentArt = this;
+			scaleBox.Visible = false;
+		}
 	}
 
 	public override void _Process(double delta) {
 		if (selected && childArt != null) {
-			childArt.Position = Position;
-			childArt.Scale = Scale;
+			if (childArt != null) {
+				childArt.Position = Position;
+				childArt.Scale = Scale;
+			}
+
+			if (scaleBox != null) {
+				var scaledSize = Size * Scale;
+				scaleBox.Position = Position + (Size * ((1-Scale.X)/2));
+				scaleBox.Size = scaledSize;
+				scaleBox.PivotOffset = scaledSize / 2;
+			}
 		}
 	}
 
@@ -33,6 +48,9 @@ public partial class MoveableArt : TextureRect
 		if (selected) return;
 
 		selected = true;
+
+		scaleBox.Visible = true;
+
 		GD.Print("Selected " + Name);
 	}
 
@@ -40,6 +58,9 @@ public partial class MoveableArt : TextureRect
 		if (!selected) return;
 
 		selected = false;
+
+		scaleBox.Visible = false;
+
 		GD.Print("Deselected " + Name);
 	}
 
