@@ -7,6 +7,7 @@ public partial class Card : Control
 {
 	public static Card instance;
 
+	// Exports
 	[ExportGroup("Title")]
 	[Export] RichTextLabel titleLabel;
 
@@ -41,6 +42,12 @@ public partial class Card : Control
 	[ExportGroup("Art")]
 	[Export] TextureRect art;
 	[Export] TextureRect topArt;
+
+	// Signals
+	[Signal] public delegate void SelectedArtChangedEventHandler(MoveableArt art = null);
+
+	// Variables
+	public MoveableArt curSelectedArt;
 
 	public override void _Ready() {
 		instance = this;
@@ -146,6 +153,19 @@ public partial class Card : Control
 		}
 		else {
 			art.Texture = null;
+		}
+	}
+
+	// -- MOVEABLE ARTS --
+	public void OnSelectedArt(MoveableArt art) {
+		curSelectedArt = art;
+		EmitSignal(SignalName.SelectedArtChanged, art);
+	}
+
+	public void OnDeselectedArt(MoveableArt art) {
+		if (curSelectedArt == art) {
+			curSelectedArt = null;
+			EmitSignal(SignalName.SelectedArtChanged, new MoveableArt());
 		}
 	}
 }

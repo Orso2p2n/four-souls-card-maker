@@ -1,30 +1,33 @@
-[gd_scene load_steps=27 format=3 uid="uid://tn2snsyxdqyt"]
+[gd_scene load_steps=30 format=3 uid="uid://cvle62cdtdtdk"]
 
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
 [ext_resource type="PackedScene" uid="uid://d20xnxqu2phjl" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
-[ext_resource type="Script" path="res://src/ui/MainTypeMenu.cs" id="3_42r0l"]
 [ext_resource type="Resource" uid="uid://bupr5jq8xljfh" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
+[ext_resource type="Script" path="res://src/ui/type_menus/MainTypeMenu.cs" id="5_evgkq"]
 [ext_resource type="Resource" uid="uid://cc5wrbxk03olw" path="res://resources/cards/types/character.tres" id="5_o8y5v"]
 [ext_resource type="Resource" uid="uid://b4t6f8r0yuna4" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
 [ext_resource type="Resource" uid="uid://copyy6is1xjxn" path="res://resources/cards/types/treasure.tres" id="6_5ii8c"]
-[ext_resource type="Script" path="res://src/ui/BackgroundMenu.cs" id="7_3ncn4"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
 [ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
-[ext_resource type="Script" path="res://src/ui/ForegroundMenu.cs" id="8_l44u4"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
-[ext_resource type="Script" path="res://src/ui/NewDescriptionItemButton.cs" id="9_qk362"]
 [ext_resource type="Resource" uid="uid://cgchb5ifwn2g8" path="res://resources/cards/types/startingitem.tres" id="10_27qjp"]
 [ext_resource type="Texture2D" uid="uid://cegs5hyhivj1o" path="res://assets/cards/_icons/icon_dice.png" id="10_icac8"]
 [ext_resource type="Texture2D" uid="uid://cnhi6tipulpn7" path="res://assets/cards/_icons/icon_sword.png" id="11_vrgg2"]
+[ext_resource type="Script" path="res://src/ui/type_menus/BackgroundMenu.cs" id="12_1a41u"]
 [ext_resource type="Texture2D" uid="uid://cpacklyq6dvgp" path="res://assets/icons/cards/_custom_bg.png" id="12_3ngn0"]
 [ext_resource type="Script" path="res://src/ui/stats/StatPanel.cs" id="12_csu7s"]
 [ext_resource type="Texture2D" uid="uid://b3ibblkh045yd" path="res://assets/icons/cards/_custom_fg.png" id="14_2syo5"]
-[ext_resource type="Script" path="res://src/ui/BorderMenu.cs" id="15_3k6vm"]
+[ext_resource type="Script" path="res://src/ui/type_menus/ForegroundMenu.cs" id="14_e3u8i"]
 [ext_resource type="Script" path="res://src/EditManager.cs" id="16_66afq"]
+[ext_resource type="Script" path="res://src/ui/type_menus/BorderMenu.cs" id="16_71ows"]
 [ext_resource type="Texture2D" uid="uid://c80o61ugjywx3" path="res://assets/icons/cards/_custom_border.png" id="16_nbs8c"]
+[ext_resource type="Script" path="res://src/ui/swappable_list/NewDescriptionItemButton.cs" id="20_f8och"]
 [ext_resource type="PackedScene" uid="uid://cyd0c1m5jt52p" path="res://scenes/ui/art/art_button.tscn" id="24_l5rnn"]
+[ext_resource type="Script" path="res://src/ui/selection_properties/ResetScaleButton.cs" id="26_he4sd"]
+[ext_resource type="Script" path="res://src/ui/selection_properties/ResetPosButton.cs" id="27_w5jg3"]
+[ext_resource type="Script" path="res://src/ui/selection_properties/SetValueButton.cs" id="28_h0nle"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -56,9 +59,9 @@ access = 2
 [node name="CardPreview" type="SubViewportContainer" parent="." node_paths=PackedStringArray("viewport")]
 layout_mode = 0
 offset_left = 1024.0
-offset_top = 112.0
-offset_right = 1024.0
-offset_bottom = 112.0
+offset_top = 80.0
+offset_right = 1986.0
+offset_bottom = 1392.0
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_c7j0e")
 viewport = NodePath("CardViewport")
@@ -122,7 +125,7 @@ offset_top = 40.0
 offset_right = 200.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
-script = ExtResource("3_42r0l")
+script = ExtResource("5_evgkq")
 backgroundMenu = NodePath("../BackgroundMenu")
 foregroundMenu = NodePath("../ForegroundMenu")
 borderMenu = NodePath("../BorderMenu")
@@ -134,8 +137,7 @@ offset_left = 648.0
 offset_right = 792.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
-text = "Fg
-"
+text = "Foreground"
 vertical_alignment = 1
 
 [node name="BackgroundMenu" type="OptionButton" parent="Type"]
@@ -145,7 +147,7 @@ offset_top = 40.0
 offset_right = 416.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
-script = ExtResource("7_3ncn4")
+script = ExtResource("12_1a41u")
 customIcon = ExtResource("12_3ngn0")
 
 [node name="ForegroundLabel" type="Label" parent="Type"]
@@ -154,9 +156,7 @@ offset_left = 216.0
 offset_right = 360.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
-text = "Bg
-
-"
+text = "Background"
 vertical_alignment = 1
 
 [node name="ForegroundMenu" type="OptionButton" parent="Type"]
@@ -166,7 +166,7 @@ offset_top = 40.0
 offset_right = 848.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
-script = ExtResource("8_l44u4")
+script = ExtResource("14_e3u8i")
 customIcon = ExtResource("14_2syo5")
 
 [node name="BorderLabel" type="Label" parent="Type"]
@@ -185,7 +185,7 @@ offset_top = 40.0
 offset_right = 632.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
-script = ExtResource("15_3k6vm")
+script = ExtResource("16_71ows")
 customIcon = ExtResource("16_nbs8c")
 
 [node name="Title" type="Control" parent="."]
@@ -255,7 +255,7 @@ popup/item_1/text = "Separator"
 popup/item_1/id = 1
 popup/item_2/text = "Lore"
 popup/item_2/id = 2
-script = ExtResource("9_qk362")
+script = ExtResource("20_f8och")
 list = NodePath("../ScrollContainer/SwappableList")
 
 [node name="Stats" type="Control" parent="."]
@@ -403,7 +403,81 @@ offset_bottom = 80.0
 text = "Load top art..."
 top = true
 
+[node name="SelectedProps" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1024.0
+offset_top = 768.0
+offset_right = 1024.0
+offset_bottom = 768.0
+mouse_filter = 2
+
+[node name="SelectedPropsLabel" type="Label" parent="SelectedProps"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 360.0
+offset_bottom = 8.0
+theme = ExtResource("3_7sxfo")
+text = "Selection properties"
+vertical_alignment = 1
+
+[node name="Position" type="Control" parent="SelectedProps"]
+anchors_preset = 0
+offset_top = 8.0
+offset_bottom = 8.0
+script = ExtResource("27_w5jg3")
+
+[node name="ResetXButton" type="Button" parent="SelectedProps/Position"]
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Reset X"
+
+[node name="ResetYButton" type="Button" parent="SelectedProps/Position"]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 152.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Reset Y"
+
+[node name="Scale" type="Control" parent="SelectedProps"]
+anchors_preset = 0
+offset_left = 168.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 8.0
+script = ExtResource("26_he4sd")
+
+[node name="ResetButton" type="Button" parent="SelectedProps/Scale"]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Reset Scale"
+
+[node name="Value" type="Control" parent="SelectedProps" node_paths=PackedStringArray("lineEdit")]
+anchors_preset = 0
+offset_left = 336.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 8.0
+script = ExtResource("28_h0nle")
+lineEdit = NodePath("ResetButton")
+
+[node name="ResetButton" type="LineEdit" parent="SelectedProps/Value"]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+placeholder_text = "value..."
+alignment = 1
+
 [connection signal="text_changed" from="Title/TitleEdit" to="CardPreview/CardViewport/Card" method="SetTitle"]
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]
+[connection signal="pressed" from="SelectedProps/Position/ResetXButton" to="SelectedProps/Position" method="OnXPressed"]
+[connection signal="pressed" from="SelectedProps/Position/ResetYButton" to="SelectedProps/Position" method="OnYPressed"]
+[connection signal="pressed" from="SelectedProps/Scale/ResetButton" to="SelectedProps/Scale" method="OnPressed"]
+[connection signal="text_changed" from="SelectedProps/Value/ResetButton" to="SelectedProps/Value" method="OnTextChanged"]

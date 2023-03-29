@@ -5,6 +5,11 @@ public partial class MoveableArt : TextureRect
 {
 	[Export] MoveableArtChild childArt;
 	[Export] ScaleBox scaleBox;
+	[Export] public bool canResetScale;
+	[Export] public bool canResetPosition;
+	[Export] public bool canSetValue;
+
+	public string value;
 
 	bool selected;
 	bool mouseIsDown;
@@ -51,7 +56,7 @@ public partial class MoveableArt : TextureRect
 
 		scaleBox.Visible = true;
 
-		GD.Print("Selected " + Name);
+		Card.instance.OnSelectedArt(this);
 	}
 
 	public void Deselect() {
@@ -61,7 +66,7 @@ public partial class MoveableArt : TextureRect
 
 		scaleBox.Visible = false;
 
-		GD.Print("Deselected " + Name);
+		Card.instance.OnDeselectedArt(this);
 	}
 
     public override void _UnhandledInput(InputEvent @event) {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d20xnxqu2phjl"]
+[gd_scene load_steps=14 format=3 uid="uid://d20xnxqu2phjl"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
+[ext_resource type="Texture2D" uid="uid://y6rixgflwiq6" path="res://assets/icon.png" id="7_2miuc"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="8_3vw2m"]
 [ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
@@ -107,11 +108,14 @@ layout_mode = 2
 offset_right = 962.0
 pivot_offset = Vector2(481, 481)
 mouse_filter = 2
+texture = ExtResource("7_2miuc")
 expand_mode = 4
 stretch_mode = 5
 script = ExtResource("8_3vw2m")
 childArt = NodePath("../TopArt")
 scaleBox = NodePath("ScaleBox")
+canResetScale = true
+canResetPosition = true
 
 [node name="ScaleBox" parent="Art" instance=ExtResource("9_t1do6")]
 layout_mode = 0
