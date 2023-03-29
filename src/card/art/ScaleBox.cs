@@ -56,8 +56,6 @@ public partial class ScaleBox : NinePatchRect
 						baseMousePos = mouseButtonEvent.Position;
 						cornerHeld = true;
 
-						GD.Print("Got a corner");
-
 						GetViewport().SetInputAsHandled();
 					}
 				}
@@ -85,8 +83,6 @@ public partial class ScaleBox : NinePatchRect
 
 		var newScale = newDist / baseDist;
 
-		newScale = Mathf.Clamp(newScale, 0.1f, 1.5f);
-
-		parentArt.Scale = new Vector2(newScale, newScale);
+		parentArt.SetScale(newScale);
 	}
 }

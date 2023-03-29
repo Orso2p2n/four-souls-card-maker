@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvle62cdtdtdk"]
+[gd_scene load_steps=30 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
 [ext_resource type="PackedScene" uid="uid://d20xnxqu2phjl" path="res://scenes/card.tscn" id="2_g0xqc"]
@@ -25,9 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://c80o61ugjywx3" path="res://assets/icons/cards/_custom_border.png" id="16_nbs8c"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/NewDescriptionItemButton.cs" id="20_f8och"]
 [ext_resource type="PackedScene" uid="uid://cyd0c1m5jt52p" path="res://scenes/ui/art/art_button.tscn" id="24_l5rnn"]
-[ext_resource type="Script" path="res://src/ui/selection_properties/ResetScaleButton.cs" id="26_he4sd"]
-[ext_resource type="Script" path="res://src/ui/selection_properties/ResetPosButton.cs" id="27_w5jg3"]
-[ext_resource type="Script" path="res://src/ui/selection_properties/SetValueButton.cs" id="28_h0nle"]
+[ext_resource type="Script" path="res://src/ui/selection_properties/PositionProps.cs" id="26_ahxvl"]
+[ext_resource type="Script" path="res://src/ui/selection_properties/ScaleProps.cs" id="27_srwpj"]
+[ext_resource type="Script" path="res://src/ui/selection_properties/ValueProps.cs" id="28_chj7t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -420,55 +420,113 @@ theme = ExtResource("3_7sxfo")
 text = "Selection properties"
 vertical_alignment = 1
 
-[node name="Position" type="Control" parent="SelectedProps"]
+[node name="Position" type="Control" parent="SelectedProps" node_paths=PackedStringArray("xSpinBox", "ySpinBox")]
 anchors_preset = 0
 offset_top = 8.0
 offset_bottom = 8.0
-script = ExtResource("27_w5jg3")
+script = ExtResource("26_ahxvl")
+xSpinBox = NodePath("XSpinBox")
+ySpinBox = NodePath("YSpinBox")
+
+[node name="XSpinBox" type="SpinBox" parent="SelectedProps/Position"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+min_value = -962.0
+max_value = 962.0
+prefix = "x:"
 
 [node name="ResetXButton" type="Button" parent="SelectedProps/Position"]
 layout_mode = 1
-offset_right = 72.0
-offset_bottom = 40.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 72.0
 theme = ExtResource("3_7sxfo")
 text = "Reset X"
 
+[node name="YSpinBox" type="SpinBox" parent="SelectedProps/Position"]
+layout_mode = 0
+offset_left = 88.0
+offset_right = 168.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+min_value = -962.0
+max_value = 962.0
+prefix = "y:"
+
 [node name="ResetYButton" type="Button" parent="SelectedProps/Position"]
 layout_mode = 0
-offset_left = 80.0
-offset_right = 152.0
-offset_bottom = 40.0
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 168.0
+offset_bottom = 72.0
 theme = ExtResource("3_7sxfo")
 text = "Reset Y"
 
-[node name="Scale" type="Control" parent="SelectedProps"]
+[node name="Separator2" type="Line2D" parent="SelectedProps"]
+position = Vector2(176, 0)
+points = PackedVector2Array(0, 8, 0, 44.8841, 0, 80)
+width = 1.0
+default_color = Color(1, 1, 1, 0.498039)
+
+[node name="Scale" type="Control" parent="SelectedProps" node_paths=PackedStringArray("label", "slider")]
 anchors_preset = 0
-offset_left = 168.0
+offset_left = 184.0
 offset_top = 8.0
-offset_right = 168.0
+offset_right = 184.0
 offset_bottom = 8.0
-script = ExtResource("26_he4sd")
+script = ExtResource("27_srwpj")
+label = NodePath("ScaleLabel")
+slider = NodePath("ScaleSlider")
+
+[node name="ScaleLabel" type="Label" parent="SelectedProps/Scale"]
+layout_mode = 0
+offset_top = -7.0
+offset_right = 152.0
+offset_bottom = 16.0
+theme = ExtResource("3_7sxfo")
+theme_override_font_sizes/font_size = 16
+text = "scale: 1.0"
+vertical_alignment = 1
+
+[node name="ScaleSlider" type="HSlider" parent="SelectedProps/Scale"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 32.0
+min_value = 0.1
+max_value = 1.5
+step = 0.05
+value = 1.0
 
 [node name="ResetButton" type="Button" parent="SelectedProps/Scale"]
 layout_mode = 0
-offset_right = 152.0
-offset_bottom = 40.0
+offset_top = 40.0
+offset_right = 144.0
+offset_bottom = 72.0
 theme = ExtResource("3_7sxfo")
 text = "Reset Scale"
 
+[node name="Separator3" type="Line2D" parent="SelectedProps"]
+position = Vector2(336, 0)
+points = PackedVector2Array(0, 8, 0, 80)
+width = 1.0
+default_color = Color(1, 1, 1, 0.498039)
+
 [node name="Value" type="Control" parent="SelectedProps" node_paths=PackedStringArray("lineEdit")]
 anchors_preset = 0
-offset_left = 336.0
+offset_left = 344.0
 offset_top = 8.0
-offset_right = 336.0
+offset_right = 344.0
 offset_bottom = 8.0
-script = ExtResource("28_h0nle")
+script = ExtResource("28_chj7t")
 lineEdit = NodePath("ResetButton")
 
 [node name="ResetButton" type="LineEdit" parent="SelectedProps/Value"]
 layout_mode = 0
-offset_right = 144.0
-offset_bottom = 40.0
+offset_right = 136.0
+offset_bottom = 32.0
 theme = ExtResource("3_7sxfo")
 placeholder_text = "value..."
 alignment = 1
@@ -477,7 +535,10 @@ alignment = 1
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]
-[connection signal="pressed" from="SelectedProps/Position/ResetXButton" to="SelectedProps/Position" method="OnXPressed"]
-[connection signal="pressed" from="SelectedProps/Position/ResetYButton" to="SelectedProps/Position" method="OnYPressed"]
+[connection signal="value_changed" from="SelectedProps/Position/XSpinBox" to="SelectedProps/Position" method="OnChangedX"]
+[connection signal="pressed" from="SelectedProps/Position/ResetXButton" to="SelectedProps/Position" method="OnResetXPressed"]
+[connection signal="value_changed" from="SelectedProps/Position/YSpinBox" to="SelectedProps/Position" method="OnChangedY"]
+[connection signal="pressed" from="SelectedProps/Position/ResetYButton" to="SelectedProps/Position" method="OnResetYPressed"]
+[connection signal="value_changed" from="SelectedProps/Scale/ScaleSlider" to="SelectedProps/Scale" method="OnSliderValueChanged"]
 [connection signal="pressed" from="SelectedProps/Scale/ResetButton" to="SelectedProps/Scale" method="OnPressed"]
 [connection signal="text_changed" from="SelectedProps/Value/ResetButton" to="SelectedProps/Value" method="OnTextChanged"]

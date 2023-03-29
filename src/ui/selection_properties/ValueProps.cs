@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SetValueButton : SelectionProp
+public partial class ValueProps : SelectionProp
 {
 	[Export] LineEdit lineEdit;
 
