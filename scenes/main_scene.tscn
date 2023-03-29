@@ -403,6 +403,22 @@ offset_bottom = 80.0
 text = "Load top art..."
 top = true
 
+[node name="Icons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 200.0
+offset_right = 520.0
+offset_bottom = 200.0
+mouse_filter = 2
+
+[node name="ArtLabel" type="Label" parent="Icons"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Icons"
+vertical_alignment = 1
+
 [node name="SelectedProps" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 1024.0
