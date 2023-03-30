@@ -179,11 +179,23 @@ public partial class Card : Control
 		this.soulIcon.Texture = soulIcon.texture;
 	}
 
+	public void SetCustomSoulIcon(Texture2D texture) {
+		soulIcon.Texture = texture;
+	}
+
 	public void SetSetIcon(SetIcon setIcon) {
 		this.setIcon.Texture = setIcon.texture;
 	}
 
+	public void SetCustomSetIcon(Texture2D texture) {
+		setIcon.Texture = texture;
+	}
+
 	public void SetDifficultyIcon(DifficultyIcon diffIcon) {
 		this.diffIcon.Texture = diffIcon.texture;
+	}
+
+	public void SetCustomDifficultyIcon(Texture2D texture) {
+		diffIcon.Texture = texture;
 	}
 }

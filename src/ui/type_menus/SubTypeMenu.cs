@@ -13,6 +13,11 @@ public partial class SubTypeMenu : TypeMenu
 		cardTypes = newList;
 
 		UpdateItems();
+	}
+
+	public override void UpdateItems() {
+		base.UpdateItems();
+
 		AddCustomEntry();
 
 		OnItemSelected(0);

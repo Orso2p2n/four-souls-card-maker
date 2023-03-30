@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=55 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
 [ext_resource type="PackedScene" uid="uid://d20xnxqu2phjl" path="res://scenes/card.tscn" id="2_g0xqc"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://gd6t32dqit8d" path="res://resources/cards/soul_icons/none.tres" id="27_fubmy"]
 [ext_resource type="Resource" uid="uid://dxvgshsulpm4v" path="res://resources/cards/soul_icons/one_soul.tres" id="27_gmm8e"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/ScaleProps.cs" id="27_srwpj"]
+[ext_resource type="Texture2D" uid="uid://dqey8lndyauii" path="res://assets/icons/soul/custom.png" id="27_whsyw"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/ValueProps.cs" id="28_chj7t"]
 [ext_resource type="Resource" uid="uid://oo38agpcegv1" path="res://resources/cards/soul_icons/two_souls.tres" id="28_n7umd"]
 [ext_resource type="Resource" uid="uid://buk0vok1wqcm3" path="res://resources/cards/soul_icons/one_trophy.tres" id="29_bir7w"]
@@ -37,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://bug5fw00af6sv" path="res://resources/cards/set_icons/none.tres" id="31_we2rt"]
 [ext_resource type="Resource" uid="uid://c8nhwu8da4g5e" path="res://resources/cards/set_icons/base_game.tres" id="32_s11b6"]
 [ext_resource type="Resource" uid="uid://btbk6ji5pfes6" path="res://resources/cards/set_icons/fs_plus.tres" id="33_148nk"]
+[ext_resource type="Texture2D" uid="uid://ys7icwcepbbm" path="res://assets/icons/sets/custom.png" id="33_tocn4"]
 [ext_resource type="Resource" uid="uid://durkxwh14f0wx" path="res://resources/cards/set_icons/requiem.tres" id="34_0v54e"]
 [ext_resource type="Resource" uid="uid://bir211bw60271" path="res://resources/cards/set_icons/gold_box.tres" id="35_5xr1p"]
 [ext_resource type="Resource" uid="uid://cqu5yrack3nbw" path="res://resources/cards/set_icons/target.tres" id="36_gbkvs"]
@@ -50,6 +52,7 @@
 [ext_resource type="Resource" uid="uid://c1180vfg6c0vr" path="res://resources/cards/difficulty_icon/none.tres" id="45_faopm"]
 [ext_resource type="Script" path="res://src/ui/icons/DifficultyIconMenu.cs" id="45_y6lod"]
 [ext_resource type="Resource" uid="uid://rrudoe6esng0" path="res://resources/cards/difficulty_icon/three_players.tres" id="46_lh4tv"]
+[ext_resource type="Texture2D" uid="uid://cu7cuje6djaf7" path="res://assets/icons/difficulty/custom.png" id="48_dqrv0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -448,6 +451,7 @@ offset_right = 160.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("26_l8bso")
+customIcon = ExtResource("27_whsyw")
 cardTypes = Array[Resource]([ExtResource("27_fubmy"), ExtResource("27_gmm8e"), ExtResource("28_n7umd"), ExtResource("29_bir7w")])
 
 [node name="SetIconLabel" type="Label" parent="Icons"]
@@ -467,6 +471,7 @@ offset_right = 320.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("31_1tfgv")
+customIcon = ExtResource("33_tocn4")
 cardTypes = Array[Resource]([ExtResource("31_we2rt"), ExtResource("32_s11b6"), ExtResource("33_148nk"), ExtResource("34_0v54e"), ExtResource("35_5xr1p"), ExtResource("36_gbkvs"), ExtResource("37_mbj8e"), ExtResource("38_pvr2v"), ExtResource("39_nw35a"), ExtResource("40_ra6en"), ExtResource("41_vewfy"), ExtResource("42_1t1bp"), ExtResource("43_oi578")])
 
 [node name="SetIconLabel2" type="Label" parent="Icons"]
@@ -487,6 +492,7 @@ offset_right = 472.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("45_y6lod")
+customIcon = ExtResource("48_dqrv0")
 cardTypes = Array[Resource]([ExtResource("45_faopm"), ExtResource("46_lh4tv")])
 
 [node name="SelectedProps" type="Control" parent="."]

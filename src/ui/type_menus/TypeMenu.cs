@@ -12,7 +12,7 @@ public partial class TypeMenu : OptionButton
 		ItemSelected += OnItemSelected;
 	}
 
-	public void UpdateItems() {
+	public virtual void UpdateItems() {
 		Clear();
 
 		var id = 0;
