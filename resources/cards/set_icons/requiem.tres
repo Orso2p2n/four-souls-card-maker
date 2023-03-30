@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://durkxwh14f0wx"]
+
+[ext_resource type="Texture2D" uid="uid://d3gsbqvwd350d" path="res://assets/icons/sets/requiem24.png" id="1_a2vy5"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_uwcty"]
+[ext_resource type="Texture2D" uid="uid://b17nujs86r777" path="res://assets/cards/_icons/sets/requiem.png" id="3_muxng"]
+
+[resource]
+script = ExtResource("2_uwcty")
+texture = ExtResource("3_muxng")
+name = "Requiem"
+icon = ExtResource("1_a2vy5")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://buk0vok1wqcm3"]
+
+[ext_resource type="Texture2D" uid="uid://df15cnxqbbs8i" path="res://assets/icons/soul/one_trophy24.png" id="1_ytma3"]
+[ext_resource type="Script" path="res://resources/cards/soul_icons/SoulIcon.cs" id="2_lfb71"]
+[ext_resource type="Texture2D" uid="uid://qv0sg6ubmg4a" path="res://assets/cards/_icons/soul/one_trophy.png" id="3_jq5eq"]
+
+[resource]
+script = ExtResource("2_lfb71")
+texture = ExtResource("3_jq5eq")
+name = "One Trophy"
+icon = ExtResource("1_ytma3")

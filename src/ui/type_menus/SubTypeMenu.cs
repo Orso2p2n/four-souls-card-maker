@@ -9,7 +9,7 @@ public partial class SubTypeMenu : TypeMenu
 
 	public Callable customTextureCallback;
 
-	public void SetList(Array<CardType> newList) {
+	public void SetList(Array<MenuItem> newList) {
 		cardTypes = newList;
 
 		UpdateItems();

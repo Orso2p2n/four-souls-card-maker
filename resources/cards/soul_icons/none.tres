@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://gd6t32dqit8d"]
+
+[ext_resource type="Texture2D" uid="uid://dxmhts3a3o77g" path="res://assets/icons/soul/none.png" id="1_pqlbi"]
+[ext_resource type="Script" path="res://resources/cards/soul_icons/SoulIcon.cs" id="2_brnhd"]
+
+[resource]
+script = ExtResource("2_brnhd")
+name = "None"
+icon = ExtResource("1_pqlbi")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://oo38agpcegv1"]
+
+[ext_resource type="Texture2D" uid="uid://dbcgpgq72p262" path="res://assets/icons/soul/two_souls24.png" id="1_2itow"]
+[ext_resource type="Script" path="res://resources/cards/soul_icons/SoulIcon.cs" id="2_by6jl"]
+[ext_resource type="Texture2D" uid="uid://b6hdm2xwv5jkc" path="res://assets/cards/_icons/soul/two_souls.png" id="3_yb4bp"]
+
+[resource]
+script = ExtResource("2_by6jl")
+texture = ExtResource("3_yb4bp")
+name = "Two Souls"
+icon = ExtResource("1_2itow")

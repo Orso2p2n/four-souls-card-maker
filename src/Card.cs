@@ -43,6 +43,11 @@ public partial class Card : Control
 	[Export] TextureRect art;
 	[Export] TextureRect topArt;
 
+	[ExportGroup("Icons")]
+	[Export] TextureRect soulIcon;
+	[Export] TextureRect setIcon;
+	[Export] TextureRect diffIcon;
+
 	// Signals
 	[Signal] public delegate void SelectedArtChangedEventHandler(MoveableArt art = null);
 
@@ -167,5 +172,18 @@ public partial class Card : Control
 			curSelectedArt = null;
 			EmitSignal(SignalName.SelectedArtChanged, new MoveableArt());
 		}
+	}
+
+	// -- MISC ICONS --
+	public void SetSoulIcon(SoulIcon soulIcon) {
+		this.soulIcon.Texture = soulIcon.texture;
+	}
+
+	public void SetSetIcon(SetIcon setIcon) {
+		this.setIcon.Texture = setIcon.texture;
+	}
+
+	public void SetDifficultyIcon(DifficultyIcon diffIcon) {
+		this.diffIcon.Texture = diffIcon.texture;
 	}
 }

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bntlpsymgqmvc"]
+
+[ext_resource type="Texture2D" uid="uid://b7d6fymwnjtpi" path="res://assets/icons/sets/cringe24.png" id="1_p6kyv"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_up0n7"]
+[ext_resource type="Texture2D" uid="uid://cpf17222r44g3" path="res://assets/cards/_icons/sets/cringe.png" id="3_egdkn"]
+
+[resource]
+script = ExtResource("2_up0n7")
+texture = ExtResource("3_egdkn")
+name = "Unboxing"
+icon = ExtResource("1_p6kyv")

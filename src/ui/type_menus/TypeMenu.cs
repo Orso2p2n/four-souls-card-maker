@@ -4,7 +4,7 @@ using System;
 
 public partial class TypeMenu : OptionButton
 {
-	[Export] public Array<CardType> cardTypes;
+	[Export] public Array<MenuItem> cardTypes;
 
 	public override void _Ready() {
 		base._Ready();

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d0ialrywjyoq3"]
+
+[ext_resource type="Texture2D" uid="uid://das4arh5uwovm" path="res://assets/icons/sets/warp_zone24.png" id="1_q4nr8"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_tc7q7"]
+[ext_resource type="Texture2D" uid="uid://d314bosdmvi13" path="res://assets/cards/_icons/sets/warp_zone.png" id="3_akr2d"]
+
+[resource]
+script = ExtResource("2_tc7q7")
+texture = ExtResource("3_akr2d")
+name = "Warp Zone"
+icon = ExtResource("1_q4nr8")

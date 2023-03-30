@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://rrudoe6esng0"]
+
+[ext_resource type="Texture2D" uid="uid://cgbw8li11c3ma" path="res://assets/icons/difficulty/three_players24.png" id="1_s41i8"]
+[ext_resource type="Script" path="res://resources/cards/difficulty_icon/DifficultyIcon.cs" id="2_l74g0"]
+[ext_resource type="Texture2D" uid="uid://3xg4aaxh6bal" path="res://assets/cards/_icons/difficulty/three_players.png" id="3_mmy1d"]
+
+[resource]
+script = ExtResource("2_l74g0")
+texture = ExtResource("3_mmy1d")
+name = "3P+"
+icon = ExtResource("1_s41i8")

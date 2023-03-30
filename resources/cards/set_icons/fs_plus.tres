@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://btbk6ji5pfes6"]
+
+[ext_resource type="Texture2D" uid="uid://cedh5cbv00cit" path="res://assets/icons/sets/fs_plus24.png" id="1_4x765"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_xko05"]
+[ext_resource type="Texture2D" uid="uid://eqdpws8j3k4x" path="res://assets/cards/_icons/sets/fs_plus.png" id="3_qcatw"]
+
+[resource]
+script = ExtResource("2_xko05")
+texture = ExtResource("3_qcatw")
+name = "FS Plus"
+icon = ExtResource("1_4x765")

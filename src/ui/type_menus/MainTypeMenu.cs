@@ -21,19 +21,19 @@ public partial class MainTypeMenu : TypeMenu
 
 		var selectedCardType = cardTypes[(int) index] as CardMainType;
 
-		var bgList = new Array<CardType>();
+		var bgList = new Array<MenuItem>();
 		foreach (var subType in selectedCardType.backgrounds) {
 			bgList.Add(subType);
 		}
 		backgroundMenu.SetList(bgList);
 
-		var fgList = new Array<CardType>();
+		var fgList = new Array<MenuItem>();
 		foreach (var subType in selectedCardType.foregrounds) {
 			fgList.Add(subType);
 		}
 		foregroundMenu.SetList(fgList);
 
-		var borderList = new Array<CardType>();
+		var borderList = new Array<MenuItem>();
 		foreach (var subType in selectedCardType.borders) {
 			borderList.Add(subType);
 		}

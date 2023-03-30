@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bqpilfl30xdla"]
+
+[ext_resource type="Texture2D" uid="uid://d3d2n7bx21uge" path="res://assets/icons/sets/gish24.png" id="1_uc52i"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_4psmy"]
+[ext_resource type="Texture2D" uid="uid://bryt001r3ah6k" path="res://assets/cards/_icons/sets/gish.png" id="3_jypx6"]
+
+[resource]
+script = ExtResource("2_4psmy")
+texture = ExtResource("3_jypx6")
+name = "Gish"
+icon = ExtResource("1_uc52i")

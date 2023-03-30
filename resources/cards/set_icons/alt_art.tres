@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://be1tyhmr5thic"]
+
+[ext_resource type="Texture2D" uid="uid://dyjayne8x1nd6" path="res://assets/icons/sets/alt_art24.png" id="1_b7y1q"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_6356m"]
+[ext_resource type="Texture2D" uid="uid://d2yxr1kex4nrn" path="res://assets/cards/_icons/sets/alt_art.png" id="3_bsmi7"]
+
+[resource]
+script = ExtResource("2_6356m")
+texture = ExtResource("3_bsmi7")
+name = "Alt Art"
+icon = ExtResource("1_b7y1q")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c1180vfg6c0vr"]
+
+[ext_resource type="Texture2D" uid="uid://bgp2lstsxdqrc" path="res://assets/icons/difficulty/none.png" id="1_wyb3h"]
+[ext_resource type="Script" path="res://resources/cards/difficulty_icon/DifficultyIcon.cs" id="2_3u2v3"]
+
+[resource]
+script = ExtResource("2_3u2v3")
+name = "None"
+icon = ExtResource("1_wyb3h")

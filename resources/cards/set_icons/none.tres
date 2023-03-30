@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bug5fw00af6sv"]
+
+[ext_resource type="Texture2D" uid="uid://crs2fxhvbppgy" path="res://assets/icons/sets/none.png" id="1_x6rkx"]
+[ext_resource type="Script" path="res://resources/cards/set_icons/SetIcon.cs" id="2_u62jt"]
+
+[resource]
+script = ExtResource("2_u62jt")
+name = "None"
+icon = ExtResource("1_x6rkx")

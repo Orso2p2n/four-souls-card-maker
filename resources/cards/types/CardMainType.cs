@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class CardMainType : CardType
+public partial class CardMainType : MenuItem
 {
     [Export(PropertyHint.Enum,"None,Monster,Character")] public string stats = "None";
     [Export] public Array<CardBackground>   backgrounds = new Array<CardBackground>();
