@@ -8,4 +8,8 @@ public partial class CardMainType : MenuItem
     [Export] public Array<CardBackground>   backgrounds = new Array<CardBackground>();
     [Export] public Array<CardForeground>   foregrounds = new Array<CardForeground>();
     [Export] public Array<CardBorder>       borders     = new Array<CardBorder>();
+
+    [ExportGroup("Description Offset")]
+    [Export] public float descOffsetTop = 0f;
+    [Export] public float descOffsetBot = 0f;
 }

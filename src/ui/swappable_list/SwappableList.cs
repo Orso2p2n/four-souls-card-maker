@@ -7,6 +7,9 @@ public partial class SwappableList : VBoxContainer
 	Control placeholder;
 	bool isMovingItem;
 
+	SwappableItem lastItemMovedUp;
+	SwappableItem lastItemMovedDown;
+
 	[Export] Dictionary<string,PackedScene> scenes = new Dictionary<string,PackedScene>{
 		{"Effect", new PackedScene()},
 		{"Separator", new PackedScene()},
@@ -67,17 +70,28 @@ public partial class SwappableList : VBoxContainer
 		}
 
 		var centerY = item.Size.Y/2;
-		var index = item.GetIndex();
+		var itemIndex = item.GetIndex();
+		var placeholderIndex = placeholder.GetIndex();
 
-		GD.Print("mouse pos: " + eventMouseMotion.Position.Y + ", centerY: " + centerY + ", index: " + index);
+		GD.Print("mouse pos: " + eventMouseMotion.Position.Y + ", centerY: " + centerY + ", index: " + itemIndex);
 
-		if (eventMouseMotion.Position.Y > centerY) {
-			GD.Print(index + 1);
-			MoveChild(item, index + 1);
+		if (eventMouseMotion.Position.Y < centerY) {
+			if (placeholderIndex <= itemIndex || item == lastItemMovedDown) {
+				return;
+			}
+
+			MoveChild(placeholder, itemIndex);
+			lastItemMovedDown = item;
+			lastItemMovedUp = null;
 		}
 		else {
-			GD.Print(index - 1);
-			MoveChild(item, index - 1);
+			if (placeholderIndex >= itemIndex || item == lastItemMovedUp) {
+				return;
+			}
+
+			MoveChild(placeholder, itemIndex);
+			lastItemMovedDown = null;
+			lastItemMovedUp = item;
 		}
 	}
 
@@ -92,6 +106,9 @@ public partial class SwappableList : VBoxContainer
 
 	public void OnItemReleased(SwappableItem item) {
 		isMovingItem = false;
+
+		lastItemMovedDown = null;
+		lastItemMovedUp = null;
 
 		var index = placeholder.GetIndex();
 		RemovePlaceholder();

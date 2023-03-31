@@ -18,5 +18,7 @@ stats = "None"
 backgrounds = [ExtResource("1_wah2d"), ExtResource("2_otkxu"), ExtResource("4_83vk4"), ExtResource("5_yyt74")]
 foregrounds = [ExtResource("5_6bviw"), ExtResource("10_5srkn")]
 borders = [ExtResource("6_fgp4h"), ExtResource("6_j64ws"), ExtResource("7_u4cqe")]
+descOffsetTop = 0.0
+descOffsetBot = 0.0
 name = "Loot"
 icon = ExtResource("9_w35m1")

@@ -40,5 +40,7 @@ public partial class MainTypeMenu : TypeMenu
 		borderMenu.SetList(borderList);
 
 		EditManager.instance.SetStats(selectedCardType.stats);
+
+		Card.instance.SetDescOffsets(selectedCardType.descOffsetTop, selectedCardType.descOffsetBot);
 	}
 }

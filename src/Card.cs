@@ -23,7 +23,7 @@ public partial class Card : Control
 	[Export] TextureRect fgTop;
 
 	[ExportGroup("Description")]
-	[Export] BoxContainer descContainer;
+	[Export] DescContainer descContainer;
 	[Export] PackedScene effect;
 	[Export] PackedScene lore;
 	[Export] PackedScene line;
@@ -96,6 +96,10 @@ public partial class Card : Control
 	}
 
 	// -- DESCRIPTION --
+	public void SetDescOffsets(float top, float bot) {
+		descContainer.SetOffsets(top, bot);
+	}
+
 	public DescEffect AddEffect() {
 		var instance = effect.Instantiate();
 		instance.ChangeOwner(descContainer);

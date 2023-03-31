@@ -14,13 +14,13 @@ public partial class DescEffect : Control
             return;
         }
 
-        GD.Print("tes");
-
         var height = richText.Size.Y;
 
-        CustomMinimumSize = new Vector2(0, height + padding * 2);
+        CustomMinimumSize = Size = new Vector2(0, height + padding * 2);
 
-        richText.SetPosition(new Vector2(0, padding));
+        richText.Position = new Vector2(0, padding);
+
+        richText.Size = new Vector2(richText.Size.X, 0);
     }
 
     public void SetText(string text) {

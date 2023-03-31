@@ -1,19 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://d20xnxqu2phjl"]
+[gd_scene load_steps=17 format=3 uid="uid://d20xnxqu2phjl"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
-[ext_resource type="PackedScene" uid="uid://du3dtmppeclx1" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
+[ext_resource type="PackedScene" uid="uid://n7xbn3fngnic" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
-[ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="6_awvw3"]
+[ext_resource type="PackedScene" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="8_3vw2m"]
 [ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
 [ext_resource type="PackedScene" uid="uid://b26bl0p56pr6d" path="res://scenes/card/scale_box.tscn" id="9_t1do6"]
 [ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="11_4x652"]
+[ext_resource type="Script" path="res://src/card/description/DescContainer.cs" id="11_sfr37"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArtChild.cs" id="12_6osh0"]
 [ext_resource type="FontFile" uid="uid://dpd3kb5vogiba" path="res://assets/fonts/EMM_text.ttf" id="12_q3kl2"]
-[ext_resource type="Texture2D" uid="uid://b4ytmwgj5xwog" path="res://assets/cards/__refs/fsp2-monstro_ii.png" id="13_5ltx1"]
+[ext_resource type="Texture2D" uid="uid://45apql2s4x6m" path="res://assets/cards/__refs/challenge-blank_canvas.jpg" id="15_jg76o"]
 
 [sub_resource type="FontVariation" id="FontVariation_d71go"]
 base_font = ExtResource("12_q3kl2")
@@ -272,6 +273,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 0
 alignment = 1
+script = ExtResource("11_sfr37")
 
 [node name="SoulIcon" type="TextureRect" parent="FGLayer" node_paths=PackedStringArray("scaleBox")]
 layout_mode = 0
@@ -320,6 +322,7 @@ canResetScale = true
 canResetPosition = true
 
 [node name="ScaleBox" parent="FGLayer/DiffIcon" instance=ExtResource("9_t1do6")]
+layout_mode = 0
 
 [node name="Credits" type="RichTextLabel" parent="FGLayer"]
 modulate = Color(1, 1, 1, 0.498039)
@@ -351,4 +354,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("13_5ltx1")
+texture = ExtResource("15_jg76o")
