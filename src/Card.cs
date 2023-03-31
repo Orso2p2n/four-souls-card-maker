@@ -40,13 +40,13 @@ public partial class Card : Control
 	[Export] Label characterAtk;
 
 	[ExportGroup("Art")]
-	[Export] TextureRect art;
-	[Export] TextureRect topArt;
+	[Export] MoveableArt art;
+	[Export] MoveableArtChild topArt;
 
 	[ExportGroup("Icons")]
-	[Export] TextureRect soulIcon;
-	[Export] TextureRect setIcon;
-	[Export] TextureRect diffIcon;
+	[Export] MoveableArt soulIcon;
+	[Export] MoveableArt setIcon;
+	[Export] MoveableArt diffIcon;
 
 	// Signals
 	[Signal] public delegate void SelectedArtChangedEventHandler(MoveableArt art = null);
@@ -136,10 +136,10 @@ public partial class Card : Control
 	// -- ART --
 	public void SetArt(Texture2D texture, bool top = false) {
 		if (top) {
-			topArt.Texture = texture;
+			topArt.SetTexture(texture);
 		}
 		else {
-			art.Texture = texture;
+			art.SetTexture(texture);
 		}
 	}
 
@@ -176,26 +176,26 @@ public partial class Card : Control
 
 	// -- MISC ICONS --
 	public void SetSoulIcon(SoulIcon soulIcon) {
-		this.soulIcon.Texture = soulIcon.texture;
+		this.soulIcon.SetTexture(soulIcon.texture);
 	}
 
 	public void SetCustomSoulIcon(Texture2D texture) {
-		soulIcon.Texture = texture;
+		soulIcon.SetTexture(texture);
 	}
 
 	public void SetSetIcon(SetIcon setIcon) {
-		this.setIcon.Texture = setIcon.texture;
+		this.setIcon.SetTexture(setIcon.texture);
 	}
 
 	public void SetCustomSetIcon(Texture2D texture) {
-		setIcon.Texture = texture;
+		setIcon.SetTexture(texture);
 	}
 
 	public void SetDifficultyIcon(DifficultyIcon diffIcon) {
-		this.diffIcon.Texture = diffIcon.texture;
+		this.diffIcon.SetTexture(diffIcon.texture);
 	}
 
 	public void SetCustomDifficultyIcon(Texture2D texture) {
-		diffIcon.Texture = texture;
+		diffIcon.SetTexture(texture);
 	}
 }

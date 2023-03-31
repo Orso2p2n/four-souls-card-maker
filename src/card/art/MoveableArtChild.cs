@@ -1,16 +1,14 @@
 using Godot;
 using System;
 
-public partial class MoveableArtChild : TextureRect
+public partial class MoveableArtChild : MoveableArtBase
 {
 	public MoveableArt parentArt;
 
 	bool selected;
 
-	public void SetTexture(Texture2D texture) {
-		Texture = texture;
-		
-		PivotOffset = Size / 2;
+	public override void PostSetTexture() {	
+		base.PostSetTexture();
 
 		if (parentArt.Texture == null) {
 			parentArt.Size = Size;

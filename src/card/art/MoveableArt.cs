@@ -1,15 +1,15 @@
 using Godot;
 using System;
 
-public partial class MoveableArt : TextureRect
+public partial class MoveableArt : MoveableArtBase
 {
 	// Exports
 	[Export] MoveableArtChild childArt;
 	[Export] ScaleBox scaleBox;
 	[Export] public float minScale = 0.1f;
 	[Export] public float maxScale = 1.5f;
-	[Export] public Vector2 minPos = new Vector2(-962f, -1312f);
-	[Export] public Vector2 maxPos = new Vector2(962f, 1312f);
+	[Export] public Vector2 baseMinPos = new Vector2(0f, 0f);
+	[Export] public Vector2 baseMaxPos = new Vector2(962f, 1312f);
 	[Export] public bool canResetScale;
 	[Export] public bool canResetPosition;
 	[Export] public bool canSetValue;
@@ -19,6 +19,10 @@ public partial class MoveableArt : TextureRect
 	[Signal] public delegate void ScaleChangedEventHandler(float scale);
 
 	public string value;
+
+	public Vector2 basePos;
+	public Vector2 minPos;
+	public Vector2 maxPos;
 
 	bool selected;
 	bool mouseIsDown;
@@ -34,10 +38,12 @@ public partial class MoveableArt : TextureRect
 			scaleBox.parentArt = this;
 			scaleBox.Visible = false;
 		}
+
+		basePos = Position;
 	}
 
 	public override void _Process(double delta) {
-		if (selected && childArt != null) {
+		if (selected) {
 			if (childArt != null) {
 				childArt.Position = Position;
 				childArt.Scale = Scale;
@@ -51,21 +57,25 @@ public partial class MoveableArt : TextureRect
 			}
 		}
 	}
+	
+	public override void PostSetTexture() {	
+		base.PostSetTexture();
 
-	public void SetTexture(Texture2D texture) {
-		Texture = texture;
-
-		PivotOffset = Size / 2;
+		var halfSize = GetRect().Size / 2;
+		minPos = baseMinPos - halfSize;
+		maxPos = baseMaxPos - halfSize;
 	}
 
 	public void Select() {
-		if (selected) return;
+		if (selected || Texture == null) return;
 
 		selected = true;
 
 		scaleBox.Visible = true;
 
 		Card.instance.OnSelectedArt(this);
+
+		return;
 	}
 
 	public void Deselect() {
@@ -89,9 +99,12 @@ public partial class MoveableArt : TextureRect
 
 					var rect = GetRect();
 					if (rect.HasPoint(mouseButtonEvent.Position)) {
-						movementOffset = mouseButtonEvent.Position - Position;
 						Select();
-						GetViewport().SetInputAsHandled();
+
+						if (selected) {
+							movementOffset = mouseButtonEvent.Position - Position;
+							GetViewport().SetInputAsHandled();
+						}
 					}
 					else {
 						Deselect();
@@ -139,5 +152,15 @@ public partial class MoveableArt : TextureRect
 		Scale = new Vector2(scale, scale);
 
 		EmitSignal(SignalName.ScaleChanged, scale);
+	}
+
+	public new Vector2 Position{
+		get{
+			return base.Position;
+		}
+
+		set {
+			base.Position = value;
+		} 
 	}
 }

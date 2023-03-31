@@ -9,9 +9,10 @@ public partial class PositionProps : SelectionProp
 	public override void HandleArtProperties(MoveableArt art) {
 		SetEnabled(art.canResetPosition);
 
+		var artPosition = art.Position;
 		SetSpinBoxesBounds(art.minPos, art.maxPos);
-		SetSpinBoxVal(xSpinBox, art.Position.X);
-		SetSpinBoxVal(ySpinBox, art.Position.Y);
+		SetSpinBoxVal(xSpinBox, artPosition.X);
+		SetSpinBoxVal(ySpinBox, artPosition.Y);
 	}
 
 	public override void ConnectSignals() {
@@ -48,10 +49,10 @@ public partial class PositionProps : SelectionProp
 	}
 
 	void OnResetXPressed() {
-		selectedArt.SetX(0);
+		selectedArt.SetX(selectedArt.basePos.X);
 	}
 
 	void OnResetYPressed() {
-		selectedArt.SetY(0);
+		selectedArt.SetY(selectedArt.basePos.Y);
 	}
 }
