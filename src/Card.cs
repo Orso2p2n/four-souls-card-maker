@@ -48,6 +48,9 @@ public partial class Card : Control
 	[Export] MoveableArt setIcon;
 	[Export] MoveableArt diffIcon;
 
+	[ExportGroup("Credits")]
+	[Export] RichTextLabel creditsLabel;
+
 	// Signals
 	[Signal] public delegate void SelectedArtChangedEventHandler(MoveableArt art = null);
 
@@ -60,6 +63,10 @@ public partial class Card : Control
 
 	public void SetTitle(string text) {
 		titleLabel.Text = "[center]" + text;
+	}
+
+	public void SetCredits(string text) {
+		creditsLabel.Text = "[right]" + text;
 	}
 
 	public void SetCardBackground(CardBackground cardBg) {

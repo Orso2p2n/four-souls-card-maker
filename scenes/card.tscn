@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d20xnxqu2phjl"]
+[gd_scene load_steps=16 format=3 uid="uid://d20xnxqu2phjl"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
@@ -10,10 +10,16 @@
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="8_3vw2m"]
 [ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
 [ext_resource type="PackedScene" uid="uid://b26bl0p56pr6d" path="res://scenes/card/scale_box.tscn" id="9_t1do6"]
+[ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="11_4x652"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArtChild.cs" id="12_6osh0"]
+[ext_resource type="FontFile" uid="uid://dpd3kb5vogiba" path="res://assets/fonts/EMM_text.ttf" id="12_q3kl2"]
 [ext_resource type="Texture2D" uid="uid://b4ytmwgj5xwog" path="res://assets/cards/__refs/fsp2-monstro_ii.png" id="13_5ltx1"]
 
-[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon")]
+[sub_resource type="FontVariation" id="FontVariation_d71go"]
+base_font = ExtResource("12_q3kl2")
+spacing_glyph = -2
+
+[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,6 +59,7 @@ topArt = NodePath("TopArt")
 soulIcon = NodePath("FGLayer/SoulIcon")
 setIcon = NodePath("FGLayer/SetIcon")
 diffIcon = NodePath("FGLayer/DiffIcon")
+creditsLabel = NodePath("FGLayer/Credits")
 
 [node name="BGLayer" type="Control" parent="."]
 layout_mode = 1
@@ -313,6 +320,19 @@ canResetScale = true
 canResetPosition = true
 
 [node name="ScaleBox" parent="FGLayer/DiffIcon" instance=ExtResource("9_t1do6")]
+
+[node name="Credits" type="RichTextLabel" parent="FGLayer"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 0
+offset_left = 98.0
+offset_top = 1220.0
+offset_right = 875.0
+offset_bottom = 1260.0
+theme = ExtResource("11_4x652")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_d71go")
+theme_override_font_sizes/normal_font_size = 34
+bbcode_enabled = true
 
 [node name="TopArt" type="TextureRect" parent="."]
 layout_mode = 2

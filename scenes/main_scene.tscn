@@ -158,8 +158,8 @@ cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("6_5ii8c"), Ext
 
 [node name="BackgroundLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 648.0
-offset_right = 792.0
+offset_left = 672.0
+offset_right = 820.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Foreground"
@@ -167,9 +167,9 @@ vertical_alignment = 1
 
 [node name="BackgroundMenu" type="OptionButton" parent="Type"]
 layout_mode = 0
-offset_left = 216.0
+offset_left = 224.0
 offset_top = 40.0
-offset_right = 416.0
+offset_right = 424.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("12_1a41u")
@@ -177,8 +177,8 @@ customIcon = ExtResource("12_3ngn0")
 
 [node name="ForegroundLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 216.0
-offset_right = 360.0
+offset_left = 224.0
+offset_right = 375.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Background"
@@ -186,9 +186,9 @@ vertical_alignment = 1
 
 [node name="ForegroundMenu" type="OptionButton" parent="Type"]
 layout_mode = 0
-offset_left = 648.0
+offset_left = 672.0
 offset_top = 40.0
-offset_right = 848.0
+offset_right = 872.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("14_e3u8i")
@@ -196,8 +196,8 @@ customIcon = ExtResource("14_2syo5")
 
 [node name="BorderLabel" type="Label" parent="Type"]
 layout_mode = 0
-offset_left = 432.0
-offset_right = 576.0
+offset_left = 448.0
+offset_right = 592.0
 offset_bottom = 40.0
 theme = ExtResource("3_7sxfo")
 text = "Border"
@@ -205,9 +205,9 @@ vertical_alignment = 1
 
 [node name="BorderMenu" type="OptionButton" parent="Type"]
 layout_mode = 0
-offset_left = 432.0
+offset_left = 448.0
 offset_top = 40.0
-offset_right = 632.0
+offset_right = 648.0
 offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 script = ExtResource("16_71ows")
@@ -237,6 +237,31 @@ offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Title..."
+
+[node name="Credit" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 296.0
+offset_right = 520.0
+offset_bottom = 296.0
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Credit"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Credits"
+vertical_alignment = 1
+
+[node name="TitleEdit" type="LineEdit" parent="Credit"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+placeholder_text = "Enter Credits..."
 
 [node name="Desc" type="Control" parent="."]
 anchors_preset = 0
@@ -609,9 +634,9 @@ default_color = Color(1, 1, 1, 0.498039)
 [node name="Value" type="Control" parent="SelectedProps" node_paths=PackedStringArray("lineEdit")]
 anchors_preset = 0
 offset_left = 344.0
-offset_top = 8.0
+offset_top = 48.0
 offset_right = 344.0
-offset_bottom = 8.0
+offset_bottom = 48.0
 script = ExtResource("28_chj7t")
 lineEdit = NodePath("ResetButton")
 
@@ -624,6 +649,7 @@ placeholder_text = "value..."
 alignment = 1
 
 [connection signal="text_changed" from="Title/TitleEdit" to="CardPreview/CardViewport/Card" method="SetTitle"]
+[connection signal="text_changed" from="Credit/TitleEdit" to="CardPreview/CardViewport/Card" method="SetCredits"]
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]
