@@ -17,6 +17,8 @@ public partial class SwappableList : VBoxContainer
 		{"Placeholder", new PackedScene()}
 	};
 
+	[Signal] public delegate void ListChangedEventHandler();
+
 	public override void _Ready() {
 		base._Ready();
 	}
@@ -132,28 +134,7 @@ public partial class SwappableList : VBoxContainer
 		foreach (var child in GetChildren()) {
 			(child as SwappableItem).OnListRearranged();
 		}
+
+		EmitSignal(SignalName.ListChanged);
 	}
-
-	// public override void _Input(InputEvent @event) {
-    //     base._Input(@event);
-		
-		
-
-	// 	var children = GetChildren();
-	// 	foreach (var child in children) {
-	// 		child._Input(@event);
-	// 	}
-	// }
-
-    public override void _UnhandledInput(InputEvent @event) {
-        base._UnhandledInput(@event);
-
-		// GD.Print(@event);
-
-		// Input.ParseInputEvent(@event);
-
-		// foreach (var child in this.GetAllChildren()) {
-		// 	(child as Control)._GuiInput(@event);
-		// }
-    }
 }

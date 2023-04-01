@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmjoo3qjjk8gy"]
-
-[ext_resource type="PackedScene" uid="uid://dnx2nfvp3qrn2" path="res://scenes/card/line.tscn" id="1_si7l2"]
-
-[node name="LineLight" instance=ExtResource("1_si7l2")]
-modulate = Color(1, 1, 1, 0.498039)

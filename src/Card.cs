@@ -103,13 +103,18 @@ public partial class Card : Control
 	public DescEffect AddEffect() {
 		var instance = effect.Instantiate();
 		instance.ChangeOwner(descContainer);
+		var descEffect = instance as DescEffect;
+		// descEffect.SetText("edit effect...");
+		descContainer.OnAddText(descEffect);
 
 		return (instance as DescEffect);
 	}
 
 	public DescEffect AddLore() {
 		var instance = lore.Instantiate();
-		instance.ChangeOwner(descContainer);
+		var descEffect = instance as DescEffect;
+		// descEffect.SetText("edit lore...");
+		descContainer.OnAddText(descEffect);
 
 		return (instance as DescEffect);
 	}
@@ -132,7 +137,7 @@ public partial class Card : Control
             case "Monster": 
                 monsterStatsContainer.Visible = true;
 				monsterHp.Text = hp.ToString();
-				monsterDice.Text = dice.ToString() + ((dice < 6) ? "+" : "");
+				monsterDice.Text = dice.ToString() + ((dice > 0 && dice < 6) ? "+" : " ");
 				monsterAtk.Text = atk.ToString();
                 break;
 

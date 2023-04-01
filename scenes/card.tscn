@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
 [ext_resource type="PackedScene" uid="uid://n7xbn3fngnic" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
-[ext_resource type="PackedScene" path="res://scenes/card/line.tscn" id="6_awvw3"]
+[ext_resource type="PackedScene" uid="uid://dve7q1d6oh65i" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="8_3vw2m"]
@@ -355,3 +355,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_jg76o")
+
+[connection signal="resized" from="FGLayer/DescriptionContainer" to="FGLayer/DescriptionContainer" method="OnResized"]

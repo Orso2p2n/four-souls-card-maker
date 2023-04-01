@@ -30,9 +30,8 @@ offset_right = 460.0
 offset_bottom = 38.0
 scale = Vector2(0.85, 0.85)
 theme = ExtResource("4_j82lo")
-min_value = -25.0
-max_value = 25.0
-value = 4.0
+min_value = -50.0
+max_value = 50.0
 alignment = 1
 prefix = "p:"
 

@@ -12,10 +12,8 @@ richText = NodePath("RichText")
 [node name="RichText" type="RichTextLabel" parent="."]
 clip_contents = false
 layout_mode = 2
-offset_top = -8.0
 offset_right = 746.0
-offset_bottom = 59.0
 theme = ExtResource("1_tfnax")
 bbcode_enabled = true
-text = "[center]edit effect..."
+text = "[center]"
 fit_content = true

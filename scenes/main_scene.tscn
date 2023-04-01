@@ -385,7 +385,6 @@ offset_right = 112.0
 offset_bottom = 32.0
 scale = Vector2(1.25, 1.25)
 theme = ExtResource("3_7sxfo")
-min_value = 1.0
 max_value = 6.0
 value = 4.0
 alignment = 1

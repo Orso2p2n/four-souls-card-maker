@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://cha3p5sp7psp8"]
 
 [ext_resource type="PackedScene" uid="uid://cdbcctgdx1gyk" path="res://scenes/ui/swappable_list/swappable_item.tscn" id="1_31v7r"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableSeparator.cs" id="2_3jdjo"]

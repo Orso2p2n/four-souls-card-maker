@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dve7q1d6oh65i"]
 
 [ext_resource type="Texture2D" uid="uid://dghi3y5itp211" path="res://assets/cards/_icons/line.png" id="1_3puvh"]
 [ext_resource type="Script" path="res://src/card/description/DescLine.cs" id="2_1p1ud"]
 
 [node name="Line" type="TextureRect"]
+offset_right = 545.0
+offset_bottom = 11.0
+size_flags_horizontal = 4
 texture = ExtResource("1_3puvh")
 stretch_mode = 3
 script = ExtResource("2_1p1ud")
