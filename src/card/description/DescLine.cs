@@ -20,7 +20,8 @@ public partial class DescLine : Control
         Size = baseSize + new Vector2(0, padding);
     }
 
-    public void SetState(bool light) {
-        Modulate = new Color(1.0f, 1.0f, 1.0f, light ? 0.5f : 1.0f);
+    public void SetAlpha(float alpha) {
+        Visible = true;
+        Modulate = new Color(1.0f, 1.0f, 1.0f, alpha);
     }
 }

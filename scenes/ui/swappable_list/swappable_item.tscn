@@ -1,9 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdbcctgdx1gyk"]
+[gd_scene load_steps=10 format=3 uid="uid://cdbcctgdx1gyk"]
 
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableItem.cs" id="1_mvk4m"]
 [ext_resource type="Texture2D" uid="uid://c1yxo7npv4em4" path="res://assets/icons/list.png" id="2_j7yu3"]
-[ext_resource type="Texture2D" uid="uid://c50800qsqapu5" path="res://assets/icons/trash.png" id="3_3md0r"]
+[ext_resource type="Texture2D" uid="uid://cxcah7vfcris8" path="res://assets/icons/padding18.png" id="4_3c1w3"]
+[ext_resource type="Script" path="res://src/ui/swappable_list/SettingsButton.cs" id="4_evnf4"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="4_j82lo"]
+[ext_resource type="Texture2D" uid="uid://ctm4jbvuwkq71" path="res://assets/icons/trash18.png" id="4_th12k"]
+[ext_resource type="Texture2D" uid="uid://dpfrleaqrltim" path="res://assets/icons/dropdown12.png" id="5_j2cly"]
+[ext_resource type="Texture2D" uid="uid://uadgv7j1k463" path="res://assets/icons/settings18.png" id="6_mvv3g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhnhu"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.647059, 0.647059, 0.647059, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "content")]
 custom_minimum_size = Vector2(0, 32)
@@ -18,30 +38,90 @@ content = NodePath("TrashButton")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 448.0
+offset_right = 400.0
 offset_bottom = 32.0
 icon = ExtResource("2_j7yu3")
 
-[node name="PaddingEdit" type="SpinBox" parent="Button"]
-clip_contents = true
+[node name="SettingsButton" type="Button" parent="." node_paths=PackedStringArray("popupMenu")]
 layout_mode = 0
-offset_left = 384.0
-offset_right = 460.0
-offset_bottom = 38.0
-scale = Vector2(0.85, 0.85)
+offset_left = 400.0
+offset_right = 440.0
+offset_bottom = 32.0
+theme = ExtResource("4_j82lo")
+icon_alignment = 2
+script = ExtResource("4_evnf4")
+popupMenu = NodePath("SettingsPanel")
+
+[node name="SettingsPanel" type="Panel" parent="SettingsButton"]
+visible = false
+top_level = true
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhnhu")
+
+[node name="SettingsList" type="VBoxContainer" parent="SettingsButton/SettingsPanel"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 32.0
+theme_override_constants/separation = 0
+
+[node name="PaddingEdit" type="SpinBox" parent="SettingsButton/SettingsPanel/SettingsList"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme = ExtResource("4_j82lo")
 min_value = -50.0
 max_value = 50.0
-alignment = 1
-prefix = "p:"
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="SettingsButton/SettingsPanel/SettingsList/PaddingEdit"]
+layout_mode = 0
+offset_left = 7.05884
+offset_top = 7.05883
+offset_right = 25.0588
+offset_bottom = 25.0588
+mouse_filter = 2
+texture = ExtResource("4_3c1w3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="SettingsButton/SettingsPanel/SettingsList/PaddingEdit"]
+modulate = Color(0.666667, 0.666667, 0.666667, 1)
+layout_mode = 0
+offset_left = 29.0
+offset_right = 112.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 15
+text = "padding"
+vertical_alignment = 1
+
+[node name="SettingsIcon" type="TextureRect" parent="SettingsButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 21.0
+offset_bottom = 25.0
+mouse_filter = 2
+texture = ExtResource("6_mvv3g")
+
+[node name="DropdownIcon" type="TextureRect" parent="SettingsButton"]
+modulate = Color(0.643137, 0.643137, 0.643137, 1)
+layout_mode = 0
+offset_left = 26.0
+offset_top = 10.0
+offset_right = 38.0
+offset_bottom = 22.0
+mouse_filter = 2
+texture = ExtResource("5_j2cly")
 
 [node name="TrashButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 448.0
+offset_left = 440.0
 offset_right = 472.0
 offset_bottom = 32.0
-icon = ExtResource("3_3md0r")
+icon = ExtResource("4_th12k")
 icon_alignment = 1
 
 [connection signal="button_down" from="Button" to="." method="OnButtonDown"]
+[connection signal="pressed" from="SettingsButton" to="SettingsButton" method="OnPressed"]
 [connection signal="pressed" from="TrashButton" to="." method="Trash"]

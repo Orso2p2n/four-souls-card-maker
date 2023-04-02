@@ -1,48 +1,121 @@
-[gd_scene load_steps=4 format=3 uid="uid://ehxehyyyujny"]
+[gd_scene load_steps=7 format=3 uid="uid://ehxehyyyujny"]
 
 [ext_resource type="PackedScene" uid="uid://cdbcctgdx1gyk" path="res://scenes/ui/swappable_list/swappable_item.tscn" id="1_ir1x0"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableEffect.cs" id="2_xcp53"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_wba1f"]
+[ext_resource type="Texture2D" uid="uid://cpghn86qvdyia" path="res://assets/icons/scale18.png" id="4_j3n85"]
+[ext_resource type="Texture2D" uid="uid://che03rn3frvj6" path="res://assets/icons/linespacing18.png" id="5_euskh"]
+[ext_resource type="Texture2D" uid="uid://b3irwgj3uqret" path="res://assets/icons/charspacing18.png" id="6_fh10d"]
 
 [node name="SwappableEffect" node_paths=PackedStringArray("content") instance=ExtResource("1_ir1x0")]
 custom_minimum_size = Vector2(0, 48)
 script = ExtResource("2_xcp53")
 content = NodePath("Button/TextEdit")
 
-[node name="Button" parent="." index="0"]
-offset_bottom = 48.0
-
 [node name="TextEdit" type="TextEdit" parent="Button" index="0"]
 layout_mode = 0
 offset_left = 16.0
-offset_right = 384.0
-offset_bottom = 48.0
+offset_right = 400.0
+offset_bottom = 32.0
 theme = ExtResource("3_wba1f")
 theme_override_constants/line_spacing = -4
 placeholder_text = "Edit Effect..."
 wrap_mode = 1
 scroll_fit_content_height = true
 
-[node name="ScalingEdit" type="SpinBox" parent="Button" index="1"]
+[node name="SettingsPanel" parent="SettingsButton" index="0"]
+offset_bottom = 128.0
+
+[node name="ScalingEdit" type="SpinBox" parent="SettingsButton/SettingsPanel/SettingsList" index="1"]
 clip_contents = true
-layout_mode = 0
-offset_left = 384.0
-offset_top = 24.0
-offset_right = 460.0
-offset_bottom = 52.0
-scale = Vector2(0.85, 0.85)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 theme = ExtResource("3_wba1f")
 min_value = 0.1
 max_value = 2.0
 step = 0.05
 value = 1.0
-alignment = 1
-prefix = "s:"
+alignment = 2
 
-[node name="PaddingEdit" parent="Button" index="2"]
-offset_bottom = 28.0
+[node name="TextureRect" type="TextureRect" parent="SettingsButton/SettingsPanel/SettingsList/ScalingEdit" index="2"]
+layout_mode = 0
+offset_left = 7.05884
+offset_top = 7.05883
+offset_right = 25.0588
+offset_bottom = 25.0588
+mouse_filter = 2
+texture = ExtResource("4_j3n85")
+expand_mode = 1
 
-[node name="TrashButton" parent="." index="1"]
-offset_bottom = 48.0
+[node name="Label" type="Label" parent="SettingsButton/SettingsPanel/SettingsList/ScalingEdit" index="3"]
+modulate = Color(0.666667, 0.666667, 0.666667, 1)
+layout_mode = 0
+offset_left = 29.0
+offset_right = 112.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 15
+text = "scale"
+vertical_alignment = 1
+
+[node name="LineSpacingEdit" type="SpinBox" parent="SettingsButton/SettingsPanel/SettingsList" index="2"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_wba1f")
+min_value = -10.0
+max_value = 10.0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="SettingsButton/SettingsPanel/SettingsList/LineSpacingEdit" index="2"]
+layout_mode = 0
+offset_left = 7.05884
+offset_top = 7.05883
+offset_right = 25.0588
+offset_bottom = 25.0588
+mouse_filter = 2
+texture = ExtResource("5_euskh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="SettingsButton/SettingsPanel/SettingsList/LineSpacingEdit" index="3"]
+modulate = Color(0.666667, 0.666667, 0.666667, 1)
+layout_mode = 0
+offset_left = 29.0
+offset_right = 112.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 15
+text = "spacing"
+vertical_alignment = 1
+
+[node name="CharSpacingEdit" type="SpinBox" parent="SettingsButton/SettingsPanel/SettingsList" index="3"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_wba1f")
+min_value = -3.0
+max_value = 3.0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="SettingsButton/SettingsPanel/SettingsList/CharSpacingEdit" index="2"]
+layout_mode = 0
+offset_left = 7.05884
+offset_top = 7.05883
+offset_right = 25.0588
+offset_bottom = 25.0588
+mouse_filter = 2
+texture = ExtResource("6_fh10d")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="SettingsButton/SettingsPanel/SettingsList/CharSpacingEdit" index="3"]
+modulate = Color(0.666667, 0.666667, 0.666667, 1)
+layout_mode = 0
+offset_left = 29.0
+offset_right = 112.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 15
+text = "spacing"
+vertical_alignment = 1
+
+[node name="DropdownIcon" parent="SettingsButton" index="2"]
+pivot_offset = Vector2(6, 6)
 
 [connection signal="text_changed" from="Button/TextEdit" to="." method="OnTextChanged"]

@@ -19,8 +19,10 @@ public partial class SwappableSeparator : SwappableItem
     }
 
     void OnItemSelected(int index) {
-        var light = (index == 1);
-
-        descLine.SetState(light);
+        switch (index) {
+            case 0 : descLine.SetAlpha(1.0f); break;
+            case 1 : descLine.SetAlpha(0.5f); break;
+            case 2 : descLine.SetAlpha(0.0f); break;
+        }
     }
 }
