@@ -112,6 +112,7 @@ public partial class Card : Control
 
 	public DescEffect AddLore() {
 		var instance = lore.Instantiate();
+		instance.ChangeOwner(descContainer);
 		var descEffect = instance as DescEffect;
 		// descEffect.SetText("edit lore...");
 		descContainer.OnAddText(descEffect);

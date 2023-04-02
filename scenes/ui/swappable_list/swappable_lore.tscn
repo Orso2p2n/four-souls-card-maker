@@ -1,17 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://br12yhwkymu7a"]
+[gd_scene load_steps=3 format=3 uid="uid://bmsm5hm13dbm8"]
 
 [ext_resource type="PackedScene" uid="uid://ehxehyyyujny" path="res://scenes/ui/swappable_list/swappable_effect.tscn" id="1_v66e8"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableLore.cs" id="2_pwlw3"]
 
-[node name="SwappableLore" instance=ExtResource("1_v66e8")]
+[node name="SwappableEffect" instance=ExtResource("1_v66e8")]
 script = ExtResource("2_pwlw3")
 
 [node name="TextEdit" parent="Button" index="0"]
 theme_override_colors/font_color = Color(0.447059, 0.447059, 0.447059, 1)
 placeholder_text = "Edit Lore..."
-
-[node name="SettingsPanel" parent="SettingsButton" index="0"]
-offset_right = 72.0
-
-[node name="SettingsList" parent="SettingsButton/SettingsPanel" index="0"]
-offset_right = 72.0

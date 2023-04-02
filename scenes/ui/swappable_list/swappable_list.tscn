@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableList.cs" id="1_f1g13"]
 [ext_resource type="PackedScene" uid="uid://ehxehyyyujny" path="res://scenes/ui/swappable_list/swappable_effect.tscn" id="2_q6jif"]
-[ext_resource type="PackedScene" uid="uid://br12yhwkymu7a" path="res://scenes/ui/swappable_list/swappable_lore.tscn" id="3_1m4yr"]
+[ext_resource type="PackedScene" uid="uid://bmsm5hm13dbm8" path="res://scenes/ui/swappable_list/swappable_lore.tscn" id="3_1m4yr"]
 [ext_resource type="PackedScene" uid="uid://c1dokmj7gvk55" path="res://scenes/ui/swappable_list/placeholder.tscn" id="3_5h6v4"]
-[ext_resource type="PackedScene" path="res://scenes/ui/swappable_list/swappable_separator.tscn" id="5_tfe6j"]
+[ext_resource type="PackedScene" uid="uid://cha3p5sp7psp8" path="res://scenes/ui/swappable_list/swappable_separator.tscn" id="5_tfe6j"]
 
 [node name="SwappableList" type="VBoxContainer"]
 mouse_filter = 2
