@@ -12,6 +12,8 @@ public partial class DescContainer : VBoxContainer
 	Vector2 targetPos;
 	Vector2 targetSize;
 
+	Vector2 oldSize;
+
 	float curTextScale = 1.0f;
 
 	bool isCurrentlyFittingChildren = false;
@@ -19,6 +21,7 @@ public partial class DescContainer : VBoxContainer
 	public override void _Ready() {
 		initialPos = Position;
 		initialSize = Size;
+		oldSize = Size;
 	}
 
 	public override void _Process(double delta) {
@@ -44,43 +47,67 @@ public partial class DescContainer : VBoxContainer
 
 
 	public void OnResized() {
+		var middlePoint = targetSize.Y / 2;
+		Position = targetPos + new Vector2(0, middlePoint - Size.Y/2);
+
 		if (isCurrentlyFittingChildren) {
 			EmitSignal(SignalName.ResizedWhileFittingChildren);
 			return;
 		}
 
 		UpdateChildrenFit();
-		var middlePoint = targetSize.Y / 2;
-		Position = targetPos + new Vector2(0, middlePoint - Size.Y/2);
+
+		oldSize = Size;
 	}
 
 	async void UpdateChildrenFit() {
 		if (Size.Y <= targetSize.Y) {
+			if (curTextScale >= 1 || Size.Y > oldSize.Y) {
+				return;
+			}
+
+			isCurrentlyFittingChildren = true;
+
+			var i = 0;
+			while (curTextScale < 1 && i < 99) {
+				var oldTextScale = curTextScale;
+
+				curTextScale += 0.05f;
+
+				ResizeAllTexts();
+				ResetHeight();
+
+				await ToSignal(this, "sort_children");
+
+				if (Size.Y > targetSize.Y) {
+					curTextScale = oldTextScale;
+					ResizeAllTexts();
+					ResetHeight();
+
+					await ToSignal(this, "sort_children");
+
+					break;
+				}
+
+				i++;
+			}
+
+			isCurrentlyFittingChildren = false;
 			return;
 		}
 
 		isCurrentlyFittingChildren = true;
 
-		GD.Print("children bigger than desccontainer");
-
-		var lines = GetLineChildren();
-		var texts = GetTextChildren();
-
-		var i = 0;
-		while (Size.Y > targetSize.Y && i < 99) {
+		var j = 0;
+		while (Size.Y > targetSize.Y && j < 99) {
 			curTextScale -= 0.05f;
 
-			foreach (var text in texts) {
-				text.SetSystemScale(curTextScale);
-			}
-
+			ResizeAllTexts();
 			ResetHeight();
 
 			await ToSignal(this, "sort_children");
 
-			// ResetHeight();
-
-			i++;
+			j++;
 		}
 
 		isCurrentlyFittingChildren = false;
@@ -108,5 +135,12 @@ public partial class DescContainer : VBoxContainer
 		}
 
 		return descLines;
+	}
+
+	void ResizeAllTexts() {
+		var texts = GetTextChildren();
+		foreach (var text in texts) {
+			text.SetSystemScale(curTextScale);
+		}
 	}
 }
