@@ -16,12 +16,18 @@ public partial class DescEffect : DescBase
 	int baseLineSpacing;
 	public int lineSpacingDelta;
 
+	FontVariation fontVar;
+	public int characterSpacing;
+
 	public override void _Ready() {
 		base._Ready();
 
 		baseFontSize = richText.GetThemeFontSize("normal_font_size");
 		baseLineSpacing = richText.GetThemeConstant("line_separation");
 		baseWidth = richText.Size.X;
+
+		var font = richText.GetThemeFont("normal_font").Duplicate();
+		fontVar = (FontVariation) font;
 	}
 
 	public override void _Process(double delta) {
@@ -74,12 +80,21 @@ public partial class DescEffect : DescBase
 		ResetRichTextSize();
 	}
 
+	public void SetCharacterSpacing(int value) {
+		characterSpacing = value;
+
+		ResetRichTextSize();
+	}
+
 	public void ResetRichTextSize() {
         var curFontSize = (int) (baseFontSize * userScale * systemScale);
         richText.AddThemeFontSizeOverride("normal_font_size", curFontSize);
 
 		var curLineSpacing = baseLineSpacing + lineSpacingDelta;
         richText.AddThemeConstantOverride("line_separation", curLineSpacing);
+
+		fontVar.SpacingGlyph = characterSpacing;
+        richText.AddThemeFontOverride("normal_font", fontVar);
 
         richText.Size = new Vector2(baseWidth * boundsMul, 0);
 

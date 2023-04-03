@@ -63,4 +63,8 @@ public partial class SwappableEffect : SwappableItem
     public void OnLineSpacingChanged(float value) {
         ((DescEffect) descCorrespondant).SetLineSpacing((int) value);
     }
+
+    public void OnCharSpacingChanged(float value) {
+        ((DescEffect) descCorrespondant).SetCharacterSpacing((int) value);
+    }
 }

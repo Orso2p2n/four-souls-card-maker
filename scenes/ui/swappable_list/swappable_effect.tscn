@@ -125,8 +125,8 @@ clip_contents = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("3_wba1f")
-min_value = -3.0
-max_value = 3.0
+min_value = -20.0
+max_value = 20.0
 alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="SettingsButton/SettingsPanel/SettingsList/CharSpacingEdit" index="2"]
@@ -153,3 +153,4 @@ vertical_alignment = 1
 [connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/ScalingEdit" to="." method="OnScaleChanged"]
 [connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/WidthEdit" to="." method="OnBoundsChanged"]
 [connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/LineSpacingEdit" to="." method="OnLineSpacingChanged"]
+[connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/CharSpacingEdit" to="." method="OnCharSpacingChanged"]
