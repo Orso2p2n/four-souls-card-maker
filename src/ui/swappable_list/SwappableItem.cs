@@ -5,13 +5,14 @@ public partial class SwappableItem : Control
 {
     [Export] public Button button;
     [Export] public Button trashButton;
+    [Export] public Button settingsButton;
     [Export] public Control content;
 
     public SwappableList list;
 
     public bool buttonDown;
 
-    public Control descCorrespondant;
+    public DescBase descCorrespondant;
 
     public override void _Ready() {
         base._Ready();
@@ -19,7 +20,7 @@ public partial class SwappableItem : Control
         descCorrespondant = CreateDescCorrespondant();
     }
 
-    public virtual Control CreateDescCorrespondant() {
+    public virtual DescBase CreateDescCorrespondant() {
         return null;
     }
 
@@ -34,13 +35,14 @@ public partial class SwappableItem : Control
     }
 
     public void ResizeItem() {
-        if (button == null || content == null || trashButton == null) {
+        if (button == null || content == null || trashButton == null || settingsButton == null) {
             return;
         }
 
         if (button.Size.Y != content.Size.Y) {
             button.Size = new Vector2(button.Size.X, content.Size.Y);
             trashButton.Size = new Vector2(trashButton.Size.X, content.Size.Y);
+            settingsButton.Size = new Vector2(settingsButton.Size.X, content.Size.Y);
         }
 
         CustomMinimumSize = content.Size;
@@ -105,5 +107,10 @@ public partial class SwappableItem : Control
         
         GetParent().RemoveChild(this);
 		Dispose();
+    }
+
+    // Settings
+    public void OnPaddingChanged(float value) {
+        descCorrespondant.SetPadding((int) value);
     }
 }

@@ -103,8 +103,9 @@ public partial class Card : Control
 	public DescEffect AddEffect() {
 		var instance = effect.Instantiate();
 		instance.ChangeOwner(descContainer);
+
 		var descEffect = instance as DescEffect;
-		// descEffect.SetText("edit effect...");
+		descEffect.container = descContainer;
 		descContainer.OnAddText(descEffect);
 
 		return (instance as DescEffect);
@@ -113,8 +114,9 @@ public partial class Card : Control
 	public DescEffect AddLore() {
 		var instance = lore.Instantiate();
 		instance.ChangeOwner(descContainer);
+
 		var descEffect = instance as DescEffect;
-		// descEffect.SetText("edit lore...");
+		descEffect.container = descContainer;
 		descContainer.OnAddText(descEffect);
 
 		return (instance as DescEffect);
@@ -124,7 +126,10 @@ public partial class Card : Control
 		var instance = line.Instantiate();
 		instance.ChangeOwner(descContainer);
 
-		return (instance as DescLine);
+		var descLine = instance as DescLine;
+		descLine.container = descContainer;
+
+		return descLine;
 	}
 
 	// -- STATS --

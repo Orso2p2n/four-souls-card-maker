@@ -2,10 +2,8 @@ using Godot;
 using System;
 
 [Tool]
-public partial class DescLine : Control
+public partial class DescLine : DescBase
 {
-    [Export] public int padding;
-
     Vector2 baseSize;
 
     public override void _Ready() {
@@ -17,7 +15,7 @@ public partial class DescLine : Control
     public override void _Process(double delta) {
         base._Process(delta);
 
-        Size = baseSize + new Vector2(0, padding);
+        CustomMinimumSize = Size = baseSize + new Vector2(0, padding);
     }
 
     public void SetAlpha(float alpha) {

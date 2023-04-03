@@ -16,7 +16,7 @@ public partial class SwappableEffect : SwappableItem
         textEdit = content as TextEdit;
     }
 
-    public override Control CreateDescCorrespondant() {
+    public override DescBase CreateDescCorrespondant() {
         descEffect = Card.instance.AddEffect();
         return descEffect;
     }

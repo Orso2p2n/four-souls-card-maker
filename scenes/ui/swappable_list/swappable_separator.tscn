@@ -35,4 +35,7 @@ popup/item_1/id = 1
 popup/item_2/text = "empty"
 popup/item_2/id = 2
 
+[node name="PaddingEdit" parent="SettingsButton/SettingsPanel/SettingsList" index="0"]
+min_value = 0.0
+
 [connection signal="item_selected" from="Button/LineSelection" to="." method="OnItemSelected"]

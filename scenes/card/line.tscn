@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://src/card/description/DescLine.cs" id="2_1p1ud"]
 
 [node name="Line" type="TextureRect"]
+custom_minimum_size = Vector2(545, 11)
 offset_right = 545.0
 offset_bottom = 11.0
 size_flags_horizontal = 4

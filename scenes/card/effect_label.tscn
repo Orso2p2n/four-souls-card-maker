@@ -11,7 +11,7 @@ richText = NodePath("RichText")
 
 [node name="RichText" type="RichTextLabel" parent="."]
 clip_contents = false
-layout_mode = 2
+layout_mode = 1
 offset_right = 746.0
 theme = ExtResource("1_tfnax")
 bbcode_enabled = true

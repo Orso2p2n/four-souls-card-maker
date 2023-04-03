@@ -6,4 +6,4 @@
 
 [node name="RichText" parent="." index="0"]
 theme_override_colors/default_color = Color(0.447059, 0.447059, 0.447059, 1)
-text = ""
+text = "[center]"

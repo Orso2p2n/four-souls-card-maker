@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class DescContainer : VBoxContainer
 {
@@ -16,7 +17,7 @@ public partial class DescContainer : VBoxContainer
 
 	float curTextScale = 1.0f;
 
-	bool isCurrentlyFittingChildren = false;
+	public bool isCurrentlyFittingChildren = false;
 
 	public override void _Ready() {
 		initialPos = Position;
@@ -41,8 +42,9 @@ public partial class DescContainer : VBoxContainer
 		addedText.SetSystemScale(curTextScale);
 	}
 
-	void ResetHeight() {
+	async Task ResetHeight() {
 		Size = new Vector2(targetSize.X, 0);
+		await ToSignal(this, "sort_children");
 	}
 
 
@@ -75,16 +77,14 @@ public partial class DescContainer : VBoxContainer
 				curTextScale += 0.05f;
 
 				ResizeAllTexts();
-				ResetHeight();
+				await ResetHeight();
 
 				await ToSignal(this, "sort_children");
 
 				if (Size.Y > targetSize.Y) {
 					curTextScale = oldTextScale;
 					ResizeAllTexts();
-					ResetHeight();
-
-					await ToSignal(this, "sort_children");
+					await ResetHeight();
 
 					break;
 				}
@@ -103,9 +103,7 @@ public partial class DescContainer : VBoxContainer
 			curTextScale -= 0.05f;
 
 			ResizeAllTexts();
-			ResetHeight();
-
-			await ToSignal(this, "sort_children");
+			await ResetHeight();
 
 			j++;
 		}

@@ -25,7 +25,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "content")]
+[node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "settingsButton", "content")]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 3
 anchors_preset = 0
@@ -34,6 +34,7 @@ mouse_filter = 2
 script = ExtResource("1_mvk4m")
 button = NodePath("Button")
 trashButton = NodePath("TrashButton")
+settingsButton = NodePath("SettingsButton")
 content = NodePath("TrashButton")
 
 [node name="Button" type="Button" parent="."]
@@ -51,6 +52,39 @@ theme = ExtResource("4_j82lo")
 icon_alignment = 2
 script = ExtResource("4_evnf4")
 popupMenu = NodePath("SettingsPanel")
+
+[node name="SettingsIcon" type="TextureRect" parent="SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 1.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_mvv3g")
+
+[node name="DropdownIcon" type="TextureRect" parent="SettingsButton"]
+modulate = Color(0.643137, 0.643137, 0.643137, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -6.0
+offset_right = 18.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_j2cly")
 
 [node name="SettingsPanel" type="Panel" parent="SettingsButton"]
 visible = false
@@ -95,25 +129,6 @@ theme_override_font_sizes/font_size = 15
 text = "padding"
 vertical_alignment = 1
 
-[node name="SettingsIcon" type="TextureRect" parent="SettingsButton"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 7.0
-offset_right = 21.0
-offset_bottom = 25.0
-mouse_filter = 2
-texture = ExtResource("6_mvv3g")
-
-[node name="DropdownIcon" type="TextureRect" parent="SettingsButton"]
-modulate = Color(0.643137, 0.643137, 0.643137, 1)
-layout_mode = 0
-offset_left = 26.0
-offset_top = 10.0
-offset_right = 38.0
-offset_bottom = 22.0
-mouse_filter = 2
-texture = ExtResource("5_j2cly")
-
 [node name="TrashButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 440.0
@@ -124,4 +139,5 @@ icon_alignment = 1
 
 [connection signal="button_down" from="Button" to="." method="OnButtonDown"]
 [connection signal="pressed" from="SettingsButton" to="SettingsButton" method="OnPressed"]
+[connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/PaddingEdit" to="." method="OnPaddingChanged"]
 [connection signal="pressed" from="TrashButton" to="." method="Trash"]

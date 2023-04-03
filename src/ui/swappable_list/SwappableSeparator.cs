@@ -13,7 +13,7 @@ public partial class SwappableSeparator : SwappableItem
         lineSelection = content as OptionButton;
     }
 
-    public override Control CreateDescCorrespondant() {
+    public override DescBase CreateDescCorrespondant() {
         descLine = Card.instance.AddLine();
         return descLine;
     }
