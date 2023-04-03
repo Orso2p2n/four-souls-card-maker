@@ -7,18 +7,20 @@ public partial class DescEffect : DescBase
 	[Export] public RichTextLabel richText;
 
 	int baseFontSize;
-	int curFontSize;
-
 	public float userScale = 1.0f;
 	public float systemScale = 1.0f;
 
 	float baseWidth;
 	public float boundsMul = 1.0f;
 
+	int baseLineSpacing;
+	public int lineSpacingDelta;
+
 	public override void _Ready() {
 		base._Ready();
 
-		baseFontSize = curFontSize = richText.GetThemeFontSize("normal_font_size");
+		baseFontSize = richText.GetThemeFontSize("normal_font_size");
+		baseLineSpacing = richText.GetThemeConstant("line_separation");
 		baseWidth = richText.Size.X;
 	}
 
@@ -66,9 +68,19 @@ public partial class DescEffect : DescBase
 		ResetRichTextSize();
 	}
 
+	public void SetLineSpacing(int value) {
+		lineSpacingDelta = value;
+
+		ResetRichTextSize();
+	}
+
 	public void ResetRichTextSize() {
-        curFontSize = (int) (baseFontSize * userScale * systemScale);
+        var curFontSize = (int) (baseFontSize * userScale * systemScale);
         richText.AddThemeFontSizeOverride("normal_font_size", curFontSize);
+
+		var curLineSpacing = baseLineSpacing + lineSpacingDelta;
+        richText.AddThemeConstantOverride("line_separation", curLineSpacing);
+
         richText.Size = new Vector2(baseWidth * boundsMul, 0);
 
         UpdateSize();

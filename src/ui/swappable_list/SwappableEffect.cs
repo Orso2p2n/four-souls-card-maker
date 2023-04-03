@@ -59,4 +59,8 @@ public partial class SwappableEffect : SwappableItem
     public void OnBoundsChanged(float value) {
         ((DescEffect) descCorrespondant).SetBoundsMul(value / 100);
     }
+
+    public void OnLineSpacingChanged(float value) {
+        ((DescEffect) descCorrespondant).SetLineSpacing((int) value);
+    }
 }
