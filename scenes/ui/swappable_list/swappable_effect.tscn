@@ -151,3 +151,4 @@ text = "spacing"
 vertical_alignment = 1
 
 [connection signal="text_changed" from="Button/TextEdit" to="." method="OnTextChanged"]
+[connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/ScalingEdit" to="." method="OnScaleChanged"]

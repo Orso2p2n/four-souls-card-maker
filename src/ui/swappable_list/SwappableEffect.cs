@@ -50,4 +50,9 @@ public partial class SwappableEffect : SwappableItem
     void OnTextChanged() {
         descEffect.SetText(textEdit.Text);
     }
+
+    // Settings
+    public void OnScaleChanged(float value) {
+        ((DescEffect) descCorrespondant).SetUserScale(value / 100);
+    }
 }
