@@ -29,7 +29,7 @@ public partial class DescContainer : VBoxContainer
 		base._Process(delta);
 
 		if (!isCurrentlyFittingChildren) {
-			ResetHeight();
+            Task task = ResetHeight();
 		}
 	}
 
