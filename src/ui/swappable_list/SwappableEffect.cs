@@ -55,4 +55,8 @@ public partial class SwappableEffect : SwappableItem
     public void OnScaleChanged(float value) {
         ((DescEffect) descCorrespondant).SetUserScale(value / 100);
     }
+
+    public void OnBoundsChanged(float value) {
+        ((DescEffect) descCorrespondant).SetBoundsMul(value / 100);
+    }
 }
