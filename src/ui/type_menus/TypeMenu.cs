@@ -30,4 +30,19 @@ public partial class TypeMenu : OptionButton
 	}
 
 	public virtual void OnItemSelected(long index) {}
+
+	// --- SAVE HANDLING ---
+	public virtual Dictionary Save() {
+		var dict = new Dictionary();
+
+		dict.Add("Selected", Selected);
+
+		return dict;
+	}
+
+	public virtual void Load(Dictionary data) {
+		int selectedId = (int) data["Selected"];
+		Select(selectedId);
+		OnItemSelected(selectedId);
+	}
 }

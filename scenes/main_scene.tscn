@@ -1,5 +1,6 @@
-[gd_scene load_steps=55 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=57 format=3 uid="uid://dvc28dl1fq04i"]
 
+[ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
 [ext_resource type="PackedScene" uid="uid://d20xnxqu2phjl" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
@@ -8,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cc5wrbxk03olw" path="res://resources/cards/types/character.tres" id="5_o8y5v"]
 [ext_resource type="Resource" uid="uid://b4t6f8r0yuna4" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
 [ext_resource type="Resource" uid="uid://copyy6is1xjxn" path="res://resources/cards/types/treasure.tres" id="6_5ii8c"]
+[ext_resource type="Script" path="res://src/ui/menu_bar/File.cs" id="6_5mwhj"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
 [ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
@@ -65,6 +67,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
+
+[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("mainTypeMenu", "backgroundMenu", "borderMenu", "foregroundMenu")]
+script = ExtResource("1_wqwht")
+mainTypeMenu = NodePath("../Type/MainTypeMenu")
+backgroundMenu = NodePath("../Type/BackgroundMenu")
+borderMenu = NodePath("../Type/BorderMenu")
+foregroundMenu = NodePath("../Type/ForegroundMenu")
 
 [node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat")]
 script = ExtResource("16_66afq")
@@ -127,6 +136,7 @@ item_2/text = "Save (ctrl+s)"
 item_2/id = 2
 item_3/text = "Save as..."
 item_3/id = 3
+script = ExtResource("6_5mwhj")
 
 [node name="Type" type="Control" parent="."]
 anchors_preset = 0
@@ -144,7 +154,7 @@ theme = ExtResource("3_7sxfo")
 text = "Type"
 vertical_alignment = 1
 
-[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu")]
+[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu") groups=["Save"]]
 layout_mode = 0
 offset_top = 40.0
 offset_right = 200.0
@@ -165,7 +175,7 @@ theme = ExtResource("3_7sxfo")
 text = "Foreground"
 vertical_alignment = 1
 
-[node name="BackgroundMenu" type="OptionButton" parent="Type"]
+[node name="BackgroundMenu" type="OptionButton" parent="Type" groups=["Save"]]
 layout_mode = 0
 offset_left = 224.0
 offset_top = 40.0
@@ -184,7 +194,7 @@ theme = ExtResource("3_7sxfo")
 text = "Background"
 vertical_alignment = 1
 
-[node name="ForegroundMenu" type="OptionButton" parent="Type"]
+[node name="ForegroundMenu" type="OptionButton" parent="Type" groups=["Save"]]
 layout_mode = 0
 offset_left = 672.0
 offset_top = 40.0
@@ -203,7 +213,7 @@ theme = ExtResource("3_7sxfo")
 text = "Border"
 vertical_alignment = 1
 
-[node name="BorderMenu" type="OptionButton" parent="Type"]
+[node name="BorderMenu" type="OptionButton" parent="Type" groups=["Save"]]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 40.0
@@ -647,6 +657,7 @@ theme = ExtResource("3_7sxfo")
 placeholder_text = "value..."
 alignment = 1
 
+[connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]
 [connection signal="text_changed" from="Title/TitleEdit" to="CardPreview/CardViewport/Card" method="SetTitle"]
 [connection signal="text_changed" from="Credit/TitleEdit" to="CardPreview/CardViewport/Card" method="SetCredits"]
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]

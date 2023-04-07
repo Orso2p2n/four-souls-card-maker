@@ -22,7 +22,8 @@ public partial class BorderMenu : SubTypeMenu
 		Card.instance.SetCardBorder(selectedCardType);
 	}
 
-	public void SetCustomBorder(Texture2D texture) {
+	public void SetCustomBorder(string path, Texture2D texture) {
+		customTexturePath = path;
 		Card.instance.SetCustomCardBorder(texture);
 	}
 }

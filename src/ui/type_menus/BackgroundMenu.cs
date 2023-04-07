@@ -22,7 +22,8 @@ public partial class BackgroundMenu : SubTypeMenu
 		Card.instance.SetCardBackground(selectedCardType);
 	}
 
-	public void SetCustomBackground(Texture2D texture) {
+	public void SetCustomBackground(string path, Texture2D texture) {
+		customTexturePath = path;
 		Card.instance.SetCustomCardBackground(texture);
 	}
 }

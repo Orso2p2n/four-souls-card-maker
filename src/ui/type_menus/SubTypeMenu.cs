@@ -7,6 +7,8 @@ public partial class SubTypeMenu : TypeMenu
 	[Export] public Texture2D customIcon;
 	public int customId = -1;
 
+	public string customTexturePath;
+
 	public Callable customTextureCallback;
 
 	public void SetList(Array<MenuItem> newList) {
@@ -35,5 +37,16 @@ public partial class SubTypeMenu : TypeMenu
 		if (index == customId) {
 			EditManager.instance.LoadTextureFileDialog(customTextureCallback);
 		}
+	}
+
+	// --- SAVE HANDLING ---
+	public override Dictionary Save() {
+		var dict = base.Save();
+
+		if (Selected == customId) {
+			dict.Add("CustomPath", customTexturePath);
+		}
+
+		return dict;
 	}
 }

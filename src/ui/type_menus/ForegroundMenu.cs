@@ -22,7 +22,8 @@ public partial class ForegroundMenu : SubTypeMenu
 		Card.instance.SetCardForeground(selectedCardType);
 	}
 
-	public void SetCustomForeground(Texture2D texture) {
+	public void SetCustomForeground(string path, Texture2D texture) {
+		customTexturePath = path;
 		Card.instance.SetCustomCardForeground(texture);
 	}
 }

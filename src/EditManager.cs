@@ -77,8 +77,32 @@ public partial class EditManager : Node
 
         var texture = ImageTexture.CreateFromImage(image);
         
-        fileDialogCallback.Call(texture);
+        fileDialogCallback.Call(path, texture);
 
         fileDialog.FileSelected -= OnTexturePathSelected;
     }
+
+	public void WriteSaveFileDialog(Callable callback) {
+        fileDialogCallback = callback;
+
+		fileDialog.FileMode = FileDialog.FileModeEnum.SaveFile;
+		fileDialog.Filters = new string[]{"*.fscard ; Four Souls Card"};
+		fileDialog.Visible = true;
+		fileDialog.FileSelected += OnSavePathSelected;
+	}
+
+	public void LoadSaveFileDialog(Callable callback) {
+        fileDialogCallback = callback;
+
+		fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
+		fileDialog.Filters = new string[]{"*.fscard ; Four Souls Card"};
+		fileDialog.Visible = true;
+		fileDialog.FileSelected += OnSavePathSelected;
+	}
+
+	void OnSavePathSelected(string path) {
+		fileDialogCallback.Call(path);
+
+		fileDialog.FileSelected -= OnSavePathSelected;
+	}
 }
