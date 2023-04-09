@@ -1,6 +1,8 @@
 {
-"MainTypeMenu":{"Selected":1},
-"BackgroundMenu":{"Selected":2},
-"ForegroundMenu":{"Selected":1},
-"BorderMenu":{"Selected":1},
+"MainTypeMenu":{"Selected":0},
+"BackgroundMenu":{"Selected":0},
+"ForegroundMenu":{"Selected":0},
+"BorderMenu":{"Selected":0},
+"TitleEdit":{"Value":""},
+"CreditEdit":{"Value":"dzdqzdqzdqzdqzdqzdqdqzqz"},
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=59 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" path="res://src/ui/type_menus/BorderMenu.cs" id="16_71ows"]
 [ext_resource type="Texture2D" uid="uid://c80o61ugjywx3" path="res://assets/icons/cards/_custom_border.png" id="16_nbs8c"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/NewDescriptionItemButton.cs" id="20_f8och"]
+[ext_resource type="Script" path="res://src/ui/text_edits/TitleEdit.cs" id="21_fwink"]
+[ext_resource type="Script" path="res://src/ui/text_edits/CreditsEdit.cs" id="22_wnou6"]
 [ext_resource type="PackedScene" uid="uid://cyd0c1m5jt52p" path="res://scenes/ui/art/art_button.tscn" id="24_l5rnn"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/PositionProps.cs" id="26_ahxvl"]
 [ext_resource type="Script" path="res://src/ui/icons/SoulIconMenu.cs" id="26_l8bso"]
@@ -239,7 +241,7 @@ theme = ExtResource("3_7sxfo")
 text = "Title"
 vertical_alignment = 1
 
-[node name="TitleEdit" type="LineEdit" parent="Title"]
+[node name="TitleEdit" type="LineEdit" parent="Title" groups=["Save"]]
 layout_mode = 0
 offset_top = 40.0
 offset_right = 472.0
@@ -247,6 +249,7 @@ offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Title..."
+script = ExtResource("21_fwink")
 
 [node name="Credit" type="Control" parent="."]
 anchors_preset = 0
@@ -256,7 +259,7 @@ offset_right = 520.0
 offset_bottom = 296.0
 mouse_filter = 2
 
-[node name="TitleLabel" type="Label" parent="Credit"]
+[node name="CreditLabel" type="Label" parent="Credit"]
 layout_mode = 0
 offset_right = 360.0
 offset_bottom = 40.0
@@ -264,7 +267,7 @@ theme = ExtResource("3_7sxfo")
 text = "Credits"
 vertical_alignment = 1
 
-[node name="TitleEdit" type="LineEdit" parent="Credit"]
+[node name="CreditEdit" type="LineEdit" parent="Credit" groups=["Save"]]
 layout_mode = 0
 offset_top = 40.0
 offset_right = 472.0
@@ -272,6 +275,7 @@ offset_bottom = 80.0
 theme = ExtResource("3_7sxfo")
 theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Credits..."
+script = ExtResource("22_wnou6")
 
 [node name="Desc" type="Control" parent="."]
 anchors_preset = 0
@@ -658,8 +662,8 @@ placeholder_text = "value..."
 alignment = 1
 
 [connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]
-[connection signal="text_changed" from="Title/TitleEdit" to="CardPreview/CardViewport/Card" method="SetTitle"]
-[connection signal="text_changed" from="Credit/TitleEdit" to="CardPreview/CardViewport/Card" method="SetCredits"]
+[connection signal="text_changed" from="Title/TitleEdit" to="Title/TitleEdit" method="OnTextChanged"]
+[connection signal="text_changed" from="Credit/CreditEdit" to="Credit/CreditEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]
