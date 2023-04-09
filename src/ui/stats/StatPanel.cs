@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class StatPanel : Control
@@ -20,5 +21,20 @@ public partial class StatPanel : Control
 
 	public void UpdateStat(double val) {
 		EditManager.instance.UpdateStats();
+	}
+
+	// --- SAVE HANDLING ---
+	public virtual Dictionary Save() {
+		var dict = new Dictionary();
+
+		dict.Add("Value", spinBox.Value);
+
+		return dict;
+	}
+
+	public virtual void Load(Dictionary data) {
+		double value = (int) data["Value"];
+		spinBox.Value = value;
+		UpdateStat(value);
 	}
 }

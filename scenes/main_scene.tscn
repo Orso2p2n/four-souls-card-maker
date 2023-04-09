@@ -341,7 +341,7 @@ text = "Stats
 "
 vertical_alignment = 1
 
-[node name="HP" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox")]
+[node name="HP" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
 layout_mode = 1
 anchors_preset = 0
 offset_top = 32.0
@@ -371,7 +371,7 @@ max_value = 9.0
 value = 2.0
 alignment = 1
 
-[node name="DICE" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox")]
+[node name="DICE" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 144.0
@@ -403,7 +403,7 @@ max_value = 6.0
 value = 4.0
 alignment = 1
 
-[node name="ATK" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox")]
+[node name="ATK" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 288.0
@@ -452,12 +452,12 @@ text = "Art
 "
 vertical_alignment = 1
 
-[node name="ArtButton" parent="Art" instance=ExtResource("24_l5rnn")]
+[node name="ArtButton" parent="Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
 layout_mode = 0
 offset_top = 40.0
 offset_bottom = 80.0
 
-[node name="TopArtButton" parent="Art" instance=ExtResource("24_l5rnn")]
+[node name="TopArtButton" parent="Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 40.0

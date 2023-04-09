@@ -43,12 +43,12 @@ public partial class MoveableArt : MoveableArtBase
 	}
 
 	public override void _Process(double delta) {
-		if (selected) {
-			if (childArt != null) {
-				childArt.Position = Position;
-				childArt.Scale = Scale;
-			}
+		if (childArt != null) {
+			childArt.Position = Position;
+			childArt.Scale = Scale;
+		}
 
+		if (selected) {
 			if (scaleBox != null) {
 				var scaledSize = Size * Scale;
 				scaleBox.Position = Position + (Size * ((1-Scale.X)/2));

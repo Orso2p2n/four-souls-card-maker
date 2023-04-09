@@ -68,7 +68,15 @@ public partial class EditManager : Node
 	}
 
     void OnTexturePathSelected(string path) {
-        var image = new Image();
+		var texture = LoadTextureFromPath(path);
+        
+        fileDialogCallback.Call(path, texture);
+
+        fileDialog.FileSelected -= OnTexturePathSelected;
+    }
+
+	public Texture2D LoadTextureFromPath(string path) {
+		var image = new Image();
         var error = image.Load(path);
 
         if (error != Error.Ok) {
@@ -76,11 +84,8 @@ public partial class EditManager : Node
         }
 
         var texture = ImageTexture.CreateFromImage(image);
-        
-        fileDialogCallback.Call(path, texture);
-
-        fileDialog.FileSelected -= OnTexturePathSelected;
-    }
+		return texture;
+	}
 
 	public void WriteSaveFileDialog(Callable callback) {
         fileDialogCallback = callback;

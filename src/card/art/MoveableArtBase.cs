@@ -12,7 +12,7 @@ public partial class MoveableArtBase : TextureRect
 	}
 	
 	public virtual void PostSetTexture() {		
-		var halfSize = GetRect().Size / 2;
+		var halfSize = Size / 2;
 		PivotOffset = halfSize;
 	}
 }

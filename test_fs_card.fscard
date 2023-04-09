@@ -1,9 +1,14 @@
 {
-"MainTypeMenu":{"Selected":0},
+"MainTypeMenu":{"Selected":2},
 "BackgroundMenu":{"Selected":0},
 "ForegroundMenu":{"Selected":0},
 "BorderMenu":{"Selected":0},
 "TitleEdit":{"Value":""},
 "CreditEdit":{"Value":""},
-"DescList":{"Items":[{"BoundsMul":1,"CharSpacing":0,"LineSpacing":0,"Padding":0,"Scale":1.55999994277954,"Text":"effet","Type":"Effect"},{"Index":0,"Padding":0,"Type":"Separator"},{"BoundsMul":1,"CharSpacing":0,"LineSpacing":0,"Padding":0,"Scale":1,"Text":"lore","Type":"Lore"}]}
+"DescList":{"Items":[]},
+"HP":{"Value":9},
+"DICE":{"Value":6},
+"ATK":{"Value":9},
+"ArtButton":{"Active":false},
+"TopArtButton":{"Active":false}
 }

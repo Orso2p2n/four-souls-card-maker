@@ -40,8 +40,8 @@ public partial class Card : Control
 	[Export] Label characterAtk;
 
 	[ExportGroup("Art")]
-	[Export] MoveableArt art;
-	[Export] MoveableArtChild topArt;
+	[Export] public MoveableArt art;
+	[Export] public MoveableArtChild topArt;
 
 	[ExportGroup("Icons")]
 	[Export] MoveableArt soulIcon;
