@@ -3,6 +3,8 @@ using System;
 
 public partial class SwappableItem : Control
 {
+    [Export] public string type;
+
     [Export] public Button button;
     [Export] public Button trashButton;
     [Export] public Button settingsButton;
@@ -13,6 +15,17 @@ public partial class SwappableItem : Control
     public bool buttonDown;
 
     public DescBase descCorrespondant;
+
+    // Settings
+    [Export] public SpinBox paddingSpinBox;
+    public int padding {
+        get {
+            return descCorrespondant.padding;
+        }
+        set {
+            descCorrespondant.SetPadding(value);
+        }
+    }
 
     public override void _Ready() {
         base._Ready();
@@ -111,6 +124,6 @@ public partial class SwappableItem : Control
 
     // Settings
     public void OnPaddingChanged(float value) {
-        descCorrespondant.SetPadding((int) value);
+        padding = (int) value;
     }
 }

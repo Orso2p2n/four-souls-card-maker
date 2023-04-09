@@ -67,7 +67,11 @@ public partial class SaveManager : Node
             var dict = saveNode.Call("Save");
 
             var jsonString = Json.Stringify(dict);
-            jsonString = $"\"{saveNode.Name}\":{jsonString},";
+            jsonString = $"\"{saveNode.Name}\":{jsonString}";
+
+            if (saveNode != saveNodes[saveNodes.Count-1])  {
+                jsonString += ",";
+            }
 
             saveGame.StoreLine(jsonString);
         }

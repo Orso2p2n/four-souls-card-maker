@@ -300,7 +300,7 @@ offset_right = 472.0
 offset_bottom = 552.0
 theme = ExtResource("3_7sxfo")
 
-[node name="SwappableList" parent="Desc/ScrollContainer" instance=ExtResource("8_t1lh8")]
+[node name="DescList" parent="Desc/ScrollContainer" groups=["Save"] instance=ExtResource("8_t1lh8")]
 layout_mode = 2
 
 [node name="NewDescriptionItemButton" type="MenuButton" parent="Desc" node_paths=PackedStringArray("list")]
@@ -320,7 +320,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Lore"
 popup/item_2/id = 2
 script = ExtResource("20_f8och")
-list = NodePath("../ScrollContainer/SwappableList")
+list = NodePath("../ScrollContainer/DescList")
 
 [node name="Stats" type="Control" parent="."]
 layout_mode = 3

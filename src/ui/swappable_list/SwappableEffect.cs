@@ -5,10 +5,64 @@ public partial class SwappableEffect : SwappableItem
 {
     public TextEdit textEdit;
 
-    [Export] public SpinBox paddingEdit;
-    [Export] public SpinBox scaleEdit;
-
     public DescEffect descEffect;
+
+    // Settings
+    [Export] public SpinBox scaleSpinBox;
+    public float scale {
+        get {
+            return descEffect.userScale;
+        }
+        set {
+            if (scaleSpinBox.Value != value * 100) {
+                scaleSpinBox.Value = value * 100;
+            }
+
+            descEffect.SetUserScale(value);
+        }
+    }
+
+    [Export] public SpinBox boundsMulSpinBox;
+    public float boundsMul {
+        get {
+            return descEffect.boundsMul;
+        }
+        set {
+            if (boundsMulSpinBox.Value != value * 100) {
+                boundsMulSpinBox.Value = value * 100;
+            }
+            
+            descEffect.SetBoundsMul(value);
+        }
+    }
+
+    [Export] public SpinBox lineSpacingSpinBox;
+    public int lineSpacing {
+        get {
+            return descEffect.lineSpacingDelta;
+        }
+        set {
+            if (lineSpacingSpinBox.Value != value) {
+                lineSpacingSpinBox.Value = value;
+            }
+            
+            descEffect.SetLineSpacing(value);
+        }
+    }
+    
+    [Export] public SpinBox charSpacingSpinBox;
+    public int charSpacing {
+        get {
+            return descEffect.characterSpacing;
+        }
+        set {
+            if (charSpacingSpinBox.Value != value) {
+                charSpacingSpinBox.Value = value;
+            }
+            
+            descEffect.SetCharacterSpacing(value);
+        }
+    }
 
     public override void _Ready() {
         base._Ready();
@@ -37,34 +91,26 @@ public partial class SwappableEffect : SwappableItem
 
     public override void OnIsMovingItem(bool isMovingItem) {
         base.OnIsMovingItem(isMovingItem);
-
-        if (paddingEdit != null) {
-            paddingEdit.MouseFilter = isMovingItem ? MouseFilterEnum.Ignore : MouseFilterEnum.Stop;
-        }
-
-        if (scaleEdit != null) {
-            scaleEdit.MouseFilter = isMovingItem ? MouseFilterEnum.Ignore : MouseFilterEnum.Stop;
-        }
     }
 
-    void OnTextChanged() {
+    public void OnTextChanged() {
         descEffect.SetText(textEdit.Text);
     }
 
     // Settings
     public void OnScaleChanged(float value) {
-        ((DescEffect) descCorrespondant).SetUserScale(value / 100);
+        scale = value / 100;
     }
 
     public void OnBoundsChanged(float value) {
-        ((DescEffect) descCorrespondant).SetBoundsMul(value / 100);
+        boundsMul = value / 100;
     }
 
     public void OnLineSpacingChanged(float value) {
-        ((DescEffect) descCorrespondant).SetLineSpacing((int) value);
+        lineSpacing = (int) value;
     }
 
     public void OnCharSpacingChanged(float value) {
-        ((DescEffect) descCorrespondant).SetCharacterSpacing((int) value);
+        charSpacing = (int) value;
     }
 }

@@ -8,6 +8,7 @@
 
 [node name="SwappableSeparator" node_paths=PackedStringArray("content") instance=ExtResource("1_31v7r")]
 script = ExtResource("2_3jdjo")
+type = "Separator"
 content = NodePath("Button/LineSelection")
 
 [node name="LineSelection" type="OptionButton" parent="Button" index="0"]

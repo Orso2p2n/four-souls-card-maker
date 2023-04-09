@@ -5,6 +5,7 @@
 
 [node name="SwappableEffect" instance=ExtResource("1_v66e8")]
 script = ExtResource("2_pwlw3")
+type = "Lore"
 
 [node name="TextEdit" parent="Button" index="0"]
 theme_override_colors/font_color = Color(0.447059, 0.447059, 0.447059, 1)

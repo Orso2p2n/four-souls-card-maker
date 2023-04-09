@@ -137,4 +137,80 @@ public partial class SwappableList : VBoxContainer
 
 		EmitSignal(SignalName.ListChanged);
 	}
+
+	// --- SAVE HANDLING ---
+	public virtual Dictionary Save() {
+		var dict = new Dictionary();
+
+		var items = new Array<Dictionary>();
+
+		foreach (var child in GetChildren()) {
+			var item = child as SwappableItem;
+
+			if (item == null) {
+				continue;
+			}
+
+			var values = new Dictionary();
+
+			values.Add("Type", item.type);
+
+			if (item is SwappableSeparator separator) {
+				values.Add("Index", separator.curIndex);
+			}
+
+			if (item is SwappableEffect effect) {
+				values.Add("Text", effect.textEdit.Text);
+				values.Add("Scale", effect.scale);
+				values.Add("BoundsMul", effect.boundsMul);
+				values.Add("LineSpacing", effect.lineSpacing);
+				values.Add("CharSpacing", effect.charSpacing);
+			}
+
+			values.Add("Padding", item.padding);
+
+			items.Add(values);
+		}
+
+		dict.Add("Items", items);
+
+		return dict;
+	}
+
+	public virtual void Load(Dictionary data) {
+		foreach (var child in GetChildren()) {
+			if (child is SwappableItem item) {
+				item.Trash();
+				continue;
+			}
+
+			RemoveChild(child);
+			child.Dispose();
+		}
+
+		var items = (Array<Dictionary>) data["Items"];
+
+		foreach (Dictionary item in items) {
+			var addedItem = (SwappableItem) AddItem((string) item["Type"]);
+
+			addedItem.padding = (int) item["Padding"];
+
+			if (addedItem is SwappableSeparator separator) {
+				separator.curIndex = (int) item["Index"];
+				continue;
+			}
+
+			if (addedItem is SwappableEffect effect) {
+				var text = (string) item["Text"];
+				effect.textEdit.Text = text;
+				effect.OnTextChanged();
+
+				effect.scale       = (float) item["Scale"];
+				effect.boundsMul   = (float) item["BoundsMul"];
+				effect.lineSpacing = (int) item["LineSpacing"];
+				effect.charSpacing = (int) item["CharSpacing"];
+				continue;
+			}
+		}
+	}
 }

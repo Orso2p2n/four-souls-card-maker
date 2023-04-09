@@ -8,9 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://vlftffrt5bq5" path="res://assets/icons/width18.png" id="5_y2oal"]
 [ext_resource type="Texture2D" uid="uid://b3irwgj3uqret" path="res://assets/icons/charspacing18.png" id="6_fh10d"]
 
-[node name="SwappableEffect" node_paths=PackedStringArray("content") instance=ExtResource("1_ir1x0")]
+[node name="SwappableEffect" node_paths=PackedStringArray("scaleSpinBox", "boundsMulSpinBox", "lineSpacingSpinBox", "charSpacingSpinBox", "content") instance=ExtResource("1_ir1x0")]
 custom_minimum_size = Vector2(0, 48)
 script = ExtResource("2_xcp53")
+scaleSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/ScalingEdit")
+boundsMulSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/WidthEdit")
+lineSpacingSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/LineSpacingEdit")
+charSpacingSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/CharSpacingEdit")
+type = "Effect"
 content = NodePath("Button/TextEdit")
 
 [node name="TextEdit" type="TextEdit" parent="Button" index="0"]

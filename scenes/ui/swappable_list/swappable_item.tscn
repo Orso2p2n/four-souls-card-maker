@@ -25,7 +25,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "settingsButton", "content")]
+[node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "settingsButton", "content", "paddingSpinBox")]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 3
 anchors_preset = 0
@@ -36,6 +36,7 @@ button = NodePath("Button")
 trashButton = NodePath("TrashButton")
 settingsButton = NodePath("SettingsButton")
 content = NodePath("TrashButton")
+paddingSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/PaddingEdit")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
