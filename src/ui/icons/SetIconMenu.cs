@@ -1,11 +1,13 @@
 using Godot;
 using System;
 
-public partial class SetIconMenu : SubTypeMenu
+public partial class SetIconMenu : IconMenu
 {
 	public override void _Ready() {
 		base._Ready();
 
+		linkedArt = Card.instance.setIcon;
+	
 		UpdateItems();
 
 		customTextureCallback = new Callable(this, "SetCustomSetIcon");
@@ -23,7 +25,8 @@ public partial class SetIconMenu : SubTypeMenu
 		Card.instance.SetSetIcon(selectedIcon);
 	}
 
-	public void SetCustomSetIcon(Texture2D texture) {
+	public void SetCustomSetIcon(string path, Texture2D texture) {
+		customTexturePath = path;
 		Card.instance.SetCustomSetIcon(texture);
 	}
 }

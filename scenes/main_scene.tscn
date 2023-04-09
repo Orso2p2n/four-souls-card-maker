@@ -482,7 +482,7 @@ theme = ExtResource("3_7sxfo")
 text = "Soul Icon"
 vertical_alignment = 1
 
-[node name="SoulIconMenu" type="OptionButton" parent="Icons"]
+[node name="SoulIconMenu" type="OptionButton" parent="Icons" groups=["Save"]]
 layout_mode = 0
 offset_top = 40.0
 offset_right = 160.0
@@ -501,7 +501,7 @@ theme = ExtResource("3_7sxfo")
 text = "Set icon"
 vertical_alignment = 1
 
-[node name="SetIconMenu" type="OptionButton" parent="Icons"]
+[node name="SetIconMenu" type="OptionButton" parent="Icons" groups=["Save"]]
 layout_mode = 0
 offset_left = 168.0
 offset_top = 40.0
@@ -512,7 +512,7 @@ script = ExtResource("31_1tfgv")
 customIcon = ExtResource("33_tocn4")
 cardTypes = Array[Resource]([ExtResource("31_we2rt"), ExtResource("32_s11b6"), ExtResource("33_148nk"), ExtResource("34_0v54e"), ExtResource("35_5xr1p"), ExtResource("36_gbkvs"), ExtResource("37_mbj8e"), ExtResource("38_pvr2v"), ExtResource("39_nw35a"), ExtResource("40_ra6en"), ExtResource("41_vewfy"), ExtResource("42_1t1bp"), ExtResource("43_oi578")])
 
-[node name="SetIconLabel2" type="Label" parent="Icons"]
+[node name="DiffIconLabel" type="Label" parent="Icons"]
 layout_mode = 0
 offset_left = 328.0
 offset_right = 472.0
@@ -522,7 +522,7 @@ theme = ExtResource("3_7sxfo")
 text = "Diff. icon"
 vertical_alignment = 1
 
-[node name="SetIconMenu2" type="OptionButton" parent="Icons"]
+[node name="DiffIconMenu" type="OptionButton" parent="Icons" groups=["Save"]]
 layout_mode = 0
 offset_left = 328.0
 offset_top = 40.0

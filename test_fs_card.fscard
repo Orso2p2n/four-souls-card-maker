@@ -10,5 +10,8 @@
 "DICE":{"Value":6},
 "ATK":{"Value":9},
 "ArtButton":{"Active":false},
-"TopArtButton":{"Active":false}
+"TopArtButton":{"Active":false},
+"SoulIconMenu":{"Scale":1,"Selected":1,"X":284,"Y":1100},
+"SetIconMenu":{"Scale":1,"Selected":1,"X":846,"Y":697},
+"DiffIconMenu":{"Scale":1,"Selected":1,"X":85.5,"Y":670.5}
 }

@@ -49,4 +49,14 @@ public partial class SubTypeMenu : TypeMenu
 
 		return dict;
 	}
+
+	public override void Load(Dictionary data) {
+        base.Load(data);
+
+		if (Selected == customId) {
+			var path = (string) data["CustomPath"];
+			var texture = EditManager.instance.LoadTextureFromPath(path);
+			customTextureCallback.Call(path, texture);
+		}
+	}
 }

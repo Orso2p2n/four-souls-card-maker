@@ -44,9 +44,9 @@ public partial class Card : Control
 	[Export] public MoveableArtChild topArt;
 
 	[ExportGroup("Icons")]
-	[Export] MoveableArt soulIcon;
-	[Export] MoveableArt setIcon;
-	[Export] MoveableArt diffIcon;
+	[Export] public MoveableArt soulIcon;
+	[Export] public MoveableArt setIcon;
+	[Export] public MoveableArt diffIcon;
 
 	[ExportGroup("Credits")]
 	[Export] RichTextLabel creditsLabel;

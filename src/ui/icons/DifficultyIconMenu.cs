@@ -1,10 +1,12 @@
 using Godot;
 using System;
 
-public partial class DifficultyIconMenu : SubTypeMenu
+public partial class DifficultyIconMenu : IconMenu
 {
 	public override void _Ready() {
 		base._Ready();
+
+		linkedArt = Card.instance.diffIcon;
 
 		UpdateItems();
 
@@ -23,7 +25,8 @@ public partial class DifficultyIconMenu : SubTypeMenu
 		Card.instance.SetDifficultyIcon(selectedIcon);
 	}
 
-	public void SetCustomDifficultyIcon(Texture2D texture) {
+	public void SetCustomDifficultyIcon(string path, Texture2D texture) {
+		customTexturePath = path;
 		Card.instance.SetCustomDifficultyIcon(texture);
 	}
 }

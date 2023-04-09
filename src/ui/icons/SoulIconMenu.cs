@@ -1,10 +1,12 @@
 using Godot;
 using System;
 
-public partial class SoulIconMenu : SubTypeMenu
+public partial class SoulIconMenu : IconMenu
 {
 	public override void _Ready() {
 		base._Ready();
+
+		linkedArt = Card.instance.soulIcon;
 
 		UpdateItems();
 
@@ -23,7 +25,8 @@ public partial class SoulIconMenu : SubTypeMenu
 		Card.instance.SetSoulIcon(selectedIcon);
 	}
 
-	public void SetCustomSoulIcon(Texture2D texture) {
+	public void SetCustomSoulIcon(string path, Texture2D texture) {
+		customTexturePath = path;
 		Card.instance.SetCustomSoulIcon(texture);
 	}
 }
