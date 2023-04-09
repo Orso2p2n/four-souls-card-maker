@@ -42,7 +42,7 @@ public partial class LoadArtButton : Button
 	void SetCardArt(string path, Texture2D texture) {
 		SetActive(true);
 		this.path = path;
-		Card.instance.SetArt(texture, top);
+		Card.instance.SetArt(texture, top, path);
 	}
 
 	// --- SAVE HANDLING ---
@@ -55,43 +55,19 @@ public partial class LoadArtButton : Button
 			return dict;
 		}
 		
-		dict.Add("Path", path);
-
-		if (top) {
-			return dict;
-		}
-
-		dict.Add("X", linkedArt.Position.X);
-		dict.Add("Y", linkedArt.Position.Y);
-		dict.Add("Scale", linkedArt.Scale.X);
+		dict.Add("LinkedArt", linkedArt.Save());
 
 		return dict;
 	}
 
-	public async virtual void Load(Dictionary data) {
+	public virtual void Load(Dictionary data) {
 		SetActive((bool) data["Active"]);
 
 		if (!active) {
 			return;
 		}
 
-		var path = (string) data["Path"];
-		var texture = EditManager.instance.LoadTextureFromPath(path);
-		SetCardArt(path, texture);
-
-		if (top) {
-			return;
-		}
-
-		await ToSignal(RenderingServer.Singleton, "frame_post_draw");
-
-		var linkedMainArt = linkedArt as MoveableArt;
-
-		var x = (float) data["X"];
-		var y = (float) data["Y"];
-		linkedMainArt.SetPosition(new Vector2(x,y));
-
-		var scale = (float) data["Scale"];
-		linkedMainArt.SetScale(scale);
+		var linkedArtProps = (Dictionary) data["LinkedArt"];
+		linkedArt.Load(linkedArtProps);
 	}
 }

@@ -10,23 +10,15 @@ public partial class IconMenu : SubTypeMenu
 	public override Dictionary Save() {
 		var dict = base.Save();
 
-		dict.Add("X", linkedArt.Position.X);
-		dict.Add("Y", linkedArt.Position.Y);
-		dict.Add("Scale", linkedArt.Scale.X);
+		dict.Add("LinkedArt", linkedArt.Save());
 
 		return dict;
 	}
 
-	public override async void Load(Dictionary data) {
+	public override void Load(Dictionary data) {
         base.Load(data);
 
-        await ToSignal(RenderingServer.Singleton, "frame_post_draw");
-
-		var x = (float) data["X"];
-		var y = (float) data["Y"];
-		linkedArt.SetPosition(new Vector2(x,y));
-
-		var scale = (float) data["Scale"];
-		linkedArt.SetScale(scale);
+        var linkedArtProps = (Dictionary) data["LinkedArt"];
+		linkedArt.Load(linkedArtProps);
 	}
 }

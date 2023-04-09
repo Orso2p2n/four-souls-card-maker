@@ -156,12 +156,12 @@ public partial class Card : Control
 	}
 
 	// -- ART --
-	public void SetArt(Texture2D texture, bool top = false) {
+	public void SetArt(Texture2D texture, bool top = false, string path = "") {
 		if (top) {
-			topArt.SetTexture(texture);
+			topArt.SetTexture(texture, path);
 		}
 		else {
-			art.SetTexture(texture);
+			art.SetTexture(texture, path);
 		}
 	}
 

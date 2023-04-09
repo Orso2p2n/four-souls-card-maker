@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class MoveableArt : MoveableArtBase
@@ -154,13 +155,44 @@ public partial class MoveableArt : MoveableArtBase
 		EmitSignal(SignalName.ScaleChanged, scale);
 	}
 
-	public new Vector2 Position{
-		get{
-			return base.Position;
+	public override Dictionary Save() {
+		var dict = base.Save();
+
+		if (canResetPosition) {
+			dict.Add("X", Position.X);
+			dict.Add("Y", Position.Y);
 		}
 
-		set {
-			base.Position = value;
-		} 
+		if (canResetScale) {
+			dict.Add("Scale", Scale.X);
+		}
+
+		if (canSetValue) {
+			dict.Add("Value", value);
+		}
+
+		return dict;
+	}
+
+	public async override void Load(Dictionary data) {
+		base.Load(data);
+
+		await ToSignal(RenderingServer.Singleton, "frame_post_draw");
+
+		if (canResetPosition) {
+			var x = (float) data["X"];
+			var y = (float) data["Y"];
+			SetPosition(new Vector2(x,y));
+		}
+
+		if (canResetScale) {
+			var scale = (float) data["Scale"];
+			SetScale(scale);
+		}
+
+		if (canSetValue) {
+			var val = (string) data["Value"];
+			value = val;
+		}
 	}
 }
