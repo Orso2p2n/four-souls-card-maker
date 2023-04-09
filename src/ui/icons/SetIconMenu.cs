@@ -7,6 +7,7 @@ public partial class SetIconMenu : IconMenu
 		base._Ready();
 
 		linkedArt = Card.instance.setIcon;
+		linkedArt.trashCallable = new Callable(this, "ResetSelection");
 	
 		UpdateItems();
 

@@ -14,6 +14,7 @@ public partial class MoveableArt : MoveableArtBase
 	[Export] public bool canResetScale;
 	[Export] public bool canResetPosition;
 	[Export] public bool canSetValue;
+	[Export] public bool canBeTrashed;
 
 	// Signals
 	[Signal] public delegate void PositionChangedEventHandler(Vector2 pos);
@@ -29,6 +30,8 @@ public partial class MoveableArt : MoveableArtBase
 	bool mouseIsDown;
 
 	Vector2 movementOffset = Vector2.Zero;
+
+	public Callable trashCallable;
 
 	public override void _Ready() {
 		if (childArt != null) {
@@ -155,6 +158,16 @@ public partial class MoveableArt : MoveableArtBase
 		EmitSignal(SignalName.ScaleChanged, scale);
 	}
 
+	public void TryTrash() {
+		if (!canBeTrashed) {
+			return;
+		}
+
+		Deselect();
+		trashCallable.Call();
+	}
+
+	// --- SAVE HANDLING ---
 	public override Dictionary Save() {
 		var dict = base.Save();
 

@@ -7,6 +7,7 @@ public partial class SoulIconMenu : IconMenu
 		base._Ready();
 
 		linkedArt = Card.instance.soulIcon;
+		linkedArt.trashCallable = new Callable(this, "ResetSelection");
 
 		UpdateItems();
 

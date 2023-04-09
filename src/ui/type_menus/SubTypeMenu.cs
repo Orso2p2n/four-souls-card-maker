@@ -39,6 +39,11 @@ public partial class SubTypeMenu : TypeMenu
 		}
 	}
 
+	public void ResetSelection() {
+		Selected = 0;
+		OnItemSelected(0);
+	}
+
 	// --- SAVE HANDLING ---
 	public override Dictionary Save() {
 		var dict = base.Save();

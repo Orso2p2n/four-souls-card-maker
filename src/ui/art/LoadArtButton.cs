@@ -16,6 +16,10 @@ public partial class LoadArtButton : Button
 		base._Ready();
 
 		linkedArt = top ? Card.instance.topArt : Card.instance.art;
+
+		if (linkedArt is MoveableArt linkedMoveableArt) {
+			linkedMoveableArt.trashCallable = new Callable(this, "Trash");
+		}
 	}
 
 	public void OnPressed() {

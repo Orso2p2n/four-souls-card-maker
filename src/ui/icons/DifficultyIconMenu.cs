@@ -7,7 +7,8 @@ public partial class DifficultyIconMenu : IconMenu
 		base._Ready();
 
 		linkedArt = Card.instance.diffIcon;
-
+		linkedArt.trashCallable = new Callable(this, "ResetSelection");
+		
 		UpdateItems();
 
 		customTextureCallback = new Callable(this, "SetCustomDifficultyIcon");
