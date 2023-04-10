@@ -51,14 +51,21 @@ public partial class Card : Control
 	[ExportGroup("Credits")]
 	[Export] RichTextLabel creditsLabel;
 
+	[ExportGroup("Layers")]
+	[Export] Control BGLayer;
+	[Export] Control FGLayer;
+
 	// Signals
 	[Signal] public delegate void SelectedArtChangedEventHandler(MoveableArt art = null);
 
 	// Variables
 	public MoveableArt curSelectedArt;
+	public Array<MoveableArt> moveableArts;
 
 	public override void _Ready() {
 		instance = this;
+
+		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
 	}
 
 	public void SetTitle(string text) {
@@ -193,6 +200,21 @@ public partial class Card : Control
 		if (curSelectedArt == art) {
 			curSelectedArt = null;
 			EmitSignal(SignalName.SelectedArtChanged, new MoveableArt());
+		}
+	}
+
+	public void AddMoveableArt(MoveableArt art) {
+		art.ChangeOwner(FGLayer);
+		moveableArts.Add(art);
+	}
+
+	public void RemoveMoveableArt(MoveableArt art) {
+		moveableArts.Remove(art);
+	}
+
+	public void DeselectAllMoveableArts() {
+		foreach (var art in moveableArts) {
+			art.Deselect();
 		}
 	}
 

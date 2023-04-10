@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4mrebjv587yu"]
+
+[ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="2_i3rpv"]
+[ext_resource type="PackedScene" uid="uid://b26bl0p56pr6d" path="res://scenes/card/scale_box.tscn" id="3_vjpgt"]
+
+[node name="TapTag" type="TextureRect" node_paths=PackedStringArray("scaleBox")]
+script = ExtResource("2_i3rpv")
+scaleBox = NodePath("ScaleBox")
+canResetScale = true
+canResetPosition = true
+canBeTrashed = true
+
+[node name="ScaleBox" parent="." instance=ExtResource("3_vjpgt")]
+layout_mode = 0

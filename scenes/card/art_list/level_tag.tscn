@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7fj2mu2dm3ok"]
+
+[ext_resource type="Texture2D" uid="uid://ju0skj2uy1b8" path="res://assets/cards/_icons/tag_level.png" id="1_68euc"]
+[ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="2_0rvgr"]
+[ext_resource type="PackedScene" uid="uid://b26bl0p56pr6d" path="res://scenes/card/scale_box.tscn" id="3_hsvkw"]
+
+[node name="TapTag" type="TextureRect" node_paths=PackedStringArray("scaleBox")]
+offset_right = 133.0
+offset_bottom = 133.0
+texture = ExtResource("1_68euc")
+expand_mode = 1
+script = ExtResource("2_0rvgr")
+scaleBox = NodePath("ScaleBox")
+canResetScale = true
+canResetPosition = true
+canSetValue = true
+canBeTrashed = true
+
+[node name="ScaleBox" parent="." instance=ExtResource("3_hsvkw")]
+layout_mode = 0

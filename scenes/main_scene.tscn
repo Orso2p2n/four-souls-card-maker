@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=67 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -29,16 +29,21 @@
 [ext_resource type="Script" path="res://src/ui/text_edits/TitleEdit.cs" id="21_fwink"]
 [ext_resource type="Script" path="res://src/ui/text_edits/CreditsEdit.cs" id="22_wnou6"]
 [ext_resource type="PackedScene" uid="uid://cyd0c1m5jt52p" path="res://scenes/ui/art/art_button.tscn" id="24_l5rnn"]
-[ext_resource type="Texture2D" uid="uid://cx48jdj8q6611" path="res://assets/cards/_icons/tag_tap.png" id="25_bho77"]
+[ext_resource type="PackedScene" uid="uid://bppnkifqhwxcc" path="res://scenes/card/art_list/tap_tag.tscn" id="26_7mwfm"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/PositionProps.cs" id="26_ahxvl"]
+[ext_resource type="Script" path="res://src/ui/art_list/ArtList.cs" id="26_ayoao"]
 [ext_resource type="Script" path="res://src/ui/icons/SoulIconMenu.cs" id="26_l8bso"]
+[ext_resource type="Script" path="res://src/ui/art_list/NewArtButton.cs" id="27_65uhb"]
 [ext_resource type="Resource" uid="uid://gd6t32dqit8d" path="res://resources/cards/soul_icons/none.tres" id="27_fubmy"]
+[ext_resource type="PackedScene" uid="uid://2pmqyaw22ntb" path="res://scenes/card/art_list/paid_tag.tscn" id="27_g2k1e"]
 [ext_resource type="Resource" uid="uid://dxvgshsulpm4v" path="res://resources/cards/soul_icons/one_soul.tres" id="27_gmm8e"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/ScaleProps.cs" id="27_srwpj"]
 [ext_resource type="Texture2D" uid="uid://dqey8lndyauii" path="res://assets/icons/soul/custom.png" id="27_whsyw"]
+[ext_resource type="PackedScene" uid="uid://c7fj2mu2dm3ok" path="res://scenes/card/art_list/level_tag.tscn" id="28_0cne3"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/ValueProps.cs" id="28_chj7t"]
 [ext_resource type="Resource" uid="uid://oo38agpcegv1" path="res://resources/cards/soul_icons/two_souls.tres" id="28_n7umd"]
 [ext_resource type="Resource" uid="uid://buk0vok1wqcm3" path="res://resources/cards/soul_icons/one_trophy.tres" id="29_bir7w"]
+[ext_resource type="PackedScene" uid="uid://b4mrebjv587yu" path="res://scenes/card/art_list/custom.tscn" id="29_ehe37"]
 [ext_resource type="Script" path="res://src/ui/icons/SetIconMenu.cs" id="31_1tfgv"]
 [ext_resource type="Resource" uid="uid://bug5fw00af6sv" path="res://resources/cards/set_icons/none.tres" id="31_we2rt"]
 [ext_resource type="Resource" uid="uid://c8nhwu8da4g5e" path="res://resources/cards/set_icons/base_game.tres" id="32_s11b6"]
@@ -98,9 +103,9 @@ access = 2
 [node name="CardPreview" type="SubViewportContainer" parent="." node_paths=PackedStringArray("viewport")]
 layout_mode = 0
 offset_left = 1024.0
-offset_top = 80.0
+offset_top = 72.0
 offset_right = 1986.0
-offset_bottom = 1392.0
+offset_bottom = 1384.0
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_c7j0e")
 viewport = NodePath("CardViewport")
@@ -254,32 +259,6 @@ theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Title..."
 script = ExtResource("21_fwink")
 
-[node name="Credit" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 296.0
-offset_right = 520.0
-offset_bottom = 296.0
-mouse_filter = 2
-
-[node name="CreditLabel" type="Label" parent="Credit"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Credits"
-vertical_alignment = 1
-
-[node name="CreditEdit" type="LineEdit" parent="Credit" groups=["Save"]]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-theme_override_fonts/font = ExtResource("7_b2jd5")
-placeholder_text = "Enter Credits..."
-script = ExtResource("22_wnou6")
-
 [node name="Desc" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 24.0
@@ -341,19 +320,25 @@ theme = ExtResource("3_7sxfo")
 text = "Tags"
 vertical_alignment = 1
 
-[node name="ArtList" type="ItemList" parent="Tags"]
+[node name="TagsList" type="ItemList" parent="Tags"]
 layout_mode = 2
 offset_top = 40.0
 offset_right = 472.0
 offset_bottom = 120.0
-item_count = 1
-max_columns = 6
+theme = ExtResource("3_7sxfo")
+allow_reselect = true
+max_columns = 9
 same_column_width = true
 fixed_icon_size = Vector2i(48, 48)
-item_0/text = ""
-item_0/icon = ExtResource("25_bho77")
+script = ExtResource("26_ayoao")
+scenes = {
+"Custom": ExtResource("29_ehe37"),
+"Level tag": ExtResource("28_0cne3"),
+"Paid tag": ExtResource("27_g2k1e"),
+"Tap tag": ExtResource("26_7mwfm")
+}
 
-[node name="NewDescriptionItemButton" type="MenuButton" parent="Tags" node_paths=PackedStringArray("list")]
+[node name="NewTagButton" type="MenuButton" parent="Tags" node_paths=PackedStringArray("list")]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 8.0
@@ -363,14 +348,63 @@ theme = ExtResource("3_7sxfo")
 text = "Add new..."
 alignment = 2
 item_count = 3
-popup/item_0/text = "Effect"
+popup/item_0/text = "Tap tag"
 popup/item_0/id = 0
-popup/item_1/text = "Separator"
+popup/item_1/text = "Paid tag"
 popup/item_1/id = 1
-popup/item_2/text = "Lore"
+popup/item_2/text = "Level tag"
 popup/item_2/id = 2
-script = ExtResource("20_f8och")
-list = NodePath("")
+script = ExtResource("27_65uhb")
+list = NodePath("../TagsList")
+
+[node name="CustomArt" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 384.0
+offset_right = 520.0
+offset_bottom = 384.0
+mouse_filter = 2
+
+[node name="CustomArtLabel" type="Label" parent="CustomArt"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Custom art"
+vertical_alignment = 1
+
+[node name="ArtList" type="ItemList" parent="CustomArt"]
+layout_mode = 2
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 200.0
+theme = ExtResource("3_7sxfo")
+allow_reselect = true
+max_columns = 9
+same_column_width = true
+fixed_icon_size = Vector2i(64, 64)
+script = ExtResource("26_ayoao")
+scenes = {
+"Custom": ExtResource("29_ehe37"),
+"Level tag": ExtResource("28_0cne3"),
+"Paid tag": ExtResource("27_g2k1e"),
+"Tap tag": ExtResource("26_7mwfm")
+}
+
+[node name="NewArtButton" type="MenuButton" parent="CustomArt" node_paths=PackedStringArray("list")]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 8.0
+offset_right = 472.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Add new..."
+alignment = 2
+item_count = 1
+popup/item_0/text = "Custom"
+popup/item_0/id = 0
+script = ExtResource("27_65uhb")
+list = NodePath("../ArtList")
 
 [node name="Stats" type="Control" parent="."]
 layout_mode = 3
@@ -583,6 +617,32 @@ script = ExtResource("45_y6lod")
 customIcon = ExtResource("48_dqrv0")
 cardTypes = Array[Resource]([ExtResource("45_faopm"), ExtResource("46_lh4tv")])
 
+[node name="Credit" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 296.0
+offset_right = 520.0
+offset_bottom = 296.0
+mouse_filter = 2
+
+[node name="CreditLabel" type="Label" parent="Credit"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Credits"
+vertical_alignment = 1
+
+[node name="CreditEdit" type="LineEdit" parent="Credit" groups=["Save"]]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+placeholder_text = "Enter Credits..."
+script = ExtResource("22_wnou6")
+
 [node name="SelectedProps" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 1024.0
@@ -728,10 +788,14 @@ icon_alignment = 1
 
 [connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]
 [connection signal="text_changed" from="Title/TitleEdit" to="Title/TitleEdit" method="OnTextChanged"]
-[connection signal="text_changed" from="Credit/CreditEdit" to="Credit/CreditEdit" method="OnTextChanged"]
+[connection signal="empty_clicked" from="Tags/TagsList" to="Tags/TagsList" method="OnEmptyClicked"]
+[connection signal="item_selected" from="Tags/TagsList" to="Tags/TagsList" method="OnItemSelected"]
+[connection signal="empty_clicked" from="CustomArt/ArtList" to="CustomArt/ArtList" method="OnEmptyClicked"]
+[connection signal="item_selected" from="CustomArt/ArtList" to="CustomArt/ArtList" method="OnItemSelected"]
 [connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]
+[connection signal="text_changed" from="Credit/CreditEdit" to="Credit/CreditEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="SelectedProps/Position/XSpinBox" to="SelectedProps/Position" method="OnChangedX"]
 [connection signal="pressed" from="SelectedProps/Position/ResetXButton" to="SelectedProps/Position" method="OnResetXPressed"]
 [connection signal="value_changed" from="SelectedProps/Position/YSpinBox" to="SelectedProps/Position" method="OnChangedY"]

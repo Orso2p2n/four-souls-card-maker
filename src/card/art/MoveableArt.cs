@@ -44,6 +44,10 @@ public partial class MoveableArt : MoveableArtBase
 		}
 
 		basePos = Position;
+
+		if (Texture != null) {
+			PostSetTexture();
+		}
 	}
 
 	public override void _Process(double delta) {
@@ -72,6 +76,8 @@ public partial class MoveableArt : MoveableArtBase
 
 	public void Select() {
 		if (selected || Texture == null) return;
+
+		Card.instance.DeselectAllMoveableArts();
 
 		selected = true;
 
@@ -164,7 +170,8 @@ public partial class MoveableArt : MoveableArtBase
 		}
 
 		Deselect();
-		trashCallable.Call();
+		Card.instance.RemoveMoveableArt(this);
+		trashCallable.Call(this);
 	}
 
 	// --- SAVE HANDLING ---
