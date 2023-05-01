@@ -36,7 +36,8 @@ public partial class MoveableArtBase : TextureRect
 		dict.Add("CustomId", customId);
 		dict.Add("UsesCustomPath", usesCustomPath);
 		if (usesCustomPath) {
-			dict.Add("CustomPath", customPath);
+			var localPath = SaveManager.instance.globalPathToLocal(customPath);
+			dict.Add("CustomPath", localPath);
 		}
 
 		return dict;
@@ -49,9 +50,10 @@ public partial class MoveableArtBase : TextureRect
 		var loadedUsesCustomPath = (bool) data["UsesCustomPath"];
 		if (loadedUsesCustomPath) {
 			usesCustomPath = true;
-			var path = (string) data["CustomPath"];
-			var texture = EditManager.instance.LoadTextureFromPath(path);
-			SetTexture(texture, path);
+			var localPath = (string) data["CustomPath"];
+			var globalPath = SaveManager.instance.localPathToGlobal(localPath);
+			var texture = EditManager.instance.LoadTextureFromPath(globalPath);
+			SetTexture(texture, globalPath);
 			await ToSignal(this, "TextureSet");
 		}
 		else {

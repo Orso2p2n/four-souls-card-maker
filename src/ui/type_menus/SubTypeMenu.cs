@@ -50,7 +50,8 @@ public partial class SubTypeMenu : TypeMenu
 		var dict = base.Save();
 
 		if (Selected == customId) {
-			dict.Add("CustomPath", customTexturePath);
+			var localPath = SaveManager.instance.globalPathToLocal(customTexturePath);
+			dict.Add("CustomPath", localPath);
 		}
 
 		return dict;
@@ -60,9 +61,10 @@ public partial class SubTypeMenu : TypeMenu
         base.Load(data);
 
 		if (Selected == customId) {
-			var path = (string) data["CustomPath"];
-			var texture = EditManager.instance.LoadTextureFromPath(path);
-			customTextureCallback.Call(path, texture);
+			var localPath = (string) data["CustomPath"];
+			var globalPath = SaveManager.instance.localPathToGlobal(localPath);
+			var texture = EditManager.instance.LoadTextureFromPath(globalPath);
+			customTextureCallback.Call(globalPath, texture);
 		}
 
 		return Task.CompletedTask;

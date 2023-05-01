@@ -7,7 +7,18 @@ public partial class SaveManager : Node
 {
     static public SaveManager instance;
 
-    public string savePath;
+    string _savePath;
+    public string savePath{
+        get {
+            return _savePath;
+        }
+        set {
+            _savePath = value;
+            saveDir = System.IO.Path.GetDirectoryName(value);
+        }
+    }
+
+    string saveDir;
 
     [ExportGroup("Type Menus")]
     [Export] MainTypeMenu mainTypeMenu;
@@ -78,6 +89,26 @@ public partial class SaveManager : Node
         }
 
         saveGame.StoreLine("}");
+    }
+
+    public string globalPathToLocal(string path) {
+        if (savePath == null) {
+            return path;
+        }
+
+        var localPath = System.IO.Path.GetRelativePath(saveDir, path);
+
+        return localPath;
+    }
+
+    public  string localPathToGlobal(string path) {
+        if (savePath == null) {
+            return path;
+        }
+
+        var globalPath = saveDir + "\\" + path;
+
+        return globalPath;
     }
 
     // --- LOAD ---
