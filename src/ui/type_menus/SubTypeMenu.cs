@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class SubTypeMenu : TypeMenu
 {
@@ -55,7 +56,7 @@ public partial class SubTypeMenu : TypeMenu
 		return dict;
 	}
 
-	public override void Load(Dictionary data) {
+	public override Task Load(Dictionary data) {
         base.Load(data);
 
 		if (Selected == customId) {
@@ -63,5 +64,7 @@ public partial class SubTypeMenu : TypeMenu
 			var texture = EditManager.instance.LoadTextureFromPath(path);
 			customTextureCallback.Call(path, texture);
 		}
+
+		return Task.CompletedTask;
 	}
 }

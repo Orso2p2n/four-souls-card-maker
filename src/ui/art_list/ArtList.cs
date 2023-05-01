@@ -15,7 +15,7 @@ public partial class ArtList : ItemList
 
 	MoveableArt curEditingCustomArt;
 
-	public MoveableArt AddItem(string id) {
+	public MoveableArt AddItem(string id, bool addEntry = true) {
 		if (!scenes.ContainsKey(id)) {
 			return null;
 		}
@@ -23,13 +23,16 @@ public partial class ArtList : ItemList
 		var scene = scenes[id];
 		var instance = scene.Instantiate();
 		var moveableArt = instance as MoveableArt;
+		moveableArt.customId = id;
 		moveableArt.trashCallable = new Callable(this, "RemoveEntryFromArt");
 
-		if (id == "Custom") {
-			SetCustomProps(moveableArt);
-		}
-		else {
-			AddEntryFromArt(moveableArt);
+		if (addEntry) {
+			if (id == "Custom") {
+				SetCustomProps(moveableArt);
+			}
+			else {
+				AddEntryFromArt(moveableArt);
+			}
 		}
 
 		Card.instance.AddMoveableArt(moveableArt);
@@ -71,6 +74,43 @@ public partial class ArtList : ItemList
 		DeselectAll();
 		foreach (var art in arts) {
 			art.Deselect();
+		}
+	}
+	
+    // --- SAVE HANDLING ---
+	public Dictionary Save() {
+		var dict = new Dictionary();
+
+		var items = new Array<Dictionary>();
+
+		foreach (var art in arts) {
+			if (art == null) {
+				continue;
+			}
+
+			var artDict = art.Save();
+			items.Add(artDict);
+		}
+
+		dict.Add("Arts", items);
+
+		return dict;
+	}
+
+	public async void Load(Dictionary data) {
+		foreach (var art in arts.Duplicate()) {
+			art.TryTrash();
+		}
+
+		var loadedArts = (Array<Dictionary>) data["Arts"];
+
+		foreach (Dictionary loadedArt in loadedArts) {
+			var customId = (string) loadedArt["CustomId"];
+			var moveableArt = AddItem(customId, false);
+
+			await moveableArt.Load(loadedArt);
+
+			AddEntryFromArt(moveableArt);
 		}
 	}
 }

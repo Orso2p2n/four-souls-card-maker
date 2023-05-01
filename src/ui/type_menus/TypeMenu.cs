@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class TypeMenu : OptionButton
 {
@@ -40,9 +41,10 @@ public partial class TypeMenu : OptionButton
 		return dict;
 	}
 
-	public virtual void Load(Dictionary data) {
-		int selectedId = (int) data["Selected"];
+	public virtual Task Load(Dictionary data) {
+        int selectedId = (int) data["Selected"];
 		Select(selectedId);
 		OnItemSelected(selectedId);
-	}
+        return Task.CompletedTask;
+    }
 }

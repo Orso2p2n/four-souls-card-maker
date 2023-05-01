@@ -320,7 +320,7 @@ theme = ExtResource("3_7sxfo")
 text = "Tags"
 vertical_alignment = 1
 
-[node name="TagsList" type="ItemList" parent="Tags"]
+[node name="TagsList" type="ItemList" parent="Tags" groups=["Save"]]
 layout_mode = 2
 offset_top = 40.0
 offset_right = 472.0
@@ -373,7 +373,7 @@ theme = ExtResource("3_7sxfo")
 text = "Custom art"
 vertical_alignment = 1
 
-[node name="ArtList" type="ItemList" parent="CustomArt"]
+[node name="ArtList" type="ItemList" parent="CustomArt" groups=["Save"]]
 layout_mode = 2
 offset_top = 40.0
 offset_right = 472.0

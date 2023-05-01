@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class LoadArtButton : Button
 {
@@ -64,7 +65,7 @@ public partial class LoadArtButton : Button
 		return dict;
 	}
 
-	public virtual void Load(Dictionary data) {
+	public async virtual Task Load(Dictionary data) {
 		SetActive((bool) data["Active"]);
 
 		if (!active) {
@@ -72,6 +73,7 @@ public partial class LoadArtButton : Button
 		}
 
 		var linkedArtProps = (Dictionary) data["LinkedArt"];
-		linkedArt.Load(linkedArtProps);
+		
+		await linkedArt.Load(linkedArtProps);
 	}
 }

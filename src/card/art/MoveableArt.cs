@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class MoveableArt : MoveableArtBase
 {
@@ -67,11 +68,11 @@ public partial class MoveableArt : MoveableArtBase
 	}
 	
 	public override void PostSetTexture() {	
-		base.PostSetTexture();
-
 		var halfSize = GetRect().Size / 2;
 		minPos = baseMinPos - halfSize;
 		maxPos = baseMaxPos - halfSize;
+
+		base.PostSetTexture();
 	}
 
 	public void Select() {
@@ -194,11 +195,9 @@ public partial class MoveableArt : MoveableArtBase
 		return dict;
 	}
 
-	public async override void Load(Dictionary data) {
-		base.Load(data);
-
-		await ToSignal(RenderingServer.Singleton, "frame_post_draw");
-
+	public async override Task Load(Dictionary data) {
+		await base.Load(data);
+		
 		if (canResetPosition) {
 			var x = (float) data["X"];
 			var y = (float) data["Y"];

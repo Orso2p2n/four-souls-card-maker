@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class SaveManager : Node
 {
@@ -81,10 +82,14 @@ public partial class SaveManager : Node
 
     // --- LOAD ---
     public void Load() {
-        EditManager.instance.LoadSaveFileDialog(new Callable(this, "LoadPath"));
+        EditManager.instance.LoadSaveFileDialog(new Callable(this, "LoadPathCallable"));
     }
     
-    public void LoadPath(string path) {
+    void LoadPathCallable(string path) {
+        Task task = LoadPath(path);
+    }
+
+    public async Task LoadPath(string path) {
         if (path != savePath) {
             savePath = path;
         }
@@ -108,7 +113,8 @@ public partial class SaveManager : Node
         var allData = new Dictionary<string, Variant>((Dictionary) json.Data);
 
         foreach (Node saveNode in saveNodes) {
-            if (!saveNode.HasMethod("Load")) {
+            var method = saveNode.GetType().GetMethod("Load");
+            if (method == null) {
                 GD.Print($"Save node '{saveNode.Name}' is missing a Load() function, skipped");
                 continue;
             }
@@ -119,7 +125,13 @@ public partial class SaveManager : Node
                 continue;
             }
 
-            saveNode.Call("Load", data);
+            var task = (Task) method.Invoke(saveNode, new object[] {data});
+
+            if (task == null) {
+                continue;
+            }
+
+            await task.ConfigureAwait(false);
         }
     }
 }

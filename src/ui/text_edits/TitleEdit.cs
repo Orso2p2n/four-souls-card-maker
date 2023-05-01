@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class TitleEdit : LineEdit
 {
@@ -18,7 +19,7 @@ public partial class TitleEdit : LineEdit
 	}
 
 	public virtual void Load(Dictionary data) {
-		Text = (string) data["Value"];
+        Text = (string) data["Value"];
 		OnTextChanged(Text);
-	}
+    }
 }

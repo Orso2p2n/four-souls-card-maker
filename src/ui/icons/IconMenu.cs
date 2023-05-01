@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 public partial class IconMenu : SubTypeMenu
 {
@@ -15,10 +16,11 @@ public partial class IconMenu : SubTypeMenu
 		return dict;
 	}
 
-	public override void Load(Dictionary data) {
-        base.Load(data);
+	public async override Task Load(Dictionary data) {
+        await base.Load(data);
 
         var linkedArtProps = (Dictionary) data["LinkedArt"];
-		linkedArt.Load(linkedArtProps);
+		
+		await linkedArt.Load(linkedArtProps);
 	}
 }
