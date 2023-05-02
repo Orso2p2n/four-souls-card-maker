@@ -25,6 +25,7 @@ public partial class SaveManager : Node
     public bool needToSave;
 
     [Export] Label saveLabel;
+    [Export] Viewport cardViewport;
 
     public override void _Ready() {
         base._Ready();
@@ -187,5 +188,26 @@ public partial class SaveManager : Node
         }
 
         ResetNeedToSave();
+    }
+
+    // --- EXPORT ---
+    public void Export() {
+        if (cardViewport == null) {
+            return;
+        }
+
+        if (saveDir == "") {
+            return;
+        }
+
+        var img = cardViewport.GetTexture().GetImage();
+
+        if (img == null) {
+            return;
+        }
+
+        var exportPath = saveDir + "\\" + saveName + ".png";
+
+        img.SavePng(exportPath);
     }
 }

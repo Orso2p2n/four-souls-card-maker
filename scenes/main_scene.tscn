@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=68 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://copyy6is1xjxn" path="res://resources/cards/types/treasure.tres" id="6_5ii8c"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/File.cs" id="6_5mwhj"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
+[ext_resource type="Script" path="res://src/ui/menu_bar/Export.cs" id="7_qgwno"]
 [ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
@@ -78,9 +79,10 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
 
-[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("saveLabel")]
+[node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("saveLabel", "cardViewport")]
 script = ExtResource("1_wqwht")
 saveLabel = NodePath("../TopBar/SaveLabel")
+cardViewport = NodePath("../CardPreview/CardViewport")
 
 [node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat")]
 script = ExtResource("16_66afq")
@@ -144,6 +146,12 @@ item_2/id = 2
 item_3/text = "Save as..."
 item_3/id = 3
 script = ExtResource("6_5mwhj")
+
+[node name="Export" type="PopupMenu" parent="TopBar/MenuBar"]
+item_count = 1
+item_0/text = "Export"
+item_0/id = 0
+script = ExtResource("7_qgwno")
 
 [node name="SaveLabel" type="Label" parent="TopBar"]
 layout_mode = 0
@@ -795,6 +803,7 @@ icon = ExtResource("59_rxbag")
 icon_alignment = 1
 
 [connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]
+[connection signal="index_pressed" from="TopBar/MenuBar/Export" to="TopBar/MenuBar/Export" method="OnIndexPressed"]
 [connection signal="text_changed" from="Title/TitleEdit" to="Title/TitleEdit" method="OnTextChanged"]
 [connection signal="empty_clicked" from="Tags/TagsList" to="Tags/TagsList" method="OnEmptyClicked"]
 [connection signal="item_selected" from="Tags/TagsList" to="Tags/TagsList" method="OnItemSelected"]
