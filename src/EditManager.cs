@@ -9,11 +9,15 @@ public partial class EditManager : Node
 	[Export] public FileDialog fileDialog;
 	Callable fileDialogCallback;
 
+	[Export] public TextureRect bleedZonesMask;
+
 	[ExportGroup("Stats")]
 	string curStatsString;
 	[Export] public StatPanel hpStat;
 	[Export] public StatPanel diceStat;
 	[Export] public StatPanel atkStat;
+
+	public bool bleedZonesVisible = false;
 
 	public override void _Ready() {
 		base._Ready();
@@ -56,6 +60,20 @@ public partial class EditManager : Node
 
 	public void UpdateStats() {
 		Card.instance.setStats(curStatsString, hpStat.spinBox.Value, diceStat.spinBox.Value, atkStat.spinBox.Value);
+	}
+
+	public void ToggleBleedZones() {
+		SetBleedZones(!bleedZonesVisible);
+	}
+
+	public void SetBleedZones(bool show) {
+		bleedZonesVisible = show;
+		if (show) {
+			Card.instance.ShowBleedZones();
+		}
+		else {
+			Card.instance.HideBleedZones();
+		}
 	}
 
 	public void LoadTextureFileDialog(Callable callback) {

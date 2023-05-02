@@ -8,6 +8,8 @@ public partial class Card : Control
 	public static Card instance;
 
 	// Exports
+	[Export] TextureRect bleedZonesMask;
+
 	[ExportGroup("Title")]
 	[Export] RichTextLabel titleLabel;
 
@@ -71,6 +73,14 @@ public partial class Card : Control
 	public void OnNeedSaveAction() {
 		SaveManager.instance.OnNeedSaveAction();
     }
+
+	public void ShowBleedZones() {
+		bleedZonesMask.ClipChildren = CanvasItem.ClipChildrenMode.Disabled;
+	}
+
+	public void HideBleedZones() {
+		bleedZonesMask.ClipChildren = CanvasItem.ClipChildrenMode.Only;
+	}
 
 	public void SetTitle(string text) {
 		titleLabel.Text = "[center]" + text;

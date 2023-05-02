@@ -191,23 +191,42 @@ public partial class SaveManager : Node
     }
 
     // --- EXPORT ---
-    public void Export() {
+    public async void Export(bool showBleedZones) {
         if (cardViewport == null) {
             return;
         }
 
-        if (saveDir == "") {
+        if (savePath == null || savePath == "") {
             return;
         }
+
+
+        var oldShowBleedZones = EditManager.instance.bleedZonesVisible;
+        EditManager.instance.SetBleedZones(showBleedZones);
+
+        await ToSignal(RenderingServer.Singleton, "frame_post_draw");
 
         var img = cardViewport.GetTexture().GetImage();
-
         if (img == null) {
+            EditManager.instance.SetBleedZones(oldShowBleedZones);
             return;
         }
+        
+        // Export
+        var fileName = saveName;
 
-        var exportPath = saveDir + "\\" + saveName + ".png";
+        if (showBleedZones) {
+            fileName += "_print";
+        }
+        else {
+            fileName += "_tabletop";
+        }
 
-        img.SavePng(exportPath);
+        fileName += ".png";
+
+        var exportPath = saveDir + "\\" + fileName;
+        var error = img.SavePng(exportPath);
+
+        EditManager.instance.SetBleedZones(oldShowBleedZones);
     }
 }

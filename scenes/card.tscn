@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://d20xnxqu2phjl"]
+[gd_scene load_steps=18 format=3 uid="uid://d20xnxqu2phjl"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
 [ext_resource type="PackedScene" uid="uid://n7xbn3fngnic" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
+[ext_resource type="Texture2D" uid="uid://c4bjto0eoujl" path="res://assets/cards/card_crop.png" id="5_jb1td"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dve7q1d6oh65i" path="res://scenes/card/line.tscn" id="6_awvw3"]
 [ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
@@ -20,7 +21,7 @@
 base_font = ExtResource("12_q3kl2")
 spacing_glyph = -2
 
-[node name="Card" type="Control" node_paths=PackedStringArray("titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel", "BGLayer", "FGLayer")]
+[node name="Card" type="Control" node_paths=PackedStringArray("bleedZonesMask", "titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel", "BGLayer", "FGLayer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,35 +37,43 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_63tle")
-titleLabel = NodePath("FGLayer/TitleContainer/Title")
-bgTexture = NodePath("BGLayer/BGTexture")
-bgOptBorder = NodePath("BGLayer/BGOptional/BGOptBorder")
-bgOptBot = NodePath("BGLayer/BGOptional/BGOptBot")
-bgOptTop = NodePath("BGLayer/BGOptional/BGOptTop")
-fgBorder = NodePath("FGLayer/FGBorder")
-fgBot = NodePath("FGLayer/FGBot")
-fgTop = NodePath("FGLayer/FGTop")
-descContainer = NodePath("FGLayer/DescriptionContainer")
+bleedZonesMask = NodePath("BleedZonesMask")
+titleLabel = NodePath("BleedZonesMask/FGLayer/TitleContainer/Title")
+bgTexture = NodePath("BleedZonesMask/BGLayer/BGTexture")
+bgOptBorder = NodePath("BleedZonesMask/BGLayer/BGOptional/BGOptBorder")
+bgOptBot = NodePath("BleedZonesMask/BGLayer/BGOptional/BGOptBot")
+bgOptTop = NodePath("BleedZonesMask/BGLayer/BGOptional/BGOptTop")
+fgBorder = NodePath("BleedZonesMask/FGLayer/FGBorder")
+fgBot = NodePath("BleedZonesMask/FGLayer/FGBot")
+fgTop = NodePath("BleedZonesMask/FGLayer/FGTop")
+descContainer = NodePath("BleedZonesMask/FGLayer/DescriptionContainer")
 effect = ExtResource("5_cqrq7")
 lore = ExtResource("7_4fche")
 line = ExtResource("6_awvw3")
-monsterStatsContainer = NodePath("FGLayer/Stats/Monster")
-monsterHp = NodePath("FGLayer/Stats/Monster/HP")
-monsterDice = NodePath("FGLayer/Stats/Monster/DICE")
-monsterAtk = NodePath("FGLayer/Stats/Monster/ATK")
-characterStatsContainer = NodePath("FGLayer/Stats/Character")
-characterHp = NodePath("FGLayer/Stats/Character/HP")
-characterAtk = NodePath("FGLayer/Stats/Character/ATK")
-art = NodePath("Art")
-topArt = NodePath("TopArt")
-soulIcon = NodePath("FGLayer/SoulIcon")
-setIcon = NodePath("FGLayer/SetIcon")
-diffIcon = NodePath("FGLayer/DiffIcon")
-creditsLabel = NodePath("FGLayer/Credits")
-BGLayer = NodePath("BGLayer")
-FGLayer = NodePath("FGLayer")
+monsterStatsContainer = NodePath("BleedZonesMask/FGLayer/Stats/Monster")
+monsterHp = NodePath("BleedZonesMask/FGLayer/Stats/Monster/HP")
+monsterDice = NodePath("BleedZonesMask/FGLayer/Stats/Monster/DICE")
+monsterAtk = NodePath("BleedZonesMask/FGLayer/Stats/Monster/ATK")
+characterStatsContainer = NodePath("BleedZonesMask/FGLayer/Stats/Character")
+characterHp = NodePath("BleedZonesMask/FGLayer/Stats/Character/HP")
+characterAtk = NodePath("BleedZonesMask/FGLayer/Stats/Character/ATK")
+art = NodePath("BleedZonesMask/Art")
+topArt = NodePath("BleedZonesMask/TopArt")
+soulIcon = NodePath("BleedZonesMask/FGLayer/SoulIcon")
+setIcon = NodePath("BleedZonesMask/FGLayer/SetIcon")
+diffIcon = NodePath("BleedZonesMask/FGLayer/DiffIcon")
+creditsLabel = NodePath("BleedZonesMask/FGLayer/Credits")
+BGLayer = NodePath("BleedZonesMask/BGLayer")
+FGLayer = NodePath("BleedZonesMask/FGLayer")
 
-[node name="BGLayer" type="Control" parent="."]
+[node name="BleedZonesMask" type="TextureRect" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_right = 962.0
+offset_bottom = 1312.0
+texture = ExtResource("5_jb1td")
+
+[node name="BGLayer" type="Control" parent="BleedZonesMask"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +81,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BGTexture" type="TextureRect" parent="BGLayer"]
+[node name="BGTexture" type="TextureRect" parent="BleedZonesMask/BGLayer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +91,7 @@ grow_vertical = 2
 texture = ExtResource("5_vin02")
 expand_mode = 1
 
-[node name="BGOptional" type="Control" parent="BGLayer"]
+[node name="BGOptional" type="Control" parent="BleedZonesMask/BGLayer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +99,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BGOptBorder" type="TextureRect" parent="BGLayer/BGOptional"]
+[node name="BGOptBorder" type="TextureRect" parent="BleedZonesMask/BGLayer/BGOptional"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,7 +107,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BGOptBot" type="TextureRect" parent="BGLayer/BGOptional"]
+[node name="BGOptBot" type="TextureRect" parent="BleedZonesMask/BGLayer/BGOptional"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_qhdek")
 
-[node name="BGOptTop" type="TextureRect" parent="BGLayer/BGOptional"]
+[node name="BGOptTop" type="TextureRect" parent="BleedZonesMask/BGLayer/BGOptional"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,7 +124,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Art" type="TextureRect" parent="." node_paths=PackedStringArray("childArt", "scaleBox")]
+[node name="Art" type="TextureRect" parent="BleedZonesMask" node_paths=PackedStringArray("childArt", "scaleBox")]
 layout_mode = 2
 offset_right = 962.0
 pivot_offset = Vector2(481, 481)
@@ -129,10 +138,10 @@ canResetScale = true
 canResetPosition = true
 canBeTrashed = true
 
-[node name="ScaleBox" parent="Art" instance=ExtResource("9_t1do6")]
+[node name="ScaleBox" parent="BleedZonesMask/Art" instance=ExtResource("9_t1do6")]
 layout_mode = 0
 
-[node name="FGLayer" type="Control" parent="."]
+[node name="FGLayer" type="Control" parent="BleedZonesMask"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +149,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FGBorder" type="TextureRect" parent="FGLayer"]
+[node name="FGBorder" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,7 +157,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FGBot" type="TextureRect" parent="FGLayer"]
+[node name="FGBot" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,7 +166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_qhdek")
 
-[node name="FGTop" type="TextureRect" parent="FGLayer"]
+[node name="FGTop" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,7 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_b7y5n")
 
-[node name="TitleContainer" type="CenterContainer" parent="FGLayer"]
+[node name="TitleContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -177,25 +186,25 @@ offset_right = 367.0
 offset_bottom = 168.0
 grow_horizontal = 2
 
-[node name="Title" type="RichTextLabel" parent="FGLayer/TitleContainer"]
+[node name="Title" type="RichTextLabel" parent="BleedZonesMask/FGLayer/TitleContainer"]
 layout_mode = 2
 theme = ExtResource("4_4ajpn")
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 
-[node name="Stats" type="Control" parent="FGLayer"]
+[node name="Stats" type="Control" parent="BleedZonesMask/FGLayer"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Monster" type="Control" parent="FGLayer/Stats"]
+[node name="Monster" type="Control" parent="BleedZonesMask/FGLayer/Stats"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HP" type="Label" parent="FGLayer/Stats/Monster"]
+[node name="HP" type="Label" parent="BleedZonesMask/FGLayer/Stats/Monster"]
 layout_mode = 0
 offset_left = 285.0
 offset_top = 778.0
@@ -207,7 +216,7 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DICE" type="Label" parent="FGLayer/Stats/Monster"]
+[node name="DICE" type="Label" parent="BleedZonesMask/FGLayer/Stats/Monster"]
 layout_mode = 0
 offset_left = 490.0
 offset_top = 776.0
@@ -219,7 +228,7 @@ text = "4+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ATK" type="Label" parent="FGLayer/Stats/Monster"]
+[node name="ATK" type="Label" parent="BleedZonesMask/FGLayer/Stats/Monster"]
 layout_mode = 0
 offset_left = 685.0
 offset_top = 776.0
@@ -231,13 +240,13 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character" type="Control" parent="FGLayer/Stats"]
+[node name="Character" type="Control" parent="BleedZonesMask/FGLayer/Stats"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HP" type="Label" parent="FGLayer/Stats/Character"]
+[node name="HP" type="Label" parent="BleedZonesMask/FGLayer/Stats/Character"]
 layout_mode = 0
 offset_left = 380.0
 offset_top = 777.0
@@ -249,7 +258,7 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ATK" type="Label" parent="FGLayer/Stats/Character"]
+[node name="ATK" type="Label" parent="BleedZonesMask/FGLayer/Stats/Character"]
 layout_mode = 0
 offset_left = 579.0
 offset_top = 776.0
@@ -261,7 +270,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DescriptionContainer" type="VBoxContainer" parent="FGLayer"]
+[node name="DescriptionContainer" type="VBoxContainer" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -278,7 +287,7 @@ theme_override_constants/separation = 0
 alignment = 1
 script = ExtResource("11_sfr37")
 
-[node name="SoulIcon" type="TextureRect" parent="FGLayer" node_paths=PackedStringArray("scaleBox")]
+[node name="SoulIcon" type="TextureRect" parent="BleedZonesMask/FGLayer" node_paths=PackedStringArray("scaleBox")]
 layout_mode = 0
 offset_left = 678.0
 offset_top = 1022.0
@@ -291,10 +300,10 @@ canResetScale = true
 canResetPosition = true
 canBeTrashed = true
 
-[node name="ScaleBox" parent="FGLayer/SoulIcon" instance=ExtResource("9_t1do6")]
+[node name="ScaleBox" parent="BleedZonesMask/FGLayer/SoulIcon" instance=ExtResource("9_t1do6")]
 layout_mode = 0
 
-[node name="SetIcon" type="TextureRect" parent="FGLayer" node_paths=PackedStringArray("scaleBox")]
+[node name="SetIcon" type="TextureRect" parent="BleedZonesMask/FGLayer" node_paths=PackedStringArray("scaleBox")]
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 0
 offset_left = 796.0
@@ -309,10 +318,10 @@ canResetScale = true
 canResetPosition = true
 canBeTrashed = true
 
-[node name="ScaleBox" parent="FGLayer/SetIcon" instance=ExtResource("9_t1do6")]
+[node name="ScaleBox" parent="BleedZonesMask/FGLayer/SetIcon" instance=ExtResource("9_t1do6")]
 layout_mode = 0
 
-[node name="DiffIcon" type="TextureRect" parent="FGLayer" node_paths=PackedStringArray("scaleBox")]
+[node name="DiffIcon" type="TextureRect" parent="BleedZonesMask/FGLayer" node_paths=PackedStringArray("scaleBox")]
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 0
 offset_left = 117.0
@@ -327,10 +336,10 @@ canResetScale = true
 canResetPosition = true
 canBeTrashed = true
 
-[node name="ScaleBox" parent="FGLayer/DiffIcon" instance=ExtResource("9_t1do6")]
+[node name="ScaleBox" parent="BleedZonesMask/FGLayer/DiffIcon" instance=ExtResource("9_t1do6")]
 layout_mode = 0
 
-[node name="Credits" type="RichTextLabel" parent="FGLayer"]
+[node name="Credits" type="RichTextLabel" parent="BleedZonesMask/FGLayer"]
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 0
 offset_left = 98.0
@@ -343,7 +352,7 @@ theme_override_fonts/normal_font = SubResource("FontVariation_d71go")
 theme_override_font_sizes/normal_font_size = 34
 bbcode_enabled = true
 
-[node name="TopArt" type="TextureRect" parent="."]
+[node name="TopArt" type="TextureRect" parent="BleedZonesMask"]
 layout_mode = 2
 offset_right = 962.0
 pivot_offset = Vector2(480, 480)
@@ -351,7 +360,7 @@ expand_mode = 4
 stretch_mode = 5
 script = ExtResource("12_6osh0")
 
-[node name="Ref" type="TextureRect" parent="."]
+[node name="Ref" type="TextureRect" parent="BleedZonesMask"]
 visible = false
 modulate = Color(1, 1, 1, 0.45098)
 layout_mode = 1
@@ -362,4 +371,4 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_jg76o")
 
-[connection signal="resized" from="FGLayer/DescriptionContainer" to="FGLayer/DescriptionContainer" method="OnResized"]
+[connection signal="resized" from="BleedZonesMask/FGLayer/DescriptionContainer" to="BleedZonesMask/FGLayer/DescriptionContainer" method="OnResized"]
