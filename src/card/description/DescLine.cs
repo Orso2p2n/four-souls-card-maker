@@ -21,5 +21,7 @@ public partial class DescLine : DescBase
     public void SetAlpha(float alpha) {
         Visible = true;
         Modulate = new Color(1.0f, 1.0f, 1.0f, alpha);
+
+        SaveManager.instance.OnNeedSaveAction();
     }
 }

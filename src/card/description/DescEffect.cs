@@ -98,6 +98,8 @@ public partial class DescEffect : DescBase
 
         richText.Size = new Vector2(baseWidth * boundsMul, 0);
 
+		SaveManager.instance.OnNeedSaveAction();	
+
         UpdateSize();
 	}
 }

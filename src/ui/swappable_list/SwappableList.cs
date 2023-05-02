@@ -136,6 +136,8 @@ public partial class SwappableList : VBoxContainer
 		}
 
 		EmitSignal(SignalName.ListChanged);
+
+		SaveManager.instance.OnNeedSaveAction();
 	}
 
 	// --- SAVE HANDLING ---

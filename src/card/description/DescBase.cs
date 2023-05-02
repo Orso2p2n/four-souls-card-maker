@@ -9,5 +9,7 @@ public partial class DescBase : Control
 
     public virtual void SetPadding(int value) {
         padding = value;
+
+        SaveManager.instance.OnNeedSaveAction();
     }
 }

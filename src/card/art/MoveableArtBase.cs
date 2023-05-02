@@ -21,6 +21,8 @@ public partial class MoveableArtBase : TextureRect
 		await ToSignal(RenderingServer.Singleton, "frame_post_draw");
 
 		PostSetTexture();
+
+		SaveManager.instance.OnNeedSaveAction();
 	}
 	
 	public virtual void PostSetTexture() {		
@@ -36,7 +38,7 @@ public partial class MoveableArtBase : TextureRect
 		dict.Add("CustomId", customId);
 		dict.Add("UsesCustomPath", usesCustomPath);
 		if (usesCustomPath) {
-			var localPath = SaveManager.instance.globalPathToLocal(customPath);
+			var localPath = SaveManager.instance.GlobalPathToLocal(customPath);
 			dict.Add("CustomPath", localPath);
 		}
 
@@ -51,7 +53,7 @@ public partial class MoveableArtBase : TextureRect
 		if (loadedUsesCustomPath) {
 			usesCustomPath = true;
 			var localPath = (string) data["CustomPath"];
-			var globalPath = SaveManager.instance.localPathToGlobal(localPath);
+			var globalPath = SaveManager.instance.LocalPathToGlobal(localPath);
 			var texture = EditManager.instance.LoadTextureFromPath(globalPath);
 			SetTexture(texture, globalPath);
 			await ToSignal(this, "TextureSet");

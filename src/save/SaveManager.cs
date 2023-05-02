@@ -15,16 +15,16 @@ public partial class SaveManager : Node
         set {
             _savePath = value;
             saveDir = System.IO.Path.GetDirectoryName(value);
+            saveName = System.IO.Path.GetFileNameWithoutExtension(value);
         }
     }
 
     string saveDir;
+    string saveName = "new_card";
 
-    [ExportGroup("Type Menus")]
-    [Export] MainTypeMenu mainTypeMenu;
-    [Export] BackgroundMenu backgroundMenu;
-    [Export] BorderMenu borderMenu;
-    [Export] ForegroundMenu foregroundMenu;
+    public bool needToSave;
+
+    [Export] Label saveLabel;
 
     public override void _Ready() {
         base._Ready();
@@ -44,6 +44,45 @@ public partial class SaveManager : Node
 
     public void Reset() {
         GetTree().ReloadCurrentScene();
+    }
+
+    
+    public string GlobalPathToLocal(string path) {
+        if (savePath == null) {
+            return path;
+        }
+
+        var localPath = System.IO.Path.GetRelativePath(saveDir, path);
+
+        return localPath;
+    }
+
+    public string LocalPathToGlobal(string path) {
+        if (savePath == null) {
+            return path;
+        }
+
+        var globalPath = saveDir + "\\" + path;
+
+        return globalPath;
+    }
+
+    public void UpdateSaveLabel() {
+        saveLabel.Text = saveName;
+
+        if (needToSave) {
+            saveLabel.Text += "*";
+        }
+    }
+
+    public void OnNeedSaveAction() {
+        needToSave = true;
+        UpdateSaveLabel();
+    }
+
+    public void ResetNeedToSave() {
+        needToSave = false;
+        UpdateSaveLabel();
     }
 
     // --- SAVE ---
@@ -89,26 +128,8 @@ public partial class SaveManager : Node
         }
 
         saveGame.StoreLine("}");
-    }
 
-    public string globalPathToLocal(string path) {
-        if (savePath == null) {
-            return path;
-        }
-
-        var localPath = System.IO.Path.GetRelativePath(saveDir, path);
-
-        return localPath;
-    }
-
-    public  string localPathToGlobal(string path) {
-        if (savePath == null) {
-            return path;
-        }
-
-        var globalPath = saveDir + "\\" + path;
-
-        return globalPath;
+        ResetNeedToSave();
     }
 
     // --- LOAD ---
@@ -164,5 +185,7 @@ public partial class SaveManager : Node
 
             await task.ConfigureAwait(false);
         }
+
+        ResetNeedToSave();
     }
 }

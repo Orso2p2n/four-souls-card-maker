@@ -68,43 +68,56 @@ public partial class Card : Control
 		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
 	}
 
+	public void OnNeedSaveAction() {
+		SaveManager.instance.OnNeedSaveAction();
+    }
+
 	public void SetTitle(string text) {
 		titleLabel.Text = "[center]" + text;
+		OnNeedSaveAction();
 	}
 
 	public void SetCredits(string text) {
 		creditsLabel.Text = "[right]" + text;
+		OnNeedSaveAction();
 	}
 
 	public void SetCardBackground(CardBackground cardBg) {
 		bgTexture.Texture = cardBg.bgTexture;
+		OnNeedSaveAction();
 	}
 
 	public void SetCustomCardBackground(Texture2D texture) {
 		bgTexture.Texture = texture;
+		OnNeedSaveAction();
 	}
 
 	public void SetCardForeground(CardForeground cardFg) {
 		bgOptBot.Texture = fgBot.Texture = cardFg.bot;
 		bgOptTop.Texture = fgTop.Texture = cardFg.top;
+		OnNeedSaveAction();
 	}
 
 	public void SetCustomCardForeground(Texture2D texture) {
 		bgOptBot.Texture = fgBot.Texture = texture;
 		bgOptTop.Texture = fgTop.Texture = null;
+		OnNeedSaveAction();
 	}
 
 	public void SetCardBorder(CardBorder cardBorder) {
 		bgOptBorder.Texture = fgBorder.Texture = cardBorder.border;
+		OnNeedSaveAction();
 	}
 
 	public void SetCustomCardBorder(Texture2D texture) {
 		bgOptBorder.Texture = fgBorder.Texture = texture;
+		OnNeedSaveAction();
 	}
 
 	// -- DESCRIPTION --
 	public void SetDescOffsets(float top, float bot) {
 		descContainer.SetOffsets(top, bot);
+		OnNeedSaveAction();
 	}
 
 	public DescEffect AddEffect() {
@@ -114,6 +127,8 @@ public partial class Card : Control
 		var descEffect = instance as DescEffect;
 		descEffect.container = descContainer;
 		descContainer.OnAddText(descEffect);
+
+		OnNeedSaveAction();
 
 		return (instance as DescEffect);
 	}
@@ -126,6 +141,8 @@ public partial class Card : Control
 		descEffect.container = descContainer;
 		descContainer.OnAddText(descEffect);
 
+		OnNeedSaveAction();
+
 		return (instance as DescEffect);
 	}
 
@@ -135,6 +152,8 @@ public partial class Card : Control
 
 		var descLine = instance as DescLine;
 		descLine.container = descContainer;
+
+		OnNeedSaveAction();
 
 		return descLine;
 	}
@@ -160,6 +179,8 @@ public partial class Card : Control
 				characterAtk.Text = atk.ToString();
                 break;
         }
+
+		OnNeedSaveAction();
 	}
 
 	// -- ART --
@@ -170,6 +191,8 @@ public partial class Card : Control
 		else {
 			art.SetTexture(texture, path);
 		}
+
+		OnNeedSaveAction();
 	}
 
 	public void SetArtVisible(bool visible, bool top = false) {
@@ -179,6 +202,8 @@ public partial class Card : Control
 		else {
 			art.Visible = visible;
 		}
+
+		OnNeedSaveAction();
 	}
 
 	public void RemoveArt(bool top = false) {
@@ -188,6 +213,8 @@ public partial class Card : Control
 		else {
 			art.Texture = null;
 		}
+
+		OnNeedSaveAction();
 	}
 
 	// -- MOVEABLE ARTS --
@@ -206,10 +233,14 @@ public partial class Card : Control
 	public void AddMoveableArt(MoveableArt art) {
 		art.ChangeOwner(FGLayer);
 		moveableArts.Add(art);
+
+		OnNeedSaveAction();
 	}
 
 	public void RemoveMoveableArt(MoveableArt art) {
 		moveableArts.Remove(art);
+
+		OnNeedSaveAction();
 	}
 
 	public void DeselectAllMoveableArts() {
@@ -221,25 +252,37 @@ public partial class Card : Control
 	// -- MISC ICONS --
 	public void SetSoulIcon(SoulIcon soulIcon) {
 		this.soulIcon.SetTexture(soulIcon.texture);
+
+		OnNeedSaveAction();
 	}
 
 	public void SetCustomSoulIcon(Texture2D texture) {
 		soulIcon.SetTexture(texture);
+
+		OnNeedSaveAction();
 	}
 
 	public void SetSetIcon(SetIcon setIcon) {
 		this.setIcon.SetTexture(setIcon.texture);
+
+		OnNeedSaveAction();
 	}
 
 	public void SetCustomSetIcon(Texture2D texture) {
 		setIcon.SetTexture(texture);
+
+		OnNeedSaveAction();
 	}
 
 	public void SetDifficultyIcon(DifficultyIcon diffIcon) {
 		this.diffIcon.SetTexture(diffIcon.texture);
+
+		OnNeedSaveAction();
 	}
 
 	public void SetCustomDifficultyIcon(Texture2D texture) {
 		diffIcon.SetTexture(texture);
+
+		OnNeedSaveAction();
 	}
 }

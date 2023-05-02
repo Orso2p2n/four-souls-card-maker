@@ -30,7 +30,9 @@ public partial class TypeMenu : OptionButton
 		OnItemSelected(0);
 	}
 
-	public virtual void OnItemSelected(long index) {}
+	public virtual void OnItemSelected(long index) {
+		SaveManager.instance.OnNeedSaveAction();
+	}
 
 	// --- SAVE HANDLING ---
 	public virtual Dictionary Save() {

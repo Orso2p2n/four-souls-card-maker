@@ -152,6 +152,8 @@ public partial class MoveableArt : MoveableArtBase
 		Position = pos;
 
 		EmitSignal(SignalName.PositionChanged, pos);
+
+		SaveManager.instance.OnNeedSaveAction();
 	}
 
 	public void SetScale(float scale) {
@@ -163,6 +165,8 @@ public partial class MoveableArt : MoveableArtBase
 		Scale = new Vector2(scale, scale);
 
 		EmitSignal(SignalName.ScaleChanged, scale);
+
+		SaveManager.instance.OnNeedSaveAction();
 	}
 
 	public void TryTrash() {
