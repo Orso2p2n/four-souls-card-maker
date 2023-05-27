@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://n7xbn3fngnic"]
+[gd_scene load_steps=6 format=3 uid="uid://n7xbn3fngnic"]
 
 [ext_resource type="Script" path="res://src/card/description/DescEffect.cs" id="1_nw1xu"]
 [ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="1_tfnax"]
+[ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="2_fdik1"]
+[ext_resource type="Texture2D" uid="uid://cnhi6tipulpn7" path="res://assets/cards/_icons/icon_sword.png" id="3_g56fp"]
+[ext_resource type="Texture2D" uid="uid://cegs5hyhivj1o" path="res://assets/cards/_icons/icon_dice.png" id="4_u0tg3"]
 
 [node name="EffectLabel" type="Control" node_paths=PackedStringArray("richText")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_nw1xu")
 richText = NodePath("RichText")
+hpIcon = ExtResource("2_fdik1")
+atkIcon = ExtResource("3_g56fp")
+diceIcon = ExtResource("4_u0tg3")
 
 [node name="RichText" type="RichTextLabel" parent="."]
 clip_contents = false

@@ -6,9 +6,17 @@ public partial class DescEffect : DescBase
 {
 	[Export] public RichTextLabel richText;
 
+	[ExportGroup("Icons")]
+	[Export] Texture2D hpIcon;
+	[Export] Texture2D atkIcon;
+	[Export] Texture2D diceIcon;
+
+	string unprocessedText;
+
 	int baseFontSize;
 	public float userScale = 1.0f;
 	public float systemScale = 1.0f;
+	int curFontSize;
 
 	float baseWidth;
 	public float boundsMul = 1.0f;
@@ -45,9 +53,37 @@ public partial class DescEffect : DescBase
 	}
 
 	public void SetText(string text) {
-		richText.Text = "[center]" + text;
+		unprocessedText = text;
+
+		richText.Text = ProcessText(unprocessedText);
 
 		ResetRichTextSize();
+	}
+
+	string ProcessText(string text) {
+		text = "[center]" + text;
+
+		text = ReplaceIconsInText(text, "[HP]", hpIcon);
+		text = ReplaceIconsInText(text, "[ATK]", atkIcon);
+		text = ReplaceIconsInText(text, "[DICE]", diceIcon);
+
+		return text;
+	}
+
+	string ReplaceIconsInText(string text, string key, Texture2D icon) {
+		var path = icon.ResourcePath;
+
+		int targetHeight = (int) (curFontSize);
+		int iconHeight = icon.GetHeight();
+		int iconWidth = icon.GetWidth();
+
+		float ratio = (float) targetHeight / (float) iconHeight;
+
+		int targetWidth = (int) (ratio * iconWidth);
+		
+		string newVal = $"[img=bottom,bottom,{targetWidth}x{targetHeight}]{path}[/img]";
+
+		return text.Replace(key, newVal);
 	}
 
 	public void SetUserScale(float value) {
@@ -87,7 +123,9 @@ public partial class DescEffect : DescBase
 	}
 
 	public void ResetRichTextSize() {
-        var curFontSize = (int) (baseFontSize * userScale * systemScale);
+		var oldCurFontSize = curFontSize;
+
+        curFontSize = (int) (baseFontSize * userScale * systemScale);
         richText.AddThemeFontSizeOverride("normal_font_size", curFontSize);
 
 		var curLineSpacing = baseLineSpacing + lineSpacingDelta;
@@ -97,6 +135,10 @@ public partial class DescEffect : DescBase
         richText.AddThemeFontOverride("normal_font", fontVar);
 
         richText.Size = new Vector2(baseWidth * boundsMul, 0);
+
+		if (oldCurFontSize != curFontSize) {
+			SetText(unprocessedText);
+		}
 
 		SaveManager.instance.OnNeedSaveAction();	
 
