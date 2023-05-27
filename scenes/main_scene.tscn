@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=74 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -10,8 +10,10 @@
 [ext_resource type="Resource" uid="uid://b4t6f8r0yuna4" path="res://resources/cards/types/monster.tres" id="6_4oahh"]
 [ext_resource type="Resource" uid="uid://copyy6is1xjxn" path="res://resources/cards/types/treasure.tres" id="6_5ii8c"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/File.cs" id="6_5mwhj"]
+[ext_resource type="Script" path="res://src/ui/menu_bar/InfoWindow.cs" id="6_ak6ge"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/Export.cs" id="7_qgwno"]
+[ext_resource type="Script" path="res://src/ui/menu_bar/Help.cs" id="8_6fekc"]
 [ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
 [ext_resource type="PackedScene" uid="uid://b7okw434ljc07" path="res://scenes/ui/swappable_list/swappable_list.tscn" id="8_t1lh8"]
 [ext_resource type="Texture2D" uid="uid://ckffpk4nyj7gl" path="res://assets/cards/_icons/icon_heart.png" id="9_ekawo"]
@@ -129,6 +131,33 @@ offset_bottom = 32.0
 grow_horizontal = 2
 theme = ExtResource("3_7sxfo")
 
+[node name="InfoWindow" type="Window" parent="TopBar"]
+title = "Info"
+position = Vector2i(593, 332)
+size = Vector2i(350, 200)
+visible = false
+unresizable = true
+theme = ExtResource("3_7sxfo")
+script = ExtResource("6_ak6ge")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopBar/InfoWindow"]
+offset_right = 350.0
+offset_bottom = 200.0
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TopBar/InfoWindow/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[center] version [color=LIGHT_SKY_BLUE][url=https://github.com/ZPMods/four-souls-card-maker/releases]1.0.0[/url][/color]
+
+created by [color=LIGHT_SKY_BLUE][url=https://github.com/Orso2p2n]orso[/url][/color]
+
+\"the binding of isaac: four souls\" is a property of edmund mcmillen and maestro media.
+"
+fit_content = true
+
 [node name="MenuBar" type="MenuBar" parent="TopBar"]
 custom_minimum_size = Vector2(0, 33)
 layout_mode = 1
@@ -159,6 +188,18 @@ item_0/id = 0
 item_1/text = "Export for tabletop"
 item_1/id = 1
 script = ExtResource("7_qgwno")
+
+[node name="Help" type="PopupMenu" parent="TopBar/MenuBar" node_paths=PackedStringArray("infoWindow")]
+size = Vector2i(192, 100)
+item_count = 3
+item_0/text = "Info"
+item_0/id = 0
+item_1/text = "Go to repo"
+item_1/id = 1
+item_2/text = "Report bug"
+item_2/id = 2
+script = ExtResource("8_6fekc")
+infoWindow = NodePath("../../InfoWindow")
 
 [node name="SaveLabel" type="Label" parent="TopBar"]
 layout_mode = 0
@@ -668,6 +709,7 @@ script = ExtResource("27_65uhb")
 list = NodePath("../ArtList")
 
 [node name="StartingItem" type="Control" parent="." node_paths=PackedStringArray("checkBox")]
+visible = false
 anchors_preset = 0
 offset_left = 520.0
 offset_top = 584.0
@@ -875,8 +917,11 @@ offset_bottom = 32.0
 icon = ExtResource("59_rxbag")
 icon_alignment = 1
 
+[connection signal="close_requested" from="TopBar/InfoWindow" to="TopBar/InfoWindow" method="OnCloseRequested"]
+[connection signal="meta_clicked" from="TopBar/InfoWindow/VBoxContainer/RichTextLabel" to="TopBar/InfoWindow" method="OnTextMetaClicked"]
 [connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]
 [connection signal="index_pressed" from="TopBar/MenuBar/Export" to="TopBar/MenuBar/Export" method="OnIndexPressed"]
+[connection signal="index_pressed" from="TopBar/MenuBar/Help" to="TopBar/MenuBar/Help" method="OnIndexPressed"]
 [connection signal="text_changed" from="Title/TitleEdit" to="Title/TitleEdit" method="OnTextChanged"]
 [connection signal="empty_clicked" from="Tags/TagsList" to="Tags/TagsList" method="OnEmptyClicked"]
 [connection signal="item_selected" from="Tags/TagsList" to="Tags/TagsList" method="OnItemSelected"]
