@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=72 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -66,6 +66,10 @@
 [ext_resource type="Texture2D" uid="uid://cu7cuje6djaf7" path="res://assets/icons/difficulty/custom.png" id="48_dqrv0"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/TrashProps.cs" id="59_qwtyi"]
 [ext_resource type="Texture2D" uid="uid://ctm4jbvuwkq71" path="res://assets/icons/trash18.png" id="59_rxbag"]
+[ext_resource type="Script" path="res://src/ui/starting_item/StartingItemContainer.cs" id="62_25ilh"]
+[ext_resource type="Script" path="res://src/ui/text_edits/StartingItemIntroEdit.cs" id="62_t1qu5"]
+[ext_resource type="Script" path="res://src/ui/text_edits/StartingItemNameEdit.cs" id="63_nlm0b"]
+[ext_resource type="Script" path="res://src/ui/starting_item/StartingItemCheckBox.cs" id="63_te4q8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -183,7 +187,7 @@ theme = ExtResource("3_7sxfo")
 text = "Type"
 vertical_alignment = 1
 
-[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu") groups=["Save"]]
+[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu", "startingItemContainer") groups=["Save"]]
 layout_mode = 0
 offset_top = 40.0
 offset_right = 200.0
@@ -193,6 +197,7 @@ script = ExtResource("5_evgkq")
 backgroundMenu = NodePath("../BackgroundMenu")
 foregroundMenu = NodePath("../ForegroundMenu")
 borderMenu = NodePath("../BorderMenu")
+startingItemContainer = NodePath("../../StartingItem")
 cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("6_5ii8c"), ExtResource("6_4oahh"), ExtResource("8_hee5o"), ExtResource("5_o8y5v"), ExtResource("10_27qjp")])
 
 [node name="BackgroundLabel" type="Label" parent="Type"]
@@ -662,6 +667,54 @@ popup/item_0/id = 0
 script = ExtResource("27_65uhb")
 list = NodePath("../ArtList")
 
+[node name="StartingItem" type="Control" parent="." node_paths=PackedStringArray("checkBox")]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 584.0
+offset_right = 520.0
+offset_bottom = 584.0
+mouse_filter = 2
+script = ExtResource("62_25ilh")
+checkBox = NodePath("CheckBox")
+
+[node name="StartingItemLabel" type="Label" parent="StartingItem"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Starting item"
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="StartingItem" groups=["Save"]]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 12.0
+offset_right = 204.0
+offset_bottom = 36.0
+script = ExtResource("63_te4q8")
+
+[node name="IntroEdit" type="LineEdit" parent="StartingItem" groups=["Save"]]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+text = "starting item:"
+placeholder_text = "Enter Intro..."
+script = ExtResource("62_t1qu5")
+
+[node name="NameEdit" type="LineEdit" parent="StartingItem" groups=["Save"]]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 472.0
+offset_bottom = 128.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+text = "the d6"
+placeholder_text = "Enter Name..."
+script = ExtResource("63_nlm0b")
+
 [node name="ShowBleedZones" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -833,6 +886,9 @@ icon_alignment = 1
 [connection signal="text_changed" from="Credit/CreditEdit" to="Credit/CreditEdit" method="OnTextChanged"]
 [connection signal="empty_clicked" from="CustomArt/ArtList" to="CustomArt/ArtList" method="OnEmptyClicked"]
 [connection signal="item_selected" from="CustomArt/ArtList" to="CustomArt/ArtList" method="OnItemSelected"]
+[connection signal="toggled" from="StartingItem/CheckBox" to="StartingItem/CheckBox" method="OnToggled"]
+[connection signal="text_changed" from="StartingItem/IntroEdit" to="StartingItem/IntroEdit" method="OnTextChanged"]
+[connection signal="text_changed" from="StartingItem/NameEdit" to="StartingItem/NameEdit" method="OnTextChanged"]
 [connection signal="toggled" from="ShowBleedZones/ShowBleedZonesButton" to="EditManager" method="SetBleedZones"]
 [connection signal="value_changed" from="SelectedProps/Position/XSpinBox" to="SelectedProps/Position" method="OnChangedX"]
 [connection signal="pressed" from="SelectedProps/Position/ResetXButton" to="SelectedProps/Position" method="OnResetXPressed"]

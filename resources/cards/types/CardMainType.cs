@@ -9,6 +9,8 @@ public partial class CardMainType : MenuItem
     [Export] public Array<CardForeground>   foregrounds = new Array<CardForeground>();
     [Export] public Array<CardBorder>       borders     = new Array<CardBorder>();
 
+    [Export] public bool canHaveStartingItem = false;
+
     [ExportGroup("Description Offset")]
     [Export] public float descOffsetTop = 0f;
     [Export] public float descOffsetBot = 0f;

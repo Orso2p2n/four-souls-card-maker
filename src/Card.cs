@@ -53,6 +53,12 @@ public partial class Card : Control
 	[ExportGroup("Credits")]
 	[Export] RichTextLabel creditsLabel;
 
+	[ExportGroup("StartingItem")]
+	[Export] Vector2 descOffsetWhenShown;
+	[Export] TextureRect startingItemSeparator;
+	[Export] RichTextLabel startingItemIntro;
+	[Export] RichTextLabel startingItemName;
+
 	[ExportGroup("Layers")]
 	[Export] Control BGLayer;
 	[Export] Control FGLayer;
@@ -128,6 +134,18 @@ public partial class Card : Control
 	public void SetDescOffsets(float top, float bot) {
 		descContainer.SetOffsets(top, bot);
 		OnNeedSaveAction();
+	}
+
+	public void AddDescOffsets(float top, float bot) {
+		var topOffset = descContainer.topOffset + top;
+		var botOffset = descContainer.botOffset + bot;
+		descContainer.SetOffsets(topOffset, botOffset);
+	}
+
+	public void SubstractDescOffsets(float top, float bot) {
+		var topOffset = descContainer.topOffset - top;
+		var botOffset = descContainer.botOffset - bot;
+		descContainer.SetOffsets(topOffset, botOffset);
 	}
 
 	public DescEffect AddEffect() {
@@ -292,6 +310,28 @@ public partial class Card : Control
 
 	public void SetCustomDifficultyIcon(Texture2D texture) {
 		diffIcon.SetTexture(texture);
+
+		OnNeedSaveAction();
+	}
+
+	// -- STARTING ITEM --
+	public void SetStartingItemIntro(string text) {
+		startingItemIntro.Text = "[center]" + text;
+	}
+
+	public void SetStartingItemName(string text) {
+		startingItemName.Text = "[center]" + text;
+	}
+
+	public void SetStartingItemVisible(bool visible) {
+		if (visible) {
+			AddDescOffsets(descOffsetWhenShown.X, descOffsetWhenShown.Y);
+		}
+		else {
+			SubstractDescOffsets(descOffsetWhenShown.X, descOffsetWhenShown.Y);
+		}
+
+		startingItemSeparator.Visible = startingItemName.Visible = startingItemIntro.Visible = visible;
 
 		OnNeedSaveAction();
 	}

@@ -15,6 +15,9 @@ public partial class DescContainer : VBoxContainer
 
 	Vector2 oldSize;
 
+	public float topOffset;
+	public float botOffset;
+
 	float curTextScale = 1.0f;
 
 	public bool isCurrentlyFittingChildren = false;
@@ -34,6 +37,9 @@ public partial class DescContainer : VBoxContainer
 	}
 
 	public void SetOffsets(float topOffset, float botOffset) {
+		this.topOffset = topOffset;
+		this.botOffset = botOffset;
+		
 		Position = targetPos = initialPos + new Vector2(0, topOffset);
 		targetSize = initialSize - new Vector2(0, topOffset + botOffset);
 	}

@@ -7,6 +7,8 @@ public partial class MainTypeMenu : TypeMenu
 	[Export] BackgroundMenu backgroundMenu;
 	[Export] ForegroundMenu foregroundMenu;
 	[Export] BorderMenu 	borderMenu;
+	
+	[Export] StartingItemContainer startingItemContainer;
 
 	public override void _Ready() {
 		base._Ready();
@@ -38,6 +40,8 @@ public partial class MainTypeMenu : TypeMenu
 			borderList.Add(subType);
 		}
 		borderMenu.SetList(borderList);
+
+		startingItemContainer.SetVisible(selectedCardType.canHaveStartingItem);
 
 		EditManager.instance.SetStats(selectedCardType.stats);
 
