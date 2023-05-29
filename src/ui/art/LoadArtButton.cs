@@ -66,6 +66,8 @@ public partial class LoadArtButton : Button
 	}
 
 	public async virtual Task Load(Dictionary data) {
+		Trash();
+
 		SetActive((bool) data["Active"]);
 
 		if (!active) {
