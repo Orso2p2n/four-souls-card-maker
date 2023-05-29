@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=76 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -11,7 +11,9 @@
 [ext_resource type="Resource" uid="uid://copyy6is1xjxn" path="res://resources/cards/types/treasure.tres" id="6_5ii8c"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/File.cs" id="6_5mwhj"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/InfoWindow.cs" id="6_ak6ge"]
+[ext_resource type="Script" path="res://src/ui/menu_bar/export_window/ExportWindow.cs" id="6_annsf"]
 [ext_resource type="FontFile" uid="uid://3kqgtvqdthwa" path="res://assets/fonts/EMM_title.ttf" id="7_b2jd5"]
+[ext_resource type="Script" path="res://src/ui/menu_bar/export_window/ExportCheckbox.cs" id="7_dp3sk"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/Export.cs" id="7_qgwno"]
 [ext_resource type="Script" path="res://src/ui/menu_bar/Help.cs" id="8_6fekc"]
 [ext_resource type="Resource" uid="uid://b1p13jrhn2plb" path="res://resources/cards/types/event.tres" id="8_hee5o"]
@@ -131,6 +133,136 @@ offset_bottom = 32.0
 grow_horizontal = 2
 theme = ExtResource("3_7sxfo")
 
+[node name="ExportWindow" type="Window" parent="TopBar" node_paths=PackedStringArray("exportTabletopCheckbox", "createTabletopFolderCheckbox", "exportPrintingCheckbox", "createPrintingFolderCheckbox", "fileSelectionButton", "locationButton", "exportButton")]
+title = "Export"
+position = Vector2i(418, 232)
+size = Vector2i(750, 250)
+visible = false
+unresizable = true
+theme = ExtResource("3_7sxfo")
+script = ExtResource("6_annsf")
+exportTabletopCheckbox = NodePath("LeftVBox/TabletopContainer/TabletopExportCheckBox")
+createTabletopFolderCheckbox = NodePath("RightVBox/TabletopContainer/TabletopFolderCheckBox")
+exportPrintingCheckbox = NodePath("LeftVBox/PrintContainer/PrintExportCheckBox")
+createPrintingFolderCheckbox = NodePath("RightVBox/PrintContainer/PrintFolderCheckBox")
+fileSelectionButton = NodePath("RightVBox/FileSelectButton")
+locationButton = NodePath("RightVBox/FolderSelectButton")
+exportButton = NodePath("ExportButton")
+
+[node name="LeftVBox" type="VBoxContainer" parent="TopBar/ExportWindow"]
+offset_top = 25.0
+offset_right = 350.0
+offset_bottom = 185.0
+theme = ExtResource("3_7sxfo")
+alignment = 1
+
+[node name="FileSelectLabel" type="Label" parent="TopBar/ExportWindow/LeftVBox"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+text = "File or folder to export: "
+horizontal_alignment = 2
+
+[node name="FolderSelectLabel" type="Label" parent="TopBar/ExportWindow/LeftVBox"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+text = "export location: "
+horizontal_alignment = 2
+
+[node name="TabletopContainer" type="HBoxContainer" parent="TopBar/ExportWindow/LeftVBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="TabletopExportLabel" type="Label" parent="TopBar/ExportWindow/LeftVBox/TabletopContainer"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+text = "Export for tabletop"
+horizontal_alignment = 1
+
+[node name="TabletopExportCheckBox" type="CheckBox" parent="TopBar/ExportWindow/LeftVBox/TabletopContainer" node_paths=PackedStringArray("linkedText", "linkedCheckbox")]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+button_pressed = true
+script = ExtResource("7_dp3sk")
+linkedText = NodePath("../TabletopExportLabel")
+linkedCheckbox = NodePath("../../../RightVBox/TabletopContainer/TabletopFolderCheckBox")
+
+[node name="PrintContainer" type="HBoxContainer" parent="TopBar/ExportWindow/LeftVBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="PrintExportLabel" type="Label" parent="TopBar/ExportWindow/LeftVBox/PrintContainer"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+text = "Export for printing"
+horizontal_alignment = 1
+
+[node name="PrintExportCheckBox" type="CheckBox" parent="TopBar/ExportWindow/LeftVBox/PrintContainer" node_paths=PackedStringArray("linkedText", "linkedCheckbox")]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+button_pressed = true
+script = ExtResource("7_dp3sk")
+linkedText = NodePath("../PrintExportLabel")
+linkedCheckbox = NodePath("../../../RightVBox/PrintContainer/PrintFolderCheckBox")
+
+[node name="RightVBox" type="VBoxContainer" parent="TopBar/ExportWindow"]
+offset_left = 375.0
+offset_top = 31.0
+offset_right = 725.0
+offset_bottom = 181.0
+theme = ExtResource("3_7sxfo")
+alignment = 1
+
+[node name="FileSelectButton" type="Button" parent="TopBar/ExportWindow/RightVBox"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "default (current file)"
+text_overrun_behavior = 3
+
+[node name="FolderSelectButton" type="Button" parent="TopBar/ExportWindow/RightVBox"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "default (exported file's folder)"
+text_overrun_behavior = 3
+
+[node name="TabletopContainer" type="HBoxContainer" parent="TopBar/ExportWindow/RightVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="TabletopFolderLabel" type="Label" parent="TopBar/ExportWindow/RightVBox/TabletopContainer"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+text = "Create folder"
+horizontal_alignment = 1
+
+[node name="TabletopFolderCheckBox" type="CheckBox" parent="TopBar/ExportWindow/RightVBox/TabletopContainer" node_paths=PackedStringArray("linkedText")]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+script = ExtResource("7_dp3sk")
+linkedText = NodePath("../TabletopFolderLabel")
+
+[node name="PrintContainer" type="HBoxContainer" parent="TopBar/ExportWindow/RightVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="PrintFolderLabel" type="Label" parent="TopBar/ExportWindow/RightVBox/PrintContainer"]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+text = "Create folder"
+horizontal_alignment = 1
+
+[node name="PrintFolderCheckBox" type="CheckBox" parent="TopBar/ExportWindow/RightVBox/PrintContainer" node_paths=PackedStringArray("linkedText")]
+layout_mode = 2
+theme = ExtResource("3_7sxfo")
+script = ExtResource("7_dp3sk")
+linkedText = NodePath("../PrintFolderLabel")
+
+[node name="ExportButton" type="Button" parent="TopBar/ExportWindow"]
+offset_left = 265.0
+offset_top = 200.0
+offset_right = 481.0
+offset_bottom = 232.0
+text = "Export"
+
 [node name="InfoWindow" type="Window" parent="TopBar"]
 title = "Info"
 position = Vector2i(593, 332)
@@ -164,6 +296,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -0.5
+offset_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_7sxfo")
@@ -181,13 +315,14 @@ item_3/text = "Save as..."
 item_3/id = 3
 script = ExtResource("6_5mwhj")
 
-[node name="Export" type="PopupMenu" parent="TopBar/MenuBar"]
+[node name="Export" type="PopupMenu" parent="TopBar/MenuBar" node_paths=PackedStringArray("exportWindow")]
 item_count = 2
-item_0/text = "Export for print"
+item_0/text = "Quick export"
 item_0/id = 0
-item_1/text = "Export for tabletop"
+item_1/text = "Export..."
 item_1/id = 1
 script = ExtResource("7_qgwno")
+exportWindow = NodePath("../../ExportWindow")
 
 [node name="Help" type="PopupMenu" parent="TopBar/MenuBar" node_paths=PackedStringArray("infoWindow")]
 size = Vector2i(192, 100)
@@ -917,6 +1052,7 @@ offset_bottom = 32.0
 icon = ExtResource("59_rxbag")
 icon_alignment = 1
 
+[connection signal="close_requested" from="TopBar/ExportWindow" to="TopBar/ExportWindow" method="OnCloseRequested"]
 [connection signal="close_requested" from="TopBar/InfoWindow" to="TopBar/InfoWindow" method="OnCloseRequested"]
 [connection signal="meta_clicked" from="TopBar/InfoWindow/VBoxContainer/RichTextLabel" to="TopBar/InfoWindow" method="OnTextMetaClicked"]
 [connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]

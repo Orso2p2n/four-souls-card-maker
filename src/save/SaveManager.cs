@@ -191,42 +191,103 @@ public partial class SaveManager : Node
     }
 
     // --- EXPORT ---
-    public async void Export(bool showBleedZones) {
+    public async Task ExportFolder(bool exportTabletop, bool exportPrinting, string folderPath, string exportLocation = null, bool createTabletopFolder = false, bool createPrintingFolder = false) {
+        GD.Print(folderPath);
+
+        var cardPaths = GetCardsInDir(folderPath);
+
+        foreach (var path in cardPaths) {
+            await ExportFile(exportTabletop, exportPrinting, path, exportLocation, createTabletopFolder, createPrintingFolder);
+        }
+    }
+
+    Array<string> GetCardsInDir(string dirPath) {
+
+        Array<string> cardPaths = new Array<string>();
+
+        var directory = DirAccess.Open(dirPath);
+
+        if (directory == null) {
+            GD.PrintErr("An error occured when trying to access the path at " + dirPath + ".");
+            return cardPaths;
+        }
+
+        directory.ListDirBegin();
+
+        string curFileName = directory.GetNext();
+        while (curFileName != "") {
+            
+            if (directory.CurrentIsDir()) {
+                var curDirCards = GetCardsInDir(dirPath + "\\" + curFileName);
+                cardPaths.AddRange(curDirCards);
+            }
+            else {
+                if (curFileName.EndsWith(".fscard")) {
+                    cardPaths.Add(dirPath + "\\" + curFileName);
+                }
+            }
+
+            curFileName = directory.GetNext();
+        }
+
+        return cardPaths;
+    }
+
+    public async Task ExportFile(bool exportTabletop, bool exportPrinting, string filePath = null, string exportLocation = null, bool createTabletopFolder = false, bool createPrintingFolder = false) {
         if (cardViewport == null) {
             return;
+        }
+
+        if (filePath != null && filePath != savePath) {
+            if (savePath != null) {
+                Save();
+            }
+            
+            await LoadPath(filePath);
+        }
+
+        if (exportLocation == null) {
+            exportLocation = saveDir;
         }
 
         if (savePath == null || savePath == "") {
             return;
         }
 
-
         var oldShowBleedZones = EditManager.instance.bleedZonesVisible;
+
+        if (exportTabletop) {
+            await Export(false, exportLocation, createTabletopFolder, "tabletop");
+        }
+
+        if (exportPrinting) {
+            await Export(true, exportLocation, createPrintingFolder, "print");
+        }
+
+        EditManager.instance.SetBleedZones(oldShowBleedZones);
+    }
+
+    async Task Export(bool showBleedZones, string exportLocation, bool createFolder, string suffix) {
         EditManager.instance.SetBleedZones(showBleedZones);
 
         await ToSignal(RenderingServer.Singleton, "frame_post_draw");
 
         var img = cardViewport.GetTexture().GetImage();
         if (img == null) {
-            EditManager.instance.SetBleedZones(oldShowBleedZones);
             return;
         }
         
         // Export
         var fileName = saveName;
 
-        if (showBleedZones) {
-            fileName += "_print";
-        }
-        else {
-            fileName += "_tabletop";
+        if (createFolder) {
+            exportLocation += "\\" + suffix;
+            DirAccess.MakeDirAbsolute(exportLocation);
         }
 
-        fileName += ".png";
+        fileName += "_" + suffix + ".png";
 
-        var exportPath = saveDir + "\\" + fileName;
+        var exportPath = exportLocation + "\\" + fileName;
         var error = img.SavePng(exportPath);
-
-        EditManager.instance.SetBleedZones(oldShowBleedZones);
     }
 }

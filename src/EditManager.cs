@@ -7,7 +7,8 @@ public partial class EditManager : Node
 	public static EditManager instance;
 
 	[Export] public FileDialog fileDialog;
-	Callable fileDialogCallback;
+	Callable fileDialogPathCallback;
+	Callable folderDialogCallback;
 
 	[Export] public TextureRect bleedZonesMask;
 
@@ -77,7 +78,7 @@ public partial class EditManager : Node
 	}
 
 	public void LoadTextureFileDialog(Callable callback) {
-        fileDialogCallback = callback;
+        fileDialogPathCallback = callback;
 
 		fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
 		fileDialog.Filters = new string[]{"*.png, *.jpg, *.jpeg ; Supported Images"};
@@ -88,7 +89,7 @@ public partial class EditManager : Node
     void OnTexturePathSelected(string path) {
 		var texture = LoadTextureFromPath(path);
         
-        fileDialogCallback.Call(path, texture);
+        fileDialogPathCallback.Call(path, texture);
 
         fileDialog.FileSelected -= OnTexturePathSelected;
     }
@@ -106,26 +107,54 @@ public partial class EditManager : Node
 	}
 
 	public void WriteSaveFileDialog(Callable callback) {
-        fileDialogCallback = callback;
+        fileDialogPathCallback = callback;
 
 		fileDialog.FileMode = FileDialog.FileModeEnum.SaveFile;
 		fileDialog.Filters = new string[]{"*.fscard ; Four Souls Card"};
 		fileDialog.Visible = true;
-		fileDialog.FileSelected += OnSavePathSelected;
+		fileDialog.FileSelected += OnFileSelected;
 	}
 
 	public void LoadSaveFileDialog(Callable callback) {
-        fileDialogCallback = callback;
+        fileDialogPathCallback = callback;
 
 		fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
 		fileDialog.Filters = new string[]{"*.fscard ; Four Souls Card"};
 		fileDialog.Visible = true;
-		fileDialog.FileSelected += OnSavePathSelected;
+		fileDialog.FileSelected += OnFileSelected;
 	}
 
-	void OnSavePathSelected(string path) {
-		fileDialogCallback.Call(path);
+	public void SelectFileOrFolderDialog(Callable fileCallback, Callable folderCallback) {
+        fileDialogPathCallback = fileCallback;
+        folderDialogCallback = folderCallback;
 
-		fileDialog.FileSelected -= OnSavePathSelected;
+		fileDialog.FileMode = FileDialog.FileModeEnum.OpenAny;
+		fileDialog.Filters = new string[]{"Folder","*.fscard ; Four Souls Card"};
+		fileDialog.Visible = true;
+		fileDialog.FileSelected += OnFileSelected;
+		fileDialog.DirSelected += OnDirSelected;
+	}
+
+	public void SelectFolderDialog(Callable callback) {
+        folderDialogCallback = callback;
+
+		fileDialog.FileMode = FileDialog.FileModeEnum.OpenDir;
+		fileDialog.Filters = new string[]{"Folder"};
+		fileDialog.Visible = true;
+		fileDialog.DirSelected += OnDirSelected;
+	}
+
+	void OnFileSelected(string path) {
+		fileDialogPathCallback.Call(path);
+
+		fileDialog.FileSelected -= OnFileSelected;
+		fileDialog.DirSelected -= OnDirSelected;
+	}
+
+	void OnDirSelected(string path) {
+		folderDialogCallback.Call(path);
+
+		fileDialog.FileSelected -= OnFileSelected;
+		fileDialog.DirSelected -= OnDirSelected;
 	}
 }

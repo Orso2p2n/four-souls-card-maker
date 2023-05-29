@@ -18,6 +18,7 @@ bg_color = Color(0.188235, 0.188235, 0.188235, 1)
 
 [resource]
 /font_sizes/font = 16
+BoxContainer/constants/separation = 8
 Button/fonts/font = ExtResource("1_nd7m3")
 ItemList/styles/panel = SubResource("StyleBoxFlat_fsj8a")
 Label/font_sizes/font_size = 26
