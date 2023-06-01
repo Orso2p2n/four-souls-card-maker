@@ -139,13 +139,13 @@ public partial class Card : Control
 	public void AddDescOffsets(float top, float bot) {
 		var topOffset = descContainer.topOffset + top;
 		var botOffset = descContainer.botOffset + bot;
-		descContainer.SetOffsets(topOffset, botOffset);
+		SetDescOffsets(topOffset, botOffset);
 	}
 
 	public void SubstractDescOffsets(float top, float bot) {
 		var topOffset = descContainer.topOffset - top;
 		var botOffset = descContainer.botOffset - bot;
-		descContainer.SetOffsets(topOffset, botOffset);
+		SetDescOffsets(topOffset, botOffset);
 	}
 
 	public DescEffect AddEffect() {
