@@ -19,6 +19,7 @@ public partial class MoveableArtBase : TextureRect
 		Texture = texture;
 		
 		await ToSignal(RenderingServer.Singleton, "frame_post_draw");
+		await ToSignal(RenderingServer.Singleton, "frame_post_draw"); // HACK fix because the size was still at (962,0) even after the first frame_post_draw
 
 		PostSetTexture();
 
