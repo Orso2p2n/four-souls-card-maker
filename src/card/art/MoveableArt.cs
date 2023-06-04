@@ -10,6 +10,7 @@ public partial class MoveableArt : MoveableArtBase
 	[Export] ScaleBox scaleBox;
 	[Export] public float minScale = 0.1f;
 	[Export] public float maxScale = 1.5f;
+	[Export] public float scaleStep = 0.025f;
 	[Export] public Vector2 baseMinPos = new Vector2(0f, 0f);
 	[Export] public Vector2 baseMaxPos = new Vector2(962f, 1312f);
 	[Export] public bool canResetScale;
@@ -161,7 +162,13 @@ public partial class MoveableArt : MoveableArtBase
 			return;
 		}
 
-		scale = Mathf.Clamp(scale, minScale, maxScale);
+		var rem = scale % scaleStep;
+		var result = scale - rem;
+		if (rem > scaleStep / 2) {
+			result += scaleStep;
+		}
+
+		scale = Mathf.Clamp(result, minScale, maxScale);
 		Scale = new Vector2(scale, scale);
 
 		EmitSignal(SignalName.ScaleChanged, scale);

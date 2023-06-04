@@ -6,9 +6,12 @@ public partial class ScaleProps : SelectionProp
 	[Export] Label label;
 	[Export] Slider slider;
 
+	float scaleStep;
+
 	public override void HandleArtProperties(MoveableArt art) {
 		SetEnabled(art.canResetScale);
 		SetSliderValue(art.Scale.X);
+		slider.Step = scaleStep;
 	}
 
 	public override void ConnectSignals() {
