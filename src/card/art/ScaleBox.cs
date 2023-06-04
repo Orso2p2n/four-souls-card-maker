@@ -12,7 +12,7 @@ public partial class ScaleBox : NinePatchRect
 	[Export] Control botRightCorner;
 	Array<Control> corners;
 
-	bool cornerHeld;
+	int heldCornerId = -1;
 
 	Vector2 baseMousePos = Vector2.Zero;
 
@@ -54,24 +54,62 @@ public partial class ScaleBox : NinePatchRect
 						var pressedCorner = corners[pressedCornerId];
 
 						baseMousePos = mouseButtonEvent.Position;
-						cornerHeld = true;
+						heldCornerId = pressedCornerId;
 
 						GetViewport().SetInputAsHandled();
 					}
 				}
 				else {
-					cornerHeld = false;
+					heldCornerId = -1;
 				}
 
 			}
 		}
 		// Move to move
 		else if (@event is InputEventMouseMotion mouseMotionEvent) {
-			if (cornerHeld) {
+			HandleMouseCursor(mouseMotionEvent);
+
+			if (heldCornerId != -1) {
 				OnCornerMoved(mouseMotionEvent.Position);
 			}
 		}
     }
+
+	void HandleMouseCursor(InputEventMouseMotion mouseMotionEvent) {
+		var rect = GetRect();
+		var mouseIsInside = rect.HasPoint(mouseMotionEvent.Position);
+
+		Control.CursorShape cursorShape = Control.CursorShape.Arrow;
+
+		if (!mouseIsInside && heldCornerId == -1) {
+			if (EditManager.instance.GetCursorShape() != cursorShape) {
+				EditManager.instance.SetCursorShape(cursorShape);
+			}
+
+			return;
+		}
+
+		var hoveredCornerId = GetCornerAtPoint(mouseMotionEvent.Position);
+		if (hoveredCornerId == -1) {
+			if (heldCornerId == -1) {
+				return;
+			}
+
+			hoveredCornerId = heldCornerId;
+		}
+
+		switch (hoveredCornerId) {
+			case 0: case 3:
+				cursorShape = Control.CursorShape.Fdiagsize;
+			break;
+
+			case 1: case 2:
+				cursorShape = Control.CursorShape.Bdiagsize;
+			break;
+		}
+
+		EditManager.instance.SetCursorShape(cursorShape);
+	}
 
 	void OnCornerMoved(Vector2 newPos) {
 		var parentHalfSize = parentArt.Size / 2;
