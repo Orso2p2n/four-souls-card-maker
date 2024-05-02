@@ -163,6 +163,7 @@ script = ExtResource("8_3vw2m")
 childArt = NodePath("../TopArt")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canBeTrashed = true
 
 [node name="FGLayer" type="Control" parent="BleedZonesMask"]
@@ -379,6 +380,7 @@ expand_mode = 1
 script = ExtResource("8_3vw2m")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canBeTrashed = true
 
 [node name="SetIcon" type="TextureRect" parent="BleedZonesMask/FGLayer"]
@@ -394,6 +396,7 @@ stretch_mode = 5
 script = ExtResource("8_3vw2m")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canBeTrashed = true
 
 [node name="DiffIcon" type="TextureRect" parent="BleedZonesMask/FGLayer"]
@@ -409,6 +412,7 @@ stretch_mode = 5
 script = ExtResource("8_3vw2m")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canBeTrashed = true
 
 [node name="Credits" type="RichTextLabel" parent="BleedZonesMask/FGLayer"]

@@ -216,8 +216,8 @@ public partial class MoveableArt : MoveableArtBase
 		SaveManager.instance.OnNeedSaveAction();
 	}
 
-	public void SetRotation(float rotation) {
-		if (rotation == Rotation) {
+	public void SetRotationDegrees(float rotation) {
+		if (rotation == RotationDegrees) {
 			return;
 		}
 
@@ -227,7 +227,9 @@ public partial class MoveableArt : MoveableArtBase
 			result += rotationStep;
 		}
 
-		Rotation = result;
+		RotationDegrees = result;
+
+		GD.Print($"RotationDegrees: {RotationDegrees}");
 
 		EmitSignal(SignalName.RotationChanged, result);
 
@@ -258,7 +260,7 @@ public partial class MoveableArt : MoveableArtBase
 		}
 
 		if (canResetRotation) {
-			dict.Add("Rotation", Rotation);
+			dict.Add("Rotation", RotationDegrees);
 		}
 
 		if (canSetValue) {
@@ -284,7 +286,7 @@ public partial class MoveableArt : MoveableArtBase
 
 		if (canResetRotation) {
 			var rotation = (float) data["Rotation"];
-			SetRotation(rotation);
+			SetRotationDegrees(rotation);
 		}
 
 		if (canSetValue) {

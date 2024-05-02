@@ -11,5 +11,6 @@ expand_mode = 1
 script = ExtResource("2_0rvgr")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canSetValue = true
 canBeTrashed = true

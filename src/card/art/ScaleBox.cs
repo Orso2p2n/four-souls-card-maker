@@ -19,7 +19,7 @@ public partial class ScaleBox : NinePatchRect
 
 	public override void _Ready() {
 		base._Ready();
-		
+
 		Card.instance.InputGrabbed += OnInputGrabbed;
 	}
 
@@ -70,8 +70,8 @@ public partial class ScaleBox : NinePatchRect
 		var parentHalfSize = parentArt.Size / 2;
 		var parentCenter = parentArt.Position + parentHalfSize;
 
-		var angleToMousePos = parentCenter.AngleToPoint(mousePos) - Mathf.Pi/2;
+		var angleToMousePos = Mathf.RadToDeg(parentCenter.AngleToPoint(mousePos) - Mathf.Pi/2);
 
-		parentArt.Rotation = angleToMousePos;
+		parentArt.SetRotationDegrees(angleToMousePos);
 	}
 }

@@ -11,4 +11,5 @@ expand_mode = 1
 script = ExtResource("2_c6dot")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canBeTrashed = true

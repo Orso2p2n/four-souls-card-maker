@@ -6,4 +6,5 @@
 script = ExtResource("2_i3rpv")
 canResetScale = true
 canResetPosition = true
+canResetRotation = true
 canBeTrashed = true

@@ -3,15 +3,11 @@ using System;
 
 public partial class ScaleProps : SelectionProp
 {
-	[Export] Label label;
-	[Export] Slider slider;
-
-	float scaleStep;
+	[Export] SpinBox spinBox;
 
 	public override void HandleArtProperties(MoveableArt art) {
 		SetEnabled(art.canResetScale);
-		SetSliderValue(art.Scale.X);
-		slider.Step = scaleStep;
+		OnScaleChanged(art.Scale.X);
 	}
 
 	public override void ConnectSignals() {
@@ -23,16 +19,15 @@ public partial class ScaleProps : SelectionProp
 	}
 
 	void OnScaleChanged(float scale) {
-		SetSliderValue(scale);
+		SetSpinBoxValue(scale * 100);
 	}
 
-	void OnSliderValueChanged(float value) {
-		selectedArt.SetScale(value);
+	void OnSpinBoxValueChanged(float value) {
+		selectedArt.SetScale(value / 100);
 	}
 
-	void SetSliderValue(float value) {
-		slider.Value = value;
-		label.Text = "Scale: " + value;
+	void SetSpinBoxValue(float value) {
+		spinBox.Value = value;
 	}
 
 	void OnPressed() {
