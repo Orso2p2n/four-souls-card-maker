@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://b26bl0p56pr6d"]
+
+[ext_resource type="Texture2D" uid="uid://dmbymu6vlr1ar" path="res://assets/icons/select_box.png" id="1_lgnxm"]
+[ext_resource type="Script" path="res://src/card/art/ScaleBox.cs" id="2_f2ca6"]
+[ext_resource type="Texture2D" uid="uid://bb4yxemsisoym" path="res://assets/icons/select_box_rot.png" id="3_1lq7e"]
+[ext_resource type="Script" path="res://src/card/art/ScaleBoxCorner.cs" id="3_qnasa"]
+
+[node name="ScaleBox" type="NinePatchRect" node_paths=PackedStringArray("topLeftCorner", "botLeftCorner", "topRightCorner", "botRightCorner", "rotPoint")]
+top_level = true
+texture_filter = 1
+offset_right = 59.0
+offset_bottom = 58.0
+mouse_filter = 1
+mouse_default_cursor_shape = 6
+texture = ExtResource("1_lgnxm")
+draw_center = false
+region_rect = Rect2(0, 0, 63, 63)
+patch_margin_left = 27
+patch_margin_top = 27
+patch_margin_right = 27
+patch_margin_bottom = 27
+script = ExtResource("2_f2ca6")
+topLeftCorner = NodePath("TopLeftCorner")
+botLeftCorner = NodePath("BotLeftCorner")
+topRightCorner = NodePath("TopRightCorner")
+botRightCorner = NodePath("BotRightCorner")
+rotPoint = NodePath("RotationTexture/RotationPoint")
+
+[node name="TopLeftCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 27.0
+offset_bottom = 27.0
+mouse_filter = 1
+mouse_default_cursor_shape = 12
+script = ExtResource("3_qnasa")
+
+[node name="BotLeftCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 27.0
+grow_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 11
+script = ExtResource("3_qnasa")
+
+[node name="TopRightCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -27.0
+offset_bottom = 27.0
+grow_horizontal = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 11
+script = ExtResource("3_qnasa")
+
+[node name="BotRightCorner" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 12
+script = ExtResource("3_qnasa")
+
+[node name="RotationTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.5
+offset_top = -12.0
+offset_right = 10.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_1lq7e")
+stretch_mode = 3
+
+[node name="RotationPoint" type="Control" parent="RotationTexture"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.5
+offset_top = -21.0
+offset_right = 10.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("3_qnasa")
+
+[connection signal="Clicked" from="TopLeftCorner" to="." method="OnCornerClicked"]
+[connection signal="Clicked" from="BotLeftCorner" to="." method="OnCornerClicked"]
+[connection signal="Clicked" from="TopRightCorner" to="." method="OnCornerClicked"]
+[connection signal="Clicked" from="BotRightCorner" to="." method="OnCornerClicked"]
+[connection signal="Clicked" from="RotationTexture/RotationPoint" to="." method="OnRotationPointClicked"]

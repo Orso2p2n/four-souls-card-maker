@@ -7,20 +7,22 @@ public partial class MoveableArt : MoveableArtBase
 {
 	// Exports
 	[Export] MoveableArtChild childArt;
-	[Export] ScaleBox scaleBox;
 	[Export] public float minScale = 0.1f;
 	[Export] public float maxScale = 1.5f;
-	[Export] public float scaleStep = 0.025f;
+	[Export] public float scaleStep = 0.01f;
 	[Export] public Vector2 baseMinPos = new Vector2(0f, 0f);
 	[Export] public Vector2 baseMaxPos = new Vector2(962f, 1312f);
+	[Export] public float rotationStep = 1f;
 	[Export] public bool canResetScale;
 	[Export] public bool canResetPosition;
+	[Export] public bool canResetRotation;
 	[Export] public bool canSetValue;
 	[Export] public bool canBeTrashed;
 
 	// Signals
 	[Signal] public delegate void PositionChangedEventHandler(Vector2 pos);
 	[Signal] public delegate void ScaleChangedEventHandler(float scale);
+	[Signal] public delegate void RotationChangedEventHandler(float scale);
 
 	public string value;
 
@@ -35,21 +37,86 @@ public partial class MoveableArt : MoveableArtBase
 
 	public Callable trashCallable;
 
+	ScaleBox scaleBox;
+
+	Area2D area2D;
+	CollisionShape2D collisionShape2D;
+	RectangleShape2D rectangleShape2D;
+
+	bool mouseIsInArea;
+
 	public override void _Ready() {
+		Card.instance.InputGrabbed += OnInputGrabbed;
+
 		if (childArt != null) {
 			childArt.parentArt = this;
 		}
 
-		if (scaleBox != null) {
-			scaleBox.parentArt = this;
-			scaleBox.Visible = false;
-		}
+		area2D = new Area2D();
+		area2D.ChangeOwner(this);
+		collisionShape2D = new CollisionShape2D();
+		collisionShape2D.ChangeOwner(area2D);
+        rectangleShape2D = new RectangleShape2D {
+            Size = Size
+        };
+        collisionShape2D.Shape = rectangleShape2D;
+		area2D.Position = Size/2;
+		area2D.InputEvent += OnAreaInputEvent;
+		area2D.MouseEntered += OnAreaMouseEntered;
+		area2D.MouseExited += OnAreaMouseExited;
 
 		basePos = Position;
+
+		var scaleBoxScene = GD.Load<PackedScene>("res://scenes/card/moveable/scale_box.tscn");
+		scaleBox = scaleBoxScene.Instantiate() as ScaleBox;
+		scaleBox.ChangeOwner(this);
+		scaleBox.parentArt = this;
+		scaleBox.Visible = false;
 
 		if (Texture != null) {
 			PostSetTexture();
 		}
+	}
+
+	void OnAreaInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
+		// Left click
+		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left && mouseButtonEvent.Pressed) {
+			mouseIsDown = true;
+			
+			Select();
+
+			if (selected) {
+				movementOffset = mouseButtonEvent.Position - Position;
+			}
+
+			GetViewport().SetInputAsHandled();
+		}
+	}
+
+    void OnInputGrabbed(InputEvent @event) {	
+		// Left click
+		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left) {
+			mouseIsDown = mouseButtonEvent.Pressed;
+
+			if (mouseIsDown && !mouseIsInArea) {
+				Deselect();
+			}
+		}
+
+		// Mouse movement
+		if (@event is InputEventMouseMotion mouseMotionEvent) {
+			if (mouseIsDown && selected) {
+				SetPosition(mouseMotionEvent.Position - movementOffset);
+			}
+		}
+    }
+
+	void OnAreaMouseEntered() {
+		mouseIsInArea = true;
+	}
+
+	void OnAreaMouseExited() {
+		mouseIsInArea = false;
 	}
 
 	public override void _Process(double delta) {
@@ -58,12 +125,21 @@ public partial class MoveableArt : MoveableArtBase
 			childArt.Scale = Scale;
 		}
 
+		if (rectangleShape2D.Size != Size) {
+			rectangleShape2D.Size = Size;
+		}
+
+		if (area2D.Position != Size/2) {
+			area2D.Position = Size/2;
+		}
+
 		if (selected) {
 			if (scaleBox != null) {
-				var scaledSize = Size * Scale;
-				scaleBox.Position = Position + (Size * ((1-Scale.X)/2));
+				var scaledSize = Size * Scale + new Vector2(24, 24);
+				scaleBox.Position = Position + (Size * ((1-Scale.X)/2)) - new Vector2(12,12);
 				scaleBox.Size = scaledSize;
 				scaleBox.PivotOffset = scaledSize / 2;
+				scaleBox.Rotation = Rotation;
 			}
 		}
 	}
@@ -99,42 +175,6 @@ public partial class MoveableArt : MoveableArtBase
 
 		Card.instance.OnDeselectedArt(this);
 	}
-
-    public override void _UnhandledInput(InputEvent @event) {
-        base._UnhandledInput(@event);
-		
-		if (@event is InputEventMouseButton mouseButtonEvent) {
-			// Click to select
-			if (mouseButtonEvent.ButtonIndex == MouseButton.Left) {
-				if (mouseButtonEvent.Pressed) {
-					mouseIsDown = true;
-
-					var rect = GetRect();
-					if (rect.HasPoint(mouseButtonEvent.Position)) {
-						Select();
-
-						if (selected) {
-							movementOffset = mouseButtonEvent.Position - Position;
-							GetViewport().SetInputAsHandled();
-						}
-					}
-					else {
-						Deselect();
-					}
-				}
-				else {
-					mouseIsDown = false;
-				}
-
-			}
-		}
-		// Move to move
-		else if (@event is InputEventMouseMotion mouseMotionEvent) {
-			if (mouseIsDown && selected) {
-				SetPosition(mouseMotionEvent.Position - movementOffset);
-			}
-		}
-    }
 
 	public void SetX(float x) {
 		SetPosition(new Vector2(x, Position.Y));
@@ -176,6 +216,24 @@ public partial class MoveableArt : MoveableArtBase
 		SaveManager.instance.OnNeedSaveAction();
 	}
 
+	public void SetRotation(float rotation) {
+		if (rotation == Rotation) {
+			return;
+		}
+
+		var rem = rotation % rotationStep;
+		var result = rotation - rem;
+		if (rem > rotationStep / 2) {
+			result += rotationStep;
+		}
+
+		Rotation = result;
+
+		EmitSignal(SignalName.RotationChanged, result);
+
+		SaveManager.instance.OnNeedSaveAction();
+	}
+
 	public void TryTrash() {
 		if (!canBeTrashed) {
 			return;
@@ -199,6 +257,10 @@ public partial class MoveableArt : MoveableArtBase
 			dict.Add("Scale", Scale.X);
 		}
 
+		if (canResetRotation) {
+			dict.Add("Rotation", Rotation);
+		}
+
 		if (canSetValue) {
 			dict.Add("Value", value);
 		}
@@ -218,6 +280,11 @@ public partial class MoveableArt : MoveableArtBase
 		if (canResetScale) {
 			var scale = (float) data["Scale"];
 			SetScale(scale);
+		}
+
+		if (canResetRotation) {
+			var rotation = (float) data["Rotation"];
+			SetRotation(rotation);
 		}
 
 		if (canSetValue) {

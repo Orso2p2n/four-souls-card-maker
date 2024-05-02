@@ -11,7 +11,6 @@ public partial class EditManager : Node
 	Callable folderDialogCallback;
 
 	[Export] public TextureRect bleedZonesMask;
-	[Export] public Control cursorShapeOverride;
 
 	[ExportGroup("Stats")]
 	string curStatsString;
@@ -157,13 +156,5 @@ public partial class EditManager : Node
 
 		fileDialog.FileSelected -= OnFileSelected;
 		fileDialog.DirSelected -= OnDirSelected;
-	}
-
-	public Control.CursorShape GetCursorShape() {
-		return cursorShapeOverride.MouseDefaultCursorShape;
-	}
-
-	public void SetCursorShape(Control.CursorShape cursorShape) {
-		cursorShapeOverride.MouseDefaultCursorShape = cursorShape;
 	}
 }

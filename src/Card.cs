@@ -7,6 +7,8 @@ public partial class Card : Control
 {
 	public static Card instance;
 
+	[Signal] public delegate void InputGrabbedEventHandler(InputEvent @event);
+
 	// Exports
 	[Export] TextureRect bleedZonesMask;
 
@@ -72,9 +74,11 @@ public partial class Card : Control
 
 	private SubViewport cardViewport;
 
-	public override void _Ready() {
-		instance = this;
+    public override void _EnterTree() {
+        instance = this;
+    }
 
+    public override void _Ready() {
 		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
 
 		cardViewport = GetParent() as SubViewport;
@@ -340,5 +344,9 @@ public partial class Card : Control
 		startingItemSeparator.Visible = startingItemName.Visible = startingItemIntro.Visible = visible;
 
 		OnNeedSaveAction();
+	}
+
+	void OnInputGrabberInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
+		EmitSignal(SignalName.InputGrabbed, @event);
 	}
 }

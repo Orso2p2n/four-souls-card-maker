@@ -1,19 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://2pmqyaw22ntb"]
+[gd_scene load_steps=3 format=3 uid="uid://2pmqyaw22ntb"]
 
 [ext_resource type="Texture2D" uid="uid://cveav24xuif51" path="res://assets/cards/_icons/tag_paid.png" id="1_ofu8v"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="2_c6dot"]
-[ext_resource type="PackedScene" uid="uid://b26bl0p56pr6d" path="res://scenes/card/scale_box.tscn" id="3_4n0qs"]
 
-[node name="PaidTag" type="TextureRect" node_paths=PackedStringArray("scaleBox")]
+[node name="PaidTag" type="TextureRect"]
 offset_right = 133.0
 offset_bottom = 133.0
 texture = ExtResource("1_ofu8v")
 expand_mode = 1
 script = ExtResource("2_c6dot")
-scaleBox = NodePath("ScaleBox")
 canResetScale = true
 canResetPosition = true
 canBeTrashed = true
-
-[node name="ScaleBox" parent="." instance=ExtResource("3_4n0qs")]
-layout_mode = 0

@@ -92,10 +92,9 @@ script = ExtResource("1_wqwht")
 saveLabel = NodePath("../TopBar/SaveLabel")
 cardViewport = NodePath("../CardPreview/CardViewport")
 
-[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "cursorShapeOverride", "hpStat", "diceStat", "atkStat")]
+[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat")]
 script = ExtResource("16_66afq")
 fileDialog = NodePath("FileDialog")
-cursorShapeOverride = NodePath("../CursorShapeOverride")
 hpStat = NodePath("../Stats/HP")
 diceStat = NodePath("../Stats/DICE")
 atkStat = NodePath("../Stats/ATK")
@@ -115,12 +114,15 @@ offset_top = 72.0
 offset_right = 1986.0
 offset_bottom = 1384.0
 scale = Vector2(0.5, 0.5)
+mouse_filter = 0
 script = ExtResource("2_c7j0e")
 viewport = NodePath("CardViewport")
 
 [node name="CardViewport" type="SubViewport" parent="CardPreview"]
 transparent_bg = true
 handle_input_locally = false
+physics_object_picking = true
+physics_object_picking_sort = true
 size = Vector2i(962, 1312)
 render_target_update_mode = 4
 
@@ -1053,15 +1055,6 @@ offset_right = 136.0
 offset_bottom = 32.0
 icon = ExtResource("59_rxbag")
 icon_alignment = 1
-
-[node name="CursorShapeOverride" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1024.0
-offset_top = 72.0
-offset_right = 1505.0
-offset_bottom = 728.0
-mouse_filter = 1
 
 [connection signal="close_requested" from="TopBar/ExportWindow" to="TopBar/ExportWindow" method="OnCloseRequested"]
 [connection signal="close_requested" from="TopBar/InfoWindow" to="TopBar/InfoWindow" method="OnCloseRequested"]
