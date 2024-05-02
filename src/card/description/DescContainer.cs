@@ -125,8 +125,6 @@ public partial class DescContainer : VBoxContainer
 		}
 
 		isProcessingTextsRescale = false;
-
-		GD.Print("childrenHeight: " + childrenHeight + ", targetSize.Y: " + targetSize.Y);
 	}
 
 	private float GetChildrenHeight() {
