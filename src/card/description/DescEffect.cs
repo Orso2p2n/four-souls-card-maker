@@ -68,18 +68,18 @@ public partial class DescEffect : DescBase
 		}
 
 		// Remove empty lines with no text after
-		List<string> splitText = new();
-		splitText.AddRange(text.Split("\n"));
+		var splitText = text.Split("\n");
+		List<string> splitTextList = new();
 
-		if (splitText.Count == 0) {
-			return text;
+		foreach (var line in splitText) {
+			if (string.IsNullOrWhiteSpace(line)) {
+				continue;
+			}
+
+			splitTextList.Add(line);
 		}
 
-		while (string.IsNullOrWhiteSpace(splitText.Last())) {
-			splitText.RemoveAt(splitText.Count-1);
-		}
-
-		text = string.Join("\n", splitText.ToArray());
+		text = string.Join("\n", splitTextList.ToArray());
 
 		// Center the text
 		text = "[center]" + text;
