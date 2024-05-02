@@ -70,10 +70,32 @@ public partial class Card : Control
 	public MoveableArt curSelectedArt;
 	public Array<MoveableArt> moveableArts;
 
+	private SubViewport cardViewport;
+
 	public override void _Ready() {
 		instance = this;
 
 		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
+
+		cardViewport = GetParent() as SubViewport;
+
+		descContainer.card = this;
+	}
+
+	public void PauseRender() {
+		if (cardViewport == null) {
+			return;
+		}
+
+		cardViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Disabled;
+	}
+
+	public void ResumeRender() {
+		if (cardViewport == null) {
+			return;
+		}
+
+		cardViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
 	}
 
 	public void OnNeedSaveAction() {

@@ -25,6 +25,8 @@ public partial class DescContainer : VBoxContainer
 	bool isProcessingTextsRescale = false;
 	bool interruptTextsRescale = false;
 
+	public Card card;
+
 	public override void _Ready() {
 		initialPos = Position;
 		initialSize = Size;
@@ -79,6 +81,8 @@ public partial class DescContainer : VBoxContainer
 	}
 
 	private async Task ProcessTextsRescale() {
+		card.PauseRender();
+
 		if (isProcessingTextsRescale) {
 			interruptTextsRescale = true;
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -125,6 +129,8 @@ public partial class DescContainer : VBoxContainer
 		}
 
 		isProcessingTextsRescale = false;
+
+		card.ResumeRender();
 	}
 
 	private float GetChildrenHeight() {
