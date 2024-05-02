@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-[Tool]
+// [Tool]
 public partial class Card : Control
 {
 	public static Card instance;

@@ -2,21 +2,17 @@
     "version": "2.0.0",
     "tasks": [
         {
-        "label": "build",
-        "command": "dotnet",
-        "type": "process",
-        "args": [
-            "build"
-        ],
-        "problemMatcher": "$msCompile",
-        "presentation": {
-            "echo": true,
-            "reveal": "silent",
-            "focus": false,
-            "panel": "shared",
-            "showReuseMessage": true,
-            "clear": false
-        }
+            "label": "build",
+            "type": "shell",
+            "command": "dotnet build ${workspaceFolder}/four-souls-card-maker.csproj -c Debug -v normal -p:GodotTargetPlatform=windows",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile"
         }
     ]
 }

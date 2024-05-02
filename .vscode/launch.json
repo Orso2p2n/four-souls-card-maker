@@ -2,19 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Play",
+            "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "D:/Softwares/Godot_v4.0.2-stable_mono_win64/Godot_v4.0.2-stable_mono_win64.exe",
+            "program": "${config:godotTools.editorPath.godot4}",
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
-        },
-        {
-            "name": "Attach",
-            "type": "coreclr",
-            "request": "attach"
+            "console": "internalConsole"
         }
     ]
 }
