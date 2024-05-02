@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 public partial class DescEffect : DescBase
@@ -61,8 +63,28 @@ public partial class DescEffect : DescBase
 	}
 
 	string ProcessText(string text) {
+		if (text == null) {
+			return text;
+		}
+
+		// Remove empty lines with no text after
+		List<string> splitText = new();
+		splitText.AddRange(text.Split("\n"));
+
+		if (splitText.Count == 0) {
+			return text;
+		}
+
+		while (string.IsNullOrWhiteSpace(splitText.Last())) {
+			splitText.RemoveAt(splitText.Count-1);
+		}
+
+		text = string.Join("\n", splitText.ToArray());
+
+		// Center the text
 		text = "[center]" + text;
 
+		// Replace icons
 		text = ReplaceIconsInText(text, "[HP]", hpIcon);
 		text = ReplaceIconsInText(text, "[ATK]", atkIcon);
 		text = ReplaceIconsInText(text, "[DICE]", diceIcon);
