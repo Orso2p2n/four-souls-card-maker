@@ -114,8 +114,7 @@ public partial class SwappableItem : Control
 
     public void Trash() {
         if (descCorrespondant != null) {
-            descCorrespondant.GetParent().RemoveChild(descCorrespondant);
-            descCorrespondant.Dispose();
+            descCorrespondant.Trash();
         }
         
         GetParent().RemoveChild(this);

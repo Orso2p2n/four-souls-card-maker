@@ -40,10 +40,6 @@ public partial class DescEffect : DescBase
 
 	public override void _Process(double delta) {
 		base._Process(delta);
-
-        if (!container.isCurrentlyFittingChildren) {
-		    UpdateSize();
-        }
 	}
 
 	public void UpdateSize() {
@@ -52,12 +48,16 @@ public partial class DescEffect : DescBase
 		richText.Position = new Vector2(container.Size.X / 2 - richText.Size.X / 2, padding/2);
 	}
 
-	public void SetText(string text) {
+	public void SetText(string text, bool textChanged = false) {
 		unprocessedText = text;
 
 		richText.Text = ProcessText(unprocessedText);
 
 		ResetRichTextSize();
+
+		if (textChanged) {
+			EmitSignal(SignalName.OnAnySizeChange);
+		}
 	}
 
 	string ProcessText(string text) {
@@ -90,6 +90,8 @@ public partial class DescEffect : DescBase
 		userScale = value;
 
 		ResetRichTextSize();
+
+		EmitSignal(SignalName.OnAnySizeChange);
 	}
 
 	public void SetSystemScale(float value) {
@@ -102,24 +104,32 @@ public partial class DescEffect : DescBase
 		base.SetPadding(value);
 
 		UpdateSize();
+
+		EmitSignal(SignalName.OnAnySizeChange);
 	}
 
 	public void SetBoundsMul(float value) {
 		boundsMul = value;
 
 		ResetRichTextSize();
+
+		EmitSignal(SignalName.OnAnySizeChange);
 	}
 
 	public void SetLineSpacing(int value) {
 		lineSpacingDelta = value;
 
 		ResetRichTextSize();
+
+		EmitSignal(SignalName.OnAnySizeChange);
 	}
 
 	public void SetCharacterSpacing(int value) {
 		characterSpacing = value;
 
 		ResetRichTextSize();
+
+		EmitSignal(SignalName.OnAnySizeChange);
 	}
 
 	public void ResetRichTextSize() {
@@ -144,4 +154,10 @@ public partial class DescEffect : DescBase
 
         UpdateSize();
 	}
+
+    public override void Trash() {
+		container.OnTextRemoved(this);
+		
+        base.Trash();
+    }
 }

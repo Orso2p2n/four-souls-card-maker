@@ -148,26 +148,11 @@ public partial class Card : Control
 		SetDescOffsets(topOffset, botOffset);
 	}
 
-	public DescEffect AddEffect() {
-		var instance = effect.Instantiate();
-		instance.ChangeOwner(descContainer);
-
+	public DescEffect AddText(bool isLore = false) {
+		var instance = isLore ? lore.Instantiate() : effect.Instantiate();
 		var descEffect = instance as DescEffect;
-		descEffect.container = descContainer;
-		descContainer.OnAddText(descEffect);
 
-		OnNeedSaveAction();
-
-		return (instance as DescEffect);
-	}
-
-	public DescEffect AddLore() {
-		var instance = lore.Instantiate();
-		instance.ChangeOwner(descContainer);
-
-		var descEffect = instance as DescEffect;
-		descEffect.container = descContainer;
-		descContainer.OnAddText(descEffect);
+		descContainer.AddText(descEffect);
 
 		OnNeedSaveAction();
 
@@ -176,10 +161,9 @@ public partial class Card : Control
 
 	public DescLine AddLine() {
 		var instance = line.Instantiate();
-		instance.ChangeOwner(descContainer);
-
 		var descLine = instance as DescLine;
-		descLine.container = descContainer;
+
+		descContainer.AddLine(descLine);
 
 		OnNeedSaveAction();
 

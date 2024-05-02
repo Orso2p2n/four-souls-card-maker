@@ -71,7 +71,7 @@ public partial class SwappableEffect : SwappableItem
     }
 
     public override DescBase CreateDescCorrespondant() {
-        descEffect = Card.instance.AddEffect();
+        descEffect = Card.instance.AddText();
         return descEffect;
     }
 
@@ -94,7 +94,7 @@ public partial class SwappableEffect : SwappableItem
     }
 
     public void OnTextChanged() {
-        descEffect.SetText(textEdit.Text);
+        descEffect.SetText(textEdit.Text, true);
     }
 
     // Settings

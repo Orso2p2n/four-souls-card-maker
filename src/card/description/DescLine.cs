@@ -24,4 +24,10 @@ public partial class DescLine : DescBase
 
         SaveManager.instance.OnNeedSaveAction();
     }
+
+    public override void Trash() {
+		container.OnLineRemoved(this);
+		
+        base.Trash();
+    }
 }

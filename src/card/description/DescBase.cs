@@ -3,6 +3,8 @@ using System;
 
 public partial class DescBase : Control
 {
+    [Signal] public delegate void OnAnySizeChangeEventHandler();
+
     [Export] public int padding;
 
     public DescContainer container;
@@ -11,5 +13,12 @@ public partial class DescBase : Control
         padding = value;
 
         SaveManager.instance.OnNeedSaveAction();
+
+        EmitSignal(SignalName.OnAnySizeChange);
+    }
+
+    public virtual void Trash() {
+        GetParent().RemoveChild(this);
+        Dispose();
     }
 }

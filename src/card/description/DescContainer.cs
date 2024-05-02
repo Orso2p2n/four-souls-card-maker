@@ -15,12 +15,15 @@ public partial class DescContainer : VBoxContainer
 
 	Vector2 oldSize;
 
+	public Array<DescEffect> texts = new();
+
 	public float topOffset;
 	public float botOffset;
 
 	float curTextScale = 1.0f;
 
-	public bool isCurrentlyFittingChildren = false;
+	bool isProcessingTextsRescale = false;
+	bool interruptTextsRescale = false;
 
 	public override void _Ready() {
 		initialPos = Position;
@@ -30,10 +33,6 @@ public partial class DescContainer : VBoxContainer
 
 	public override void _Process(double delta) {
 		base._Process(delta);
-
-		if (!isCurrentlyFittingChildren) {
-            Task task = ResetHeight();
-		}
 	}
 
 	public void SetOffsets(float topOffset, float botOffset) {
@@ -44,77 +43,101 @@ public partial class DescContainer : VBoxContainer
 		targetSize = initialSize - new Vector2(0, topOffset + botOffset);
 	}
 
-	public void OnAddText(DescEffect addedText) {
-		addedText.SetSystemScale(curTextScale);
+	public void AddText(DescEffect descEffect) {
+		descEffect.ChangeOwner(this);
+		descEffect.container = this;
+		descEffect.SetSystemScale(curTextScale);
+
+		descEffect.OnAnySizeChange += OnAnySizeChange;
+
+		texts.Add(descEffect);
+
+		OnAnySizeChange();
 	}
 
-	async Task ResetHeight() {
-		Size = new Vector2(targetSize.X, 0);
-		await ToSignal(this, "sort_children");
+	public void OnTextRemoved(DescEffect descEffect) {
+		texts.Remove(descEffect);
+		
+		OnAnySizeChange();
 	}
 
+	public void AddLine(DescLine descLine) {
+		descLine.ChangeOwner(this);
+		descLine.container = this;
 
-	public void OnResized() {
-		var middlePoint = targetSize.Y / 2;
-		Position = targetPos + new Vector2(0, middlePoint - Size.Y/2);
+		descLine.OnAnySizeChange += OnAnySizeChange;
 
-		if (isCurrentlyFittingChildren) {
-			EmitSignal(SignalName.ResizedWhileFittingChildren);
-			return;
+		OnAnySizeChange();
+	}
+
+	public void OnLineRemoved(DescLine descLine) {
+		OnAnySizeChange();
+	}
+
+	public void OnAnySizeChange() {
+		_ = ProcessTextsRescale();
+	}
+
+	private async Task ProcessTextsRescale() {
+		if (isProcessingTextsRescale) {
+			interruptTextsRescale = true;
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			interruptTextsRescale = false;
 		}
 
-		UpdateChildrenFit();
+		var childrenHeight = GetChildrenHeight();
 
-		oldSize = Size;
-	}
+		var i = 0;
+		var j = 0;
 
-	async void UpdateChildrenFit() {
-		if (Size.Y <= targetSize.Y) {
-			if (curTextScale >= 1 || Size.Y > oldSize.Y) {
+		isProcessingTextsRescale = true;
+
+		while (childrenHeight < targetSize.Y && curTextScale < 1 && i < 99) {
+			if (interruptTextsRescale) {
 				return;
 			}
 
-			isCurrentlyFittingChildren = true;
-
-			var i = 0;
-			while (curTextScale < 1 && i < 99) {
-				var oldTextScale = curTextScale;
-
-				curTextScale += 0.05f;
-
-				ResizeAllTexts();
-				await ResetHeight();
-
-				await ToSignal(this, "sort_children");
-
-				if (Size.Y > targetSize.Y) {
-					curTextScale = oldTextScale;
-					ResizeAllTexts();
-					await ResetHeight();
-
-					break;
-				}
-
-				i++;
-			}
-
-			isCurrentlyFittingChildren = false;
-			return;
-		}
-
-		isCurrentlyFittingChildren = true;
-
-		var j = 0;
-		while (Size.Y > targetSize.Y && j < 99) {
-			curTextScale -= 0.05f;
+			curTextScale += 0.01f;
 
 			ResizeAllTexts();
-			await ResetHeight();
+
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+			childrenHeight = GetChildrenHeight();
+
+			i++;
+		}
+
+		while (childrenHeight > targetSize.Y && j < 99) {
+			if (interruptTextsRescale) {
+				return;
+			}
+
+			curTextScale -= 0.01f;
+
+			ResizeAllTexts();
+
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+			childrenHeight = GetChildrenHeight();
 
 			j++;
 		}
 
-		isCurrentlyFittingChildren = false;
+		isProcessingTextsRescale = false;
+
+		GD.Print("childrenHeight: " + childrenHeight + ", targetSize.Y: " + targetSize.Y);
+	}
+
+	private float GetChildrenHeight() {
+		float totalHeight = 0;
+		var children = GetChildren();
+
+		foreach (Control child in children) {
+			totalHeight += child.Size.Y;
+		}
+
+		return totalHeight;
 	}
 
 	Array<DescEffect> GetTextChildren() {
@@ -142,7 +165,6 @@ public partial class DescContainer : VBoxContainer
 	}
 
 	void ResizeAllTexts() {
-		var texts = GetTextChildren();
 		foreach (var text in texts) {
 			text.SetSystemScale(curTextScale);
 		}
