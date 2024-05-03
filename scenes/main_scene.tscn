@@ -983,8 +983,11 @@ icon_alignment = 1
 [node name="Separator2" type="Line2D" parent="SelectedProps"]
 position = Vector2(128, 0)
 points = PackedVector2Array(0, 8, 0, 44.8841, 0, 69.4954, 0, 80)
-width = 1.0
-default_color = Color(1, 1, 1, 0.498039)
+width = 2.0
+default_color = Color(0.14902, 0.14902, 0.14902, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Rotation" type="Control" parent="SelectedProps" node_paths=PackedStringArray("spinBox")]
 layout_mode = 1
@@ -1051,8 +1054,10 @@ icon_alignment = 1
 [node name="Separator3" type="Line2D" parent="SelectedProps"]
 position = Vector2(328, 0)
 points = PackedVector2Array(0, 8, 0, 80)
-width = 1.0
-default_color = Color(1, 1, 1, 0.498039)
+width = 2.0
+default_color = Color(0.14902, 0.14902, 0.14902, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Value" type="Control" parent="SelectedProps" node_paths=PackedStringArray("lineEdit")]
 anchors_preset = 0
