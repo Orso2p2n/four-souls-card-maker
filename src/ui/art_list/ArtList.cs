@@ -15,6 +15,24 @@ public partial class ArtList : ItemList
 
 	MoveableArt curEditingCustomArt;
 
+	public override void _Ready() {
+		Card.instance.SelectedArtChanged += OnSelectedArtChanged;
+	}
+
+	void OnSelectedArtChanged(MoveableArt moveableArt) {
+		var i = 0;
+		foreach (var art in arts) {
+			if (art == moveableArt) {
+				Select(i);
+				return;
+			}
+
+			i++;
+		}
+
+		DeselectAll();
+	}
+
 	public MoveableArt AddItem(string id, bool addEntry = true) {
 		if (!scenes.ContainsKey(id)) {
 			return null;
