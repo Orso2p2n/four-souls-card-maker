@@ -4,10 +4,9 @@ using System;
 public partial class SoulIconMenu : IconMenu
 {
 	public override void _Ready() {
-		base._Ready();
-
 		linkedArt = Card.instance.soulIcon;
-		linkedArt.trashCallable = new Callable(this, "ResetSelection");
+
+		base._Ready();
 
 		UpdateItems();
 

@@ -4,10 +4,9 @@ using System;
 public partial class DifficultyIconMenu : IconMenu
 {
 	public override void _Ready() {
-		base._Ready();
-
 		linkedArt = Card.instance.diffIcon;
-		linkedArt.trashCallable = new Callable(this, "ResetSelection");
+
+		base._Ready();
 		
 		UpdateItems();
 

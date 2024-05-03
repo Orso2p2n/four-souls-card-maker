@@ -7,6 +7,12 @@ public partial class IconMenu : SubTypeMenu
 {
     public MoveableArt linkedArt;
 
+	public override void _Ready() {
+		base._Ready();
+	
+		linkedArt.trashCallable = new Callable(this, "TrashLinkedArt");
+	}
+
     // --- SAVE HANDLING ---
 	public override Dictionary Save() {
 		var dict = base.Save();
@@ -22,5 +28,11 @@ public partial class IconMenu : SubTypeMenu
         var linkedArtProps = (Dictionary) data["LinkedArt"];
 		
 		await linkedArt.Load(linkedArtProps);
+	}
+
+	public void TrashLinkedArt(MoveableArt trashedArt) {
+		if (trashedArt == linkedArt) {
+			ResetSelection();
+		}
 	}
 }

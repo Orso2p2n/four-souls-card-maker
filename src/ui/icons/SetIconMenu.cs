@@ -4,11 +4,10 @@ using System;
 public partial class SetIconMenu : IconMenu
 {
 	public override void _Ready() {
+		linkedArt = Card.instance.setIcon;
+	
 		base._Ready();
 
-		linkedArt = Card.instance.setIcon;
-		linkedArt.trashCallable = new Callable(this, "ResetSelection");
-	
 		UpdateItems();
 
 		customTextureCallback = new Callable(this, "SetCustomSetIcon");
