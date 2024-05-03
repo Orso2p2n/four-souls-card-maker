@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 public partial class MoveableArtBase : TextureRect
 {
 	[Signal] public delegate void TextureSetEventHandler();
+
+	public Callable trashCallable;
 	
 	public string customId;
 

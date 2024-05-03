@@ -35,8 +35,6 @@ public partial class MoveableArt : MoveableArtBase
 
 	Vector2 movementOffset = Vector2.Zero;
 
-	public Callable trashCallable;
-
 	ScaleBox scaleBox;
 
 	Area2D area2D;
@@ -234,7 +232,7 @@ public partial class MoveableArt : MoveableArtBase
 		SaveManager.instance.OnNeedSaveAction();
 	}
 
-	public void TryTrash() {
+	public void TryTrash(bool trashChild = false) {
 		if (!canBeTrashed) {
 			return;
 		}
@@ -242,6 +240,10 @@ public partial class MoveableArt : MoveableArtBase
 		Deselect();
 		Card.instance.RemoveMoveableArt(this);
 		trashCallable.Call(this);
+
+		if (trashChild && childArt != null) {
+			childArt.trashCallable.Call(childArt);
+		}
 	}
 
 	// --- SAVE HANDLING ---

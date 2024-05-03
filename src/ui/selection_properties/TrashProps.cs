@@ -12,6 +12,6 @@ public partial class TrashProps : SelectionProp
 	}
 
 	public void OnPressed() {
-		Card.instance.curSelectedArt.TryTrash();
+		Card.instance.curSelectedArt.TryTrash(true);
 	}
 }

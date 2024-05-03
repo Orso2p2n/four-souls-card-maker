@@ -18,9 +18,7 @@ public partial class LoadArtButton : Button
 
 		linkedArt = top ? Card.instance.topArt : Card.instance.art;
 
-		if (linkedArt is MoveableArt linkedMoveableArt) {
-			linkedMoveableArt.trashCallable = new Callable(this, "Trash");
-		}
+		linkedArt.trashCallable = new Callable(this, "TrashArtWithSelectionProps");
 	}
 
 	public void OnPressed() {
@@ -32,6 +30,12 @@ public partial class LoadArtButton : Button
 
 		trashButton.Disabled = !active;
 		viewButton.Disabled = !active;
+	}
+
+	public void TrashArtWithSelectionProps(MoveableArtBase trashedArt) {
+		if (trashedArt == linkedArt) {
+			Trash();
+		}
 	}
 
 	public void Trash() {
