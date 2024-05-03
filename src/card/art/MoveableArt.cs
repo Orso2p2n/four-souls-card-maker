@@ -229,8 +229,6 @@ public partial class MoveableArt : MoveableArtBase
 
 		RotationDegrees = result;
 
-		GD.Print($"RotationDegrees: {RotationDegrees}");
-
 		EmitSignal(SignalName.RotationChanged, result);
 
 		SaveManager.instance.OnNeedSaveAction();
