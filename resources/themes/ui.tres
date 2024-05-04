@@ -1,8 +1,11 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://du8dk2cpyfqc4"]
 
+[ext_resource type="StyleBox" uid="uid://bhh4fedqts1wu" path="res://resources/themes/ui/add_new_menu_button/AddNewHover.tres" id="1_dugw4"]
 [ext_resource type="FontFile" uid="uid://dqe8s0pvj8jah" path="res://assets/fonts/ui/UI-Regular.ttf" id="1_hd3je"]
 [ext_resource type="FontFile" uid="uid://6ig27yl3ol21" path="res://assets/fonts/ui/UI-Bold.ttf" id="2_mp5jr"]
+[ext_resource type="StyleBox" uid="uid://bcx6v61ljmmx" path="res://resources/themes/ui/add_new_menu_button/AddNewNormal.tres" id="2_r4nu1"]
 [ext_resource type="StyleBox" uid="uid://ccybg6oehn63p" path="res://resources/themes/ui/line_edit/LineEditNormal.tres" id="3_t2axc"]
+[ext_resource type="StyleBox" uid="uid://b1o841dbudx76" path="res://resources/themes/ui/add_new_menu_button/AddNewPressed.tres" id="3_trom5"]
 [ext_resource type="StyleBox" uid="uid://bj8vlwicl07on" path="res://resources/themes/ui/menu_bar/MenuBarNormal.tres" id="4_xtupo"]
 [ext_resource type="FontFile" uid="uid://bap6js1ffhsji" path="res://assets/fonts/ui/UI-Medium.ttf" id="5_l3blg"]
 [ext_resource type="StyleBox" uid="uid://b8uvdbqn5j3v4" path="res://resources/themes/ui/menu_bar/MenuBarHover.tres" id="5_nlynm"]
@@ -10,6 +13,10 @@
 [ext_resource type="StyleBox" uid="uid://cggk3shx04nrc" path="res://resources/themes/ui/option_button/OptionButtonNormal.tres" id="8_mrteh"]
 [ext_resource type="StyleBox" uid="uid://b0pfow8m3uto0" path="res://resources/themes/ui/option_button/OptionButtonPressed.tres" id="9_gkk2p"]
 [ext_resource type="StyleBox" uid="uid://bybr2uwnaj4ol" path="res://resources/themes/ui/scroll_container/ScrollContainerPanel.tres" id="10_gt3de"]
+[ext_resource type="StyleBox" uid="uid://b7pl3mf1f1w6t" path="res://resources/themes/ui/popup_menu/PopupMenuPanel.tres" id="12_1h433"]
+[ext_resource type="StyleBox" uid="uid://bx3yn8jamwefb" path="res://resources/themes/ui/popup_menu/PopupMenuHover.tres" id="13_c5igg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsj8a"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 1)
@@ -26,8 +33,21 @@ border_color = Color(0.188235, 0.188235, 0.188235, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oom2l"]
 bg_color = Color(0, 0, 0, 0.498039)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aullb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hai4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hhnyn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3q2u"]
+
 [resource]
 default_font = ExtResource("1_hd3je")
+AddNewMenuButton/base_type = &"MenuButton"
+AddNewMenuButton/styles/focus = SubResource("StyleBoxEmpty_8hu87")
+AddNewMenuButton/styles/hover = ExtResource("1_dugw4")
+AddNewMenuButton/styles/normal = ExtResource("2_r4nu1")
+AddNewMenuButton/styles/pressed = ExtResource("3_trom5")
 BoxContainer/constants/separation = 8
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_hd3je")
@@ -63,9 +83,21 @@ OptionButton/styles/hover = ExtResource("7_xc4s8")
 OptionButton/styles/normal = ExtResource("8_mrteh")
 OptionButton/styles/pressed = ExtResource("9_gkk2p")
 Panel/styles/panel = SubResource("StyleBoxFlat_oom2l")
+PopupMenu/colors/font_color = Color(0.658341, 0.65834, 0.65834, 1)
+PopupMenu/constants/item_end_padding = 4
+PopupMenu/constants/item_start_padding = 4
+PopupMenu/constants/v_separation = 9
+PopupMenu/font_sizes/font_size = 14
 PopupMenu/fonts/font = ExtResource("1_hd3je")
+PopupMenu/styles/hover = ExtResource("13_c5igg")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxEmpty_aullb")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxEmpty_2hai4")
+PopupMenu/styles/panel = ExtResource("12_1h433")
+PopupMenu/styles/separator = SubResource("StyleBoxEmpty_hhnyn")
 RichTextLabel/font_sizes/normal_font_size = 26
 RichTextLabel/fonts/normal_font = ExtResource("1_hd3je")
-ScrollContainer/styles/panel = ExtResource("10_gt3de")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_m3q2u")
 TextEdit/fonts/font = ExtResource("1_hd3je")
+VisibleScrollContainer/base_type = &"ScrollContainer"
+VisibleScrollContainer/styles/panel = ExtResource("10_gt3de")
 Window/fonts/title_font = ExtResource("1_hd3je")

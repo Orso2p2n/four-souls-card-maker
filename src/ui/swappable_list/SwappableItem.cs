@@ -16,6 +16,8 @@ public partial class SwappableItem : Control
 
     public DescBase descCorrespondant;
 
+    float baseCustomMinimumHeight;
+
     // Settings
     [Export] public SpinBox paddingSpinBox;
     public int padding {
@@ -31,6 +33,8 @@ public partial class SwappableItem : Control
         base._Ready();
 
         descCorrespondant = CreateDescCorrespondant();
+
+        baseCustomMinimumHeight = CustomMinimumSize.Y;
     }
 
     public virtual DescBase CreateDescCorrespondant() {
@@ -107,6 +111,7 @@ public partial class SwappableItem : Control
 
     public void OnMainControlResized() {
         Size = new Vector2(Size.X, content.Size.Y);
+        CustomMinimumSize = new Vector2(CustomMinimumSize.X, Mathf.Max(baseCustomMinimumHeight, content.Size.Y));
     }
 
     // Settings
