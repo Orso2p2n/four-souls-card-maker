@@ -1,33 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://ehxehyyyujny"]
+[gd_scene load_steps=10 format=3 uid="uid://ehxehyyyujny"]
 
 [ext_resource type="PackedScene" uid="uid://cdbcctgdx1gyk" path="res://scenes/ui/swappable_list/swappable_item.tscn" id="1_ir1x0"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableEffect.cs" id="2_xcp53"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_wba1f"]
 [ext_resource type="Texture2D" uid="uid://cpghn86qvdyia" path="res://assets/icons/scale18.png" id="4_j3n85"]
+[ext_resource type="StyleBox" uid="uid://cspqmnhjwqbsl" path="res://resources/themes/ui/swappable_list/TextEditAll.tres" id="4_ryqti"]
 [ext_resource type="Texture2D" uid="uid://che03rn3frvj6" path="res://assets/icons/linespacing18.png" id="5_euskh"]
+[ext_resource type="Script" path="res://TextEdit.cs" id="5_hkkws"]
 [ext_resource type="Texture2D" uid="uid://vlftffrt5bq5" path="res://assets/icons/width18.png" id="5_y2oal"]
 [ext_resource type="Texture2D" uid="uid://b3irwgj3uqret" path="res://assets/icons/charspacing18.png" id="6_fh10d"]
 
 [node name="SwappableEffect" node_paths=PackedStringArray("scaleSpinBox", "boundsMulSpinBox", "lineSpacingSpinBox", "charSpacingSpinBox", "content") instance=ExtResource("1_ir1x0")]
-custom_minimum_size = Vector2(0, 48)
 script = ExtResource("2_xcp53")
 scaleSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/ScalingEdit")
 boundsMulSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/WidthEdit")
 lineSpacingSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/LineSpacingEdit")
 charSpacingSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/CharSpacingEdit")
 type = "Effect"
-content = NodePath("Button/TextEdit")
+content = NodePath("TextEdit")
 
-[node name="TextEdit" type="TextEdit" parent="Button" index="0"]
-layout_mode = 0
-offset_left = 26.0
-offset_right = 400.0
+[node name="Button" parent="." index="0"]
+anchor_right = 1.0
+
+[node name="TextEdit" type="TextEdit" parent="." index="1"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_right = 0.79661
+offset_left = -0.0960045
+offset_right = -6.10352e-05
 offset_bottom = 32.0
 theme = ExtResource("3_wba1f")
 theme_override_constants/line_spacing = -4
-placeholder_text = "Edit Effect..."
+theme_override_styles/normal = ExtResource("4_ryqti")
+theme_override_styles/focus = ExtResource("4_ryqti")
+theme_override_styles/read_only = ExtResource("4_ryqti")
+placeholder_text = "Edit effect..."
 wrap_mode = 1
 scroll_fit_content_height = true
+script = ExtResource("5_hkkws")
+metadata/_edit_use_anchors_ = true
 
 [node name="DropdownIcon" parent="SettingsButton" index="1"]
 pivot_offset = Vector2(6, 6)
@@ -154,7 +167,8 @@ theme_override_font_sizes/font_size = 15
 text = "spacing"
 vertical_alignment = 1
 
-[connection signal="text_changed" from="Button/TextEdit" to="." method="OnTextChanged"]
+[connection signal="resized" from="TextEdit" to="." method="OnMainControlResized"]
+[connection signal="text_changed" from="TextEdit" to="." method="OnTextChanged"]
 [connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/ScalingEdit" to="." method="OnScaleChanged"]
 [connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/WidthEdit" to="." method="OnBoundsChanged"]
 [connection signal="value_changed" from="SettingsButton/SettingsPanel/SettingsList/LineSpacingEdit" to="." method="OnLineSpacingChanged"]

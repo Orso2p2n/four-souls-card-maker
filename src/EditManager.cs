@@ -20,10 +20,19 @@ public partial class EditManager : Node
 
 	public bool bleedZonesVisible = false;
 
-	public override void _Ready() {
+    public override void _EnterTree() {
+		EditManager.instance = this;
+
+		var minRatio = 0.75f;
+
+		int width = (int) Godot.ProjectSettings.GetSetting("display/window/size/viewport_width");
+        int height = (int) Godot.ProjectSettings.GetSetting("display/window/size/viewport_height");
+        GetTree().Root.MinSize = new Vector2I((int) (width * minRatio), (int) (height * minRatio));
+    }
+
+    public override void _Ready() {
 		base._Ready();
 
-		EditManager.instance = this;
 	}
 
 	public override void _Process(double delta) {

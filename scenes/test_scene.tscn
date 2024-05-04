@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cguywflaj22vy"]
+
+[ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="1_ftq2t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj4ht"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8hcl"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="TestScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vj4ht")
+metadata/_edit_use_anchors_ = true
+
+[node name="MainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8hcl")
+metadata/_edit_use_anchors_ = true
+
+[node name="TypeLabel" type="Label" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0104167
+anchor_right = 0.125
+anchor_bottom = 0.0384615
+theme = ExtResource("1_ftq2t")
+theme_type_variation = &"Header"
+text = "Type"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=79 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -78,28 +78,34 @@
 [ext_resource type="Script" path="res://src/ui/selection_properties/RotationProps.cs" id="72_emn3m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtwgx"]
-bg_color = Color(0.219608, 0.219608, 0.219608, 1)
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
 
-[node name="BG" type="Panel"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rp652"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 3
+
+[node name="Root" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
+metadata/_edit_vertical_guides_ = [0.0, 1024.0, 496.0]
 
 [node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("saveLabel", "cardViewport")]
 script = ExtResource("1_wqwht")
 saveLabel = NodePath("../TopBar/SaveLabel")
-cardViewport = NodePath("../CardPreview/CardViewport")
+cardViewport = NodePath("../MainPanel/CardPreview/CardViewport")
 
 [node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat")]
 script = ExtResource("16_66afq")
 fileDialog = NodePath("FileDialog")
-hpStat = NodePath("../Stats/HP")
-diceStat = NodePath("../Stats/DICE")
-atkStat = NodePath("../Stats/ATK")
+hpStat = NodePath("../MainPanel/Stats/HP")
+diceStat = NodePath("../MainPanel/Stats/DICE")
+atkStat = NodePath("../MainPanel/Stats/ATK")
 
 [node name="FileDialog" type="FileDialog" parent="EditManager"]
 title = "Open a File"
@@ -109,18 +115,911 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 
-[node name="CardPreview" type="SubViewportContainer" parent="." node_paths=PackedStringArray("viewport")]
+[node name="MainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wtwgx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Menus" type="Control" parent="MainPanel"]
+layout_mode = 1
+anchor_left = 0.01
+anchor_right = 0.5
+offset_left = 0.639999
+offset_top = 8.0
+offset_bottom = 79.9999
+mouse_filter = 2
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"MenusHBoxContainer"
+
+[node name="Type" type="Control" parent="MainPanel/Menus"]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.234043
+anchor_bottom = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+theme_type_variation = &"MenusVBoxContainer"
+metadata/_edit_use_anchors_ = true
+
+[node name="TypeLabel" type="Label" parent="MainPanel/Menus/Type"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999998
+anchor_bottom = 0.444445
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Type"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MainTypeMenu" type="OptionButton" parent="MainPanel/Menus/Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu", "startingItemContainer") groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.444444
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+clip_text = true
+fit_to_longest_item = false
+script = ExtResource("5_evgkq")
+backgroundMenu = NodePath("../../Background/BackgroundMenu")
+foregroundMenu = NodePath("../../Foreground/ForegroundMenu")
+borderMenu = NodePath("../../Border/BorderMenu")
+startingItemContainer = NodePath("../../../StartingItem")
+cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("6_5ii8c"), ExtResource("6_4oahh"), ExtResource("8_hee5o"), ExtResource("5_o8y5v"), ExtResource("10_27qjp")])
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Control" parent="MainPanel/Menus"]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.255
+anchor_right = 0.489362
+anchor_bottom = 1.0
+offset_left = 0.239868
+theme_type_variation = &"MenusVBoxContainer"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundLabel" type="Label" parent="MainPanel/Menus/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.444444
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Background"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundMenu" type="OptionButton" parent="MainPanel/Menus/Background" groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.444445
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+clip_text = true
+fit_to_longest_item = false
+script = ExtResource("12_1a41u")
+customIcon = ExtResource("12_3ngn0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Border" type="Control" parent="MainPanel/Menus"]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.511
+anchor_right = 0.744681
+anchor_bottom = 1.0
+offset_left = -0.272247
+theme_type_variation = &"MenusVBoxContainer"
+metadata/_edit_use_anchors_ = true
+
+[node name="BorderLabel" type="Label" parent="MainPanel/Menus/Border"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.444444
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Border"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="BorderMenu" type="OptionButton" parent="MainPanel/Menus/Border" groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.444445
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+clip_text = true
+fit_to_longest_item = false
+script = ExtResource("16_71ows")
+customIcon = ExtResource("16_nbs8c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Foreground" type="Control" parent="MainPanel/Menus"]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.766
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0324097
+metadata/_edit_use_anchors_ = true
+
+[node name="ForegroundLabel" type="Label" parent="MainPanel/Menus/Foreground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.444444
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Foreground"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ForegroundMenu" type="OptionButton" parent="MainPanel/Menus/Foreground" groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.444445
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+clip_text = true
+fit_to_longest_item = false
+script = ExtResource("14_e3u8i")
+customIcon = ExtResource("14_2syo5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Control" parent="MainPanel"]
+layout_mode = 1
+anchor_left = 0.01
+anchor_right = 0.317708
+offset_left = 0.639999
+offset_top = 88.0
+offset_bottom = 160.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="MainPanel/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.444444
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Title"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleEdit" type="LineEdit" parent="MainPanel/Title" groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.444444
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+placeholder_text = "Edit title..."
+script = ExtResource("21_fwink")
+metadata/_edit_use_anchors_ = true
+
+[node name="Desc" type="Control" parent="MainPanel"]
+layout_mode = 1
+anchor_left = 0.01
+anchor_right = 0.318
+anchor_bottom = 1.0
+offset_left = 0.639999
+offset_top = 168.0
+offset_right = -0.448029
+offset_bottom = -224.0
+mouse_filter = 2
+
+[node name="DescLabel" type="Label" parent="MainPanel/Desc"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.762712
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Description"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel/Desc"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.091
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0400009
+theme = ExtResource("3_7sxfo")
+metadata/_edit_use_anchors_ = true
+
+[node name="DescList" parent="MainPanel/Desc/ScrollContainer" groups=["Save"] instance=ExtResource("8_t1lh8")]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="NewDescriptionItemButton" type="MenuButton" parent="MainPanel/Desc" node_paths=PackedStringArray("list")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.814
+anchor_right = 1.0
+offset_left = -0.208008
+offset_top = 8.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Add new..."
+alignment = 2
+item_count = 3
+popup/item_0/text = "Effect"
+popup/item_0/id = 0
+popup/item_1/text = "Separator"
+popup/item_1/id = 1
+popup/item_2/text = "Lore"
+popup/item_2/id = 2
+script = ExtResource("20_f8och")
+list = NodePath("../ScrollContainer/DescList")
+
+[node name="Tags" type="Control" parent="MainPanel"]
+visible = false
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 616.0
+offset_right = 24.0
+offset_bottom = 616.0
+mouse_filter = 2
+
+[node name="TagsLabel" type="Label" parent="MainPanel/Tags"]
 layout_mode = 0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Tags"
+vertical_alignment = 1
+uppercase = true
+
+[node name="TagsList" type="ItemList" parent="MainPanel/Tags" groups=["Save"]]
+layout_mode = 2
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 120.0
+theme = ExtResource("3_7sxfo")
+allow_reselect = true
+max_columns = 9
+same_column_width = true
+fixed_icon_size = Vector2i(48, 48)
+script = ExtResource("26_ayoao")
+scenes = {
+"Custom": ExtResource("29_ehe37"),
+"Level tag": ExtResource("28_0cne3"),
+"Paid tag": ExtResource("27_g2k1e"),
+"Tap tag": ExtResource("26_7mwfm")
+}
+
+[node name="NewTagButton" type="MenuButton" parent="MainPanel/Tags" node_paths=PackedStringArray("list")]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 8.0
+offset_right = 472.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Add new..."
+alignment = 2
+item_count = 3
+popup/item_0/text = "Tap tag"
+popup/item_0/id = 0
+popup/item_1/text = "Paid tag"
+popup/item_1/id = 1
+popup/item_2/text = "Level tag"
+popup/item_2/id = 2
+script = ExtResource("27_65uhb")
+list = NodePath("../TagsList")
+
+[node name="Stats" type="Control" parent="MainPanel"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 744.0
+offset_right = 24.0
+offset_bottom = 744.0
+mouse_filter = 2
+
+[node name="StatsLabel" type="Label" parent="MainPanel/Stats"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 360.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Stats
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="HP" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
+layout_mode = 1
+anchors_preset = 0
+offset_top = 32.0
+offset_bottom = 32.0
+script = ExtResource("12_csu7s")
+icon = NodePath("HPTexture")
+spinBox = NodePath("HPEdit")
+
+[node name="HPTexture" type="TextureRect" parent="MainPanel/Stats/HP"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("9_ekawo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HPEdit" type="SpinBox" parent="MainPanel/Stats/HP"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 112.0
+offset_bottom = 32.0
+scale = Vector2(1.25, 1.25)
+theme = ExtResource("3_7sxfo")
+max_value = 9.0
+value = 2.0
+alignment = 1
+
+[node name="DICE" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 144.0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 32.0
+script = ExtResource("12_csu7s")
+icon = NodePath("DICETexture")
+spinBox = NodePath("DICEEdit")
+
+[node name="DICETexture" type="TextureRect" parent="MainPanel/Stats/DICE"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("10_icac8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DICEEdit" type="SpinBox" parent="MainPanel/Stats/DICE"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 112.0
+offset_bottom = 32.0
+scale = Vector2(1.25, 1.25)
+theme = ExtResource("3_7sxfo")
+max_value = 6.0
+value = 4.0
+alignment = 1
+
+[node name="ATK" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 32.0
+script = ExtResource("12_csu7s")
+icon = NodePath("ATKTexture")
+spinBox = NodePath("ATKEdit")
+
+[node name="ATKTexture" type="TextureRect" parent="MainPanel/Stats/ATK"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("11_vrgg2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ATKEdit" type="SpinBox" parent="MainPanel/Stats/ATK"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 112.0
+offset_bottom = 32.0
+scale = Vector2(1.25, 1.25)
+theme = ExtResource("3_7sxfo")
+max_value = 9.0
+value = 1.0
+alignment = 1
+
+[node name="Art" type="Control" parent="MainPanel"]
+visible = false
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 552.0
+offset_right = 520.0
+offset_bottom = 552.0
+mouse_filter = 2
+
+[node name="ArtLabel" type="Label" parent="MainPanel/Art"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Art
+"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ArtButton" parent="MainPanel/Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
+layout_mode = 0
+offset_top = 40.0
+offset_bottom = 80.0
+
+[node name="TopArtButton" parent="MainPanel/Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 40.0
+offset_right = 392.0
+offset_bottom = 80.0
+text = "Load top art..."
+top = true
+
+[node name="Icons" type="Control" parent="MainPanel"]
+visible = false
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 176.0
+offset_right = 520.0
+offset_bottom = 176.0
+mouse_filter = 2
+
+[node name="SoulIconLabel" type="Label" parent="MainPanel/Icons"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 160.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Soul Icon"
+vertical_alignment = 1
+uppercase = true
+
+[node name="SoulIconMenu" type="OptionButton" parent="MainPanel/Icons" groups=["Save"]]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 160.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+script = ExtResource("26_l8bso")
+customIcon = ExtResource("27_whsyw")
+cardTypes = Array[Resource]([ExtResource("27_fubmy"), ExtResource("27_gmm8e"), ExtResource("28_n7umd"), ExtResource("29_bir7w")])
+
+[node name="SetIconLabel" type="Label" parent="MainPanel/Icons"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Set icon"
+vertical_alignment = 1
+uppercase = true
+
+[node name="SetIconMenu" type="OptionButton" parent="MainPanel/Icons" groups=["Save"]]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+script = ExtResource("31_1tfgv")
+customIcon = ExtResource("33_tocn4")
+cardTypes = Array[Resource]([ExtResource("31_we2rt"), ExtResource("32_s11b6"), ExtResource("33_148nk"), ExtResource("34_0v54e"), ExtResource("35_5xr1p"), ExtResource("36_gbkvs"), ExtResource("37_mbj8e"), ExtResource("38_pvr2v"), ExtResource("39_nw35a"), ExtResource("40_ra6en"), ExtResource("41_vewfy"), ExtResource("42_1t1bp"), ExtResource("43_oi578")])
+
+[node name="DiffIconLabel" type="Label" parent="MainPanel/Icons"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 16.0
+offset_right = 472.0
+offset_bottom = 40.0
+scale = Vector2(1.00178, 1)
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Diff. icon"
+vertical_alignment = 1
+uppercase = true
+
+[node name="DiffIconMenu" type="OptionButton" parent="MainPanel/Icons" groups=["Save"]]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+script = ExtResource("45_y6lod")
+customIcon = ExtResource("48_dqrv0")
+cardTypes = Array[Resource]([ExtResource("45_faopm"), ExtResource("46_lh4tv")])
+
+[node name="Credit" type="Control" parent="MainPanel"]
+visible = false
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 264.0
+offset_right = 520.0
+offset_bottom = 264.0
+mouse_filter = 2
+
+[node name="CreditLabel" type="Label" parent="MainPanel/Credit"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Credits"
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditEdit" type="LineEdit" parent="MainPanel/Credit" groups=["Save"]]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+placeholder_text = "Enter Credits..."
+script = ExtResource("22_wnou6")
+
+[node name="CustomArt" type="Control" parent="MainPanel"]
+visible = false
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 352.0
+offset_right = 520.0
+offset_bottom = 352.0
+mouse_filter = 2
+
+[node name="CustomArtLabel" type="Label" parent="MainPanel/CustomArt"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Custom art"
+vertical_alignment = 1
+uppercase = true
+
+[node name="ArtList" type="ItemList" parent="MainPanel/CustomArt" groups=["Save"]]
+layout_mode = 2
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 200.0
+theme = ExtResource("3_7sxfo")
+allow_reselect = true
+max_columns = 9
+same_column_width = true
+fixed_icon_size = Vector2i(64, 64)
+script = ExtResource("26_ayoao")
+scenes = {
+"Custom": ExtResource("29_ehe37"),
+"Level tag": ExtResource("28_0cne3"),
+"Paid tag": ExtResource("27_g2k1e"),
+"Tap tag": ExtResource("26_7mwfm")
+}
+
+[node name="NewArtButton" type="MenuButton" parent="MainPanel/CustomArt" node_paths=PackedStringArray("list")]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 8.0
+offset_right = 472.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Add new..."
+alignment = 2
+item_count = 1
+popup/item_0/text = "Custom"
+popup/item_0/id = 0
+script = ExtResource("27_65uhb")
+list = NodePath("../ArtList")
+
+[node name="StartingItem" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkBox")]
+visible = false
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 584.0
+offset_right = 520.0
+offset_bottom = 584.0
+mouse_filter = 2
+script = ExtResource("62_25ilh")
+checkBox = NodePath("CheckBox")
+
+[node name="StartingItemLabel" type="Label" parent="MainPanel/StartingItem"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+text = "Starting item"
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MainPanel/StartingItem" groups=["Save"]]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 12.0
+offset_right = 204.0
+offset_bottom = 36.0
+script = ExtResource("63_te4q8")
+
+[node name="IntroEdit" type="LineEdit" parent="MainPanel/StartingItem" groups=["Save"]]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 472.0
+offset_bottom = 80.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+text = "starting item:"
+placeholder_text = "Enter Intro..."
+script = ExtResource("62_t1qu5")
+
+[node name="NameEdit" type="LineEdit" parent="MainPanel/StartingItem" groups=["Save"]]
+layout_mode = 0
+offset_top = 88.0
+offset_right = 472.0
+offset_bottom = 128.0
+theme = ExtResource("3_7sxfo")
+theme_override_fonts/font = ExtResource("7_b2jd5")
+text = "the d6"
+placeholder_text = "Enter Name..."
+script = ExtResource("63_nlm0b")
+
+[node name="ShowBleedZones" type="Control" parent="MainPanel"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1216.0
+offset_right = 1216.0
+mouse_filter = 2
+
+[node name="ShowBleedZonesButton" type="CheckButton" parent="MainPanel/ShowBleedZones"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+theme_override_font_sizes/font_size = 26
+text = "Show bleed zones"
+
+[node name="SelectedProps" type="Control" parent="MainPanel"]
+visible = false
+anchors_preset = 0
 offset_left = 1024.0
-offset_top = 72.0
-offset_right = 1986.0
-offset_bottom = 1384.0
-scale = Vector2(0.5, 0.5)
+offset_top = 736.0
+offset_right = 1024.0
+offset_bottom = 736.0
+mouse_filter = 2
+
+[node name="SelectedPropsLabel" type="Label" parent="MainPanel/SelectedProps"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 360.0
+offset_bottom = 8.0
+theme = ExtResource("3_7sxfo")
+text = "Selection properties"
+vertical_alignment = 1
+
+[node name="Position" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("xSpinBox", "ySpinBox")]
+anchors_preset = 0
+offset_top = 8.0
+offset_bottom = 8.0
+script = ExtResource("26_ahxvl")
+xSpinBox = NodePath("XSpinBox")
+ySpinBox = NodePath("YSpinBox")
+
+[node name="XSpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Position"]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+min_value = -962.0
+max_value = 962.0
+alignment = 1
+prefix = "x:"
+
+[node name="ResetXButton" type="Button" parent="MainPanel/SelectedProps/Position"]
+layout_mode = 1
+offset_left = 88.0
+offset_right = 120.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+icon = ExtResource("71_45i6p")
+icon_alignment = 1
+
+[node name="YSpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Position"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 72.0
+theme = ExtResource("3_7sxfo")
+min_value = -962.0
+max_value = 962.0
+alignment = 1
+prefix = "y:"
+
+[node name="ResetYButton" type="Button" parent="MainPanel/SelectedProps/Position"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 120.0
+offset_bottom = 72.0
+theme = ExtResource("3_7sxfo")
+icon = ExtResource("71_45i6p")
+icon_alignment = 1
+
+[node name="Separator2" type="Line2D" parent="MainPanel/SelectedProps"]
+position = Vector2(128, 0)
+points = PackedVector2Array(0, 8, 0, 44.8841, 0, 69.4954, 0, 80)
+width = 2.0
+default_color = Color(0.14902, 0.14902, 0.14902, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Rotation" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("spinBox")]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 8.0
+script = ExtResource("72_emn3m")
+spinBox = NodePath("SpinBox")
+
+[node name="SpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Rotation"]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 31.0
+theme = ExtResource("3_7sxfo")
+min_value = -360.0
+max_value = 360.0
+alignment = 1
+prefix = "rotation:"
+suffix = "°"
+
+[node name="ResetButton" type="Button" parent="MainPanel/SelectedProps/Rotation"]
+layout_mode = 0
+offset_left = 152.0
+offset_right = 184.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+icon = ExtResource("71_45i6p")
+icon_alignment = 1
+
+[node name="Scale" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("spinBox")]
+anchors_preset = 0
+offset_left = 136.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 40.0
+script = ExtResource("27_srwpj")
+spinBox = NodePath("SpinBox")
+
+[node name="SpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Scale"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 39.0
+theme = ExtResource("3_7sxfo")
+min_value = 10.0
+max_value = 150.0
+value = 100.0
+alignment = 1
+prefix = "scale:"
+suffix = "%"
+
+[node name="ResetButton" type="Button" parent="MainPanel/SelectedProps/Scale"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 40.0
+theme = ExtResource("3_7sxfo")
+icon = ExtResource("71_45i6p")
+icon_alignment = 1
+
+[node name="Separator3" type="Line2D" parent="MainPanel/SelectedProps"]
+position = Vector2(328, 0)
+points = PackedVector2Array(0, 8, 0, 80)
+width = 2.0
+default_color = Color(0.14902, 0.14902, 0.14902, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Value" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("lineEdit")]
+anchors_preset = 0
+offset_left = 336.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 8.0
+script = ExtResource("28_chj7t")
+lineEdit = NodePath("ResetButton")
+
+[node name="ResetButton" type="LineEdit" parent="MainPanel/SelectedProps/Value"]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+placeholder_text = "value..."
+alignment = 1
+
+[node name="Trash" type="Control" parent="MainPanel/SelectedProps"]
+anchors_preset = 0
+offset_left = 336.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 48.0
+script = ExtResource("59_qwtyi")
+
+[node name="Button" type="Button" parent="MainPanel/SelectedProps/Trash"]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 32.0
+icon = ExtResource("59_rxbag")
+icon_alignment = 1
+
+[node name="CardPreview" type="SubViewportContainer" parent="MainPanel" node_paths=PackedStringArray("viewport")]
+layout_mode = 2
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -994.0
+offset_top = -656.0
+offset_right = -32.0
+offset_bottom = 656.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.515, 0.515)
+pivot_offset = Vector2(994, 656)
 mouse_filter = 0
 script = ExtResource("2_c7j0e")
 viewport = NodePath("CardViewport")
 
-[node name="CardViewport" type="SubViewport" parent="CardPreview"]
+[node name="CardViewport" type="SubViewport" parent="MainPanel/CardPreview"]
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
@@ -128,16 +1027,15 @@ physics_object_picking_sort = true
 size = Vector2i(962, 1312)
 render_target_update_mode = 4
 
-[node name="Card" parent="CardPreview/CardViewport" instance=ExtResource("2_g0xqc")]
+[node name="Card" parent="MainPanel/CardPreview/CardViewport" instance=ExtResource("2_g0xqc")]
 mouse_default_cursor_shape = 12
 
 [node name="TopBar" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
 offset_bottom = 32.0
-grow_horizontal = 2
-theme = ExtResource("3_7sxfo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rp652")
 
 [node name="ExportWindow" type="Window" parent="TopBar" node_paths=PackedStringArray("exportTabletopCheckbox", "createTabletopFolderCheckbox", "exportPrintingCheckbox", "createPrintingFolderCheckbox", "fileSelectionButton", "locationButton", "exportButton")]
 title = "Export"
@@ -297,17 +1195,14 @@ created by [color=LIGHT_SKY_BLUE][url=https://github.com/Orso2p2n]orso[/url][/co
 fit_content = true
 
 [node name="MenuBar" type="MenuBar" parent="TopBar"]
-custom_minimum_size = Vector2(0, 33)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.5
-offset_bottom = 0.5
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 679.0
+offset_bottom = 26.0
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("3_7sxfo")
-theme_override_font_sizes/font_size = 21
 
 [node name="File" type="PopupMenu" parent="TopBar/MenuBar"]
 item_count = 4
@@ -343,780 +1238,49 @@ script = ExtResource("8_6fekc")
 infoWindow = NodePath("../../InfoWindow")
 
 [node name="SaveLabel" type="Label" parent="TopBar"]
-layout_mode = 0
-offset_left = 1216.0
-offset_right = 1520.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.729
+anchor_right = 1.0
+offset_left = 0.255981
+offset_right = -16.0
 offset_bottom = 32.0
+grow_horizontal = 2
 theme = ExtResource("3_7sxfo")
 theme_override_colors/font_color = Color(0.545113, 0.545113, 0.545113, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 18
 text = "new card*"
 horizontal_alignment = 2
-
-[node name="Type" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 24.0
-offset_bottom = 32.0
-mouse_filter = 2
-
-[node name="TypeLabel" type="Label" parent="Type"]
-layout_mode = 0
-offset_right = 152.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Type"
 vertical_alignment = 1
-
-[node name="MainTypeMenu" type="OptionButton" parent="Type" node_paths=PackedStringArray("backgroundMenu", "foregroundMenu", "borderMenu", "startingItemContainer") groups=["Save"]]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 200.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("5_evgkq")
-backgroundMenu = NodePath("../BackgroundMenu")
-foregroundMenu = NodePath("../ForegroundMenu")
-borderMenu = NodePath("../BorderMenu")
-startingItemContainer = NodePath("../../StartingItem")
-cardTypes = Array[Resource]([ExtResource("4_qaa4a"), ExtResource("6_5ii8c"), ExtResource("6_4oahh"), ExtResource("8_hee5o"), ExtResource("5_o8y5v"), ExtResource("10_27qjp")])
-
-[node name="BackgroundLabel" type="Label" parent="Type"]
-layout_mode = 0
-offset_left = 672.0
-offset_right = 820.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Foreground"
-vertical_alignment = 1
-
-[node name="BackgroundMenu" type="OptionButton" parent="Type" groups=["Save"]]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 40.0
-offset_right = 424.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("12_1a41u")
-customIcon = ExtResource("12_3ngn0")
-
-[node name="ForegroundLabel" type="Label" parent="Type"]
-layout_mode = 0
-offset_left = 224.0
-offset_right = 375.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Background"
-vertical_alignment = 1
-
-[node name="ForegroundMenu" type="OptionButton" parent="Type" groups=["Save"]]
-layout_mode = 0
-offset_left = 672.0
-offset_top = 40.0
-offset_right = 872.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("14_e3u8i")
-customIcon = ExtResource("14_2syo5")
-
-[node name="BorderLabel" type="Label" parent="Type"]
-layout_mode = 0
-offset_left = 448.0
-offset_right = 592.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Border"
-vertical_alignment = 1
-
-[node name="BorderMenu" type="OptionButton" parent="Type" groups=["Save"]]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 40.0
-offset_right = 648.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("16_71ows")
-customIcon = ExtResource("16_nbs8c")
-
-[node name="Title" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 24.0
-offset_top = 120.0
-offset_right = 24.0
-offset_bottom = 120.0
-mouse_filter = 2
-
-[node name="TitleLabel" type="Label" parent="Title"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Title"
-vertical_alignment = 1
-
-[node name="TitleEdit" type="LineEdit" parent="Title" groups=["Save"]]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-theme_override_fonts/font = ExtResource("7_b2jd5")
-placeholder_text = "Enter Title..."
-script = ExtResource("21_fwink")
-
-[node name="Desc" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 24.0
-offset_top = 208.0
-offset_right = 24.0
-offset_bottom = 208.0
-mouse_filter = 2
-
-[node name="DescLabel" type="Label" parent="Desc"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Description"
-vertical_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Desc"]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 440.0
-theme = ExtResource("3_7sxfo")
-
-[node name="DescList" parent="Desc/ScrollContainer" groups=["Save"] instance=ExtResource("8_t1lh8")]
-layout_mode = 2
-
-[node name="NewDescriptionItemButton" type="MenuButton" parent="Desc" node_paths=PackedStringArray("list")]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 8.0
-offset_right = 472.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Add new..."
-alignment = 2
-item_count = 3
-popup/item_0/text = "Effect"
-popup/item_0/id = 0
-popup/item_1/text = "Separator"
-popup/item_1/id = 1
-popup/item_2/text = "Lore"
-popup/item_2/id = 2
-script = ExtResource("20_f8och")
-list = NodePath("../ScrollContainer/DescList")
-
-[node name="Tags" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 24.0
-offset_top = 648.0
-offset_right = 24.0
-offset_bottom = 648.0
-mouse_filter = 2
-
-[node name="TagsLabel" type="Label" parent="Tags"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Tags"
-vertical_alignment = 1
-
-[node name="TagsList" type="ItemList" parent="Tags" groups=["Save"]]
-layout_mode = 2
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 120.0
-theme = ExtResource("3_7sxfo")
-allow_reselect = true
-max_columns = 9
-same_column_width = true
-fixed_icon_size = Vector2i(48, 48)
-script = ExtResource("26_ayoao")
-scenes = {
-"Custom": ExtResource("29_ehe37"),
-"Level tag": ExtResource("28_0cne3"),
-"Paid tag": ExtResource("27_g2k1e"),
-"Tap tag": ExtResource("26_7mwfm")
-}
-
-[node name="NewTagButton" type="MenuButton" parent="Tags" node_paths=PackedStringArray("list")]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 8.0
-offset_right = 472.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Add new..."
-alignment = 2
-item_count = 3
-popup/item_0/text = "Tap tag"
-popup/item_0/id = 0
-popup/item_1/text = "Paid tag"
-popup/item_1/id = 1
-popup/item_2/text = "Level tag"
-popup/item_2/id = 2
-script = ExtResource("27_65uhb")
-list = NodePath("../TagsList")
-
-[node name="Stats" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 24.0
-offset_top = 776.0
-offset_right = 24.0
-offset_bottom = 776.0
-mouse_filter = 2
-
-[node name="StatsLabel" type="Label" parent="Stats"]
-layout_mode = 0
-offset_top = -8.0
-offset_right = 360.0
-offset_bottom = 32.0
-theme = ExtResource("3_7sxfo")
-text = "Stats
-"
-vertical_alignment = 1
-
-[node name="HP" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
-layout_mode = 1
-anchors_preset = 0
-offset_top = 32.0
-offset_bottom = 32.0
-script = ExtResource("12_csu7s")
-icon = NodePath("HPTexture")
-spinBox = NodePath("HPEdit")
-
-[node name="HPTexture" type="TextureRect" parent="Stats/HP"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 36.0
-texture = ExtResource("9_ekawo")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="HPEdit" type="SpinBox" parent="Stats/HP"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 112.0
-offset_bottom = 32.0
-scale = Vector2(1.25, 1.25)
-theme = ExtResource("3_7sxfo")
-max_value = 9.0
-value = 2.0
-alignment = 1
-
-[node name="DICE" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 144.0
-offset_top = 32.0
-offset_right = 144.0
-offset_bottom = 32.0
-script = ExtResource("12_csu7s")
-icon = NodePath("DICETexture")
-spinBox = NodePath("DICEEdit")
-
-[node name="DICETexture" type="TextureRect" parent="Stats/DICE"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 36.0
-texture = ExtResource("10_icac8")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="DICEEdit" type="SpinBox" parent="Stats/DICE"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 112.0
-offset_bottom = 32.0
-scale = Vector2(1.25, 1.25)
-theme = ExtResource("3_7sxfo")
-max_value = 6.0
-value = 4.0
-alignment = 1
-
-[node name="ATK" type="Control" parent="Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 288.0
-offset_top = 32.0
-offset_right = 288.0
-offset_bottom = 32.0
-script = ExtResource("12_csu7s")
-icon = NodePath("ATKTexture")
-spinBox = NodePath("ATKEdit")
-
-[node name="ATKTexture" type="TextureRect" parent="Stats/ATK"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 36.0
-texture = ExtResource("11_vrgg2")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ATKEdit" type="SpinBox" parent="Stats/ATK"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 112.0
-offset_bottom = 32.0
-scale = Vector2(1.25, 1.25)
-theme = ExtResource("3_7sxfo")
-max_value = 9.0
-value = 1.0
-alignment = 1
-
-[node name="Art" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 120.0
-offset_right = 520.0
-offset_bottom = 120.0
-mouse_filter = 2
-
-[node name="ArtLabel" type="Label" parent="Art"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Art
-"
-vertical_alignment = 1
-
-[node name="ArtButton" parent="Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
-layout_mode = 0
-offset_top = 40.0
-offset_bottom = 80.0
-
-[node name="TopArtButton" parent="Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 40.0
-offset_right = 392.0
-offset_bottom = 80.0
-text = "Load top art..."
-top = true
-
-[node name="Icons" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 208.0
-offset_right = 520.0
-offset_bottom = 208.0
-mouse_filter = 2
-
-[node name="SoulIconLabel" type="Label" parent="Icons"]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Soul Icon"
-vertical_alignment = 1
-
-[node name="SoulIconMenu" type="OptionButton" parent="Icons" groups=["Save"]]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 160.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("26_l8bso")
-customIcon = ExtResource("27_whsyw")
-cardTypes = Array[Resource]([ExtResource("27_fubmy"), ExtResource("27_gmm8e"), ExtResource("28_n7umd"), ExtResource("29_bir7w")])
-
-[node name="SetIconLabel" type="Label" parent="Icons"]
-layout_mode = 0
-offset_left = 168.0
-offset_right = 320.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Set icon"
-vertical_alignment = 1
-
-[node name="SetIconMenu" type="OptionButton" parent="Icons" groups=["Save"]]
-layout_mode = 0
-offset_left = 168.0
-offset_top = 40.0
-offset_right = 320.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("31_1tfgv")
-customIcon = ExtResource("33_tocn4")
-cardTypes = Array[Resource]([ExtResource("31_we2rt"), ExtResource("32_s11b6"), ExtResource("33_148nk"), ExtResource("34_0v54e"), ExtResource("35_5xr1p"), ExtResource("36_gbkvs"), ExtResource("37_mbj8e"), ExtResource("38_pvr2v"), ExtResource("39_nw35a"), ExtResource("40_ra6en"), ExtResource("41_vewfy"), ExtResource("42_1t1bp"), ExtResource("43_oi578")])
-
-[node name="DiffIconLabel" type="Label" parent="Icons"]
-layout_mode = 0
-offset_left = 328.0
-offset_right = 472.0
-offset_bottom = 40.0
-scale = Vector2(1.00178, 1)
-theme = ExtResource("3_7sxfo")
-text = "Diff. icon"
-vertical_alignment = 1
-
-[node name="DiffIconMenu" type="OptionButton" parent="Icons" groups=["Save"]]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-script = ExtResource("45_y6lod")
-customIcon = ExtResource("48_dqrv0")
-cardTypes = Array[Resource]([ExtResource("45_faopm"), ExtResource("46_lh4tv")])
-
-[node name="Credit" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 296.0
-offset_right = 520.0
-offset_bottom = 296.0
-mouse_filter = 2
-
-[node name="CreditLabel" type="Label" parent="Credit"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Credits"
-vertical_alignment = 1
-
-[node name="CreditEdit" type="LineEdit" parent="Credit" groups=["Save"]]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-theme_override_fonts/font = ExtResource("7_b2jd5")
-placeholder_text = "Enter Credits..."
-script = ExtResource("22_wnou6")
-
-[node name="CustomArt" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 384.0
-offset_right = 520.0
-offset_bottom = 384.0
-mouse_filter = 2
-
-[node name="CustomArtLabel" type="Label" parent="CustomArt"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Custom art"
-vertical_alignment = 1
-
-[node name="ArtList" type="ItemList" parent="CustomArt" groups=["Save"]]
-layout_mode = 2
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 200.0
-theme = ExtResource("3_7sxfo")
-allow_reselect = true
-max_columns = 9
-same_column_width = true
-fixed_icon_size = Vector2i(64, 64)
-script = ExtResource("26_ayoao")
-scenes = {
-"Custom": ExtResource("29_ehe37"),
-"Level tag": ExtResource("28_0cne3"),
-"Paid tag": ExtResource("27_g2k1e"),
-"Tap tag": ExtResource("26_7mwfm")
-}
-
-[node name="NewArtButton" type="MenuButton" parent="CustomArt" node_paths=PackedStringArray("list")]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 8.0
-offset_right = 472.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Add new..."
-alignment = 2
-item_count = 1
-popup/item_0/text = "Custom"
-popup/item_0/id = 0
-script = ExtResource("27_65uhb")
-list = NodePath("../ArtList")
-
-[node name="StartingItem" type="Control" parent="." node_paths=PackedStringArray("checkBox")]
-visible = false
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 584.0
-offset_right = 520.0
-offset_bottom = 584.0
-mouse_filter = 2
-script = ExtResource("62_25ilh")
-checkBox = NodePath("CheckBox")
-
-[node name="StartingItemLabel" type="Label" parent="StartingItem"]
-layout_mode = 0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Starting item"
-vertical_alignment = 1
-
-[node name="CheckBox" type="CheckBox" parent="StartingItem" groups=["Save"]]
-layout_mode = 0
-offset_left = 180.0
-offset_top = 12.0
-offset_right = 204.0
-offset_bottom = 36.0
-script = ExtResource("63_te4q8")
-
-[node name="IntroEdit" type="LineEdit" parent="StartingItem" groups=["Save"]]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 80.0
-theme = ExtResource("3_7sxfo")
-theme_override_fonts/font = ExtResource("7_b2jd5")
-text = "starting item:"
-placeholder_text = "Enter Intro..."
-script = ExtResource("62_t1qu5")
-
-[node name="NameEdit" type="LineEdit" parent="StartingItem" groups=["Save"]]
-layout_mode = 0
-offset_top = 88.0
-offset_right = 472.0
-offset_bottom = 128.0
-theme = ExtResource("3_7sxfo")
-theme_override_fonts/font = ExtResource("7_b2jd5")
-text = "the d6"
-placeholder_text = "Enter Name..."
-script = ExtResource("63_nlm0b")
-
-[node name="ShowBleedZones" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1216.0
-offset_top = 32.0
-offset_right = 1216.0
-offset_bottom = 32.0
-mouse_filter = 2
-
-[node name="ShowBleedZonesButton" type="CheckButton" parent="ShowBleedZones"]
-layout_mode = 0
-offset_right = 288.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-theme_override_font_sizes/font_size = 26
-text = "Show bleed zones"
-
-[node name="SelectedProps" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1024.0
-offset_top = 768.0
-offset_right = 1024.0
-offset_bottom = 768.0
-mouse_filter = 2
-
-[node name="SelectedPropsLabel" type="Label" parent="SelectedProps"]
-layout_mode = 0
-offset_top = -32.0
-offset_right = 360.0
-offset_bottom = 8.0
-theme = ExtResource("3_7sxfo")
-text = "Selection properties"
-vertical_alignment = 1
-
-[node name="Position" type="Control" parent="SelectedProps" node_paths=PackedStringArray("xSpinBox", "ySpinBox")]
-anchors_preset = 0
-offset_top = 8.0
-offset_bottom = 8.0
-script = ExtResource("26_ahxvl")
-xSpinBox = NodePath("XSpinBox")
-ySpinBox = NodePath("YSpinBox")
-
-[node name="XSpinBox" type="SpinBox" parent="SelectedProps/Position"]
-layout_mode = 0
-offset_right = 88.0
-offset_bottom = 32.0
-theme = ExtResource("3_7sxfo")
-min_value = -962.0
-max_value = 962.0
-alignment = 1
-prefix = "x:"
-
-[node name="ResetXButton" type="Button" parent="SelectedProps/Position"]
-layout_mode = 1
-offset_left = 88.0
-offset_right = 120.0
-offset_bottom = 32.0
-theme = ExtResource("3_7sxfo")
-icon = ExtResource("71_45i6p")
-icon_alignment = 1
-
-[node name="YSpinBox" type="SpinBox" parent="SelectedProps/Position"]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 88.0
-offset_bottom = 72.0
-theme = ExtResource("3_7sxfo")
-min_value = -962.0
-max_value = 962.0
-alignment = 1
-prefix = "y:"
-
-[node name="ResetYButton" type="Button" parent="SelectedProps/Position"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 40.0
-offset_right = 120.0
-offset_bottom = 72.0
-theme = ExtResource("3_7sxfo")
-icon = ExtResource("71_45i6p")
-icon_alignment = 1
-
-[node name="Separator2" type="Line2D" parent="SelectedProps"]
-position = Vector2(128, 0)
-points = PackedVector2Array(0, 8, 0, 44.8841, 0, 69.4954, 0, 80)
-width = 2.0
-default_color = Color(0.14902, 0.14902, 0.14902, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="Rotation" type="Control" parent="SelectedProps" node_paths=PackedStringArray("spinBox")]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 136.0
-offset_top = 8.0
-offset_right = 136.0
-offset_bottom = 8.0
-script = ExtResource("72_emn3m")
-spinBox = NodePath("SpinBox")
-
-[node name="SpinBox" type="SpinBox" parent="SelectedProps/Rotation"]
-layout_mode = 0
-offset_right = 152.0
-offset_bottom = 31.0
-theme = ExtResource("3_7sxfo")
-min_value = -360.0
-max_value = 360.0
-alignment = 1
-prefix = "rotation:"
-suffix = "°"
-
-[node name="ResetButton" type="Button" parent="SelectedProps/Rotation"]
-layout_mode = 0
-offset_left = 152.0
-offset_right = 184.0
-offset_bottom = 32.0
-theme = ExtResource("3_7sxfo")
-icon = ExtResource("71_45i6p")
-icon_alignment = 1
-
-[node name="Scale" type="Control" parent="SelectedProps" node_paths=PackedStringArray("spinBox")]
-anchors_preset = 0
-offset_left = 136.0
-offset_top = 40.0
-offset_right = 136.0
-offset_bottom = 40.0
-script = ExtResource("27_srwpj")
-spinBox = NodePath("SpinBox")
-
-[node name="SpinBox" type="SpinBox" parent="SelectedProps/Scale"]
-layout_mode = 0
-offset_top = 8.0
-offset_right = 152.0
-offset_bottom = 39.0
-theme = ExtResource("3_7sxfo")
-min_value = 10.0
-max_value = 150.0
-value = 100.0
-alignment = 1
-prefix = "scale:"
-suffix = "%"
-
-[node name="ResetButton" type="Button" parent="SelectedProps/Scale"]
-layout_mode = 0
-offset_left = 152.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-icon = ExtResource("71_45i6p")
-icon_alignment = 1
-
-[node name="Separator3" type="Line2D" parent="SelectedProps"]
-position = Vector2(328, 0)
-points = PackedVector2Array(0, 8, 0, 80)
-width = 2.0
-default_color = Color(0.14902, 0.14902, 0.14902, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="Value" type="Control" parent="SelectedProps" node_paths=PackedStringArray("lineEdit")]
-anchors_preset = 0
-offset_left = 336.0
-offset_top = 8.0
-offset_right = 336.0
-offset_bottom = 8.0
-script = ExtResource("28_chj7t")
-lineEdit = NodePath("ResetButton")
-
-[node name="ResetButton" type="LineEdit" parent="SelectedProps/Value"]
-layout_mode = 0
-offset_right = 144.0
-offset_bottom = 32.0
-theme = ExtResource("3_7sxfo")
-placeholder_text = "value..."
-alignment = 1
-
-[node name="Trash" type="Control" parent="SelectedProps"]
-anchors_preset = 0
-offset_left = 336.0
-offset_top = 48.0
-offset_right = 336.0
-offset_bottom = 48.0
-script = ExtResource("59_qwtyi")
-
-[node name="Button" type="Button" parent="SelectedProps/Trash"]
-layout_mode = 0
-offset_right = 144.0
-offset_bottom = 32.0
-icon = ExtResource("59_rxbag")
-icon_alignment = 1
-
+clip_text = true
+text_overrun_behavior = 3
+
+[connection signal="text_changed" from="MainPanel/Title/TitleEdit" to="MainPanel/Title/TitleEdit" method="OnTextChanged"]
+[connection signal="empty_clicked" from="MainPanel/Tags/TagsList" to="MainPanel/Tags/TagsList" method="OnEmptyClicked"]
+[connection signal="item_selected" from="MainPanel/Tags/TagsList" to="MainPanel/Tags/TagsList" method="OnItemSelected"]
+[connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
+[connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]
+[connection signal="value_changed" from="MainPanel/Stats/ATK/ATKEdit" to="MainPanel/Stats/ATK" method="UpdateStat"]
+[connection signal="text_changed" from="MainPanel/Credit/CreditEdit" to="MainPanel/Credit/CreditEdit" method="OnTextChanged"]
+[connection signal="empty_clicked" from="MainPanel/CustomArt/ArtList" to="MainPanel/CustomArt/ArtList" method="OnEmptyClicked"]
+[connection signal="item_selected" from="MainPanel/CustomArt/ArtList" to="MainPanel/CustomArt/ArtList" method="OnItemSelected"]
+[connection signal="toggled" from="MainPanel/StartingItem/CheckBox" to="MainPanel/StartingItem/CheckBox" method="OnToggled"]
+[connection signal="text_changed" from="MainPanel/StartingItem/IntroEdit" to="MainPanel/StartingItem/IntroEdit" method="OnTextChanged"]
+[connection signal="text_changed" from="MainPanel/StartingItem/NameEdit" to="MainPanel/StartingItem/NameEdit" method="OnTextChanged"]
+[connection signal="toggled" from="MainPanel/ShowBleedZones/ShowBleedZonesButton" to="EditManager" method="SetBleedZones"]
+[connection signal="value_changed" from="MainPanel/SelectedProps/Position/XSpinBox" to="MainPanel/SelectedProps/Position" method="OnChangedX"]
+[connection signal="pressed" from="MainPanel/SelectedProps/Position/ResetXButton" to="MainPanel/SelectedProps/Position" method="OnResetXPressed"]
+[connection signal="value_changed" from="MainPanel/SelectedProps/Position/YSpinBox" to="MainPanel/SelectedProps/Position" method="OnChangedY"]
+[connection signal="pressed" from="MainPanel/SelectedProps/Position/ResetYButton" to="MainPanel/SelectedProps/Position" method="OnResetYPressed"]
+[connection signal="value_changed" from="MainPanel/SelectedProps/Rotation/SpinBox" to="MainPanel/SelectedProps/Rotation" method="OnSpinBoxValueChanged"]
+[connection signal="pressed" from="MainPanel/SelectedProps/Rotation/ResetButton" to="MainPanel/SelectedProps/Rotation" method="OnPressed"]
+[connection signal="value_changed" from="MainPanel/SelectedProps/Scale/SpinBox" to="MainPanel/SelectedProps/Scale" method="OnSpinBoxValueChanged"]
+[connection signal="pressed" from="MainPanel/SelectedProps/Scale/ResetButton" to="MainPanel/SelectedProps/Scale" method="OnPressed"]
+[connection signal="text_changed" from="MainPanel/SelectedProps/Value/ResetButton" to="MainPanel/SelectedProps/Value" method="OnTextChanged"]
+[connection signal="pressed" from="MainPanel/SelectedProps/Trash/Button" to="MainPanel/SelectedProps/Trash" method="OnPressed"]
 [connection signal="close_requested" from="TopBar/ExportWindow" to="TopBar/ExportWindow" method="OnCloseRequested"]
 [connection signal="close_requested" from="TopBar/InfoWindow" to="TopBar/InfoWindow" method="OnCloseRequested"]
 [connection signal="meta_clicked" from="TopBar/InfoWindow/VBoxContainer/RichTextLabel" to="TopBar/InfoWindow" method="OnTextMetaClicked"]
 [connection signal="index_pressed" from="TopBar/MenuBar/File" to="TopBar/MenuBar/File" method="OnIndexPressed"]
 [connection signal="index_pressed" from="TopBar/MenuBar/Export" to="TopBar/MenuBar/Export" method="OnIndexPressed"]
 [connection signal="index_pressed" from="TopBar/MenuBar/Help" to="TopBar/MenuBar/Help" method="OnIndexPressed"]
-[connection signal="text_changed" from="Title/TitleEdit" to="Title/TitleEdit" method="OnTextChanged"]
-[connection signal="empty_clicked" from="Tags/TagsList" to="Tags/TagsList" method="OnEmptyClicked"]
-[connection signal="item_selected" from="Tags/TagsList" to="Tags/TagsList" method="OnItemSelected"]
-[connection signal="value_changed" from="Stats/HP/HPEdit" to="Stats/HP" method="UpdateStat"]
-[connection signal="value_changed" from="Stats/DICE/DICEEdit" to="Stats/DICE" method="UpdateStat"]
-[connection signal="value_changed" from="Stats/ATK/ATKEdit" to="Stats/ATK" method="UpdateStat"]
-[connection signal="text_changed" from="Credit/CreditEdit" to="Credit/CreditEdit" method="OnTextChanged"]
-[connection signal="empty_clicked" from="CustomArt/ArtList" to="CustomArt/ArtList" method="OnEmptyClicked"]
-[connection signal="item_selected" from="CustomArt/ArtList" to="CustomArt/ArtList" method="OnItemSelected"]
-[connection signal="toggled" from="StartingItem/CheckBox" to="StartingItem/CheckBox" method="OnToggled"]
-[connection signal="text_changed" from="StartingItem/IntroEdit" to="StartingItem/IntroEdit" method="OnTextChanged"]
-[connection signal="text_changed" from="StartingItem/NameEdit" to="StartingItem/NameEdit" method="OnTextChanged"]
-[connection signal="toggled" from="ShowBleedZones/ShowBleedZonesButton" to="EditManager" method="SetBleedZones"]
-[connection signal="value_changed" from="SelectedProps/Position/XSpinBox" to="SelectedProps/Position" method="OnChangedX"]
-[connection signal="pressed" from="SelectedProps/Position/ResetXButton" to="SelectedProps/Position" method="OnResetXPressed"]
-[connection signal="value_changed" from="SelectedProps/Position/YSpinBox" to="SelectedProps/Position" method="OnChangedY"]
-[connection signal="pressed" from="SelectedProps/Position/ResetYButton" to="SelectedProps/Position" method="OnResetYPressed"]
-[connection signal="value_changed" from="SelectedProps/Rotation/SpinBox" to="SelectedProps/Rotation" method="OnSpinBoxValueChanged"]
-[connection signal="pressed" from="SelectedProps/Rotation/ResetButton" to="SelectedProps/Rotation" method="OnPressed"]
-[connection signal="value_changed" from="SelectedProps/Scale/SpinBox" to="SelectedProps/Scale" method="OnSpinBoxValueChanged"]
-[connection signal="pressed" from="SelectedProps/Scale/ResetButton" to="SelectedProps/Scale" method="OnPressed"]
-[connection signal="text_changed" from="SelectedProps/Value/ResetButton" to="SelectedProps/Value" method="OnTextChanged"]
-[connection signal="pressed" from="SelectedProps/Trash/Button" to="SelectedProps/Trash" method="OnPressed"]
