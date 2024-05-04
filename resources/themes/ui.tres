@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=30 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=35 format=3 uid="uid://du8dk2cpyfqc4"]
 
 [ext_resource type="StyleBox" uid="uid://bhh4fedqts1wu" path="res://resources/themes/ui/add_new_menu_button/AddNewHover.tres" id="1_dugw4"]
 [ext_resource type="FontFile" uid="uid://dqe8s0pvj8jah" path="res://assets/fonts/ui/UI-Regular.ttf" id="1_hd3je"]
@@ -17,20 +17,21 @@
 [ext_resource type="StyleBox" uid="uid://cggk3shx04nrc" path="res://resources/themes/ui/option_button/OptionButtonNormal.tres" id="8_mrteh"]
 [ext_resource type="StyleBox" uid="uid://b0pfow8m3uto0" path="res://resources/themes/ui/option_button/OptionButtonPressed.tres" id="9_gkk2p"]
 [ext_resource type="StyleBox" uid="uid://bybr2uwnaj4ol" path="res://resources/themes/ui/scroll_container/ScrollContainerPanel.tres" id="10_gt3de"]
+[ext_resource type="StyleBox" uid="uid://bkjii2o5bo6nt" path="res://resources/themes/ui/item_list/ItemListHover.tres" id="10_xligt"]
+[ext_resource type="StyleBox" uid="uid://dduqbd6bkutv6" path="res://resources/themes/ui/item_list/ItemListPanel.tres" id="11_pahl3"]
 [ext_resource type="StyleBox" uid="uid://b7pl3mf1f1w6t" path="res://resources/themes/ui/popup_menu/PopupMenuPanel.tres" id="12_1h433"]
+[ext_resource type="StyleBox" uid="uid://o1f0ywmo4fwn" path="res://resources/themes/ui/item_list/ItemListSelected.tres" id="12_wx2uc"]
 [ext_resource type="StyleBox" uid="uid://bx3yn8jamwefb" path="res://resources/themes/ui/popup_menu/PopupMenuHover.tres" id="13_c5igg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_df2r8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsj8a"]
-bg_color = Color(0.188235, 0.188235, 0.188235, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.188235, 0.188235, 0.188235, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1rss"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l16w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6x0em"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqbwt"]
 
@@ -66,7 +67,13 @@ Header/base_type = &"Label"
 Header/colors/font_color = Color(0.868985, 0.868985, 0.868985, 1)
 Header/font_sizes/font_size = 18
 Header/fonts/font = ExtResource("2_mp5jr")
-ItemList/styles/panel = SubResource("StyleBoxFlat_fsj8a")
+ItemList/styles/cursor = SubResource("StyleBoxEmpty_n1rss")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxEmpty_1l16w")
+ItemList/styles/focus = SubResource("StyleBoxEmpty_6x0em")
+ItemList/styles/hovered = ExtResource("10_xligt")
+ItemList/styles/panel = ExtResource("11_pahl3")
+ItemList/styles/selected = ExtResource("12_wx2uc")
+ItemList/styles/selected_focus = ExtResource("12_wx2uc")
 Label/fonts/font = ExtResource("1_hd3je")
 LineEdit/fonts/font = ExtResource("1_hd3je")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_wqbwt")

@@ -530,6 +530,64 @@ customIcon = ExtResource("48_dqrv0")
 cardTypes = Array[Resource]([ExtResource("45_faopm"), ExtResource("46_lh4tv")])
 metadata/_edit_use_anchors_ = true
 
+[node name="Stamps" type="Control" parent="MainPanel"]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 248.0
+offset_right = 1008.0
+offset_bottom = 472.0
+mouse_filter = 2
+
+[node name="StampsLabel" type="Label" parent="MainPanel/Stamps"]
+layout_mode = 0
+offset_right = 368.0
+offset_bottom = 32.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "stamps"
+vertical_alignment = 1
+uppercase = true
+
+[node name="StampsList" type="ItemList" parent="MainPanel/Stamps" groups=["Save"]]
+layout_mode = 2
+offset_top = 32.0
+offset_right = 488.0
+offset_bottom = 224.0
+theme = ExtResource("3_7sxfo")
+allow_reselect = true
+max_columns = 9
+same_column_width = true
+fixed_icon_size = Vector2i(64, 64)
+script = ExtResource("26_ayoao")
+scenes = {
+"Custom...": ExtResource("29_ehe37"),
+"Level tag": ExtResource("28_0cne3"),
+"Paid tag": ExtResource("27_g2k1e"),
+"Tap tag": ExtResource("26_7mwfm")
+}
+
+[node name="NewStampButton" type="MenuButton" parent="MainPanel/Stamps" node_paths=PackedStringArray("list")]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 4.0
+offset_right = 480.0
+offset_bottom = 28.0
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"AddNewMenuButton"
+text = "Add new..."
+flat = false
+item_count = 4
+popup/item_0/text = "Tap tag"
+popup/item_0/id = 0
+popup/item_1/text = "Paid tag"
+popup/item_1/id = 1
+popup/item_2/text = "Level tag"
+popup/item_2/id = 2
+popup/item_3/text = "Custom..."
+popup/item_3/id = 3
+script = ExtResource("27_65uhb")
+list = NodePath("../StampsList")
+
 [node name="Tags" type="Control" parent="MainPanel"]
 anchors_preset = 0
 offset_left = 24.0
@@ -730,64 +788,6 @@ theme = ExtResource("3_7sxfo")
 theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Credits..."
 script = ExtResource("22_wnou6")
-
-[node name="Stamps" type="Control" parent="MainPanel"]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 352.0
-offset_right = 520.0
-offset_bottom = 352.0
-mouse_filter = 2
-
-[node name="StampsLabel" type="Label" parent="MainPanel/Stamps"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 360.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-theme_type_variation = &"Header"
-text = "stamps"
-vertical_alignment = 1
-uppercase = true
-
-[node name="StampsList" type="ItemList" parent="MainPanel/Stamps" groups=["Save"]]
-layout_mode = 2
-offset_top = 40.0
-offset_right = 472.0
-offset_bottom = 200.0
-theme = ExtResource("3_7sxfo")
-allow_reselect = true
-max_columns = 9
-same_column_width = true
-fixed_icon_size = Vector2i(64, 64)
-script = ExtResource("26_ayoao")
-scenes = {
-"Custom": ExtResource("29_ehe37"),
-"Level tag": ExtResource("28_0cne3"),
-"Paid tag": ExtResource("27_g2k1e"),
-"Tap tag": ExtResource("26_7mwfm")
-}
-
-[node name="NewStampButton" type="MenuButton" parent="MainPanel/Stamps" node_paths=PackedStringArray("list")]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 8.0
-offset_right = 472.0
-offset_bottom = 40.0
-theme = ExtResource("3_7sxfo")
-text = "Add new..."
-alignment = 2
-item_count = 4
-popup/item_0/text = "Tap tag"
-popup/item_0/id = 0
-popup/item_1/text = "Paid tag"
-popup/item_1/id = 1
-popup/item_2/text = "Level tag"
-popup/item_2/id = 2
-popup/item_3/text = "Custom"
-popup/item_3/id = 3
-script = ExtResource("27_65uhb")
-list = NodePath("../StampsList")
 
 [node name="StartingItem" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkBox")]
 visible = false
@@ -1284,14 +1284,14 @@ clip_text = true
 text_overrun_behavior = 3
 
 [connection signal="text_changed" from="MainPanel/Title/TitleEdit" to="MainPanel/Title/TitleEdit" method="OnTextChanged"]
+[connection signal="empty_clicked" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnEmptyClicked"]
+[connection signal="item_selected" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnItemSelected"]
 [connection signal="empty_clicked" from="MainPanel/Tags/TagsList" to="MainPanel/Tags/TagsList" method="OnEmptyClicked"]
 [connection signal="item_selected" from="MainPanel/Tags/TagsList" to="MainPanel/Tags/TagsList" method="OnItemSelected"]
 [connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/ATK/ATKEdit" to="MainPanel/Stats/ATK" method="UpdateStat"]
 [connection signal="text_changed" from="MainPanel/Credit/CreditEdit" to="MainPanel/Credit/CreditEdit" method="OnTextChanged"]
-[connection signal="empty_clicked" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnEmptyClicked"]
-[connection signal="item_selected" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnItemSelected"]
 [connection signal="toggled" from="MainPanel/StartingItem/CheckBox" to="MainPanel/StartingItem/CheckBox" method="OnToggled"]
 [connection signal="text_changed" from="MainPanel/StartingItem/IntroEdit" to="MainPanel/StartingItem/IntroEdit" method="OnTextChanged"]
 [connection signal="text_changed" from="MainPanel/StartingItem/NameEdit" to="MainPanel/StartingItem/NameEdit" method="OnTextChanged"]
