@@ -8,9 +8,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii042"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fo4ij"]
-content_margin_left = 8.0
-content_margin_right = 0.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sftv1"]
+content_margin_left = 30.0
 
 [node name="SwappableSeparator" node_paths=PackedStringArray("content") instance=ExtResource("1_31v7r")]
 script = ExtResource("2_3jdjo")
@@ -20,10 +19,9 @@ content = NodePath("LineSelection")
 [node name="LineSelection" type="OptionButton" parent="." index="1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0678419
 anchor_right = 0.796655
 anchor_bottom = 1.0
-offset_left = -0.0213642
+offset_left = 32.0
 offset_right = -0.0213623
 theme_override_colors/font_color = Color(0.447059, 0.447059, 0.447059, 1)
 theme_override_colors/font_pressed_color = Color(0.447059, 0.447059, 0.447059, 1)
@@ -32,10 +30,10 @@ theme_override_colors/font_hover_pressed_color = Color(0.447059, 0.447059, 0.447
 theme_override_colors/font_focus_color = Color(0.447059, 0.447059, 0.447059, 1)
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ii042")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fo4ij")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sftv1")
 theme_override_styles/hover = ExtResource("3_xpd5s")
 theme_override_styles/pressed = ExtResource("3_xpd5s")
-alignment = 1
+expand_icon = true
 item_count = 3
 selected = 0
 fit_to_longest_item = false

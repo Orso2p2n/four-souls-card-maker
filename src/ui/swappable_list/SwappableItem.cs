@@ -111,7 +111,7 @@ public partial class SwappableItem : Control
 
     public void OnMainControlResized() {
         Size = new Vector2(Size.X, content.Size.Y);
-        CustomMinimumSize = new Vector2(CustomMinimumSize.X, Mathf.Max(baseCustomMinimumHeight, content.Size.Y));
+        CustomMinimumSize = new Vector2(0, Mathf.Max(baseCustomMinimumHeight, content.Size.Y));
     }
 
     // Settings

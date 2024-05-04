@@ -114,6 +114,7 @@ size = Vector2i(1000, 562)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+use_native_dialog = true
 
 [node name="MainPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -361,6 +362,7 @@ anchor_bottom = 1.0
 offset_top = 40.0
 theme = ExtResource("3_7sxfo")
 theme_type_variation = &"VisibleScrollContainer"
+horizontal_scroll_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="DescList" parent="MainPanel/Desc/ScrollContainer" groups=["Save"] instance=ExtResource("8_t1lh8")]
