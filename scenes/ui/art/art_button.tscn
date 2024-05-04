@@ -9,31 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://co2qmclmpgo5n" path="res://assets/icons/eye18_close.png" id="7_rompx"]
 
 [node name="ArtButton" type="Button" node_paths=PackedStringArray("trashButton", "viewButton")]
-offset_right = 152.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 0.09375
+anchor_bottom = 0.0462963
 theme = ExtResource("1_h8jht")
 text = "Load art..."
 script = ExtResource("2_0owej")
 trashButton = NodePath("TrashArtButton")
 viewButton = NodePath("ViewArtButton")
-
-[node name="TrashArtButton" type="Button" parent="." node_paths=PackedStringArray("mainButton")]
-layout_mode = 0
-offset_left = 160.0
-offset_right = 192.0
-offset_bottom = 40.0
-theme = ExtResource("1_h8jht")
-disabled = true
-icon = ExtResource("3_olyjq")
-icon_alignment = 1
-script = ExtResource("4_7y335")
-mainButton = NodePath("..")
+metadata/_edit_use_anchors_ = true
 
 [node name="ViewArtButton" type="Button" parent="." node_paths=PackedStringArray("mainButton")]
 layout_mode = 0
-offset_left = 200.0
-offset_right = 232.0
-offset_bottom = 40.0
+anchor_left = 1.05556
+anchor_right = 1.33333
+anchor_bottom = 1.0
 theme = ExtResource("1_h8jht")
 disabled = true
 icon = ExtResource("4_fea5v")
@@ -42,7 +32,21 @@ script = ExtResource("6_evf17")
 mainButton = NodePath("..")
 openIcon = ExtResource("4_fea5v")
 closedIcon = ExtResource("7_rompx")
+metadata/_edit_use_anchors_ = true
+
+[node name="TrashArtButton" type="Button" parent="." node_paths=PackedStringArray("mainButton")]
+layout_mode = 0
+anchor_left = 1.38889
+anchor_right = 1.66667
+anchor_bottom = 1.0
+theme = ExtResource("1_h8jht")
+disabled = true
+icon = ExtResource("3_olyjq")
+icon_alignment = 1
+script = ExtResource("4_7y335")
+mainButton = NodePath("..")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="." to="." method="OnPressed"]
-[connection signal="pressed" from="TrashArtButton" to="TrashArtButton" method="OnPressed"]
 [connection signal="pressed" from="ViewArtButton" to="ViewArtButton" method="OnPressed"]
+[connection signal="pressed" from="TrashArtButton" to="TrashArtButton" method="OnPressed"]

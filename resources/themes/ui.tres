@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=25 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=30 format=3 uid="uid://du8dk2cpyfqc4"]
 
 [ext_resource type="StyleBox" uid="uid://bhh4fedqts1wu" path="res://resources/themes/ui/add_new_menu_button/AddNewHover.tres" id="1_dugw4"]
 [ext_resource type="FontFile" uid="uid://dqe8s0pvj8jah" path="res://assets/fonts/ui/UI-Regular.ttf" id="1_hd3je"]
@@ -7,8 +7,12 @@
 [ext_resource type="StyleBox" uid="uid://ccybg6oehn63p" path="res://resources/themes/ui/line_edit/LineEditNormal.tres" id="3_t2axc"]
 [ext_resource type="StyleBox" uid="uid://b1o841dbudx76" path="res://resources/themes/ui/add_new_menu_button/AddNewPressed.tres" id="3_trom5"]
 [ext_resource type="StyleBox" uid="uid://bj8vlwicl07on" path="res://resources/themes/ui/menu_bar/MenuBarNormal.tres" id="4_xtupo"]
+[ext_resource type="StyleBox" uid="uid://bmbp30kqnm45x" path="res://resources/themes/ui/button/ButtonHover.tres" id="5_gqv08"]
 [ext_resource type="FontFile" uid="uid://bap6js1ffhsji" path="res://assets/fonts/ui/UI-Medium.ttf" id="5_l3blg"]
 [ext_resource type="StyleBox" uid="uid://b8uvdbqn5j3v4" path="res://resources/themes/ui/menu_bar/MenuBarHover.tres" id="5_nlynm"]
+[ext_resource type="StyleBox" uid="uid://emegrwv5mdni" path="res://resources/themes/ui/button/ButtonDisabled.tres" id="5_qgtfh"]
+[ext_resource type="StyleBox" uid="uid://b1odupamwu3xk" path="res://resources/themes/ui/button/ButtonNormal.tres" id="6_hri53"]
+[ext_resource type="StyleBox" uid="uid://4wduv3qwp60a" path="res://resources/themes/ui/button/ButtonPressed.tres" id="7_buc77"]
 [ext_resource type="StyleBox" uid="uid://diyvo2dcgexm0" path="res://resources/themes/ui/option_button/OptionButtonHover.tres" id="7_xc4s8"]
 [ext_resource type="StyleBox" uid="uid://cggk3shx04nrc" path="res://resources/themes/ui/option_button/OptionButtonNormal.tres" id="8_mrteh"]
 [ext_resource type="StyleBox" uid="uid://b0pfow8m3uto0" path="res://resources/themes/ui/option_button/OptionButtonPressed.tres" id="9_gkk2p"]
@@ -17,6 +21,8 @@
 [ext_resource type="StyleBox" uid="uid://bx3yn8jamwefb" path="res://resources/themes/ui/popup_menu/PopupMenuHover.tres" id="13_c5igg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_df2r8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsj8a"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 1)
@@ -51,6 +57,11 @@ AddNewMenuButton/styles/pressed = ExtResource("3_trom5")
 BoxContainer/constants/separation = 8
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_hd3je")
+Button/styles/disabled = ExtResource("5_qgtfh")
+Button/styles/focus = SubResource("StyleBoxEmpty_df2r8")
+Button/styles/hover = ExtResource("5_gqv08")
+Button/styles/normal = ExtResource("6_hri53")
+Button/styles/pressed = ExtResource("7_buc77")
 Header/base_type = &"Label"
 Header/colors/font_color = Color(0.868985, 0.868985, 0.868985, 1)
 Header/font_sizes/font_size = 18
