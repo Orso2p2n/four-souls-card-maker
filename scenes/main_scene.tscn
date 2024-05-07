@@ -93,7 +93,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_vertical_guides_ = [16.0, 1008.0, 504.0, 520.0]
+metadata/_edit_vertical_guides_ = [16.0, 1008.0, 504.0, 520.0, 1024.0, 1520.0]
 metadata/_edit_horizontal_guides_ = [40.0, 120.0, 200.0, 280.0]
 
 [node name="SaveManager" type="Node" parent="." node_paths=PackedStringArray("saveLabel", "cardViewport")]
@@ -332,53 +332,11 @@ placeholder_text = "Edit title..."
 script = ExtResource("21_fwink")
 metadata/_edit_use_anchors_ = true
 
-[node name="Art" type="Control" parent="MainPanel"]
-layout_mode = 1
-anchor_left = 0.339
-anchor_right = 0.656
-offset_left = -0.704041
-offset_top = 88.0
-offset_right = 0.383972
-offset_bottom = 160.0
-mouse_filter = 2
-
-[node name="ArtLabel" type="Label" parent="MainPanel/Art"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.444444
-theme = ExtResource("3_7sxfo")
-theme_type_variation = &"Header"
-text = "Art
-"
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_use_anchors_ = true
-
-[node name="ArtButton" parent="MainPanel/Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
-layout_mode = 1
-anchor_right = 0.295082
-anchor_bottom = 0.0
-offset_top = 32.0
-offset_bottom = 72.0
-
-[node name="TopArtButton" parent="MainPanel/Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
-layout_mode = 1
-anchor_left = 0.508066
-anchor_right = 0.80282
-anchor_bottom = 0.0
-offset_left = 0.0639801
-offset_top = 32.0
-offset_right = 0.223969
-offset_bottom = 72.0
-text = "Load top art..."
-top = true
-
 [node name="Desc" type="Control" parent="MainPanel"]
 layout_mode = 1
 anchor_left = 0.01
 anchor_right = 0.328
-anchor_bottom = 0.894462
+anchor_bottom = 0.884846
 offset_left = 0.639999
 offset_top = 168.0
 offset_right = 0.191986
@@ -440,6 +398,183 @@ popup/item_2/id = 2
 script = ExtResource("20_f8och")
 list = NodePath("../ScrollContainer/DescList")
 metadata/_edit_use_anchors_ = true
+
+[node name="Stats" type="Control" parent="MainPanel"]
+layout_mode = 1
+anchor_left = 0.01
+anchor_top = 1.0
+anchor_right = 0.328
+anchor_bottom = 1.0
+offset_left = 0.639999
+offset_top = -88.0
+offset_right = 0.191956
+offset_bottom = -16.0
+mouse_filter = 2
+
+[node name="StatsLabel" type="Label" parent="MainPanel/Stats"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 0.444444
+offset_right = -3.05176e-05
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Stats
+"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HP" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
+layout_mode = 1
+anchor_top = 0.444444
+anchor_right = 0.327869
+anchor_bottom = 1.0
+script = ExtResource("12_csu7s")
+icon = NodePath("HPTexture")
+spinBox = NodePath("HPEdit")
+metadata/_edit_use_anchors_ = true
+
+[node name="HPTexture" type="TextureRect" parent="MainPanel/Stats/HP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = -4.0
+texture = ExtResource("9_ekawo")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="HPEdit" type="SpinBox" parent="MainPanel/Stats/HP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.00024
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -0.0400085
+theme = ExtResource("3_7sxfo")
+max_value = 9.0
+value = 2.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DICE" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
+layout_mode = 1
+anchor_left = 0.327869
+anchor_top = 0.444444
+anchor_right = 0.672131
+anchor_bottom = 1.0
+script = ExtResource("12_csu7s")
+icon = NodePath("DICETexture")
+spinBox = NodePath("DICEEdit")
+metadata/_edit_use_anchors_ = true
+
+[node name="DICETexture" type="TextureRect" parent="MainPanel/Stats/DICE"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = -4.0
+texture = ExtResource("10_icac8")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="DICEEdit" type="SpinBox" parent="MainPanel/Stats/DICE"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0001
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -0.0160065
+theme = ExtResource("3_7sxfo")
+max_value = 6.0
+value = 4.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ATK" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
+layout_mode = 1
+anchor_left = 0.672131
+anchor_top = 0.444444
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("12_csu7s")
+icon = NodePath("ATKTexture")
+spinBox = NodePath("ATKEdit")
+metadata/_edit_use_anchors_ = true
+
+[node name="ATKTexture" type="TextureRect" parent="MainPanel/Stats/ATK"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = -4.0
+texture = ExtResource("11_vrgg2")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ATKEdit" type="SpinBox" parent="MainPanel/Stats/ATK"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.00011
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -0.016037
+theme = ExtResource("3_7sxfo")
+max_value = 9.0
+value = 1.0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Art" type="Control" parent="MainPanel"]
+layout_mode = 1
+anchor_left = 0.339
+anchor_right = 0.656
+offset_left = -0.704041
+offset_top = 88.0
+offset_right = 0.383972
+offset_bottom = 160.0
+mouse_filter = 2
+
+[node name="ArtLabel" type="Label" parent="MainPanel/Art"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.444444
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Art
+"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ArtButton" parent="MainPanel/Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
+layout_mode = 1
+anchor_right = 0.295082
+anchor_bottom = 0.0
+offset_top = 32.0
+offset_bottom = 72.0
+
+[node name="TopArtButton" parent="MainPanel/Art" groups=["Save"] instance=ExtResource("24_l5rnn")]
+layout_mode = 1
+anchor_left = 0.508066
+anchor_right = 0.80282
+anchor_bottom = 0.0
+offset_left = 0.0639801
+offset_top = 32.0
+offset_right = 0.223969
+offset_bottom = 72.0
+text = "Load top art..."
+top = true
 
 [node name="Icons" type="Control" parent="MainPanel"]
 layout_mode = 1
@@ -598,141 +733,6 @@ popup/item_3/id = 3
 script = ExtResource("27_65uhb")
 list = NodePath("../StampsList")
 
-[node name="Stats" type="Control" parent="MainPanel"]
-layout_mode = 1
-anchor_left = 0.01
-anchor_top = 1.0
-anchor_right = 0.328
-anchor_bottom = 1.0
-offset_left = 0.639999
-offset_top = -80.0
-offset_right = 0.191956
-offset_bottom = -8.0
-mouse_filter = 2
-
-[node name="StatsLabel" type="Label" parent="MainPanel/Stats"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 0.444444
-offset_right = -3.05176e-05
-theme = ExtResource("3_7sxfo")
-theme_type_variation = &"Header"
-text = "Stats
-"
-vertical_alignment = 1
-uppercase = true
-metadata/_edit_use_anchors_ = true
-
-[node name="HP" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
-layout_mode = 1
-anchor_top = 0.444444
-anchor_right = 0.327869
-anchor_bottom = 1.0
-script = ExtResource("12_csu7s")
-icon = NodePath("HPTexture")
-spinBox = NodePath("HPEdit")
-metadata/_edit_use_anchors_ = true
-
-[node name="HPTexture" type="TextureRect" parent="MainPanel/Stats/HP"]
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = -4.0
-texture = ExtResource("9_ekawo")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="HPEdit" type="SpinBox" parent="MainPanel/Stats/HP"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.00024
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = -0.0400085
-theme = ExtResource("3_7sxfo")
-max_value = 9.0
-value = 2.0
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="DICE" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
-layout_mode = 1
-anchor_left = 0.327869
-anchor_top = 0.444444
-anchor_right = 0.672131
-anchor_bottom = 1.0
-script = ExtResource("12_csu7s")
-icon = NodePath("DICETexture")
-spinBox = NodePath("DICEEdit")
-metadata/_edit_use_anchors_ = true
-
-[node name="DICETexture" type="TextureRect" parent="MainPanel/Stats/DICE"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = -4.0
-texture = ExtResource("10_icac8")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="DICEEdit" type="SpinBox" parent="MainPanel/Stats/DICE"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0001
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = -0.0160065
-theme = ExtResource("3_7sxfo")
-max_value = 6.0
-value = 4.0
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="ATK" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
-layout_mode = 1
-anchor_left = 0.672131
-anchor_top = 0.444444
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource("12_csu7s")
-icon = NodePath("ATKTexture")
-spinBox = NodePath("ATKEdit")
-metadata/_edit_use_anchors_ = true
-
-[node name="ATKTexture" type="TextureRect" parent="MainPanel/Stats/ATK"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = -4.0
-texture = ExtResource("11_vrgg2")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="ATKEdit" type="SpinBox" parent="MainPanel/Stats/ATK"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.00011
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_right = -0.016037
-theme = ExtResource("3_7sxfo")
-max_value = 9.0
-value = 1.0
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="Credit" type="Control" parent="MainPanel"]
 visible = false
 anchors_preset = 0
@@ -828,123 +828,130 @@ theme_override_font_sizes/font_size = 26
 text = "Show bleed zones"
 
 [node name="SelectedProps" type="Control" parent="MainPanel"]
-anchors_preset = 0
-offset_left = 1024.0
-offset_top = 736.0
-offset_right = 1024.0
-offset_bottom = 736.0
+layout_mode = 1
+anchor_left = 0.667
+anchor_top = 1.0
+anchor_right = 0.989583
+anchor_bottom = 1.0
+offset_left = -0.512085
+offset_top = -120.0
+offset_bottom = -16.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SelectedPropsLabel" type="Label" parent="MainPanel/SelectedProps"]
 layout_mode = 0
-offset_top = -32.0
-offset_right = 360.0
-offset_bottom = 8.0
+anchor_right = 1.0
+anchor_bottom = 0.307692
 theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
 text = "Selection properties"
 vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Position" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("xSpinBox", "ySpinBox")]
 anchors_preset = 0
-offset_top = 8.0
-offset_bottom = 8.0
+anchor_top = 0.307692
+anchor_right = 0.241935
+anchor_bottom = 1.0
 script = ExtResource("26_ahxvl")
 xSpinBox = NodePath("XSpinBox")
 ySpinBox = NodePath("YSpinBox")
+metadata/_edit_use_anchors_ = true
 
 [node name="XSpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Position"]
 layout_mode = 0
-offset_right = 88.0
-offset_bottom = 32.0
+anchor_right = 0.733333
+anchor_bottom = 0.444444
 theme = ExtResource("3_7sxfo")
 min_value = -962.0
 max_value = 962.0
 alignment = 1
 prefix = "x:"
+metadata/_edit_use_anchors_ = true
 
 [node name="ResetXButton" type="Button" parent="MainPanel/SelectedProps/Position"]
 layout_mode = 1
-offset_left = 88.0
-offset_right = 120.0
-offset_bottom = 32.0
+anchors_preset = -1
+anchor_left = 0.733333
+anchor_right = 1.0
+anchor_bottom = 0.444444
 theme = ExtResource("3_7sxfo")
 icon = ExtResource("71_45i6p")
 icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="YSpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Position"]
 layout_mode = 0
-offset_top = 40.0
-offset_right = 88.0
-offset_bottom = 72.0
+anchor_top = 0.555556
+anchor_right = 0.733333
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 min_value = -962.0
 max_value = 962.0
 alignment = 1
 prefix = "y:"
+metadata/_edit_use_anchors_ = true
 
 [node name="ResetYButton" type="Button" parent="MainPanel/SelectedProps/Position"]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 40.0
-offset_right = 120.0
-offset_bottom = 72.0
+anchor_left = 0.733333
+anchor_top = 0.555556
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 icon = ExtResource("71_45i6p")
 icon_alignment = 1
-
-[node name="Separator2" type="Line2D" parent="MainPanel/SelectedProps"]
-position = Vector2(128, 0)
-points = PackedVector2Array(0, 8, 0, 44.8841, 0, 69.4954, 0, 80)
-width = 2.0
-default_color = Color(0.14902, 0.14902, 0.14902, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Rotation" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("spinBox")]
 layout_mode = 1
-anchors_preset = 0
-offset_left = 136.0
-offset_top = 8.0
-offset_right = 136.0
-offset_bottom = 8.0
+anchor_left = 0.274194
+anchor_top = 0.307692
+anchor_right = 0.645161
+anchor_bottom = 0.615385
 script = ExtResource("72_emn3m")
 spinBox = NodePath("SpinBox")
+metadata/_edit_use_anchors_ = true
 
 [node name="SpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Rotation"]
-layout_mode = 0
-offset_right = 152.0
-offset_bottom = 31.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.826087
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 min_value = -360.0
 max_value = 360.0
 alignment = 1
 prefix = "rotation:"
 suffix = "°"
+metadata/_edit_use_anchors_ = true
 
 [node name="ResetButton" type="Button" parent="MainPanel/SelectedProps/Rotation"]
 layout_mode = 0
-offset_left = 152.0
-offset_right = 184.0
-offset_bottom = 32.0
+anchor_left = 0.826087
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 icon = ExtResource("71_45i6p")
 icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Scale" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("spinBox")]
 anchors_preset = 0
-offset_left = 136.0
-offset_top = 40.0
-offset_right = 136.0
-offset_bottom = 40.0
+anchor_left = 0.274194
+anchor_top = 0.692308
+anchor_right = 0.645161
+anchor_bottom = 1.0
 script = ExtResource("27_srwpj")
 spinBox = NodePath("SpinBox")
+metadata/_edit_use_anchors_ = true
 
 [node name="SpinBox" type="SpinBox" parent="MainPanel/SelectedProps/Scale"]
 layout_mode = 0
-offset_top = 8.0
-offset_right = 152.0
-offset_bottom = 39.0
+anchor_right = 0.826087
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 min_value = 10.0
 max_value = 150.0
@@ -952,56 +959,55 @@ value = 100.0
 alignment = 1
 prefix = "scale:"
 suffix = "%"
+metadata/_edit_use_anchors_ = true
 
 [node name="ResetButton" type="Button" parent="MainPanel/SelectedProps/Scale"]
 layout_mode = 0
-offset_left = 152.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 40.0
+anchor_left = 0.826087
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 icon = ExtResource("71_45i6p")
 icon_alignment = 1
-
-[node name="Separator3" type="Line2D" parent="MainPanel/SelectedProps"]
-position = Vector2(328, 0)
-points = PackedVector2Array(0, 8, 0, 80)
-width = 2.0
-default_color = Color(0.14902, 0.14902, 0.14902, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Value" type="Control" parent="MainPanel/SelectedProps" node_paths=PackedStringArray("lineEdit")]
 anchors_preset = 0
-offset_left = 336.0
-offset_top = 8.0
-offset_right = 336.0
-offset_bottom = 8.0
+anchor_left = 0.677419
+anchor_top = 0.307692
+anchor_right = 0.967742
+anchor_bottom = 0.615385
 script = ExtResource("28_chj7t")
 lineEdit = NodePath("ResetButton")
+metadata/_edit_use_anchors_ = true
 
 [node name="ResetButton" type="LineEdit" parent="MainPanel/SelectedProps/Value"]
 layout_mode = 0
-offset_right = 144.0
-offset_bottom = 32.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 placeholder_text = "value..."
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Trash" type="Control" parent="MainPanel/SelectedProps"]
 anchors_preset = 0
-offset_left = 336.0
-offset_top = 48.0
-offset_right = 336.0
-offset_bottom = 48.0
+anchor_left = 0.677419
+anchor_top = 0.692308
+anchor_right = 0.967742
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
 script = ExtResource("59_qwtyi")
+metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="MainPanel/SelectedProps/Trash"]
 layout_mode = 0
-offset_right = 144.0
-offset_bottom = 32.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
 icon = ExtResource("59_rxbag")
 icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CardPreview" type="SubViewportContainer" parent="MainPanel" node_paths=PackedStringArray("viewport")]
 layout_mode = 2
@@ -1258,11 +1264,11 @@ clip_text = true
 text_overrun_behavior = 3
 
 [connection signal="text_changed" from="MainPanel/Title/TitleEdit" to="MainPanel/Title/TitleEdit" method="OnTextChanged"]
-[connection signal="empty_clicked" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnEmptyClicked"]
-[connection signal="item_selected" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnItemSelected"]
 [connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/ATK/ATKEdit" to="MainPanel/Stats/ATK" method="UpdateStat"]
+[connection signal="empty_clicked" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnEmptyClicked"]
+[connection signal="item_selected" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnItemSelected"]
 [connection signal="text_changed" from="MainPanel/Credit/CreditEdit" to="MainPanel/Credit/CreditEdit" method="OnTextChanged"]
 [connection signal="toggled" from="MainPanel/StartingItem/CheckBox" to="MainPanel/StartingItem/CheckBox" method="OnToggled"]
 [connection signal="text_changed" from="MainPanel/StartingItem/IntroEdit" to="MainPanel/StartingItem/IntroEdit" method="OnTextChanged"]
