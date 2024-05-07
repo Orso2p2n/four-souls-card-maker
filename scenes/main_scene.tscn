@@ -474,7 +474,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DICETexture" type="TextureRect" parent="MainPanel/Stats/DICE"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
@@ -511,7 +511,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ATKTexture" type="TextureRect" parent="MainPanel/Stats/ATK"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
