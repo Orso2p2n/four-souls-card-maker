@@ -813,19 +813,25 @@ placeholder_text = "Enter Name..."
 script = ExtResource("63_nlm0b")
 
 [node name="ShowBleedZones" type="Control" parent="MainPanel"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1216.0
-offset_right = 1216.0
+layout_mode = 1
+anchor_left = 0.51
+anchor_right = 0.65625
+offset_left = 0.639893
+offset_top = 40.0
+offset_bottom = 80.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ShowBleedZonesButton" type="CheckButton" parent="MainPanel/ShowBleedZones"]
 layout_mode = 0
-offset_right = 288.0
-offset_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
-theme_override_font_sizes/font_size = 26
-text = "Show bleed zones"
+text = "Show bleedzones"
+alignment = 1
+text_overrun_behavior = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
 
 [node name="SelectedProps" type="Control" parent="MainPanel"]
 layout_mode = 1

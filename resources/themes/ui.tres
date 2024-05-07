@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=37 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=41 format=3 uid="uid://du8dk2cpyfqc4"]
 
 [ext_resource type="StyleBox" uid="uid://bhh4fedqts1wu" path="res://resources/themes/ui/add_new_menu_button/AddNewHover.tres" id="1_dugw4"]
 [ext_resource type="FontFile" uid="uid://dqe8s0pvj8jah" path="res://assets/fonts/ui/UI-Regular.ttf" id="1_hd3je"]
@@ -16,8 +16,11 @@
 [ext_resource type="StyleBox" uid="uid://diyvo2dcgexm0" path="res://resources/themes/ui/option_button/OptionButtonHover.tres" id="7_xc4s8"]
 [ext_resource type="StyleBox" uid="uid://cggk3shx04nrc" path="res://resources/themes/ui/option_button/OptionButtonNormal.tres" id="8_mrteh"]
 [ext_resource type="StyleBox" uid="uid://b0pfow8m3uto0" path="res://resources/themes/ui/option_button/OptionButtonPressed.tres" id="9_gkk2p"]
+[ext_resource type="StyleBox" uid="uid://c2lxvklhgnj0" path="res://resources/themes/ui/check_button/CheckButtonDisabled.tres" id="9_r850a"]
 [ext_resource type="StyleBox" uid="uid://bybr2uwnaj4ol" path="res://resources/themes/ui/scroll_container/ScrollContainerPanel.tres" id="10_gt3de"]
+[ext_resource type="StyleBox" uid="uid://b22fihjowex8p" path="res://resources/themes/ui/check_button/CheckButtonHover.tres" id="10_pe1dh"]
 [ext_resource type="StyleBox" uid="uid://bkjii2o5bo6nt" path="res://resources/themes/ui/item_list/ItemListHover.tres" id="10_xligt"]
+[ext_resource type="StyleBox" uid="uid://73ru1r4ku682" path="res://resources/themes/ui/check_button/CheckButtonNormal.tres" id="11_i3xf2"]
 [ext_resource type="StyleBox" uid="uid://dduqbd6bkutv6" path="res://resources/themes/ui/item_list/ItemListPanel.tres" id="11_pahl3"]
 [ext_resource type="StyleBox" uid="uid://b7pl3mf1f1w6t" path="res://resources/themes/ui/popup_menu/PopupMenuPanel.tres" id="12_1h433"]
 [ext_resource type="StyleBox" uid="uid://o1f0ywmo4fwn" path="res://resources/themes/ui/item_list/ItemListSelected.tres" id="12_wx2uc"]
@@ -28,6 +31,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_df2r8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gy0s6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1rss"]
 
@@ -65,6 +70,12 @@ Button/styles/focus = SubResource("StyleBoxEmpty_df2r8")
 Button/styles/hover = ExtResource("5_gqv08")
 Button/styles/normal = ExtResource("6_hri53")
 Button/styles/pressed = ExtResource("7_buc77")
+CheckButton/styles/disabled = ExtResource("9_r850a")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_gy0s6")
+CheckButton/styles/hover = ExtResource("10_pe1dh")
+CheckButton/styles/hover_pressed = ExtResource("10_pe1dh")
+CheckButton/styles/normal = ExtResource("11_i3xf2")
+CheckButton/styles/pressed = ExtResource("11_i3xf2")
 Header/base_type = &"Label"
 Header/colors/font_color = Color(0.868985, 0.868985, 0.868985, 1)
 Header/font_sizes/font_size = 18
