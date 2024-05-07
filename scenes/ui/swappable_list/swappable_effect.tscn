@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ehxehyyyujny"]
+[gd_scene load_steps=9 format=3 uid="uid://ehxehyyyujny"]
 
 [ext_resource type="PackedScene" uid="uid://cdbcctgdx1gyk" path="res://scenes/ui/swappable_list/swappable_item.tscn" id="1_ir1x0"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableEffect.cs" id="2_xcp53"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cpghn86qvdyia" path="res://assets/icons/scale18.png" id="4_j3n85"]
 [ext_resource type="StyleBox" uid="uid://cspqmnhjwqbsl" path="res://resources/themes/ui/swappable_list/TextEditAll.tres" id="4_ryqti"]
 [ext_resource type="Texture2D" uid="uid://che03rn3frvj6" path="res://assets/icons/linespacing18.png" id="5_euskh"]
-[ext_resource type="Script" path="res://TextEdit.cs" id="5_hkkws"]
 [ext_resource type="Texture2D" uid="uid://vlftffrt5bq5" path="res://assets/icons/width18.png" id="5_y2oal"]
 [ext_resource type="Texture2D" uid="uid://b3irwgj3uqret" path="res://assets/icons/charspacing18.png" id="6_fh10d"]
 
@@ -38,7 +37,6 @@ theme_override_styles/read_only = ExtResource("4_ryqti")
 placeholder_text = "Edit effect..."
 wrap_mode = 1
 scroll_fit_content_height = true
-script = ExtResource("5_hkkws")
 metadata/_edit_use_anchors_ = true
 
 [node name="DropdownIcon" parent="SettingsButton" index="1"]
