@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=36 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://du8dk2cpyfqc4"]
 
 [ext_resource type="StyleBox" uid="uid://bhh4fedqts1wu" path="res://resources/themes/ui/add_new_menu_button/AddNewHover.tres" id="1_dugw4"]
 [ext_resource type="FontFile" uid="uid://dqe8s0pvj8jah" path="res://assets/fonts/ui/UI-Regular.ttf" id="1_hd3je"]
@@ -22,6 +22,7 @@
 [ext_resource type="StyleBox" uid="uid://b7pl3mf1f1w6t" path="res://resources/themes/ui/popup_menu/PopupMenuPanel.tres" id="12_1h433"]
 [ext_resource type="StyleBox" uid="uid://o1f0ywmo4fwn" path="res://resources/themes/ui/item_list/ItemListSelected.tres" id="12_wx2uc"]
 [ext_resource type="StyleBox" uid="uid://bx3yn8jamwefb" path="res://resources/themes/ui/popup_menu/PopupMenuHover.tres" id="13_c5igg"]
+[ext_resource type="StyleBox" uid="uid://no71ygsfjy2c" path="res://resources/themes/ui/line_edit/LineEditDisabled.tres" id="14_aeu6j"]
 [ext_resource type="StyleBox" uid="uid://dmlc4x48uxbyl" path="res://resources/themes/ui/menu_bar/MenuBarPressed.tres" id="16_fsbei"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
@@ -79,6 +80,7 @@ Label/fonts/font = ExtResource("1_hd3je")
 LineEdit/fonts/font = ExtResource("1_hd3je")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_wqbwt")
 LineEdit/styles/normal = ExtResource("3_t2axc")
+LineEdit/styles/read_only = ExtResource("14_aeu6j")
 MenuBar/constants/h_separation = 4
 MenuBar/font_sizes/font_size = 14
 MenuBar/fonts/font = ExtResource("1_hd3je")
