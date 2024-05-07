@@ -12,8 +12,6 @@ public partial class CardPreview : SubViewportContainer
         float height = (float) Godot.ProjectSettings.GetSetting("display/window/size/viewport_height");
         baseWindowSize = new Vector2(width, height);
 
-        GD.Print(baseWindowSize);
-
         GetTree().Root.SizeChanged += OnResize;
     }
 
@@ -26,8 +24,6 @@ public partial class CardPreview : SubViewportContainer
 
     void OnResize() {
         var newWindowSize =  GetTree().Root.Size;
-
-        GD.Print(newWindowSize);
 
         var widthPercent = newWindowSize.X / baseWindowSize.X;
         var heightPercent = newWindowSize.Y / baseWindowSize.Y;
