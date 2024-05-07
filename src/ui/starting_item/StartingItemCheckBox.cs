@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class StartingItemCheckBox : CheckBox
+public partial class StartingItemCheckBox : CheckButton
 {
 
 	public void OnToggled(bool buttonPressed) {
