@@ -25,7 +25,7 @@
 [ext_resource type="StyleBox" uid="uid://b7pl3mf1f1w6t" path="res://resources/themes/ui/popup_menu/PopupMenuPanel.tres" id="12_1h433"]
 [ext_resource type="StyleBox" uid="uid://o1f0ywmo4fwn" path="res://resources/themes/ui/item_list/ItemListSelected.tres" id="12_wx2uc"]
 [ext_resource type="StyleBox" uid="uid://bx3yn8jamwefb" path="res://resources/themes/ui/popup_menu/PopupMenuHover.tres" id="13_c5igg"]
-[ext_resource type="StyleBox" path="res://resources/themes/ui/line_edit/LineEditDisabled.tres" id="14_aeu6j"]
+[ext_resource type="StyleBox" uid="uid://no71ygsfjy2c" path="res://resources/themes/ui/line_edit/LineEditDisabled.tres" id="14_aeu6j"]
 [ext_resource type="StyleBox" uid="uid://yx245uo4p356" path="res://resources/themes/ui/menu_bar/MenuBarPressed.tres" id="16_fsbei"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
