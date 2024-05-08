@@ -43,10 +43,9 @@ public partial class TypeMenu : OptionButton
 		return dict;
 	}
 
-	public virtual Task Load(Dictionary data) {
+	public virtual void Load(Dictionary data) {
         int selectedId = (int) data["Selected"];
 		Select(selectedId);
 		OnItemSelected(selectedId);
-        return Task.CompletedTask;
     }
 }

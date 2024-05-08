@@ -22,12 +22,12 @@ public partial class IconMenu : SubTypeMenu
 		return dict;
 	}
 
-	public async override Task Load(Dictionary data) {
-        await base.Load(data);
+	public override void Load(Dictionary data) {
+        base.Load(data);
 
         var linkedArtProps = (Dictionary) data["LinkedArt"];
 		
-		await linkedArt.Load(linkedArtProps);
+		_ = linkedArt.Load(linkedArtProps);
 	}
 
 	public void TrashLinkedArt(MoveableArt trashedArt) {

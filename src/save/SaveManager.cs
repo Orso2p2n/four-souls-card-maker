@@ -139,7 +139,7 @@ public partial class SaveManager : Node
     }
     
     void LoadPathCallable(string path) {
-        Task task = LoadPath(path);
+        _ = LoadPath(path);
     }
 
     public async Task LoadPath(string path) {
@@ -178,14 +178,10 @@ public partial class SaveManager : Node
                 continue;
             }
 
-            var task = (Task) method.Invoke(saveNode, new object[] {data});
-
-            if (task == null) {
-                continue;
-            }
-
-            await task.ConfigureAwait(false);
+            saveNode.CallDeferred("Load", data);
         }
+
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
         ResetNeedToSave();
     }

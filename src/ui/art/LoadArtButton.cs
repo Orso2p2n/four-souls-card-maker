@@ -69,7 +69,7 @@ public partial class LoadArtButton : Button
 		return dict;
 	}
 
-	public async virtual Task Load(Dictionary data) {
+	public void Load(Dictionary data) {
 		Trash();
 
 		SetActive((bool) data["Active"]);
@@ -80,6 +80,6 @@ public partial class LoadArtButton : Button
 
 		var linkedArtProps = (Dictionary) data["LinkedArt"];
 		
-		await linkedArt.Load(linkedArtProps);
+		_ = linkedArt.Load(linkedArtProps);
 	}
 }

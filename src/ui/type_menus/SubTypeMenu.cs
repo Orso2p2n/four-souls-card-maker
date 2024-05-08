@@ -57,7 +57,7 @@ public partial class SubTypeMenu : TypeMenu
 		return dict;
 	}
 
-	public override Task Load(Dictionary data) {
+	public override void Load(Dictionary data) {
         base.Load(data);
 
 		if (Selected == customId) {
@@ -66,7 +66,5 @@ public partial class SubTypeMenu : TypeMenu
 			var texture = EditManager.instance.LoadTextureFromPath(globalPath);
 			customTextureCallback.Call(globalPath, texture);
 		}
-
-		return Task.CompletedTask;
 	}
 }
