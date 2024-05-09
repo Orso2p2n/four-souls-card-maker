@@ -116,6 +116,7 @@ size = Vector2i(1000, 562)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+use_native_dialog = true
 script = ExtResource("3_jlw05")
 
 [node name="MainPanel" type="Panel" parent="."]
@@ -1286,7 +1287,7 @@ vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[connection signal="visibility_changed" from="EditManager/FileDialog" to="EditManager/FileDialog" method="OnVisibilityChanged"]
+[connection signal="canceled" from="EditManager/FileDialog" to="EditManager/FileDialog" method="OnCanceled"]
 [connection signal="text_changed" from="MainPanel/Title/TitleEdit" to="MainPanel/Title/TitleEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]

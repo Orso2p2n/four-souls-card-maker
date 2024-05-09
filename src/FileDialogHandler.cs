@@ -9,10 +9,8 @@ public partial class FileDialogHandler : FileDialog
 	FileSelectedEventHandler connectedFileEvent;
 	DirSelectedEventHandler connectedDirEvent;
 
-	void OnVisibilityChanged() {
-		if (!Visible) {
-			DisconnectAllEvents();
-		}
+	void OnCanceled() {
+		DisconnectAllEvents();
 	}
 
 	public void LoadTextureFileDialog(Callable callback) {
@@ -20,14 +18,15 @@ public partial class FileDialogHandler : FileDialog
 
 		FileMode = FileDialog.FileModeEnum.OpenFile;
 		Filters = new string[]{"*.png, *.jpg, *.jpeg ; Supported Images"};
-		Visible = true;
 		ConnectToFileEvent(OnTexturePathSelected);
+		Visible = true;
 	}
 
     void OnTexturePathSelected(string path) {
 		var texture = LoadTextureFromPath(path);
         
         fileCallback.Call(path, texture);
+		DisconnectAllEvents();
     }
 
 	public Texture2D LoadTextureFromPath(string path) {
@@ -47,8 +46,8 @@ public partial class FileDialogHandler : FileDialog
 
 		FileMode = FileDialog.FileModeEnum.SaveFile;
 		Filters = new string[]{"*.fscard ; Four Souls Card"};
-		Visible = true;
 		ConnectToFileEvent(OnFileSelected);
+		Visible = true;
 	}
 
 	public void LoadSaveFileDialog(Callable callback) {
@@ -56,8 +55,8 @@ public partial class FileDialogHandler : FileDialog
 
 		FileMode = FileDialog.FileModeEnum.OpenFile;
 		Filters = new string[]{"*.fscard ; Four Souls Card"};
-		Visible = true;
 		ConnectToFileEvent(OnFileSelected);
+		Visible = true;
 	}
 
 	public void SelectFileOrFolderDialog(Callable _fileCallback, Callable _folderCallback) {
@@ -66,9 +65,9 @@ public partial class FileDialogHandler : FileDialog
 
 		FileMode = FileDialog.FileModeEnum.OpenAny;
 		Filters = new string[]{"Folder","*.fscard ; Four Souls Card"};
-		Visible = true;
 		ConnectToFileEvent(OnFileSelected);
 		ConnectToDirEvent(OnDirSelected);
+		Visible = true;
 	}
 
 	public void SelectFolderDialog(Callable callback) {
@@ -76,16 +75,18 @@ public partial class FileDialogHandler : FileDialog
 
 		FileMode = FileDialog.FileModeEnum.OpenDir;
 		Filters = new string[]{"Folder"};
-		Visible = true;
 		ConnectToDirEvent(OnDirSelected);
+		Visible = true;
 	}
 
 	void OnFileSelected(string path) {
-		fileCallback.Call(path);	
+		fileCallback.Call(path);
+		DisconnectAllEvents();
 	}
 
 	void OnDirSelected(string path) {
 		folderCallback.Call(path);
+		DisconnectAllEvents();
 	}
 
 	void ConnectToFileEvent(FileSelectedEventHandler toConnect) {
