@@ -6,7 +6,7 @@ This was made by a fan of the game and is not official in any way. *The Binding 
 
 ## How to install
 
-1. Go to the [Releases page](https://github.com/ZPMods/four-souls-card-maker/releases), and download the latest version of "FS_Card_Maker.zip".
+1. Go to the [Releases page](https://github.com/ZPMods/four-souls-card-maker/releases), and download the latest version of `fs-card-maker.zip`.
 2. Unzip it anywhere on your PC.
 3. Done!
 
@@ -14,14 +14,12 @@ This was made by a fan of the game and is not official in any way. *The Binding 
 
 You can find detailed documentation on the [Wiki](https://github.com/ZPMods/four-souls-card-maker/wiki) (WIP).
 
-If something is not documented or confusing, feel free to message me on [Twitter](https://twitter.com/Orsopidou) or [submit an issue](https://github.com/ZPMods/four-souls-card-maker/issues).
+If something is not documented or confusing, feel free to [submit an issue](https://github.com/ZPMods/four-souls-card-maker/issues).
 
 ## Examples
 
-![image](https://github.com/ZPMods/four-souls-card-maker/assets/61545749/18b29909-a49d-4558-ac50-ff4bc4a2a801)
+![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/332b270d-7edd-4ef3-b648-f08a0bda9e42)
 
-![image](https://github.com/ZPMods/four-souls-card-maker/assets/61545749/60cb885e-1fcf-4bc9-8c11-7ee68a57f452)
+![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/3bfbd94e-1d1a-4340-aafe-a36be543a159)
 
-![image](https://github.com/ZPMods/four-souls-card-maker/assets/61545749/b13bd6e0-5788-47bd-b01e-ee3c1ea37962)
-
-![image](https://github.com/ZPMods/four-souls-card-maker/assets/61545749/e115224d-1273-4407-8e84-818e10a5ace7)
+![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/602c6d8b-ad5a-46c3-a83e-ec18653a7c7a)
