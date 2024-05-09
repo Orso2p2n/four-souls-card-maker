@@ -62,11 +62,11 @@ public partial class ExportWindow : Window
 
     // Button signals
     void FileSelectionButtonPressed() {
-        EditManager.instance.SelectFileOrFolderDialog(new Callable(this, "OnFileSelected"), new Callable(this, "OnFolderSelected"));
+        EditManager.instance.fileDialog.SelectFileOrFolderDialog(new Callable(this, "OnFileSelected"), new Callable(this, "OnFolderSelected"));
     }
 
     void LocationButtonPressed() {
-        EditManager.instance.SelectFolderDialog(new Callable(this, "OnExportLocationSelected"));
+        EditManager.instance.fileDialog.SelectFolderDialog(new Callable(this, "OnExportLocationSelected"));
     }
 
     void ExportButtonPressed() {

@@ -1,9 +1,10 @@
-[gd_scene load_steps=79 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=80 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
 [ext_resource type="PackedScene" uid="uid://d20xnxqu2phjl" path="res://scenes/card.tscn" id="2_g0xqc"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="3_7sxfo"]
+[ext_resource type="Script" path="res://src/FileDialogHandler.cs" id="3_jlw05"]
 [ext_resource type="Resource" uid="uid://bupr5jq8xljfh" path="res://resources/cards/types/loot.tres" id="4_qaa4a"]
 [ext_resource type="Script" path="res://src/ui/type_menus/MainTypeMenu.cs" id="5_evgkq"]
 [ext_resource type="Resource" uid="uid://cc5wrbxk03olw" path="res://resources/cards/types/character.tres" id="5_o8y5v"]
@@ -115,6 +116,7 @@ size = Vector2i(1000, 562)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+script = ExtResource("3_jlw05")
 
 [node name="MainPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -1284,6 +1286,7 @@ vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
+[connection signal="visibility_changed" from="EditManager/FileDialog" to="EditManager/FileDialog" method="OnVisibilityChanged"]
 [connection signal="text_changed" from="MainPanel/Title/TitleEdit" to="MainPanel/Title/TitleEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]

@@ -22,7 +22,7 @@ public partial class LoadArtButton : Button
 	}
 
 	public void OnPressed() {
-		EditManager.instance.LoadTextureFileDialog(new Callable(this, "SetCardArt"));
+		EditManager.instance.fileDialog.LoadTextureFileDialog(new Callable(this, "SetCardArt"));
 	}
 
 	void SetActive(bool active) {

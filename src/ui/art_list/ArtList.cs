@@ -60,7 +60,7 @@ public partial class ArtList : ItemList
 
 	void SetCustomProps(MoveableArt art) {
 		curEditingCustomArt = art;
-		EditManager.instance.LoadTextureFileDialog(new Callable(this, "SetCustomArt"));
+		EditManager.instance.fileDialog.LoadTextureFileDialog(new Callable(this, "SetCustomArt"));
 	}
 
 	void SetCustomArt(string path, Texture2D texture) {

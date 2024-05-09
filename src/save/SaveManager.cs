@@ -97,7 +97,7 @@ public partial class SaveManager : Node
     }
 
     public void SaveAs() {
-        EditManager.instance.WriteSaveFileDialog(new Callable(this, "SaveAtPath"));
+        EditManager.instance.fileDialog.WriteSaveFileDialog(new Callable(this, "SaveAtPath"));
     }
 
     void SaveAtPath(string path) {
@@ -135,7 +135,7 @@ public partial class SaveManager : Node
 
     // --- LOAD ---
     public void Load() {
-        EditManager.instance.LoadSaveFileDialog(new Callable(this, "LoadPathCallable"));
+        EditManager.instance.fileDialog.LoadSaveFileDialog(new Callable(this, "LoadPathCallable"));
     }
     
     void LoadPathCallable(string path) {
