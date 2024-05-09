@@ -13,7 +13,8 @@ config_version=5
 config/name="four-souls-card-maker"
 run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.png"
+config/windows_native_icon="res://assets/icon.ico"
 
 [display]
 
