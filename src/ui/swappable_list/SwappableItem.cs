@@ -16,6 +16,8 @@ public partial class SwappableItem : Control
 
     public DescBase descCorrespondant;
 
+    float baseCustomMinimumHeight;
+
     // Settings
     [Export] public SpinBox paddingSpinBox;
     public int padding {
@@ -31,6 +33,8 @@ public partial class SwappableItem : Control
         base._Ready();
 
         descCorrespondant = CreateDescCorrespondant();
+
+        baseCustomMinimumHeight = CustomMinimumSize.Y;
     }
 
     public virtual DescBase CreateDescCorrespondant() {
@@ -43,22 +47,6 @@ public partial class SwappableItem : Control
         if (buttonDown) {
             WhileButtonDown();
         }
-
-        ResizeItem();
-    }
-
-    public void ResizeItem() {
-        if (button == null || content == null || trashButton == null || settingsButton == null) {
-            return;
-        }
-
-        if (button.Size.Y != content.Size.Y) {
-            button.Size = new Vector2(button.Size.X, content.Size.Y);
-            trashButton.Size = new Vector2(trashButton.Size.X, content.Size.Y);
-            settingsButton.Size = new Vector2(settingsButton.Size.X, content.Size.Y);
-        }
-
-        CustomMinimumSize = content.Size;
     }
 
     public virtual void OnButtonDown() {
@@ -119,6 +107,11 @@ public partial class SwappableItem : Control
         
         GetParent().RemoveChild(this);
 		Dispose();
+    }
+
+    public void OnMainControlResized() {
+        Size = new Vector2(Size.X, content.Size.Y);
+        CustomMinimumSize = new Vector2(0, Mathf.Max(baseCustomMinimumHeight, content.Size.Y));
     }
 
     // Settings

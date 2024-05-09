@@ -57,7 +57,7 @@ public partial class MoveableArtBase : TextureRect
 			usesCustomPath = true;
 			var localPath = (string) data["CustomPath"];
 			var globalPath = SaveManager.instance.LocalPathToGlobal(localPath);
-			var texture = EditManager.instance.LoadTextureFromPath(globalPath);
+			var texture = EditManager.instance.fileDialog.LoadTextureFromPath(globalPath);
 			SetTexture(texture, globalPath);
 			await ToSignal(this, "TextureSet");
 		}

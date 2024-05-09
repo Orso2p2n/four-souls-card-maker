@@ -27,7 +27,7 @@ public partial class DescContainer : VBoxContainer
 
 	public Card card;
 
-	public override void _Ready() {
+	public override void _EnterTree() {
 		initialPos = Position;
 		initialSize = Size;
 		oldSize = Size;

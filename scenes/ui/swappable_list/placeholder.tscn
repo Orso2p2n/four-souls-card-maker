@@ -1,14 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1dokmj7gvk55"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qsh7"]
-bg_color = Color(0.337255, 0.337255, 0.337255, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[ext_resource type="StyleBox" uid="uid://bqbvjrx06yuxm" path="res://resources/themes/ui/swappable_list/PlaceholderPanel.tres" id="1_0ehig"]
 
 [node name="Placeholder" type="Panel"]
 custom_minimum_size = Vector2(360, 24)
-offset_right = 472.0
-offset_bottom = 24.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4qsh7")
+anchors_preset = -1
+anchor_right = 0.307292
+anchor_bottom = 0.037037
+theme_override_styles/panel = ExtResource("1_0ehig")
+metadata/_edit_use_anchors_ = true

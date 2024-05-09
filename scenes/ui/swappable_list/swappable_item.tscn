@@ -1,13 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdbcctgdx1gyk"]
+[gd_scene load_steps=19 format=3 uid="uid://cdbcctgdx1gyk"]
 
 [ext_resource type="Script" path="res://src/ui/swappable_list/SwappableItem.cs" id="1_mvk4m"]
 [ext_resource type="Texture2D" uid="uid://c1yxo7npv4em4" path="res://assets/icons/list.png" id="2_j7yu3"]
+[ext_resource type="StyleBox" uid="uid://k0530wgwo0e" path="res://resources/themes/ui/swappable_list/MainButtonNormal.tres" id="2_leodm"]
+[ext_resource type="StyleBox" uid="uid://bgon1meweu1dl" path="res://resources/themes/ui/swappable_list/MainButtonHover.tres" id="3_fehit"]
 [ext_resource type="Texture2D" uid="uid://cxcah7vfcris8" path="res://assets/icons/padding18.png" id="4_3c1w3"]
 [ext_resource type="Script" path="res://src/ui/swappable_list/SettingsButton.cs" id="4_evnf4"]
 [ext_resource type="Theme" uid="uid://du8dk2cpyfqc4" path="res://resources/themes/ui.tres" id="4_j82lo"]
 [ext_resource type="Texture2D" uid="uid://ctm4jbvuwkq71" path="res://assets/icons/trash18.png" id="4_th12k"]
 [ext_resource type="Texture2D" uid="uid://dpfrleaqrltim" path="res://assets/icons/dropdown12.png" id="5_j2cly"]
+[ext_resource type="StyleBox" uid="uid://7wcxk1ngfn70" path="res://resources/themes/ui/swappable_list/SettingsButtonHover.tres" id="5_l243f"]
 [ext_resource type="Texture2D" uid="uid://uadgv7j1k463" path="res://assets/icons/settings18.png" id="6_mvv3g"]
+[ext_resource type="StyleBox" uid="uid://0lcfgfhco52o" path="res://resources/themes/ui/swappable_list/TrashButtonHover.tres" id="11_vnn02"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0ovd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq280"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bt5bl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhnhu"]
 bg_color = Color(0.160784, 0.160784, 0.160784, 1)
@@ -25,11 +35,16 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xeugw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dpoy0"]
+
 [node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "settingsButton", "content", "paddingSpinBox")]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 3
-anchors_preset = 0
-offset_bottom = 24.0
+anchor_right = 0.306958
+anchor_bottom = 0.037037
+offset_right = 0.511993
 mouse_filter = 2
 script = ExtResource("1_mvk4m")
 button = NodePath("Button")
@@ -37,22 +52,35 @@ trashButton = NodePath("TrashButton")
 settingsButton = NodePath("SettingsButton")
 content = NodePath("TrashButton")
 paddingSpinBox = NodePath("SettingsButton/SettingsPanel/SettingsList/PaddingEdit")
+metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 32.0
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+anchor_right = 0.999333
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("2_leodm")
+theme_override_styles/hover = ExtResource("3_fehit")
+theme_override_styles/pressed = ExtResource("2_leodm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s0ovd")
 icon = ExtResource("2_j7yu3")
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingsButton" type="Button" parent="." node_paths=PackedStringArray("popupMenu")]
-layout_mode = 0
-offset_left = 400.0
-offset_right = 440.0
-offset_bottom = 32.0
-theme = ExtResource("4_j82lo")
+layout_mode = 2
+anchor_left = 0.79661
+anchor_right = 0.932203
+anchor_bottom = 1.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mq280")
+theme_override_styles/hover = ExtResource("5_l243f")
+theme_override_styles/pressed = ExtResource("5_l243f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bt5bl")
 icon_alignment = 2
 script = ExtResource("4_evnf4")
 popupMenu = NodePath("SettingsPanel")
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingsIcon" type="TextureRect" parent="SettingsButton"]
 layout_mode = 1
@@ -131,12 +159,17 @@ text = "padding"
 vertical_alignment = 1
 
 [node name="TrashButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 440.0
-offset_right = 472.0
-offset_bottom = 32.0
+layout_mode = 2
+anchor_left = 0.932203
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xeugw")
+theme_override_styles/hover = ExtResource("11_vnn02")
+theme_override_styles/pressed = ExtResource("11_vnn02")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dpoy0")
 icon = ExtResource("4_th12k")
 icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="Button" to="." method="OnButtonDown"]
 [connection signal="pressed" from="SettingsButton" to="SettingsButton" method="OnPressed"]

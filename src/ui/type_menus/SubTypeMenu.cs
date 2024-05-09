@@ -36,7 +36,7 @@ public partial class SubTypeMenu : TypeMenu
 		base.OnItemSelected(index);
 
 		if (index == customId) {
-			EditManager.instance.LoadTextureFileDialog(customTextureCallback);
+			EditManager.instance.fileDialog.LoadTextureFileDialog(customTextureCallback);
 		}
 	}
 
@@ -57,16 +57,14 @@ public partial class SubTypeMenu : TypeMenu
 		return dict;
 	}
 
-	public override Task Load(Dictionary data) {
+	public override void Load(Dictionary data) {
         base.Load(data);
 
 		if (Selected == customId) {
 			var localPath = (string) data["CustomPath"];
 			var globalPath = SaveManager.instance.LocalPathToGlobal(localPath);
-			var texture = EditManager.instance.LoadTextureFromPath(globalPath);
+			var texture = EditManager.instance.fileDialog.LoadTextureFromPath(globalPath);
 			customTextureCallback.Call(globalPath, texture);
 		}
-
-		return Task.CompletedTask;
 	}
 }

@@ -8,7 +8,7 @@ public partial class ArtList : ItemList
 		{"Tap tag", new PackedScene()},
 		{"Paid tag", new PackedScene()},
 		{"Level tag", new PackedScene()},
-		{"Custom", new PackedScene()}
+		{"Custom...", new PackedScene()}
 	};
 
 	Array<MoveableArt> arts = new Array<MoveableArt>();
@@ -45,7 +45,7 @@ public partial class ArtList : ItemList
 		moveableArt.trashCallable = new Callable(this, "RemoveEntryFromArt");
 
 		if (addEntry) {
-			if (id == "Custom") {
+			if (id == "Custom...") {
 				SetCustomProps(moveableArt);
 			}
 			else {
@@ -60,7 +60,7 @@ public partial class ArtList : ItemList
 
 	void SetCustomProps(MoveableArt art) {
 		curEditingCustomArt = art;
-		EditManager.instance.LoadTextureFileDialog(new Callable(this, "SetCustomArt"));
+		EditManager.instance.fileDialog.LoadTextureFileDialog(new Callable(this, "SetCustomArt"));
 	}
 
 	void SetCustomArt(string path, Texture2D texture) {

@@ -6,9 +6,7 @@ public partial class EditManager : Node
 {
 	public static EditManager instance;
 
-	[Export] public FileDialog fileDialog;
-	Callable fileDialogPathCallback;
-	Callable folderDialogCallback;
+	[Export] public FileDialogHandler fileDialog;
 
 	[Export] public TextureRect bleedZonesMask;
 
@@ -20,10 +18,19 @@ public partial class EditManager : Node
 
 	public bool bleedZonesVisible = false;
 
-	public override void _Ready() {
+    public override void _EnterTree() {
+		EditManager.instance = this;
+
+		var minRatio = 0.75f;
+
+		int width = (int) Godot.ProjectSettings.GetSetting("display/window/size/viewport_width");
+        int height = (int) Godot.ProjectSettings.GetSetting("display/window/size/viewport_height");
+        GetTree().Root.MinSize = new Vector2I((int) (width * minRatio), (int) (height * minRatio));
+    }
+
+    public override void _Ready() {
 		base._Ready();
 
-		EditManager.instance = this;
 	}
 
 	public override void _Process(double delta) {
@@ -75,86 +82,5 @@ public partial class EditManager : Node
 		else {
 			Card.instance.HideBleedZones();
 		}
-	}
-
-	public void LoadTextureFileDialog(Callable callback) {
-        fileDialogPathCallback = callback;
-
-		fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
-		fileDialog.Filters = new string[]{"*.png, *.jpg, *.jpeg ; Supported Images"};
-		fileDialog.Visible = true;
-		fileDialog.FileSelected += OnTexturePathSelected;
-	}
-
-    void OnTexturePathSelected(string path) {
-		var texture = LoadTextureFromPath(path);
-        
-        fileDialogPathCallback.Call(path, texture);
-
-        fileDialog.FileSelected -= OnTexturePathSelected;
-    }
-
-	public Texture2D LoadTextureFromPath(string path) {
-		var image = new Image();
-        var error = image.Load(path);
-
-        if (error != Error.Ok) {
-            GD.PrintErr("Failed to load " + path + ". Error: " + error);
-        }
-
-        var texture = ImageTexture.CreateFromImage(image);
-		return texture;
-	}
-
-	public void WriteSaveFileDialog(Callable callback) {
-        fileDialogPathCallback = callback;
-
-		fileDialog.FileMode = FileDialog.FileModeEnum.SaveFile;
-		fileDialog.Filters = new string[]{"*.fscard ; Four Souls Card"};
-		fileDialog.Visible = true;
-		fileDialog.FileSelected += OnFileSelected;
-	}
-
-	public void LoadSaveFileDialog(Callable callback) {
-        fileDialogPathCallback = callback;
-
-		fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
-		fileDialog.Filters = new string[]{"*.fscard ; Four Souls Card"};
-		fileDialog.Visible = true;
-		fileDialog.FileSelected += OnFileSelected;
-	}
-
-	public void SelectFileOrFolderDialog(Callable fileCallback, Callable folderCallback) {
-        fileDialogPathCallback = fileCallback;
-        folderDialogCallback = folderCallback;
-
-		fileDialog.FileMode = FileDialog.FileModeEnum.OpenAny;
-		fileDialog.Filters = new string[]{"Folder","*.fscard ; Four Souls Card"};
-		fileDialog.Visible = true;
-		fileDialog.FileSelected += OnFileSelected;
-		fileDialog.DirSelected += OnDirSelected;
-	}
-
-	public void SelectFolderDialog(Callable callback) {
-        folderDialogCallback = callback;
-
-		fileDialog.FileMode = FileDialog.FileModeEnum.OpenDir;
-		fileDialog.Filters = new string[]{"Folder"};
-		fileDialog.Visible = true;
-		fileDialog.DirSelected += OnDirSelected;
-	}
-
-	void OnFileSelected(string path) {
-		fileDialogPathCallback.Call(path);
-
-		fileDialog.FileSelected -= OnFileSelected;
-		fileDialog.DirSelected -= OnDirSelected;
-	}
-
-	void OnDirSelected(string path) {
-		folderDialogCallback.Call(path);
-
-		fileDialog.FileSelected -= OnFileSelected;
-		fileDialog.DirSelected -= OnDirSelected;
 	}
 }
