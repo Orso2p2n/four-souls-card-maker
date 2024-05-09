@@ -1201,28 +1201,31 @@ text = "Export"
 
 [node name="InfoWindow" type="Window" parent="TopBar"]
 title = "Info"
-position = Vector2i(593, 332)
-size = Vector2i(350, 200)
+position = Vector2i(514, 312)
+size = Vector2i(500, 260)
 visible = false
 unresizable = true
 theme = ExtResource("3_7sxfo")
 script = ExtResource("6_ak6ge")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TopBar/InfoWindow"]
-offset_right = 350.0
-offset_bottom = 200.0
+offset_right = 500.0
+offset_bottom = 260.0
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TopBar/InfoWindow/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_7sxfo")
-theme_override_font_sizes/normal_font_size = 21
+theme_override_font_sizes/normal_font_size = 19
 bbcode_enabled = true
-text = "[center] version [color=LIGHT_SKY_BLUE][url=https://github.com/ZPMods/four-souls-card-maker/releases]1.0.0[/url][/color]
+text = "[center] Version [color=LIGHT_SKY_BLUE][url=https://github.com/ZPMods/four-souls-card-maker/releases]0.0.2[/url][/color]
 
-created by [color=LIGHT_SKY_BLUE][url=https://github.com/Orso2p2n]orso[/url][/color]
+Developed by [color=LIGHT_SKY_BLUE][url=https://github.com/Orso2p2n]Orso[/url][/color]
 
-\"the binding of isaac: four souls\" is a property of edmund mcmillen and maestro media.
+Font used: [color=LIGHT_SKY_BLUE][url=https://fonts.google.com/specimen/Plus+Jakarta+Sans]Plus Jakarta Sans[/url][/color].
+Icons by [color=LIGHT_SKY_BLUE][url=https://fontawesome.com/]Font Awesome[/url][/color].
+
+\"The Binding of Isaac: Four Souls\" is a property of Edmund McMillen and Maestro Media.
 "
 fit_content = true
 
