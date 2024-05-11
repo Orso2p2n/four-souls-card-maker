@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://wu5i2npuq7t2"]
+
+[ext_resource type="Texture2D" uid="uid://1tbkjn1gg088" path="res://assets/cards/fg_common/base_bot.png" id="1_x5see"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_yq454"]
+[ext_resource type="Texture2D" uid="uid://dgv6lfdeuds0p" path="res://assets/icons/cards/common_fg_base.png" id="2_b7dgw"]
+[ext_resource type="Texture2D" uid="uid://c4hhv2isyh0ki" path="res://assets/cards/fg_common/base_top.png" id="4_uc8jd"]
+
+[resource]
+script = ExtResource("1_yq454")
+top = ExtResource("4_uc8jd")
+bot = ExtResource("1_x5see")
+name = "Base"
+icon = ExtResource("2_b7dgw")

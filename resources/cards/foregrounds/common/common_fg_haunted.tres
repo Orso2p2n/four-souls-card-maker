@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://2kdnogen2mvv"]
+
+[ext_resource type="Texture2D" uid="uid://b75goppugb5dq" path="res://assets/cards/fg_common/haunted_bot.png" id="1_guvie"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_yq454"]
+[ext_resource type="Texture2D" uid="uid://kfn7ke2uxnf0" path="res://assets/icons/cards/common_fg_haunted.png" id="2_ygwob"]
+[ext_resource type="Texture2D" uid="uid://w70qghoj22qu" path="res://assets/cards/fg_common/haunted_top.png" id="4_l8f27"]
+
+[resource]
+script = ExtResource("1_yq454")
+top = ExtResource("4_l8f27")
+bot = ExtResource("1_guvie")
+name = "Haunted"
+icon = ExtResource("2_ygwob")

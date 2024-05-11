@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bmp650mknw7sb"]
+
+[ext_resource type="Texture2D" uid="uid://bgvjw2nfafkcf" path="res://assets/cards/fg_common/active_bot.png" id="1_cqnkv"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_yq454"]
+[ext_resource type="Texture2D" uid="uid://cvyctwhnkofh5" path="res://assets/icons/cards/common_fg_active.png" id="2_17w6y"]
+[ext_resource type="Texture2D" uid="uid://bq72qwu06upt3" path="res://assets/cards/fg_common/active_top.png" id="4_2xmqj"]
+
+[resource]
+script = ExtResource("1_yq454")
+top = ExtResource("4_2xmqj")
+bot = ExtResource("1_cqnkv")
+name = "Active"
+icon = ExtResource("2_17w6y")

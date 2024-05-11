@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bwhb1prd6b7m5"]
+
+[ext_resource type="Texture2D" uid="uid://cqonbptc2dbim" path="res://assets/cards/fg_common/soul_bot.png" id="1_m6gma"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_yq454"]
+[ext_resource type="Texture2D" uid="uid://cklj4fkfmkxqt" path="res://assets/icons/cards/common_fg_soul.png" id="2_lgspr"]
+[ext_resource type="Texture2D" uid="uid://x5h43363fw86" path="res://assets/cards/fg_common/soul_top.png" id="4_ndj50"]
+
+[resource]
+script = ExtResource("1_yq454")
+top = ExtResource("4_ndj50")
+bot = ExtResource("1_m6gma")
+name = "Soul"
+icon = ExtResource("2_lgspr")
