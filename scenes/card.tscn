@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c4bjto0eoujl" path="res://assets/cards/card_crop.png" id="5_jb1td"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dve7q1d6oh65i" path="res://scenes/card/line.tscn" id="6_awvw3"]
-[ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="8_3vw2m"]
-[ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
+[ext_resource type="Texture2D" uid="uid://1tbkjn1gg088" path="res://assets/cards/fg_common/base_bot.png" id="9_cjfgq"]
+[ext_resource type="Texture2D" uid="uid://c4hhv2isyh0ki" path="res://assets/cards/fg_common/base_top.png" id="10_ewrg7"]
 [ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="11_4x652"]
 [ext_resource type="Script" path="res://src/card/description/DescContainer.cs" id="11_sfr37"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArtChild.cs" id="12_6osh0"]
@@ -141,7 +141,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_qhdek")
+texture = ExtResource("9_cjfgq")
 
 [node name="BGOptTop" type="TextureRect" parent="BleedZonesMask/BGLayer/BGOptional"]
 layout_mode = 1
@@ -192,7 +192,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_qhdek")
+texture = ExtResource("9_cjfgq")
 
 [node name="FGTop" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
@@ -202,7 +202,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("8_b7y5n")
+texture = ExtResource("10_ewrg7")
 
 [node name="TitleContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
