@@ -89,6 +89,7 @@ ItemList/styles/panel = ExtResource("11_pahl3")
 ItemList/styles/selected = ExtResource("12_wx2uc")
 ItemList/styles/selected_focus = ExtResource("12_wx2uc")
 Label/fonts/font = ExtResource("1_hd3je")
+LineEdit/constants/minimum_character_width = 0
 LineEdit/fonts/font = ExtResource("1_hd3je")
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_wqbwt")
 LineEdit/styles/normal = ExtResource("3_t2axc")

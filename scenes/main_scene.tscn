@@ -457,8 +457,8 @@ metadata/_edit_use_anchors_ = true
 [node name="HPEdit" type="SpinBox" parent="MainPanel/Stats/HP"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.00024
-anchor_bottom = 1.0
+anchor_right = 1.00034
+anchor_bottom = 0.999999
 offset_left = 40.0
 offset_right = -0.0400085
 theme = ExtResource("3_7sxfo")
@@ -494,8 +494,8 @@ metadata/_edit_use_anchors_ = true
 [node name="DICEEdit" type="SpinBox" parent="MainPanel/Stats/DICE"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0001
-anchor_bottom = 1.0
+anchor_right = 1.00013
+anchor_bottom = 0.999999
 offset_left = 40.0
 offset_right = -0.0160065
 theme = ExtResource("3_7sxfo")
@@ -531,8 +531,8 @@ metadata/_edit_use_anchors_ = true
 [node name="ATKEdit" type="SpinBox" parent="MainPanel/Stats/ATK"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.00011
-anchor_bottom = 1.0
+anchor_right = 1.00013
+anchor_bottom = 0.999999
 offset_left = 40.0
 offset_right = -0.016037
 theme = ExtResource("3_7sxfo")
