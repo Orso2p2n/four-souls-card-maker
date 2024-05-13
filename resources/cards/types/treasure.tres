@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=11 format=3 uid="uid://copyy6is1xjxn"]
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://copyy6is1xjxn"]
 
 [ext_resource type="Texture2D" uid="uid://duf238bg4wrdf" path="res://assets/icons/cards/treasure.png" id="1_744g3"]
 [ext_resource type="Resource" uid="uid://r88dpnxefaqw" path="res://resources/cards/backgrounds/treasure/treasure_bg_active.tres" id="1_pbj80"]
@@ -8,14 +8,19 @@
 [ext_resource type="Resource" uid="uid://ggwflx4mhswa" path="res://resources/cards/backgrounds/treasure/treasure_bg_passive_haunted.tres" id="4_hd18d"]
 [ext_resource type="Resource" uid="uid://clu3suu84s41h" path="res://resources/cards/borders/border_active.tres" id="5_wkmsg"]
 [ext_resource type="Resource" uid="uid://bcke1l4314472" path="res://resources/cards/borders/border_passive.tres" id="6_7l2cs"]
-[ext_resource type="Resource" uid="uid://gc62t2mca4ra" path="res://resources/cards/foregrounds/treasure/treasure_fg_base.tres" id="7_yohb8"]
-[ext_resource type="Resource" uid="uid://1n8hwt32wfet" path="res://resources/cards/foregrounds/treasure/treasure_fg_haunted.tres" id="8_2fs47"]
+[ext_resource type="Resource" uid="uid://bmp650mknw7sb" path="res://resources/cards/foregrounds/common/common_fg_active.tres" id="9_uew2h"]
+[ext_resource type="Resource" uid="uid://cxpabtflyny24" path="res://resources/cards/foregrounds/common/common_fg_passive.tres" id="10_v6vkj"]
+[ext_resource type="Resource" uid="uid://2kdnogen2mvv" path="res://resources/cards/foregrounds/common/common_fg_haunted.tres" id="11_x5evs"]
 
 [resource]
 script = ExtResource("2_smc73")
 stats = "None"
+customStats = true
 backgrounds = [ExtResource("1_pbj80"), ExtResource("2_mptri"), ExtResource("3_btqql"), ExtResource("4_hd18d")]
-foregrounds = [ExtResource("7_yohb8"), ExtResource("8_2fs47")]
+foregrounds = [ExtResource("9_uew2h"), ExtResource("10_v6vkj"), ExtResource("11_x5evs")]
 borders = [ExtResource("5_wkmsg"), ExtResource("6_7l2cs")]
+canHaveStartingItem = false
+descOffsetTop = 0.0
+descOffsetBot = 0.0
 name = "Treasure"
 icon = ExtResource("1_744g3")

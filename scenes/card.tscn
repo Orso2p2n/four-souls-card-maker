@@ -1,15 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://d20xnxqu2phjl"]
+[gd_scene load_steps=21 format=3 uid="uid://d20xnxqu2phjl"]
 
 [ext_resource type="Script" path="res://src/Card.cs" id="1_63tle"]
 [ext_resource type="Theme" uid="uid://nmanbwnqgomd" path="res://resources/themes/card/title.tres" id="4_4ajpn"]
+[ext_resource type="Texture2D" uid="uid://k7y7dykvunsc" path="res://assets/cards/statboxes/statblock_monster.png" id="5_7wklq"]
 [ext_resource type="PackedScene" uid="uid://n7xbn3fngnic" path="res://scenes/card/effect_label.tscn" id="5_cqrq7"]
 [ext_resource type="Texture2D" uid="uid://c4bjto0eoujl" path="res://assets/cards/card_crop.png" id="5_jb1td"]
 [ext_resource type="Texture2D" uid="uid://j1kahtqhpcho" path="res://assets/cards/loot/loot_base_bg.png" id="5_vin02"]
 [ext_resource type="PackedScene" uid="uid://dve7q1d6oh65i" path="res://scenes/card/line.tscn" id="6_awvw3"]
-[ext_resource type="Texture2D" uid="uid://c0wbhshj585es" path="res://assets/cards/loot/loot_base_bot.png" id="6_qhdek"]
+[ext_resource type="Texture2D" uid="uid://bvg1r22q2fsl4" path="res://assets/cards/statboxes/statblock_character.png" id="6_ud3cs"]
 [ext_resource type="PackedScene" uid="uid://b7g3r2segtn8x" path="res://scenes/card/lore_label.tscn" id="7_4fche"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArt.cs" id="8_3vw2m"]
-[ext_resource type="Texture2D" uid="uid://cbvpljoqcafh0" path="res://assets/cards/loot/loot_base_top.png" id="8_b7y5n"]
+[ext_resource type="Texture2D" uid="uid://1tbkjn1gg088" path="res://assets/cards/fg_common/base_bot.png" id="9_cjfgq"]
+[ext_resource type="Texture2D" uid="uid://c4hhv2isyh0ki" path="res://assets/cards/fg_common/base_top.png" id="10_ewrg7"]
 [ext_resource type="Theme" uid="uid://cpk30bs62huts" path="res://resources/themes/card/text.tres" id="11_4x652"]
 [ext_resource type="Script" path="res://src/card/description/DescContainer.cs" id="11_sfr37"]
 [ext_resource type="Script" path="res://src/card/art/MoveableArtChild.cs" id="12_6osh0"]
@@ -30,7 +32,7 @@ spacing_bottom = 8
 base_font = ExtResource("12_q3kl2")
 spacing_glyph = -2
 
-[node name="Card" type="Control" node_paths=PackedStringArray("bleedZonesMask", "titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel", "startingItemSeparator", "startingItemIntro", "startingItemName", "BGLayer", "FGLayer")]
+[node name="Card" type="Control" node_paths=PackedStringArray("bleedZonesMask", "titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "customStatsBox", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel", "startingItemSeparator", "startingItemIntro", "startingItemName", "BGLayer", "FGLayer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,6 +62,9 @@ descContainer = NodePath("BleedZonesMask/FGLayer/DescriptionContainer")
 effect = ExtResource("5_cqrq7")
 lore = ExtResource("7_4fche")
 line = ExtResource("6_awvw3")
+customStatsBox = NodePath("BleedZonesMask/FGLayer/FGCustomStats")
+monsterStatBoxTexture = ExtResource("5_7wklq")
+characterStatBoxTexture = ExtResource("6_ud3cs")
 monsterStatsContainer = NodePath("BleedZonesMask/FGLayer/Stats/Monster")
 monsterHp = NodePath("BleedZonesMask/FGLayer/Stats/Monster/HP")
 monsterDice = NodePath("BleedZonesMask/FGLayer/Stats/Monster/DICE")
@@ -141,7 +146,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_qhdek")
+texture = ExtResource("9_cjfgq")
 
 [node name="BGOptTop" type="TextureRect" parent="BleedZonesMask/BGLayer/BGOptional"]
 layout_mode = 1
@@ -192,7 +197,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_qhdek")
+texture = ExtResource("9_cjfgq")
 
 [node name="FGTop" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
@@ -202,7 +207,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("8_b7y5n")
+texture = ExtResource("10_ewrg7")
+
+[node name="FGCustomStats" type="TextureRect" parent="BleedZonesMask/FGLayer"]
+layout_mode = 0
+offset_right = 962.0
+offset_bottom = 1312.0
 
 [node name="TitleContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1

@@ -1,22 +1,26 @@
-[gd_resource type="Resource" load_steps=12 format=3 uid="uid://bupr5jq8xljfh"]
+[gd_resource type="Resource" load_steps=15 format=3 uid="uid://bupr5jq8xljfh"]
 
 [ext_resource type="Resource" uid="uid://cun7oq0jhhbsg" path="res://resources/cards/backgrounds/loot/loot_bg_base.tres" id="1_wah2d"]
 [ext_resource type="Resource" uid="uid://cv64cdo5s60xi" path="res://resources/cards/backgrounds/loot/loot_bg_tarot.tres" id="2_otkxu"]
 [ext_resource type="Resource" uid="uid://bxsb20pk3fy0t" path="res://resources/cards/backgrounds/loot/loot_bg_trinket_passive.tres" id="4_83vk4"]
-[ext_resource type="Resource" uid="uid://be1r2mjxatiq2" path="res://resources/cards/foregrounds/loot/loot_fg_base.tres" id="5_6bviw"]
 [ext_resource type="Resource" uid="uid://dbho87u4064x7" path="res://resources/cards/backgrounds/loot/loot_bg_soul.tres" id="5_yyt74"]
 [ext_resource type="Resource" uid="uid://v8y6kh21i8rj" path="res://resources/cards/borders/border_none.tres" id="6_fgp4h"]
 [ext_resource type="Resource" uid="uid://clu3suu84s41h" path="res://resources/cards/borders/border_active.tres" id="6_j64ws"]
 [ext_resource type="Resource" uid="uid://bcke1l4314472" path="res://resources/cards/borders/border_passive.tres" id="7_u4cqe"]
+[ext_resource type="Resource" uid="uid://wu5i2npuq7t2" path="res://resources/cards/foregrounds/common/common_fg_base.tres" id="8_bgqms"]
+[ext_resource type="Resource" uid="uid://bwhb1prd6b7m5" path="res://resources/cards/foregrounds/common/common_fg_soul.tres" id="9_pthpv"]
 [ext_resource type="Texture2D" uid="uid://dcfe6wusla66v" path="res://assets/icons/cards/loot.png" id="9_w35m1"]
-[ext_resource type="Resource" uid="uid://ce7f4poo30bw2" path="res://resources/cards/foregrounds/loot/loot_fg_soul.tres" id="10_5srkn"]
 [ext_resource type="Script" path="res://resources/cards/types/CardMainType.cs" id="10_b2eai"]
+[ext_resource type="Resource" uid="uid://bmp650mknw7sb" path="res://resources/cards/foregrounds/common/common_fg_active.tres" id="10_nvuw7"]
+[ext_resource type="Resource" uid="uid://cxpabtflyny24" path="res://resources/cards/foregrounds/common/common_fg_passive.tres" id="11_k6lqd"]
+[ext_resource type="Resource" uid="uid://2kdnogen2mvv" path="res://resources/cards/foregrounds/common/common_fg_haunted.tres" id="12_pkihn"]
 
 [resource]
 script = ExtResource("10_b2eai")
 stats = "None"
+customStats = true
 backgrounds = [ExtResource("1_wah2d"), ExtResource("2_otkxu"), ExtResource("4_83vk4"), ExtResource("5_yyt74")]
-foregrounds = [ExtResource("5_6bviw"), ExtResource("10_5srkn")]
+foregrounds = [ExtResource("8_bgqms"), ExtResource("9_pthpv"), ExtResource("10_nvuw7"), ExtResource("11_k6lqd"), ExtResource("12_pkihn")]
 borders = [ExtResource("6_fgp4h"), ExtResource("6_j64ws"), ExtResource("7_u4cqe")]
 canHaveStartingItem = false
 descOffsetTop = 0.0

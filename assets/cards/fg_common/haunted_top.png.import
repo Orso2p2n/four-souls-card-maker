@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbvpljoqcafh0"
-path="res://.godot/imported/loot_base_top.png-ed2cab1edc703c4506ada8a1887e92dc.ctex"
+uid="uid://w70qghoj22qu"
+path="res://.godot/imported/haunted_top.png-d65f6130ab53376e32c58544fba75726.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/loot/loot_base_top.png"
-dest_files=["res://.godot/imported/loot_base_top.png-ed2cab1edc703c4506ada8a1887e92dc.ctex"]
+source_file="res://assets/cards/fg_common/haunted_top.png"
+dest_files=["res://.godot/imported/haunted_top.png-d65f6130ab53376e32c58544fba75726.ctex"]
 
 [params]
 

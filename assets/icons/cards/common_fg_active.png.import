@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d22hujeaiu8t0"
-path="res://.godot/imported/loot_soul_top.png-19656fdfa38fe64384f54a56f228718c.ctex"
+uid="uid://cvyctwhnkofh5"
+path="res://.godot/imported/common_fg_active.png-41b976f57151dca6fe89bf2dbd0b69fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/loot/loot_soul_top.png"
-dest_files=["res://.godot/imported/loot_soul_top.png-19656fdfa38fe64384f54a56f228718c.ctex"]
+source_file="res://assets/icons/cards/common_fg_active.png"
+dest_files=["res://.godot/imported/common_fg_active.png-41b976f57151dca6fe89bf2dbd0b69fe.ctex"]
 
 [params]
 

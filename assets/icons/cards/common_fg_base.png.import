@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0wbhshj585es"
-path="res://.godot/imported/loot_base_bot.png-fb241d7029265dcb67c47c583b5456f0.ctex"
+uid="uid://dgv6lfdeuds0p"
+path="res://.godot/imported/common_fg_base.png-7d34575dbf6bc5d4b6bdf27b33c3b275.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cards/loot/loot_base_bot.png"
-dest_files=["res://.godot/imported/loot_base_bot.png-fb241d7029265dcb67c47c583b5456f0.ctex"]
+source_file="res://assets/icons/cards/common_fg_base.png"
+dest_files=["res://.godot/imported/common_fg_base.png-7d34575dbf6bc5d4b6bdf27b33c3b275.ctex"]
 
 [params]
 

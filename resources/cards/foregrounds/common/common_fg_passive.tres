@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cxpabtflyny24"]
+
+[ext_resource type="Texture2D" uid="uid://c8lw5hpcu1nha" path="res://assets/cards/fg_common/passive_bot.png" id="1_1062w"]
+[ext_resource type="Script" path="res://resources/cards/foregrounds/CardForeground.cs" id="1_yq454"]
+[ext_resource type="Texture2D" uid="uid://30b8w0jo303s" path="res://assets/icons/cards/common_fg_passive.png" id="2_lvem7"]
+[ext_resource type="Texture2D" uid="uid://di6hsinrg6pmi" path="res://assets/cards/fg_common/passive_top.png" id="4_ji2v0"]
+
+[resource]
+script = ExtResource("1_yq454")
+top = ExtResource("4_ji2v0")
+bot = ExtResource("1_1062w")
+name = "Passive"
+icon = ExtResource("2_lvem7")
