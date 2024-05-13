@@ -18,6 +18,9 @@ public partial class EditManager : Node
 	[Export] public StatPanel atkStat;
 	[Export] public StatsOptionButton statsOptionButton;
 
+	[ExportGroup("Rewards")]
+	[Export] public RewardsContainer rewardsContainer;
+
 	public bool bleedZonesVisible = false;
 
     public override void _EnterTree() {
@@ -93,5 +96,9 @@ public partial class EditManager : Node
 		else {
 			Card.instance.HideBleedZones();
 		}
+	}
+
+	public void SetRewardsState(string rewardsState) {
+		rewardsContainer.SetState(rewardsState);		
 	}
 }

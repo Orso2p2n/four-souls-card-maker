@@ -12,6 +12,8 @@ public partial class CardMainType : MenuItem
 
     [Export] public bool canHaveStartingItem = false;
 
+    [Export(PropertyHint.Enum,"Disabled,Enabled,Builtin")] public string rewards = "Enabled";
+
     [ExportGroup("Description Offset")]
     [Export] public float descOffsetTop = 0f;
     [Export] public float descOffsetBot = 0f;
