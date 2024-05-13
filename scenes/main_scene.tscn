@@ -541,7 +541,7 @@ value = 1.0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="StatsOptionButton" type="OptionButton" parent="MainPanel/Stats"]
+[node name="StatsOptionButton" type="OptionButton" parent="MainPanel/Stats" groups=["Save"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.444444
