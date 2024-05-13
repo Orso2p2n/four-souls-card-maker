@@ -41,7 +41,7 @@ public partial class MainTypeMenu : TypeMenu
 		}
 		borderMenu.SetList(borderList);
 
-		startingItemContainer.SetVisible(selectedCardType.canHaveStartingItem);
+		startingItemContainer.SetActive(selectedCardType.canHaveStartingItem);
 
 		EditManager.instance.SetStats(selectedCardType.stats, selectedCardType.customStats);
 		EditManager.instance.SetCustomStats(selectedCardType.customStats);

@@ -792,7 +792,7 @@ theme_override_fonts/font = ExtResource("7_b2jd5")
 placeholder_text = "Enter Credits..."
 script = ExtResource("22_wnou6")
 
-[node name="StartingItem" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkBox")]
+[node name="StartingItem" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkBox", "introEdit", "nameEdit")]
 layout_mode = 1
 anchor_left = 0.339
 anchor_top = 1.0
@@ -804,6 +804,8 @@ offset_bottom = -96.0
 mouse_filter = 2
 script = ExtResource("62_25ilh")
 checkBox = NodePath("CheckBox")
+introEdit = NodePath("IntroEdit")
+nameEdit = NodePath("NameEdit")
 metadata/_edit_use_anchors_ = true
 
 [node name="StartingItemLabel" type="Label" parent="MainPanel/StartingItem"]
