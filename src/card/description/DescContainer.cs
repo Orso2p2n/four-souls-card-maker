@@ -37,12 +37,17 @@ public partial class DescContainer : VBoxContainer
 		base._Process(delta);
 	}
 
-	public void SetOffsets(float topOffset, float botOffset) {
-		this.topOffset = topOffset;
-		this.botOffset = botOffset;
+	public void SetOffsets(float _topOffset, float _botOffset) {
+		if (_topOffset != -1) {
+			topOffset = _topOffset;
+		}
+
+		if (_botOffset != -1) {
+			botOffset = _botOffset;
+		}
 		
 		Position = targetPos = initialPos + new Vector2(0, topOffset);
-		targetSize = initialSize - new Vector2(0, topOffset + botOffset);
+		Size = targetSize = initialSize - new Vector2(0, topOffset + botOffset);
 	}
 
 	public void AddText(DescEffect descEffect) {

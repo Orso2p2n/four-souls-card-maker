@@ -45,7 +45,5 @@ public partial class MainTypeMenu : TypeMenu
 
 		EditManager.instance.SetStats(selectedCardType.stats, selectedCardType.customStats);
 		EditManager.instance.SetCustomStats(selectedCardType.customStats);
-
-		Card.instance.SetDescOffsets(selectedCardType.descOffsetTop, selectedCardType.descOffsetBot);
 	}
 }

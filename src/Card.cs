@@ -160,21 +160,9 @@ public partial class Card : Control
 	}
 
 	// -- DESCRIPTION --
-	public void SetDescOffsets(float top, float bot) {
+	public void SetDescOffsets(float top = -1, float bot = -1) {
 		descContainer.SetOffsets(top, bot);
 		OnNeedSaveAction();
-	}
-
-	public void AddDescOffsets(float top, float bot) {
-		var topOffset = descContainer.topOffset + top;
-		var botOffset = descContainer.botOffset + bot;
-		SetDescOffsets(topOffset, botOffset);
-	}
-
-	public void SubstractDescOffsets(float top, float bot) {
-		var topOffset = descContainer.topOffset - top;
-		var botOffset = descContainer.botOffset - bot;
-		SetDescOffsets(topOffset, botOffset);
 	}
 
 	public DescEffect AddText(bool isLore = false) {
@@ -205,7 +193,9 @@ public partial class Card : Control
 		characterStatsContainer.Visible = false;
 
 		switch(statsString) {
-            case "None": break;
+            case "None": 
+				SetDescOffsets(top: 0);
+				break;
 
             case "Monster":
 				customStatsBox.Texture = monsterStatBoxTexture;
@@ -213,6 +203,7 @@ public partial class Card : Control
 				monsterHp.Text = hp.ToString();
 				monsterDice.Text = dice.ToString() + ((dice > 0 && dice < 6) ? "+" : " ");
 				monsterAtk.Text = atk.ToString();
+				SetDescOffsets(top: 54);
                 break;
 
             case "Character":
@@ -220,6 +211,7 @@ public partial class Card : Control
                 characterStatsContainer.Visible = true;
 				characterHp.Text = hp.ToString();
 				characterAtk.Text = atk.ToString();
+				SetDescOffsets(top: 54);
                 break;
         }
 
@@ -342,10 +334,10 @@ public partial class Card : Control
 
 	public void SetStartingItemVisible(bool visible) {
 		if (visible) {
-			AddDescOffsets(descOffsetWhenShown.X, descOffsetWhenShown.Y);
+			SetDescOffsets(bot: descOffsetWhenShown.Y);
 		}
 		else {
-			SubstractDescOffsets(descOffsetWhenShown.X, descOffsetWhenShown.Y);
+			SetDescOffsets(bot: 0);
 		}
 
 		startingItemSeparator.Visible = startingItemName.Visible = startingItemIntro.Visible = visible;
