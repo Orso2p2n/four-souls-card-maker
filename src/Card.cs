@@ -33,6 +33,9 @@ public partial class Card : Control
 	[Export] PackedScene line;
 
 	[ExportGroup("Stats")]
+	[Export] TextureRect customStatsBox;
+	[Export] Texture2D monsterStatBoxTexture;
+	[Export] Texture2D characterStatBoxTexture;
 	[ExportSubgroup("Monster")]
 	[Export] Control monsterStatsContainer;
 	[Export] Label monsterHp;
@@ -197,14 +200,15 @@ public partial class Card : Control
 	}
 
 	// -- STATS --
-	public void setStats(string statsString, double hp, double dice, double atk) {
+	public void setStats(string statsString, double hp, double dice, double atk, bool hasCustomStats = false) {
 		monsterStatsContainer.Visible = false;
 		characterStatsContainer.Visible = false;
 
 		switch(statsString) {
             case "None": break;
 
-            case "Monster": 
+            case "Monster":
+				customStatsBox.Texture = monsterStatBoxTexture;
                 monsterStatsContainer.Visible = true;
 				monsterHp.Text = hp.ToString();
 				monsterDice.Text = dice.ToString() + ((dice > 0 && dice < 6) ? "+" : " ");
@@ -212,11 +216,14 @@ public partial class Card : Control
                 break;
 
             case "Character":
+				customStatsBox.Texture = characterStatBoxTexture;
                 characterStatsContainer.Visible = true;
 				characterHp.Text = hp.ToString();
 				characterAtk.Text = atk.ToString();
                 break;
         }
+
+		customStatsBox.Visible = statsString != "None" && hasCustomStats;
 
 		OnNeedSaveAction();
 	}

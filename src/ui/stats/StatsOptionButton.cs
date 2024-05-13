@@ -19,6 +19,6 @@ public partial class StatsOptionButton : OptionButton
 	}
 
 	public void OnItemSelected(int index) {
-		EditManager.instance.SetStats(GetItemText(index));
+		EditManager.instance.SetStats(GetItemText(index), true);
 	}
 }

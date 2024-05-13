@@ -43,7 +43,7 @@ public partial class MainTypeMenu : TypeMenu
 
 		startingItemContainer.SetVisible(selectedCardType.canHaveStartingItem);
 
-		EditManager.instance.SetStats(selectedCardType.stats);
+		EditManager.instance.SetStats(selectedCardType.stats, selectedCardType.customStats);
 		EditManager.instance.SetCustomStats(selectedCardType.customStats);
 
 		Card.instance.SetDescOffsets(selectedCardType.descOffsetTop, selectedCardType.descOffsetBot);

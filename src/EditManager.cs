@@ -12,6 +12,7 @@ public partial class EditManager : Node
 
 	[ExportGroup("Stats")]
 	string curStatsString;
+	bool curCustomStats;
 	[Export] public StatPanel hpStat;
 	[Export] public StatPanel diceStat;
 	[Export] public StatPanel atkStat;
@@ -38,8 +39,9 @@ public partial class EditManager : Node
 		base._Process(delta);
 	}
 
-	public void SetStats(string statsString, bool fromOptionButton = false) {
+	public void SetStats(string statsString, bool hasCustomStats, bool fromOptionButton = false) {
 		curStatsString = statsString;
+		curCustomStats = hasCustomStats;
 
 		bool hasHp = false;
 		bool hasDice = false;
@@ -76,7 +78,7 @@ public partial class EditManager : Node
 	}
 
 	public void UpdateStats() {
-		Card.instance.setStats(curStatsString, hpStat.spinBox.Value, diceStat.spinBox.Value, atkStat.spinBox.Value);
+		Card.instance.setStats(curStatsString, hpStat.spinBox.Value, diceStat.spinBox.Value, atkStat.spinBox.Value, curCustomStats);
 	}
 
 	public void ToggleBleedZones() {
