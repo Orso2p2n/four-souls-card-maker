@@ -13,6 +13,7 @@
 [resource]
 script = ExtResource("10_7lx42")
 stats = "None"
+customStats = true
 backgrounds = [ExtResource("1_h6xql"), ExtResource("2_xhe3f")]
 foregrounds = [ExtResource("7_gotxv"), ExtResource("8_2tib3"), ExtResource("9_8p641")]
 borders = [ExtResource("3_bp52l"), ExtResource("4_ku44c")]

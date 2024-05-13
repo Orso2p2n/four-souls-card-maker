@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=41 format=3 uid="uid://du8dk2cpyfqc4"]
+[gd_resource type="Theme" load_steps=42 format=3 uid="uid://du8dk2cpyfqc4"]
 
 [ext_resource type="StyleBox" uid="uid://bhh4fedqts1wu" path="res://resources/themes/ui/add_new_menu_button/AddNewHover.tres" id="1_dugw4"]
 [ext_resource type="FontFile" uid="uid://dqe8s0pvj8jah" path="res://assets/fonts/ui/UI-Regular.ttf" id="1_hd3je"]
@@ -27,6 +27,7 @@
 [ext_resource type="StyleBox" uid="uid://bx3yn8jamwefb" path="res://resources/themes/ui/popup_menu/PopupMenuHover.tres" id="13_c5igg"]
 [ext_resource type="StyleBox" uid="uid://no71ygsfjy2c" path="res://resources/themes/ui/line_edit/LineEditDisabled.tres" id="14_aeu6j"]
 [ext_resource type="StyleBox" uid="uid://yx245uo4p356" path="res://resources/themes/ui/menu_bar/MenuBarPressed.tres" id="16_fsbei"]
+[ext_resource type="StyleBox" uid="uid://byqg5chuk10ch" path="res://resources/themes/ui/option_button/OptionButtonDisabled.tres" id="22_c1gpp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hu87"]
 
@@ -110,6 +111,7 @@ OptionButton/constants/h_separation = 6
 OptionButton/constants/modulate_arrow = 0
 OptionButton/font_sizes/font_size = 15
 OptionButton/fonts/font = ExtResource("5_l3blg")
+OptionButton/styles/disabled = ExtResource("22_c1gpp")
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_x3jhr")
 OptionButton/styles/hover = ExtResource("7_xc4s8")
 OptionButton/styles/normal = ExtResource("8_mrteh")

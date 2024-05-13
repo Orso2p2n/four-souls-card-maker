@@ -15,6 +15,7 @@ public partial class EditManager : Node
 	[Export] public StatPanel hpStat;
 	[Export] public StatPanel diceStat;
 	[Export] public StatPanel atkStat;
+	[Export] public StatsOptionButton statsOptionButton;
 
 	public bool bleedZonesVisible = false;
 
@@ -37,7 +38,7 @@ public partial class EditManager : Node
 		base._Process(delta);
 	}
 
-	public void SetStats(string statsString) {
+	public void SetStats(string statsString, bool fromOptionButton = false) {
 		curStatsString = statsString;
 
 		bool hasHp = false;
@@ -64,6 +65,14 @@ public partial class EditManager : Node
 		atkStat.SetActive(hasAtk);
 
 		UpdateStats();
+
+		if (!fromOptionButton) {
+			statsOptionButton.SelectByName(statsString);
+		}
+	}
+
+	public void SetCustomStats(bool enabled) {
+		statsOptionButton.SetActive(enabled);
 	}
 
 	public void UpdateStats() {

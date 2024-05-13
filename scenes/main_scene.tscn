@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=81 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://src/ui/text_edits/TitleEdit.cs" id="21_fwink"]
 [ext_resource type="Script" path="res://src/ui/text_edits/CreditsEdit.cs" id="22_wnou6"]
 [ext_resource type="PackedScene" uid="uid://cyd0c1m5jt52p" path="res://scenes/ui/art/art_button.tscn" id="24_l5rnn"]
+[ext_resource type="Script" path="res://src/ui/stats/StatsOptionButton.cs" id="25_dinn8"]
 [ext_resource type="PackedScene" uid="uid://bppnkifqhwxcc" path="res://scenes/card/art_list/tap_tag.tscn" id="26_7mwfm"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/PositionProps.cs" id="26_ahxvl"]
 [ext_resource type="Script" path="res://src/ui/art_list/ArtList.cs" id="26_ayoao"]
@@ -102,12 +103,13 @@ script = ExtResource("1_wqwht")
 saveLabel = NodePath("../TopBar/SaveLabel")
 cardViewport = NodePath("../MainPanel/CardPreview/CardViewport")
 
-[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat")]
+[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat", "statsOptionButton")]
 script = ExtResource("16_66afq")
 fileDialog = NodePath("FileDialog")
 hpStat = NodePath("../MainPanel/Stats/HP")
 diceStat = NodePath("../MainPanel/Stats/DICE")
 atkStat = NodePath("../MainPanel/Stats/ATK")
+statsOptionButton = NodePath("../MainPanel/Stats/StatsOptionButton")
 
 [node name="FileDialog" type="FileDialog" parent="EditManager"]
 title = "Open a File"
@@ -430,8 +432,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HP" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
 layout_mode = 1
+anchor_left = 0.278689
 anchor_top = 0.444444
-anchor_right = 0.327869
+anchor_right = 0.52459
 anchor_bottom = 1.0
 script = ExtResource("12_csu7s")
 icon = NodePath("HPTexture")
@@ -466,9 +469,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DICE" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
 layout_mode = 1
-anchor_left = 0.327869
+anchor_left = 0.52459
 anchor_top = 0.444444
-anchor_right = 0.672131
+anchor_right = 0.770492
 anchor_bottom = 1.0
 script = ExtResource("12_csu7s")
 icon = NodePath("DICETexture")
@@ -503,7 +506,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ATK" type="Control" parent="MainPanel/Stats" node_paths=PackedStringArray("icon", "spinBox") groups=["Save"]]
 layout_mode = 1
-anchor_left = 0.672131
+anchor_left = 0.754098
 anchor_top = 0.444444
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -536,6 +539,27 @@ theme = ExtResource("3_7sxfo")
 max_value = 9.0
 value = 1.0
 alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsOptionButton" type="OptionButton" parent="MainPanel/Stats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.444444
+anchor_right = 0.278689
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+text_overrun_behavior = 3
+clip_text = true
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Monster"
+popup/item_1/id = 1
+popup/item_2/text = "Character"
+popup/item_2/id = 2
+script = ExtResource("25_dinn8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Art" type="Control" parent="MainPanel"]
@@ -1295,6 +1319,7 @@ text_overrun_behavior = 3
 [connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/ATK/ATKEdit" to="MainPanel/Stats/ATK" method="UpdateStat"]
+[connection signal="item_selected" from="MainPanel/Stats/StatsOptionButton" to="MainPanel/Stats/StatsOptionButton" method="OnItemSelected"]
 [connection signal="empty_clicked" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnEmptyClicked"]
 [connection signal="item_selected" from="MainPanel/Stamps/StampsList" to="MainPanel/Stamps/StampsList" method="OnItemSelected"]
 [connection signal="text_changed" from="MainPanel/Credit/CreditEdit" to="MainPanel/Credit/CreditEdit" method="OnTextChanged"]

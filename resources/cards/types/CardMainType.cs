@@ -5,6 +5,7 @@ using System;
 public partial class CardMainType : MenuItem
 {
     [Export(PropertyHint.Enum,"None,Monster,Character")] public string stats = "None";
+    [Export] public bool customStats = false;
     [Export] public Array<CardBackground>   backgrounds = new Array<CardBackground>();
     [Export] public Array<CardForeground>   foregrounds = new Array<CardForeground>();
     [Export] public Array<CardBorder>       borders     = new Array<CardBorder>();
