@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=83 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -77,6 +77,7 @@
 [ext_resource type="Script" path="res://src/ui/text_edits/StartingItemNameEdit.cs" id="63_nlm0b"]
 [ext_resource type="Script" path="res://src/ui/starting_item/StartingItemCheckBox.cs" id="63_te4q8"]
 [ext_resource type="Script" path="res://src/ui/rewards/RewardsContainer.cs" id="64_uk5qe"]
+[ext_resource type="Script" path="res://src/ui/rewards/RewardsCheckButton.cs" id="65_mffsh"]
 [ext_resource type="Texture2D" uid="uid://bxkmt2tdhpvh5" path="res://assets/icons/reset18.png" id="71_45i6p"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/RotationProps.cs" id="72_emn3m"]
 
@@ -879,7 +880,7 @@ placeholder_text = "Edit name..."
 script = ExtResource("63_nlm0b")
 metadata/_edit_use_anchors_ = true
 
-[node name="Rewards" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkBox", "lineEdit")]
+[node name="Rewards" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkButton", "lineEdit")]
 layout_mode = 1
 anchor_left = 0.339
 anchor_top = 0.999615
@@ -890,7 +891,7 @@ offset_top = -87.6801
 offset_bottom = -15.6801
 mouse_filter = 2
 script = ExtResource("64_uk5qe")
-checkBox = NodePath("CheckBox")
+checkButton = NodePath("CheckButton")
 lineEdit = NodePath("IntroEdit")
 
 [node name="RewardsLabel" type="Label" parent="MainPanel/Rewards"]
@@ -907,7 +908,7 @@ vertical_alignment = 1
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="CheckBox" type="CheckButton" parent="MainPanel/Rewards" groups=["Save"]]
+[node name="CheckButton" type="CheckButton" parent="MainPanel/Rewards" groups=["Save"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.311475
@@ -915,6 +916,7 @@ offset_top = 32.0
 offset_bottom = 72.0
 theme = ExtResource("3_7sxfo")
 text = "Show"
+script = ExtResource("65_mffsh")
 metadata/_edit_use_anchors_ = true
 
 [node name="IntroEdit" type="LineEdit" parent="MainPanel/Rewards" groups=["Save"]]
@@ -1381,7 +1383,7 @@ text_overrun_behavior = 3
 [connection signal="toggled" from="MainPanel/StartingItem/CheckBox" to="MainPanel/StartingItem/CheckBox" method="OnToggled"]
 [connection signal="text_changed" from="MainPanel/StartingItem/IntroEdit" to="MainPanel/StartingItem/IntroEdit" method="OnTextChanged"]
 [connection signal="text_changed" from="MainPanel/StartingItem/NameEdit" to="MainPanel/StartingItem/NameEdit" method="OnTextChanged"]
-[connection signal="toggled" from="MainPanel/Rewards/CheckBox" to="MainPanel/Rewards/CheckBox" method="OnToggled"]
+[connection signal="toggled" from="MainPanel/Rewards/CheckButton" to="MainPanel/Rewards" method="OnCheckButtonToggled"]
 [connection signal="text_changed" from="MainPanel/Rewards/IntroEdit" to="MainPanel/Rewards/IntroEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="MainPanel/SelectedProps/Position/XSpinBox" to="MainPanel/SelectedProps/Position" method="OnChangedX"]
 [connection signal="pressed" from="MainPanel/SelectedProps/Position/ResetXButton" to="MainPanel/SelectedProps/Position" method="OnResetXPressed"]

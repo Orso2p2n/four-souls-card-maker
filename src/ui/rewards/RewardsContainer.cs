@@ -3,8 +3,10 @@ using System;
 
 public partial class RewardsContainer : Control
 {
-	[Export] CheckButton checkBox;
+	[Export] RewardsCheckButton checkButton;
 	[Export] LineEdit lineEdit;
+
+	bool curBuiltIn;
 
 	public void SetState(string state) {
 		switch(state) {
@@ -13,18 +15,28 @@ public partial class RewardsContainer : Control
 				break;
 
 			case "Enabled":
-				SetActive(true, true);
+				SetActive(true, false);
 				break;
 
 			case "Builtin":
-				SetActive(true, false);
+				SetActive(true, true);
 				break;
 		}
 	}
 
-	void SetActive(bool active, bool customizable = false) {
-		lineEdit.Editable = active;
+	void SetActive(bool enabled, bool builtin = false) {
+		curBuiltIn = builtin;
 
-		checkBox.Disabled = !active || !customizable;
+		lineEdit.Editable = enabled;
+
+		checkButton.Disabled = !enabled || builtin;
+
+		var finalEnabled = enabled && (builtin || checkButton.ButtonPressed);
+
+		Card.instance.SetRewardsEnabled(finalEnabled, builtin);
+	}
+
+	public void OnCheckButtonToggled(bool buttonPressed) {
+		Card.instance.SetRewardsEnabled(buttonPressed, curBuiltIn);
 	}
 }

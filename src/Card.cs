@@ -32,6 +32,9 @@ public partial class Card : Control
 	[Export] PackedScene lore;
 	[Export] PackedScene line;
 
+	[ExportGroup("Rewards")]
+	[Export] TextureRect rewardsTextureRect;
+
 	[ExportGroup("Stats")]
 	[Export] TextureRect customStatsBox;
 	[Export] Texture2D monsterStatBoxTexture;
@@ -79,14 +82,13 @@ public partial class Card : Control
 
     public override void _EnterTree() {
         instance = this;
+		descContainer.card = this;
     }
 
     public override void _Ready() {
 		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
 
 		cardViewport = GetParent() as SubViewport;
-
-		descContainer.card = this;
 	}
 
 	public void PauseRender() {
@@ -185,6 +187,18 @@ public partial class Card : Control
 		OnNeedSaveAction();
 
 		return descLine;
+	}
+
+	// -- REWARDS --
+	public void SetRewardsEnabled(bool enabled, bool builtin = false) {
+		if (!enabled) {
+			rewardsTextureRect.Visible = false;
+			SetDescOffsets(bot: 0);
+			return;
+		}
+
+		rewardsTextureRect.Visible = !builtin;
+		SetDescOffsets(bot: 89);
 	}
 
 	// -- STATS --
