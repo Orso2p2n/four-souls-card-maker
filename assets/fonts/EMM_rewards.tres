@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://3wq333bvsmm0"]
+
+[ext_resource type="FontFile" uid="uid://dpd3kb5vogiba" path="res://assets/fonts/EMM_text.ttf" id="1_8q7q0"]
+
+[resource]
+base_font = ExtResource("1_8q7q0")
+spacing_glyph = -3
+spacing_top = -8
+spacing_bottom = 8

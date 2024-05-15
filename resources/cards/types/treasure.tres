@@ -20,6 +20,7 @@ backgrounds = [ExtResource("1_pbj80"), ExtResource("2_mptri"), ExtResource("3_bt
 foregrounds = [ExtResource("9_uew2h"), ExtResource("10_v6vkj"), ExtResource("11_x5evs")]
 borders = [ExtResource("5_wkmsg"), ExtResource("6_7l2cs")]
 canHaveStartingItem = false
+rewards = "Enabled"
 descOffsetTop = 0.0
 descOffsetBot = 0.0
 name = "Treasure"

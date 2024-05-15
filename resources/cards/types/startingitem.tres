@@ -18,6 +18,7 @@ backgrounds = [ExtResource("1_h6xql"), ExtResource("2_xhe3f")]
 foregrounds = [ExtResource("7_gotxv"), ExtResource("8_2tib3"), ExtResource("9_8p641")]
 borders = [ExtResource("3_bp52l"), ExtResource("4_ku44c")]
 canHaveStartingItem = false
+rewards = "Enabled"
 descOffsetTop = 0.0
 descOffsetBot = 0.0
 name = "Starting Item"

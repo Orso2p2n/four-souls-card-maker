@@ -20,6 +20,7 @@ backgrounds = [ExtResource("1_6glfp"), ExtResource("2_ngtli"), ExtResource("3_nd
 foregrounds = [ExtResource("5_681rr"), ExtResource("6_3ybii")]
 borders = [ExtResource("5_mg6gw"), ExtResource("5_vkr3q"), ExtResource("6_18eu8")]
 canHaveStartingItem = false
+rewards = "Enabled"
 descOffsetTop = 0.0
 descOffsetBot = 0.0
 name = "Event"

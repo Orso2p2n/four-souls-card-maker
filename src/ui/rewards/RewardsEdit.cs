@@ -2,10 +2,10 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class TitleEdit : LineEdit
+public partial class RewardsEdit : LineEdit
 {
 	public void OnTextChanged(string text) {
-		Card.instance.SetTitle(text);
+		Card.instance.SetRewards(text);
 	}
 
 	// --- SAVE HANDLING ---
