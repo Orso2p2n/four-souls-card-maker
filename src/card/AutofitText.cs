@@ -103,8 +103,6 @@ public partial class AutofitText : RichTextLabel
 	bool TryReduceScaleX() {
 		var reduceBy = 1f / baseFontSize;
 
-		GD.Print(reduceBy);
-
 		var X = fontVar.VariationTransform.X.X;
 		var factorX = (X - reduceBy) / X; 
 		
