@@ -37,6 +37,8 @@ public partial class RewardsContainer : Control
 	}
 
 	public void OnCheckButtonToggled(bool buttonPressed) {
-		Card.instance.SetRewardsEnabled(buttonPressed, curBuiltIn);
+		if (!checkButton.Disabled) {
+			Card.instance.SetRewardsEnabled(buttonPressed, curBuiltIn);
+		}
 	}
 }

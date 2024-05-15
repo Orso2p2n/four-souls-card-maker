@@ -6,7 +6,7 @@ public partial class StartingItemCheckBox : CheckButton
 {
 
 	public void OnToggled(bool buttonPressed) {
-		if (Visible) {
+		if (!Disabled) {
 			Card.instance.SetStartingItemVisible(buttonPressed);
 		}
 	}
