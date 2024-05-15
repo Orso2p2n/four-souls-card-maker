@@ -422,7 +422,6 @@ theme = ExtResource("11_4x652")
 theme_override_fonts/normal_font = SubResource("FontVariation_fbrxu")
 theme_override_font_sizes/normal_font_size = 76
 bbcode_enabled = true
-text = "[center]the d6"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
