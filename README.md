@@ -18,8 +18,8 @@ If something is not documented or confusing, feel free to [submit an issue](http
 
 ## Examples
 
-![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/332b270d-7edd-4ef3-b648-f08a0bda9e42)
+![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/a52dcefe-e273-45b9-941e-b014064d4ed2)
 
-![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/3bfbd94e-1d1a-4340-aafe-a36be543a159)
+![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/d7b3db6d-d17f-4a97-8f7a-1f73989ecf26)
 
-![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/602c6d8b-ad5a-46c3-a83e-ec18653a7c7a)
+![image](https://github.com/Orso2p2n/four-souls-card-maker/assets/61545749/c2234d50-02d6-4dd7-8bb4-cf0c8cc860e3)
