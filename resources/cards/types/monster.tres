@@ -33,6 +33,7 @@ backgrounds = [ExtResource("1_i4uaq"), ExtResource("2_757pf"), ExtResource("3_e5
 foregrounds = [ExtResource("15_ikoxm"), ExtResource("16_17ova"), ExtResource("17_2rm8c"), ExtResource("18_r5hqw"), ExtResource("19_c7bmi")]
 borders = [ExtResource("15_w43cx"), ExtResource("15_2a3qs"), ExtResource("16_drino")]
 canHaveStartingItem = false
+rewards = "Builtin"
 descOffsetTop = 54.0
 descOffsetBot = 89.0
 name = "Monster"

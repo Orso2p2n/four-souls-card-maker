@@ -13,7 +13,7 @@ public partial class Card : Control
 	[Export] TextureRect bleedZonesMask;
 
 	[ExportGroup("Title")]
-	[Export] RichTextLabel titleLabel;
+	[Export] AutofitText titleLabel;
 
 	[ExportGroup("Textures")]
 	[Export] TextureRect bgTexture;
@@ -31,6 +31,10 @@ public partial class Card : Control
 	[Export] PackedScene effect;
 	[Export] PackedScene lore;
 	[Export] PackedScene line;
+
+	[ExportGroup("Rewards")]
+	[Export] TextureRect rewardsTextureRect;
+	[Export] AutofitText rewardsLabel;
 
 	[ExportGroup("Stats")]
 	[Export] TextureRect customStatsBox;
@@ -79,14 +83,13 @@ public partial class Card : Control
 
     public override void _EnterTree() {
         instance = this;
+		descContainer.card = this;
     }
 
     public override void _Ready() {
 		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
 
 		cardViewport = GetParent() as SubViewport;
-
-		descContainer.card = this;
 	}
 
 	public void PauseRender() {
@@ -118,7 +121,7 @@ public partial class Card : Control
 	}
 
 	public void SetTitle(string text) {
-		titleLabel.Text = "[center]" + text;
+		titleLabel.SetText("[center]" + text);
 		OnNeedSaveAction();
 	}
 
@@ -185,6 +188,25 @@ public partial class Card : Control
 		OnNeedSaveAction();
 
 		return descLine;
+	}
+
+	// -- REWARDS --
+	public void SetRewardsEnabled(bool enabled, bool builtin = false) {
+		if (!enabled) {
+			rewardsTextureRect.Visible = false;
+			rewardsLabel.Visible = false;
+			SetDescOffsets(bot: 0);
+			return;
+		}
+
+		rewardsTextureRect.Visible = !builtin;
+		rewardsLabel.Visible = true;
+		SetDescOffsets(bot: 89);
+	}
+
+	public void SetRewards(string text) {
+		rewardsLabel.SetText("[center]" + text);
+		OnNeedSaveAction();
 	}
 
 	// -- STATS --

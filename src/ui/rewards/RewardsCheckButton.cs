@@ -2,23 +2,19 @@ using Godot;
 using Godot.Collections;
 using System;
 
-public partial class TitleEdit : LineEdit
+public partial class RewardsCheckButton : CheckButton
 {
-	public void OnTextChanged(string text) {
-		Card.instance.SetTitle(text);
-	}
-
 	// --- SAVE HANDLING ---
 	public virtual Dictionary Save() {
 		var dict = new Dictionary();
 
-		dict.Add("Value", Text);
+		dict.Add("Toggled", ButtonPressed);
 
 		return dict;
 	}
 
 	public virtual void Load(Dictionary data) {
-        Text = (string) data["Value"];
-		OnTextChanged(Text);
+        bool toggled = (bool) data["Toggled"];
+		ButtonPressed = toggled;
     }
 }

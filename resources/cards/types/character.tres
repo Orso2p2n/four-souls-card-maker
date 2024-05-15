@@ -14,10 +14,12 @@
 [resource]
 script = ExtResource("10_b2eai")
 stats = "Character"
+customStats = false
 backgrounds = [ExtResource("1_bu4fq"), ExtResource("4_r3y18"), ExtResource("3_ov5r6"), ExtResource("2_b0ge8")]
 foregrounds = [ExtResource("5_otw74")]
 borders = [ExtResource("5_u77b3"), ExtResource("5_uv6tf"), ExtResource("6_020f7")]
 canHaveStartingItem = true
+rewards = "Disabled"
 descOffsetTop = 54.0
 descOffsetBot = 0.0
 name = "Character"

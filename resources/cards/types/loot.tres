@@ -23,6 +23,7 @@ backgrounds = [ExtResource("1_wah2d"), ExtResource("2_otkxu"), ExtResource("4_83
 foregrounds = [ExtResource("8_bgqms"), ExtResource("9_pthpv"), ExtResource("10_nvuw7"), ExtResource("11_k6lqd"), ExtResource("12_pkihn")]
 borders = [ExtResource("6_fgp4h"), ExtResource("6_j64ws"), ExtResource("7_u4cqe")]
 canHaveStartingItem = false
+rewards = "Enabled"
 descOffsetTop = 0.0
 descOffsetBot = 0.0
 name = "Loot"

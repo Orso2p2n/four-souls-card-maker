@@ -45,5 +45,7 @@ public partial class MainTypeMenu : TypeMenu
 
 		EditManager.instance.SetStats(selectedCardType.stats, selectedCardType.customStats);
 		EditManager.instance.SetCustomStats(selectedCardType.customStats);
+
+		EditManager.instance.SetRewardsState(selectedCardType.rewards);
 	}
 }

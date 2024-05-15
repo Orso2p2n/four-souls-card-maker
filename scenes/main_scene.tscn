@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dvc28dl1fq04i"]
+[gd_scene load_steps=84 format=3 uid="uid://dvc28dl1fq04i"]
 
 [ext_resource type="Script" path="res://src/save/SaveManager.cs" id="1_wqwht"]
 [ext_resource type="Script" path="res://src/ui/CardPreview.cs" id="2_c7j0e"]
@@ -76,6 +76,9 @@
 [ext_resource type="Script" path="res://src/ui/text_edits/StartingItemIntroEdit.cs" id="62_t1qu5"]
 [ext_resource type="Script" path="res://src/ui/text_edits/StartingItemNameEdit.cs" id="63_nlm0b"]
 [ext_resource type="Script" path="res://src/ui/starting_item/StartingItemCheckBox.cs" id="63_te4q8"]
+[ext_resource type="Script" path="res://src/ui/rewards/RewardsContainer.cs" id="64_uk5qe"]
+[ext_resource type="Script" path="res://src/ui/rewards/RewardsCheckButton.cs" id="65_mffsh"]
+[ext_resource type="Script" path="res://src/ui/rewards/RewardsEdit.cs" id="66_ht7oq"]
 [ext_resource type="Texture2D" uid="uid://bxkmt2tdhpvh5" path="res://assets/icons/reset18.png" id="71_45i6p"]
 [ext_resource type="Script" path="res://src/ui/selection_properties/RotationProps.cs" id="72_emn3m"]
 
@@ -103,13 +106,14 @@ script = ExtResource("1_wqwht")
 saveLabel = NodePath("../TopBar/SaveLabel")
 cardViewport = NodePath("../MainPanel/CardPreview/CardViewport")
 
-[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat", "statsOptionButton")]
+[node name="EditManager" type="Node" parent="." node_paths=PackedStringArray("fileDialog", "hpStat", "diceStat", "atkStat", "statsOptionButton", "rewardsContainer")]
 script = ExtResource("16_66afq")
 fileDialog = NodePath("FileDialog")
 hpStat = NodePath("../MainPanel/Stats/HP")
 diceStat = NodePath("../MainPanel/Stats/DICE")
 atkStat = NodePath("../MainPanel/Stats/ATK")
 statsOptionButton = NodePath("../MainPanel/Stats/StatsOptionButton")
+rewardsContainer = NodePath("../MainPanel/Rewards")
 
 [node name="FileDialog" type="FileDialog" parent="EditManager"]
 title = "Open a File"
@@ -301,6 +305,26 @@ clip_text = true
 fit_to_longest_item = false
 script = ExtResource("14_e3u8i")
 customIcon = ExtResource("14_2syo5")
+metadata/_edit_use_anchors_ = true
+
+[node name="ShowBleedZones" type="Control" parent="MainPanel"]
+layout_mode = 1
+anchor_left = 0.51
+anchor_right = 0.65625
+offset_left = 0.639893
+offset_top = 40.0
+offset_bottom = 80.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ShowBleedZonesButton" type="CheckButton" parent="MainPanel/ShowBleedZones"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3_7sxfo")
+text = "Show bleedzones"
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Control" parent="MainPanel"]
@@ -841,7 +865,7 @@ anchor_right = 1.0
 anchor_bottom = 0.6
 theme = ExtResource("3_7sxfo")
 text = "Starting item:"
-placeholder_text = "Enter Intro..."
+placeholder_text = "Edit intro..."
 script = ExtResource("62_t1qu5")
 metadata/_edit_use_anchors_ = true
 
@@ -853,28 +877,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource("3_7sxfo")
 text = "The D6"
-placeholder_text = "Enter Name..."
+placeholder_text = "Edit name..."
 script = ExtResource("63_nlm0b")
 metadata/_edit_use_anchors_ = true
 
-[node name="ShowBleedZones" type="Control" parent="MainPanel"]
+[node name="Rewards" type="Control" parent="MainPanel" node_paths=PackedStringArray("checkButton", "lineEdit")]
 layout_mode = 1
-anchor_left = 0.51
+anchor_left = 0.339
+anchor_top = 0.999615
 anchor_right = 0.65625
-offset_left = 0.639893
-offset_top = 40.0
-offset_bottom = 80.0
+anchor_bottom = 0.999615
+offset_left = -0.704041
+offset_top = -87.6801
+offset_bottom = -15.6801
 mouse_filter = 2
+script = ExtResource("64_uk5qe")
+checkButton = NodePath("CheckButton")
+lineEdit = NodePath("RewardsEdit")
+
+[node name="RewardsLabel" type="Label" parent="MainPanel/Rewards"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme = ExtResource("3_7sxfo")
+theme_type_variation = &"Header"
+text = "Rewards
+"
+vertical_alignment = 1
+uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ShowBleedZonesButton" type="CheckButton" parent="MainPanel/ShowBleedZones"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CheckButton" type="CheckButton" parent="MainPanel/Rewards" groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.311475
+offset_top = 32.0
+offset_bottom = 72.0
 theme = ExtResource("3_7sxfo")
-text = "Show bleedzones"
-text_overrun_behavior = 3
-clip_text = true
+text = "Show"
+script = ExtResource("65_mffsh")
+metadata/_edit_use_anchors_ = true
+
+[node name="RewardsEdit" type="LineEdit" parent="MainPanel/Rewards" groups=["Save"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.328
+anchor_right = 1.0
+offset_left = -0.0639343
+offset_top = 32.0
+offset_bottom = 72.0
+theme = ExtResource("3_7sxfo")
+placeholder_text = "Edit rewards..."
+script = ExtResource("66_ht7oq")
 metadata/_edit_use_anchors_ = true
 
 [node name="SelectedProps" type="Control" parent="MainPanel"]
@@ -1317,6 +1373,7 @@ clip_text = true
 text_overrun_behavior = 3
 
 [connection signal="canceled" from="EditManager/FileDialog" to="EditManager/FileDialog" method="OnCanceled"]
+[connection signal="toggled" from="MainPanel/ShowBleedZones/ShowBleedZonesButton" to="EditManager" method="SetBleedZones"]
 [connection signal="text_changed" from="MainPanel/Title/TitleEdit" to="MainPanel/Title/TitleEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="MainPanel/Stats/HP/HPEdit" to="MainPanel/Stats/HP" method="UpdateStat"]
 [connection signal="value_changed" from="MainPanel/Stats/DICE/DICEEdit" to="MainPanel/Stats/DICE" method="UpdateStat"]
@@ -1328,7 +1385,8 @@ text_overrun_behavior = 3
 [connection signal="toggled" from="MainPanel/StartingItem/CheckBox" to="MainPanel/StartingItem/CheckBox" method="OnToggled"]
 [connection signal="text_changed" from="MainPanel/StartingItem/IntroEdit" to="MainPanel/StartingItem/IntroEdit" method="OnTextChanged"]
 [connection signal="text_changed" from="MainPanel/StartingItem/NameEdit" to="MainPanel/StartingItem/NameEdit" method="OnTextChanged"]
-[connection signal="toggled" from="MainPanel/ShowBleedZones/ShowBleedZonesButton" to="EditManager" method="SetBleedZones"]
+[connection signal="toggled" from="MainPanel/Rewards/CheckButton" to="MainPanel/Rewards" method="OnCheckButtonToggled"]
+[connection signal="text_changed" from="MainPanel/Rewards/RewardsEdit" to="MainPanel/Rewards/RewardsEdit" method="OnTextChanged"]
 [connection signal="value_changed" from="MainPanel/SelectedProps/Position/XSpinBox" to="MainPanel/SelectedProps/Position" method="OnChangedX"]
 [connection signal="pressed" from="MainPanel/SelectedProps/Position/ResetXButton" to="MainPanel/SelectedProps/Position" method="OnResetXPressed"]
 [connection signal="value_changed" from="MainPanel/SelectedProps/Position/YSpinBox" to="MainPanel/SelectedProps/Position" method="OnChangedY"]

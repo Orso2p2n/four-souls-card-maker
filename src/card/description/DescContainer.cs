@@ -36,7 +36,7 @@ public partial class DescContainer : VBoxContainer
 	public override void _Process(double delta) {
 		base._Process(delta);
 	}
-
+	
 	public void SetOffsets(float _topOffset, float _botOffset) {
 		if (_topOffset != -1) {
 			topOffset = _topOffset;
@@ -48,6 +48,8 @@ public partial class DescContainer : VBoxContainer
 		
 		Position = targetPos = initialPos + new Vector2(0, topOffset);
 		Size = targetSize = initialSize - new Vector2(0, topOffset + botOffset);
+
+		OnAnySizeChange();
 	}
 
 	public void AddText(DescEffect descEffect) {
@@ -134,6 +136,8 @@ public partial class DescContainer : VBoxContainer
 		}
 
 		isProcessingTextsRescale = false;
+
+		Size = targetSize;
 
 		card.ResumeRender();
 	}
