@@ -105,6 +105,12 @@ public partial class SaveManager : Node
             savePath = path;
         }
 
+        var suffix = ".fscard";
+
+        if (!path.EndsWith(suffix)) {
+            path += suffix;
+        }
+
         using var saveGame = FileAccess.Open(path, FileAccess.ModeFlags.Write);
 
         saveGame.StoreLine("{");
