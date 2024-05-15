@@ -14,6 +14,8 @@ public partial class AutofitText : RichTextLabel
 	int baseSpacingSpace;
 	Vector2 baseTransformX;
 
+	int baseFontSize;
+
 	int curSpacingGlyph;
 
 	[Export] int maxSpacingGlyph = -3;
@@ -28,6 +30,8 @@ public partial class AutofitText : RichTextLabel
 		curSpacingGlyph = baseSpacingGlyph = fontVar.SpacingGlyph;
 		baseSpacingSpace = fontVar.SpacingSpace;
 		baseTransformX = fontVar.VariationTransform.X;
+
+		baseFontSize = GetThemeFontSize("normal_font_size");
 
 		AddThemeFontOverride("normal_font", fontVar);
     }
@@ -97,9 +101,11 @@ public partial class AutofitText : RichTextLabel
 	}
 
 	bool TryReduceScaleX() {
-		var X = fontVar.VariationTransform.X.X;
+		var reduceBy = 1f / baseFontSize;
 
-		var reduceBy = 0.0175f;
+		GD.Print(reduceBy);
+
+		var X = fontVar.VariationTransform.X.X;
 		var factorX = (X - reduceBy) / X; 
 		
 		fontVar.VariationTransform = fontVar.VariationTransform.Scaled(new Vector2(factorX, 1));
