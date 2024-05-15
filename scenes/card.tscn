@@ -35,7 +35,7 @@ spacing_bottom = 8
 base_font = ExtResource("12_q3kl2")
 spacing_glyph = -2
 
-[node name="Card" type="Control" node_paths=PackedStringArray("bleedZonesMask", "titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "rewardsTextureRect", "rewardsLabel", "customStatsBox", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel", "startingItemSeparator", "startingItemIntro", "startingItemName", "BGLayer", "FGLayer")]
+[node name="Card" type="Control" node_paths=PackedStringArray("bleedZonesMask", "titleLabel", "bgTexture", "bgOptBorder", "bgOptBot", "bgOptTop", "fgBorder", "fgBot", "fgTop", "descContainer", "rewardsTextureRect", "rewardsLabel", "customStatsBox", "monsterStatsContainer", "monsterHp", "monsterDice", "monsterAtk", "characterStatsContainer", "characterHp", "characterAtk", "art", "topArt", "soulIcon", "setIcon", "diffIcon", "creditsLabel", "startingItemContainer", "startingItemSeparator", "startingItemIntro", "startingItemName", "BGLayer", "FGLayer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,9 +84,10 @@ setIcon = NodePath("BleedZonesMask/FGLayer/SetIcon")
 diffIcon = NodePath("BleedZonesMask/FGLayer/DiffIcon")
 creditsLabel = NodePath("BleedZonesMask/FGLayer/Credits")
 descOffsetWhenShown = Vector2(0, 123)
+startingItemContainer = NodePath("BleedZonesMask/FGLayer/StartingItem")
 startingItemSeparator = NodePath("BleedZonesMask/FGLayer/StartingItem/StartingItemLine")
-startingItemIntro = NodePath("BleedZonesMask/FGLayer/StartingItem/StartingItemIntro")
-startingItemName = NodePath("BleedZonesMask/FGLayer/StartingItem/StartingItemName")
+startingItemIntro = NodePath("BleedZonesMask/FGLayer/StartingItem/StartingItemIntroContainer/StartingItemIntro")
+startingItemName = NodePath("BleedZonesMask/FGLayer/StartingItem/StartingItemNameContainer/StartingItemName")
 BGLayer = NodePath("BleedZonesMask/BGLayer")
 FGLayer = NodePath("BleedZonesMask/FGLayer")
 
@@ -369,6 +370,7 @@ alignment = 1
 script = ExtResource("11_sfr37")
 
 [node name="StartingItem" type="Control" parent="BleedZonesMask/FGLayer"]
+visible = false
 anchors_preset = 0
 offset_left = 108.0
 offset_top = 1079.0
@@ -378,20 +380,21 @@ scale = Vector2(0.992923, 1)
 mouse_filter = 2
 
 [node name="StartingItemLine" parent="BleedZonesMask/FGLayer/StartingItem" instance=ExtResource("6_awvw3")]
-visible = false
 layout_mode = 2
 offset_left = 100.0
 offset_right = 645.0
 mouse_filter = 2
 script = null
 
-[node name="StartingItemIntro" type="RichTextLabel" parent="BleedZonesMask/FGLayer/StartingItem"]
-visible = false
-clip_contents = false
-layout_mode = 2
+[node name="StartingItemIntroContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer/StartingItem"]
+layout_mode = 0
 offset_top = 12.0
 offset_right = 746.0
-offset_bottom = 72.0
+offset_bottom = 84.0
+
+[node name="StartingItemIntro" type="RichTextLabel" parent="BleedZonesMask/FGLayer/StartingItem/StartingItemIntroContainer" node_paths=PackedStringArray("parentContainer")]
+clip_contents = false
+layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("11_4x652")
 theme_override_fonts/normal_font = SubResource("FontVariation_fbrxu")
@@ -399,14 +402,21 @@ theme_override_font_sizes/normal_font_size = 51
 bbcode_enabled = true
 text = "[center]starting item:"
 fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("14_e7j7y")
+parentContainer = NodePath("..")
+maxSpacingGlyph = -6
 
-[node name="StartingItemName" type="RichTextLabel" parent="BleedZonesMask/FGLayer/StartingItem"]
-visible = false
-clip_contents = false
-layout_mode = 2
+[node name="StartingItemNameContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer/StartingItem"]
+layout_mode = 0
 offset_top = 47.0
 offset_right = 746.0
 offset_bottom = 135.0
+
+[node name="StartingItemName" type="RichTextLabel" parent="BleedZonesMask/FGLayer/StartingItem/StartingItemNameContainer" node_paths=PackedStringArray("parentContainer")]
+clip_contents = false
+layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("11_4x652")
 theme_override_fonts/normal_font = SubResource("FontVariation_fbrxu")
@@ -414,6 +424,11 @@ theme_override_font_sizes/normal_font_size = 76
 bbcode_enabled = true
 text = "[center]the d6"
 fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("14_e7j7y")
+parentContainer = NodePath("..")
+maxSpacingGlyph = -6
 
 [node name="SoulIcon" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 0

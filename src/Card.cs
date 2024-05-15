@@ -64,9 +64,10 @@ public partial class Card : Control
 
 	[ExportGroup("StartingItem")]
 	[Export] Vector2 descOffsetWhenShown;
+	[Export] Control startingItemContainer;
 	[Export] TextureRect startingItemSeparator;
-	[Export] RichTextLabel startingItemIntro;
-	[Export] RichTextLabel startingItemName;
+	[Export] AutofitText startingItemIntro;
+	[Export] AutofitText startingItemName;
 
 	[ExportGroup("Layers")]
 	[Export] Control BGLayer;
@@ -347,11 +348,11 @@ public partial class Card : Control
 
 	// -- STARTING ITEM --
 	public void SetStartingItemIntro(string text) {
-		startingItemIntro.Text = "[center]" + text;
+		startingItemIntro.SetText("[center]" + text);
 	}
 
 	public void SetStartingItemName(string text) {
-		startingItemName.Text = "[center]" + text;
+		startingItemName.SetText("[center]" + text);
 	}
 
 	public void SetStartingItemVisible(bool visible) {
@@ -362,7 +363,7 @@ public partial class Card : Control
 			SetDescOffsets(bot: 0);
 		}
 
-		startingItemSeparator.Visible = startingItemName.Visible = startingItemIntro.Visible = visible;
+		startingItemContainer.Visible = visible;
 
 		OnNeedSaveAction();
 	}
