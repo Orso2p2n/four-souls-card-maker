@@ -1299,7 +1299,7 @@ layout_mode = 2
 theme = ExtResource("3_7sxfo")
 theme_override_font_sizes/normal_font_size = 19
 bbcode_enabled = true
-text = "[center] Version [color=LIGHT_SKY_BLUE][url=https://github.com/ZPMods/four-souls-card-maker/releases]0.0.2[/url][/color]
+text = "[center] Version [color=LIGHT_SKY_BLUE][url=https://github.com/ZPMods/four-souls-card-maker/releases]0.0.3[/url][/color]
 
 Developed by [color=LIGHT_SKY_BLUE][url=https://github.com/Orso2p2n]Orso[/url][/color]
 
