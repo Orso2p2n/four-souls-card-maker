@@ -248,7 +248,7 @@ fit_content = true
 autowrap_mode = 0
 script = ExtResource("14_e7j7y")
 parentContainer = NodePath("..")
-maxSpacingGlyph = -6
+maxSpacingGlyph = -1
 
 [node name="TitleContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer"]
 layout_mode = 1
@@ -406,7 +406,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("14_e7j7y")
 parentContainer = NodePath("..")
-maxSpacingGlyph = -6
+maxSpacingGlyph = -1
 
 [node name="StartingItemNameContainer" type="CenterContainer" parent="BleedZonesMask/FGLayer/StartingItem"]
 layout_mode = 0
@@ -427,7 +427,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("14_e7j7y")
 parentContainer = NodePath("..")
-maxSpacingGlyph = -6
+maxSpacingGlyph = -1
 
 [node name="SoulIcon" type="TextureRect" parent="BleedZonesMask/FGLayer"]
 layout_mode = 0
