@@ -220,6 +220,7 @@ offset_right = 962.0
 offset_bottom = 1312.0
 
 [node name="FGRewards" type="TextureRect" parent="BleedZonesMask/FGLayer"]
+visible = false
 layout_mode = 0
 offset_right = 962.0
 offset_bottom = 1312.0
