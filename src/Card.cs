@@ -82,31 +82,31 @@ public partial class Card : Control
 
 	private SubViewport cardViewport;
 
+	Array<int> renderPauses = new Array<int>();
+
     public override void _EnterTree() {
         instance = this;
 		descContainer.card = this;
+		cardViewport = GetParent() as SubViewport;
+		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
     }
 
-    public override void _Ready() {
-		moveableArts = new Array<MoveableArt>(){art, soulIcon, setIcon, diffIcon};
-
-		cardViewport = GetParent() as SubViewport;
-	}
-
-	public void PauseRender() {
-		if (cardViewport == null) {
-			return;
-		}
-
+	public void PauseRender(int id) {
 		cardViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Disabled;
+
+		if (!renderPauses.Contains(id)) {
+			renderPauses.Add(id);
+		}
 	}
 
-	public void ResumeRender() {
-		if (cardViewport == null) {
-			return;
+	public void ResumeRender(int id) {
+		if (renderPauses.Contains(id)) {
+			renderPauses.Remove(id);
 		}
 
-		cardViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
+		if (renderPauses.Count == 0) {
+			cardViewport.RenderTargetUpdateMode = SubViewport.UpdateMode.Always;
+		}
 	}
 
 	public void OnNeedSaveAction() {

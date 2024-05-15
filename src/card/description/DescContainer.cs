@@ -88,7 +88,7 @@ public partial class DescContainer : VBoxContainer
 	}
 
 	private async Task ProcessTextsRescale() {
-		card.PauseRender();
+		card.PauseRender((int) GetInstanceId());
 
 		if (isProcessingTextsRescale) {
 			interruptTextsRescale = true;
@@ -139,7 +139,7 @@ public partial class DescContainer : VBoxContainer
 
 		Size = targetSize;
 
-		card.ResumeRender();
+		card.ResumeRender((int) GetInstanceId());
 	}
 
 	private float GetChildrenHeight() {

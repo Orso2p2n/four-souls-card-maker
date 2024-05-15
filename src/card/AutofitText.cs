@@ -42,7 +42,7 @@ public partial class AutofitText : RichTextLabel
 	}
 
 	async Task Autofit() {
-		Card.instance.PauseRender();
+		Card.instance.PauseRender((int) GetInstanceId());
 
 		ResetFont();
 
@@ -78,7 +78,7 @@ public partial class AutofitText : RichTextLabel
 			}
 		}
 
-		Card.instance.ResumeRender();
+		Card.instance.ResumeRender((int) GetInstanceId());
 	}
 
 	bool TryReduceGlyphSpacing() {
