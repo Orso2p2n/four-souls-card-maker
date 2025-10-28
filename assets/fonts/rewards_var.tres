@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bflyytx3nnivb"]
+
+[ext_resource type="FontFile" uid="uid://26fygw034k4e" path="res://assets/fonts/Font_soulsV2_Body-Regular.ttf" id="1_tw0qx"]
+
+[resource]
+base_font = ExtResource("1_tw0qx")

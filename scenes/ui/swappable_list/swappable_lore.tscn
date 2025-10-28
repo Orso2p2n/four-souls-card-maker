@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmsm5hm13dbm8"]
 
 [ext_resource type="PackedScene" uid="uid://ehxehyyyujny" path="res://scenes/ui/swappable_list/swappable_effect.tscn" id="1_v66e8"]
-[ext_resource type="Script" path="res://src/ui/swappable_list/SwappableLore.cs" id="2_pwlw3"]
+[ext_resource type="Script" uid="uid://dyyqqlu2s0hqc" path="res://src/ui/swappable_list/SwappableLore.cs" id="2_pwlw3"]
 
 [node name="SwappableEffect" instance=ExtResource("1_v66e8")]
 script = ExtResource("2_pwlw3")
