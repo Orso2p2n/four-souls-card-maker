@@ -42,13 +42,13 @@ public partial class Card : Control
 	[Export] Texture2D characterStatBoxTexture;
 	[ExportSubgroup("Monster")]
 	[Export] Control monsterStatsContainer;
-	[Export] Label monsterHp;
-	[Export] Label monsterDice;
-	[Export] Label monsterAtk;
+	[Export] RichTextLabel monsterHp;
+	[Export] RichTextLabel monsterDice;
+	[Export] RichTextLabel monsterAtk;
 	[ExportSubgroup("Character")]
 	[Export] Control characterStatsContainer;
-	[Export] Label characterHp;
-	[Export] Label characterAtk;
+	[Export] RichTextLabel characterHp;
+	[Export] RichTextLabel characterAtk;
 
 	[ExportGroup("Art")]
 	[Export] public MoveableArt art;
@@ -121,10 +121,20 @@ public partial class Card : Control
 		bleedZonesMask.ClipChildren = CanvasItem.ClipChildrenMode.Only;
 	}
 
-	public void SetTitle(string text) {
+	public void SetTitle(string text)
+	{
+		text = ReplaceNumbers(text);
 		titleLabel.SetText("[center]" + text);
 		OnNeedSaveAction();
 	}
+	
+	string ReplaceNumbers(string text)
+    {
+		text = text.Replace("0", "[code]0[/code]");  
+		text = text.Replace("1", "[code]1[/code]");
+
+		return text;
+    }
 
 	public void SetCredits(string text) {
 		creditsLabel.Text = "[right]" + text;
@@ -211,37 +221,53 @@ public partial class Card : Control
 	}
 
 	// -- STATS --
-	public void setStats(string statsString, double hp, double dice, double atk, bool hasCustomStats = false) {
+	public void setStats(string statsString, double hp, double dice, double atk, bool hasCustomStats = false)
+	{
 		monsterStatsContainer.Visible = false;
 		characterStatsContainer.Visible = false;
 
-		switch(statsString) {
-            case "None": 
+		var hpString = GetStatString(hp);
+		var diceString = GetStatString(dice) + ((dice > 0 && dice < 6) ? "+" : " ");
+		var atkString = GetStatString(atk).ToString();
+
+		switch (statsString)
+		{
+			case "None":
 				SetDescOffsets(top: 0);
 				break;
 
-            case "Monster":
+			case "Monster":
 				customStatsBox.Texture = monsterStatBoxTexture;
-                monsterStatsContainer.Visible = true;
-				monsterHp.Text = hp.ToString();
-				monsterDice.Text = dice.ToString() + ((dice > 0 && dice < 6) ? "+" : " ");
-				monsterAtk.Text = atk.ToString();
+				monsterStatsContainer.Visible = true;
+				monsterHp.Text = hpString;
+				monsterDice.Text = diceString;
+				monsterAtk.Text = atkString;
 				SetDescOffsets(top: 54);
-                break;
+				break;
 
-            case "Character":
+			case "Character":
 				customStatsBox.Texture = characterStatBoxTexture;
-                characterStatsContainer.Visible = true;
-				characterHp.Text = hp.ToString();
-				characterAtk.Text = atk.ToString();
+				characterStatsContainer.Visible = true;
+				characterHp.Text = hpString;
+				characterAtk.Text = atkString;
 				SetDescOffsets(top: 54);
-                break;
-        }
+				break;
+		}
 
 		customStatsBox.Visible = statsString != "None" && hasCustomStats;
 
 		OnNeedSaveAction();
 	}
+	
+	string GetStatString(double stat)
+    {
+		string statString = stat.ToString();
+
+		statString = statString.Replace("0", "[code]¥[/code]");
+		statString = statString.Replace("1", "[code]¦[/code]");
+
+		return statString;
+    }
 
 	// -- ART --
 	public void SetArt(Texture2D texture, bool top = false, string path = "") {
