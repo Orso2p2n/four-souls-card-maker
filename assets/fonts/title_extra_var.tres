@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dnwby37pornfd"]
+
+[ext_resource type="FontFile" uid="uid://dh3h0q3a7y84k" path="res://assets/fonts/FontSouls_v3-Title.otf" id="1_q1sjx"]
+
+[resource]
+base_font = ExtResource("1_q1sjx")
+baseline_offset = 0.1

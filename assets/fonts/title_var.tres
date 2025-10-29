@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://0xs7ffhaq15l"]
+
+[ext_resource type="FontFile" uid="uid://c0wu1mo0bq8h2" path="res://assets/fonts/Font_soulsV2_Title-Regular.ttf" id="1_0eklr"]
+
+[resource]
+base_font = ExtResource("1_0eklr")
+variation_embolden = 0.16

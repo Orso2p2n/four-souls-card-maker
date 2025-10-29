@@ -1,14 +1,17 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgxqyt5bopd66"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bgxqyt5bopd66"]
 
-[ext_resource type="FontVariation" uid="uid://c8uabfwu570ol" path="res://assets/fonts/EMM_text_var.tres" id="1_5d0ax"]
-[ext_resource type="FontVariation" uid="uid://3wq333bvsmm0" path="res://assets/fonts/EMM_rewards.tres" id="2_axswu"]
+[ext_resource type="FontVariation" uid="uid://dinv2hcu1eqyr" path="res://assets/fonts/text_var.tres" id="1_w08mv"]
+[ext_resource type="FontVariation" uid="uid://bkw02i6wadnts" path="res://assets/fonts/rewards_extra_var.tres" id="2_lyonc"]
+[ext_resource type="FontVariation" uid="uid://bflyytx3nnivb" path="res://assets/fonts/rewards_var.tres" id="2_onmnc"]
 
 [resource]
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/constants/line_spacing = 0
 Label/font_sizes/font_size = 68
-Label/fonts/font = ExtResource("1_5d0ax")
+Label/fonts/font = ExtResource("1_w08mv")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/line_separation = 0
-RichTextLabel/font_sizes/normal_font_size = 58
-RichTextLabel/fonts/normal_font = ExtResource("2_axswu")
+RichTextLabel/font_sizes/mono_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 60
+RichTextLabel/fonts/mono_font = ExtResource("2_lyonc")
+RichTextLabel/fonts/normal_font = ExtResource("2_onmnc")

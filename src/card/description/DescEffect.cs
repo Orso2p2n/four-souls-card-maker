@@ -37,7 +37,7 @@ public partial class DescEffect : DescBase
 		baseWidth = richText.Size.X;
 
 		var font = richText.GetThemeFont("normal_font").Duplicate();
-		fontVar = (FontVariation) font;
+		fontVar = (FontVariation)font;
 	}
 
 	public override void _Process(double delta) {
@@ -69,6 +69,7 @@ public partial class DescEffect : DescBase
 
 		// Remove empty lines with no text after
 		var splitText = text.Split("\n");
+		
 		List<string> splitTextList = new();
 
 		foreach (var line in splitText) {
@@ -89,24 +90,51 @@ public partial class DescEffect : DescBase
 		text = ReplaceIconsInText(text, "[ATK]", atkIcon);
 		text = ReplaceIconsInText(text, "[DICE]", diceIcon);
 
+		// Replace special chars
+		text = ReplaceSpecialChars(text, "[$]", "£");		//paid symbol
+		text = ReplaceSpecialChars(text, "[TAP]", "¤");		//tap symbol
+		text = ReplaceSpecialChars(text, "[*]", "#");		//bullet
+
+		text = ReplaceSpecialChars(text, "[[1]]", "¥");		//roll numbers, dark
+		text = ReplaceSpecialChars(text, "[[2]]", "¦");
+		text = ReplaceSpecialChars(text, "[[3]]", "§");
+		text = ReplaceSpecialChars(text, "[[4]]", "¨");
+		text = ReplaceSpecialChars(text, "[[5]]", "©");
+		text = ReplaceSpecialChars(text, "[[6]]", "ª");
+
+		text = ReplaceSpecialChars(text, "[1]", "«");			//roll numbers, light
+		text = ReplaceSpecialChars(text, "[2]", "¬");
+		text = ReplaceSpecialChars(text, "[3]", "®");
+		text = ReplaceSpecialChars(text, "[4]", "¯");
+		text = ReplaceSpecialChars(text, "[5]", "°");
+		text = ReplaceSpecialChars(text, "[6]", "±");
+
 		return text;
 	}
 
-	string ReplaceIconsInText(string text, string key, Texture2D icon) {
+	string ReplaceIconsInText(string text, string key, Texture2D icon)
+	{
 		var path = icon.ResourcePath;
 
-		int targetHeight = (int) (curFontSize);
+		int targetHeight = (int)(curFontSize);
 		int iconHeight = icon.GetHeight();
 		int iconWidth = icon.GetWidth();
 
-		float ratio = (float) targetHeight / (float) iconHeight;
+		float ratio = (float)targetHeight / (float)iconHeight;
 
-		int targetWidth = (int) (ratio * iconWidth);
-		
+		int targetWidth = (int)(ratio * iconWidth);
+
 		string newVal = $"[img=bottom,bottom,{targetWidth}x{targetHeight}]{path}[/img]";
 
 		return text.Replace(key, newVal);
 	}
+	
+	string ReplaceSpecialChars(string text, string key, string specialChar)
+	{
+		string replacement = $"[code]{specialChar}[/code]";
+
+		return text.Replace(key, replacement);        
+    }
 
 	public void SetUserScale(float value) {
 		userScale = value;

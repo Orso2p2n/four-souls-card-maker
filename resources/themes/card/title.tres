@@ -1,11 +1,14 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://nmanbwnqgomd"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://nmanbwnqgomd"]
 
-[ext_resource type="FontVariation" uid="uid://blm828a35d7t5" path="res://assets/fonts/EMM_title_var.tres" id="1_28c2i"]
+[ext_resource type="FontVariation" uid="uid://0xs7ffhaq15l" path="res://assets/fonts/title_var.tres" id="1_5f1nk"]
+[ext_resource type="FontVariation" uid="uid://dnwby37pornfd" path="res://assets/fonts/title_extra_var.tres" id="2_gcxk5"]
 
 [resource]
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 58
-Label/fonts/font = ExtResource("1_28c2i")
+Label/fonts/font = ExtResource("1_5f1nk")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/normal_font_size = 58
-RichTextLabel/fonts/normal_font = ExtResource("1_28c2i")
+RichTextLabel/font_sizes/mono_font_size = 65
+RichTextLabel/font_sizes/normal_font_size = 70
+RichTextLabel/fonts/mono_font = ExtResource("2_gcxk5")
+RichTextLabel/fonts/normal_font = ExtResource("1_5f1nk")

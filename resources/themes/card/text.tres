@@ -1,13 +1,16 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cpk30bs62huts"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cpk30bs62huts"]
 
-[ext_resource type="FontVariation" uid="uid://c8uabfwu570ol" path="res://assets/fonts/EMM_text_var.tres" id="1_t7ip7"]
+[ext_resource type="FontVariation" uid="uid://dinv2hcu1eqyr" path="res://assets/fonts/text_var.tres" id="1_w3olg"]
+[ext_resource type="FontVariation" uid="uid://dflc3tfms7kpr" path="res://assets/fonts/text_extra_var.tres" id="2_hdiar"]
 
 [resource]
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/constants/line_spacing = 0
 Label/font_sizes/font_size = 68
-Label/fonts/font = ExtResource("1_t7ip7")
+Label/fonts/font = ExtResource("1_w3olg")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/constants/line_separation = -18
-RichTextLabel/font_sizes/normal_font_size = 58
-RichTextLabel/fonts/normal_font = ExtResource("1_t7ip7")
+RichTextLabel/constants/line_separation = 4
+RichTextLabel/font_sizes/mono_font_size = 55
+RichTextLabel/font_sizes/normal_font_size = 70
+RichTextLabel/fonts/mono_font = ExtResource("2_hdiar")
+RichTextLabel/fonts/normal_font = ExtResource("1_w3olg")

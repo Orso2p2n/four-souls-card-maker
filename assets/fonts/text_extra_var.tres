@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dflc3tfms7kpr"]
+
+[ext_resource type="FontFile" uid="uid://dul4ok46rwpfw" path="res://assets/fonts/FontSouls_v3-Body.otf" id="1_mugyh"]
+
+[resource]
+base_font = ExtResource("1_mugyh")
+baseline_offset = -0.35
